@@ -1,10 +1,10 @@
 package start;
 
-import view.FrmMain;
+import view.FrmGestionProductos;
 
 public class Lanzar {
 	public static void main(String[] args) {
-		new FrmMain();
+		new FrmGestionProductos();
 
 	}
 

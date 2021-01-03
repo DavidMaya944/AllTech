@@ -2,7 +2,7 @@ package controller;
 
 import logic.Logica;
 import model.Producto;
-import view.FrmMain;
+import view.FrmGestionProductos;
 
 public class Ctrl {
 	
@@ -17,28 +17,28 @@ public class Ctrl {
 	
 
 	public void mostrar(Producto p) {
-		FrmMain.txtCod.setText("" + p.getiCod());
-		FrmMain.txtNombre.setText(p.getsNombre());
+		FrmGestionProductos.txtCod.setText("" + p.getiCod());
+		FrmGestionProductos.txtNombre.setText(p.getsNombre());
 		if (p.getiOpcion() == 1) {
-			FrmMain.rdbtnPack.setSelected(true);
+			FrmGestionProductos.rdbtnPack.setSelected(true);
 		} else if (p.getiOpcion() == 2) {
-			FrmMain.rdbtnUnidad.setSelected(true);
+			FrmGestionProductos.rdbtnUnidad.setSelected(true);
 		} else if (p.getiOpcion() == 3) {
-			FrmMain.rdbtnCombinado.setSelected(true);
+			FrmGestionProductos.rdbtnCombinado.setSelected(true);
 		} else {
 			System.out.println("Opcion invalida");
 		}
-		FrmMain.textComents.setText(p.getsComents());
-		FrmMain.checkFragil.setSelected(p.isbFragil());
-		FrmMain.checkObsoleto.setSelected(p.isbObsoleto());
-		FrmMain.txtStockActual.setText("" + p.getiStockActual());
-		FrmMain.txtStockMin.setText("" + p.getiStockMin());
-		FrmMain.txtStockMax.setText("" + p.getiStockMax());
-		FrmMain.cmbProveedor.setSelectedItem(p.getsProveedor());
-		FrmMain.txtPVP.setText("" + p.getfPVP());
+		FrmGestionProductos.textComents.setText(p.getsComents());
+		FrmGestionProductos.checkFragil.setSelected(p.isbFragil());
+		FrmGestionProductos.checkObsoleto.setSelected(p.isbObsoleto());
+		FrmGestionProductos.txtStockActual.setText("" + p.getiStockActual());
+		FrmGestionProductos.txtStockMin.setText("" + p.getiStockMin());
+		FrmGestionProductos.txtStockMax.setText("" + p.getiStockMax());
+		FrmGestionProductos.cmbProveedor.setSelectedItem(p.getsProveedor());
+		FrmGestionProductos.txtPVP.setText("" + p.getfPVP());
 	}
 	
-	public void confirmarBorrar(FrmMain frame) {
+	public void confirmarBorrar(FrmGestionProductos frame) {
 		log.confirmarBorrar(frame);
 	}
 	

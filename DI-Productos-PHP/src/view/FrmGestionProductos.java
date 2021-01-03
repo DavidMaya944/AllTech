@@ -24,7 +24,7 @@ import javax.swing.border.EmptyBorder;
 import controller.Ctrl;
 import logic.Logica;
 
-public class FrmMain extends JFrame {
+public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTextField txtCod;
@@ -43,12 +43,12 @@ public class FrmMain extends JFrame {
 	public static JComboBox cmbProveedor;
 	public static Ctrl ctrl = new Ctrl();
 	public static Logica log = new Logica();
-	public static FrmMain frame;
+	public static FrmGestionProductos frame;
 	public static final ButtonGroup btnOption = new ButtonGroup();
 
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public FrmMain() {
+	public FrmGestionProductos() {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon\\cesta.png"));
 		setTitle("Productos");
