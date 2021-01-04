@@ -1,24 +1,13 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import java.awt.Button;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class FrmGestionUsuario extends JFrame {
 
@@ -32,7 +21,6 @@ public class FrmGestionUsuario extends JFrame {
 	private JTextField txtDireccion;
 	private JTextField txtUser;
 	private JTextField txtPass;
-	private ButtonGroup bgSexo;
 
 	/**
 	 * Launch the application.
@@ -142,23 +130,6 @@ public class FrmGestionUsuario extends JFrame {
 		contentPane.add(txtPass);
 		txtPass.setColumns(10);
 		
-		JRadioButton rdbtnHombre = new JRadioButton("Hombre");
-		rdbtnHombre.setEnabled(false);
-		rdbtnHombre.setBounds(422, 108, 109, 23);
-		contentPane.add(rdbtnHombre);
-		
-		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(352, 112, 46, 14);
-		contentPane.add(lblSexo);
-		
-		JRadioButton rdbtnMujer = new JRadioButton("Mujer");
-		rdbtnMujer.setEnabled(false);
-		rdbtnMujer.setBounds(422, 129, 109, 23);
-		contentPane.add(rdbtnMujer);
-		
-		bgSexo = new ButtonGroup();
-		bgSexo.add(rdbtnHombre);
-		bgSexo.add(rdbtnMujer);
 		
 		JButton btnRechazar = new JButton("Rechazar");
 		btnRechazar.setBounds(493, 263, 89, 23);

@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.Ctrl;
-import logic.Logica;
+import logic.LogicaProductos;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +42,7 @@ public class FrmGestionProductos extends JFrame {
 	@SuppressWarnings("rawtypes")
 	public static JComboBox cmbProveedor;
 	public static Ctrl ctrl = new Ctrl();
-	public static Logica log = new Logica();
+	public static LogicaProductos log = new LogicaProductos();
 	public static FrmGestionProductos frame;
 	public static final ButtonGroup btnOption = new ButtonGroup();
 

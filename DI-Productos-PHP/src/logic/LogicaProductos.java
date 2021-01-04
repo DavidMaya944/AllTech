@@ -13,6 +13,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -22,7 +23,7 @@ import org.json.JSONObject;
 import model.Producto;
 import view.FrmGestionProductos;
 
-public class Logica {
+public class LogicaProductos {
 	public static int iPos = 0;
 	public static int iCod = 0;
 	public static List<Producto> lProductos = new ArrayList<Producto>();
@@ -65,7 +66,7 @@ public class Logica {
 					+ "&STOCK_MIN=" + iStockMin;
 			sqlUpdate += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP + "&CODIGO="
 					+ iCod;
-			respuesta = peticionHttpArray(sqlUpdate);
+			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
 			System.out.println("Ha actualizado correctamente.");
 		} else {
 			String sqlInsert = "http://davidmaya.atwebpages.com/ProductosPHP/insert-producto.php";
@@ -73,39 +74,17 @@ public class Logica {
 			sqlInsert += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
 					+ "&STOCK_MIN=" + iStockMin;
 			sqlInsert += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP;
-			respuesta = peticionHttpArray(sqlInsert);
+			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
 			System.out.println("Ha insertado correctamente.");
 
 		}
 
 		return respuesta;
 	}
+	
+	
 
-	public String peticionHttpArray(String parametro) {
-
-		StringBuilder resultado = new StringBuilder();
-
-		try {
-
-			URL url = new URL(parametro);
-			HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-			conexion.setRequestMethod("GET");
-
-			BufferedReader bf = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-			String linea;
-
-			while ((linea = bf.readLine()) != null) {
-				resultado.append(linea + "\n");
-			}
-
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return resultado.toString();
-	}
+	
 
 	public int validarOpcion() {
 		int iOpcion = 0;
@@ -241,7 +220,7 @@ public class Logica {
 	
 	public String getProductos() {
 		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-productos.php";
-		String respuesta = peticionHttpArray(sql);
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
 	}
@@ -251,7 +230,7 @@ public class Logica {
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
 			String sql = "http://davidmaya.atwebpages.com/ProductosPHP/delete-producto.php?CODIGO=" + iCod;
-			String respuesta = peticionHttpArray(sql);
+			String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		}
 	}
 

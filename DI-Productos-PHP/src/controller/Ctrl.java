@@ -1,12 +1,12 @@
 package controller;
 
-import logic.Logica;
+import logic.LogicaProductos;
 import model.Producto;
 import view.FrmGestionProductos;
 
 public class Ctrl {
 	
-	Logica log = new Logica();
+	LogicaProductos log = new LogicaProductos();
 	String FILE_NAME_OBJ = "files\\productos.data";
 
 	public void abrir() {
