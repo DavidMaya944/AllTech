@@ -60,48 +60,48 @@ public class FrmRegistro extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(10, 32, 46, 14);
+		lblNombre.setBounds(10, 38, 46, 14);
 		contentPane.add(lblNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(71, 29, 110, 20);
+		txtNombre.setBounds(71, 35, 110, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setBounds(10, 64, 63, 14);
+		lblApellidos.setBounds(10, 70, 63, 14);
 		contentPane.add(lblApellidos);
 		
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(71, 60, 110, 20);
+		txtApellidos.setBounds(71, 66, 110, 20);
 		contentPane.add(txtApellidos);
 		txtApellidos.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(10, 94, 46, 14);
+		lblEmail.setBounds(10, 100, 46, 14);
 		contentPane.add(lblEmail);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(71, 91, 110, 20);
+		txtEmail.setBounds(71, 97, 110, 20);
 		txtEmail.getText().contains("@");
 		contentPane.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direcci\u00F3n");
-		lblDireccion.setBounds(10, 153, 78, 14);
+		lblDireccion.setBounds(10, 159, 78, 14);
 		contentPane.add(lblDireccion);
 		
 		txtDireccion = new JTextField();
-		txtDireccion.setBounds(71, 150, 144, 20);
+		txtDireccion.setBounds(71, 156, 144, 20);
 		contentPane.add(txtDireccion);
 		txtDireccion.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(10, 125, 63, 14);
+		lblTelefono.setBounds(10, 131, 63, 14);
 		contentPane.add(lblTelefono);
 		
 		txtTelefono = new JTextField();
-		txtTelefono.setBounds(71, 122, 86, 20);
+		txtTelefono.setBounds(71, 128, 86, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
@@ -118,14 +118,14 @@ public class FrmRegistro extends JFrame {
 		lblPassword.setBounds(225, 67, 86, 14);
 		contentPane.add(lblPassword);
 		
-		JButton btnCompletar = new JButton("Completar");
-		btnCompletar.addActionListener(new ActionListener() {
+		JButton btnConfrimar = new JButton("Confirmar");
+		btnConfrimar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrl.guardarUsuario();
 			}
 		});
-		btnCompletar.setBounds(201, 227, 110, 23);
-		contentPane.add(btnCompletar);
+		btnConfrimar.setBounds(201, 227, 110, 23);
+		contentPane.add(btnConfrimar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(322, 227, 89, 23);
