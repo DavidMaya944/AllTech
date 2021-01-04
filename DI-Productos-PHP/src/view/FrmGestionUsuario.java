@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmGestionUsuario extends JFrame {
 
@@ -136,6 +138,10 @@ public class FrmGestionUsuario extends JFrame {
 		contentPane.add(btnRechazar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnAceptar.setBounds(394, 263, 89, 23);
 		contentPane.add(btnAceptar);
 	}
