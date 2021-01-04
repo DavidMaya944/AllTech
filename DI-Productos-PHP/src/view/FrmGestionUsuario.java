@@ -8,41 +8,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import controller.CtrlUsuario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class FrmGestionUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblID;
-	private JTextField txtID;
-	private JTextField txtNombre;
-	private JTextField txtApellidos;
-	private JTextField txtEmail;
-	private JTextField txtTelefono;
-	private JTextField txtDireccion;
-	private JTextField txtUser;
-	private JTextField txtPass;
+	public static JTextField txtID;
+	public static JTextField txtNombre;
+	public static JTextField txtApellidos;
+	public static JTextField txtEmail;
+	public static JTextField txtTelefono;
+	public static JTextField txtDireccion;
+	public static JTextField txtUser;
+	public static JPasswordField txtPass;
+	private JLabel lblPermiso;
+	public static JTextField txtPermiso;
+	private CtrlUsuario ctrlUser = new CtrlUsuario();
+	public static FrmGestionUsuario frame;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FrmGestionUsuario frame = new FrmGestionUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public FrmGestionUsuario() {
 		setTitle("Usuarios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -126,12 +116,6 @@ public class FrmGestionUsuario extends JFrame {
 		lblPass.setBounds(352, 63, 63, 14);
 		contentPane.add(lblPass);
 		
-		txtPass = new JTextField();
-		txtPass.setEnabled(false);
-		txtPass.setBounds(422, 60, 119, 20);
-		contentPane.add(txtPass);
-		txtPass.setColumns(10);
-		
 		
 		JButton btnRechazar = new JButton("Rechazar");
 		btnRechazar.setBounds(493, 263, 89, 23);
@@ -140,9 +124,26 @@ public class FrmGestionUsuario extends JFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.confirmarUsuario();
 			}
 		});
 		btnAceptar.setBounds(394, 263, 89, 23);
 		contentPane.add(btnAceptar);
+		
+		txtPass = new JPasswordField();
+		txtPass.setBounds(422, 60, 119, 20);
+		contentPane.add(txtPass);
+		
+		lblPermiso = new JLabel("Permiso");
+		lblPermiso.setBounds(352, 129, 46, 14);
+		contentPane.add(lblPermiso);
+		
+		txtPermiso = new JTextField();
+		txtPermiso.setEnabled(false);
+		txtPermiso.setBounds(422, 126, 119, 20);
+		contentPane.add(txtPermiso);
+		txtPermiso.setColumns(10);
+		ctrlUser.abrir();
+		setVisible(true);
 	}
 }

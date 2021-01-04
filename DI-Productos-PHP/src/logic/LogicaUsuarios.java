@@ -10,9 +10,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Usuario;
+import view.FrmGestionUsuario;
 
 public class LogicaUsuarios {
 
+	public List<Usuario> lUsuarios = new ArrayList<Usuario>();
+	public int iPos = 0;
 	public String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono) {
 
@@ -53,6 +56,14 @@ public class LogicaUsuarios {
 		return respuesta;
 	}
 	
+	public List<Usuario> leer() {
+		lUsuarios = new ArrayList<Usuario>();
+		String sRes = obtenerUsuarios();
+		lUsuarios = jasonToUsuarios(sRes);
+		
+		return lUsuarios;
+	}
+	
 	public List<Usuario> jasonToUsuarios(String respuesta){
 		List<Usuario> lUsuario = new ArrayList<Usuario>();
 		
@@ -67,7 +78,6 @@ public class LogicaUsuarios {
 	}
 	
 	private Usuario JsonToUsuario(JSONObject jObj) {
-		boolean bFragil = false, bObsoleto = false;
 		
 		Integer iId = jObj.getInt("ID");
 		String sNombre = jObj.getString("NOMBRE");
@@ -82,4 +92,42 @@ public class LogicaUsuarios {
 		return u;
 	}
 	
+	public void confirmarUsuario() {
+		confirmarRegistro(FrmGestionUsuario.txtID, FrmGestionUsuario.txtNombre, FrmGestionUsuario.txtApellidos, FrmGestionUsuario.txtEmail,
+				FrmGestionUsuario.txtDireccion, FrmGestionUsuario.txtUser, FrmGestionUsuario.txtPass, FrmGestionUsuario.txtTelefono);
+	}
+	
+	public Usuario inicioLista() {
+		Usuario u = null;
+		iPos = 0;
+		u = lUsuarios.get(iPos);
+		return u;
+	}
+
+	public Usuario finLista() {
+		iPos = lUsuarios.size() - 1;
+		Usuario u = null;
+		if (iPos >= 1)
+			u = lUsuarios.get(iPos);
+		return u;
+	}
+
+	public Usuario siguiente() {
+		Usuario u = null;
+		if (iPos != lUsuarios.size() - 1) {
+			iPos++;
+			u = lUsuarios.get(iPos);
+		}
+		return u;
+	}
+
+	public Usuario anterior() {
+		Usuario u = null;
+		if (iPos != 0) {
+			iPos--;
+			u = lUsuarios.get(iPos);
+		}
+		return u;
+
+	}
 }

@@ -4,7 +4,7 @@ import logic.LogicaProductos;
 import model.Producto;
 import view.FrmGestionProductos;
 
-public class Ctrl {
+public class CtrlProducto {
 	
 	LogicaProductos log = new LogicaProductos();
 	String FILE_NAME_OBJ = "files\\productos.data";

@@ -3,8 +3,6 @@ package view;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -21,7 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controller.Ctrl;
+import controller.CtrlProducto;
 import logic.LogicaProductos;
 
 public class FrmGestionProductos extends JFrame {
@@ -41,7 +39,7 @@ public class FrmGestionProductos extends JFrame {
 	public static JTextArea textComents;
 	@SuppressWarnings("rawtypes")
 	public static JComboBox cmbProveedor;
-	public static Ctrl ctrl = new Ctrl();
+	public static CtrlProducto ctrl = new CtrlProducto();
 	public static LogicaProductos log = new LogicaProductos();
 	public static FrmGestionProductos frame;
 	public static final ButtonGroup btnOption = new ButtonGroup();
