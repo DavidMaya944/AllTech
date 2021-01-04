@@ -3,9 +3,9 @@ package model;
 public class Usuario {
 
 	private int iId;
-	private String sNombre, sApellidos, sEmail, sDireccion, sUsuario, sContrasenia, sTelefono;
+	private String sNombre, sApellidos, sEmail, sDireccion, sUsuario, sContrasenia, sTelefono, sPermiso;
 
-	public Usuario(int iId, String sNombre, String sApellidos, String sEmail, String sDireccion, String sUsuario, String sContrasenia, String sTelefono) {
+	public Usuario(int iId, String sNombre, String sApellidos, String sEmail, String sDireccion, String sUsuario, String sContrasenia, String sTelefono, String sPermiso) {
 		setiId(iId);
 		setsNombre(sNombre);
 		setsApellidos(sApellidos);
@@ -14,6 +14,7 @@ public class Usuario {
 		setsUsuario(sUsuario);
 		setsContrasenia(sContrasenia);
 		setsTelefono(sTelefono);
+		setsPermiso(sPermiso);
 	}
 	
 	public int getiId() {
@@ -63,6 +64,12 @@ public class Usuario {
 	}
 	public void setsTelefono(String sTelefono) {
 		this.sTelefono = sTelefono;
+	}
+	public String getsPermiso() {
+		return sPermiso;
+	}
+	public void setsPermiso(String sPermiso) {
+		this.sPermiso = sPermiso;
 	}
 	
 	@Override

@@ -28,21 +28,25 @@ public class LogicaUsuarios {
 			iId = -1;
 		}
 		
-		String sNombre = txtNombre.getText().replaceAll(" ", "20%");
-		String sApellidos = txtApellidos.getText().replaceAll(" ", "20%");
+		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+		String sApellidos = txtApellidos.getText().replaceAll(" ", "%20");
 		String sEmail = txtEmail.getText();
-		String sDireccion = txtDireccion.getText().replaceAll(" ", "20%");
+		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
-		String sPassword = txtContrasenia.getPassword().toString();
+		String sPassword = new String(txtContrasenia.getPassword());
+		System.out.println(sPassword);
 		String sTelefono = txtTelefono.getText();
+		
+		
 
 		if(iId != -1) {
-			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
-			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail.contains("@") + "&DIRECCION=" + sDireccion;
-			sqlUpdate += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=" + 1 + "&ID=" + iId;
+			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE=" + sNombre;
+			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
+			sqlUpdate += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
 
+			System.out.println(sqlUpdate);
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
-			System.out.println("Se ha insertado el usuario correctamente");
+			System.out.println("Se le ha concedido el permiso.");
 		}
 		
 
@@ -66,7 +70,6 @@ public class LogicaUsuarios {
 	
 	public List<Usuario> jasonToUsuarios(String respuesta){
 		List<Usuario> lUsuario = new ArrayList<Usuario>();
-		
 		JSONArray jArray = new JSONArray(respuesta);
 		for(int i = 0; i < jArray.length(); i++) {
 			JSONObject jObj = jArray.getJSONObject(i);
@@ -87,8 +90,10 @@ public class LogicaUsuarios {
 		String sUsuario = jObj.getString("USUARIO");
 		String sPassword = jObj.getString("CONTRASEÑA");
 		String sTelefono = jObj.getString("TELEFONO");
+		String sPermiso = jObj.getString("PERMISO");
 		
-		Usuario u = new Usuario(iId, sNombre, sApellidos, sEmail, sDireccion, sUsuario, sPassword, sTelefono);
+		
+		Usuario u = new Usuario(iId, sNombre, sApellidos, sEmail, sDireccion, sUsuario, sPassword, sTelefono, sPermiso);
 		return u;
 	}
 	

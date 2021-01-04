@@ -48,27 +48,27 @@ public class FrmGestionUsuario extends JFrame {
 		
 		txtID = new JTextField();
 		txtID.setEnabled(false);
-		txtID.setBounds(67, 29, 86, 20);
+		txtID.setBounds(77, 29, 86, 20);
 		contentPane.add(txtID);
 		txtID.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(10, 63, 46, 14);
+		lblNombre.setBounds(10, 63, 71, 14);
 		contentPane.add(lblNombre);
 		
-		txtNombre = new JTextField();
+		txtNombre = new JTextField(30);
 		txtNombre.setEnabled(false);
-		txtNombre.setBounds(67, 60, 110, 20);
+		txtNombre.setBounds(77, 60, 110, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setBounds(10, 94, 46, 14);
+		lblApellidos.setBounds(10, 94, 71, 14);
 		contentPane.add(lblApellidos);
 		
-		txtApellidos = new JTextField();
+		txtApellidos = new JTextField(40);
 		txtApellidos.setEnabled(false);
-		txtApellidos.setBounds(67, 91, 110, 20);
+		txtApellidos.setBounds(77, 91, 110, 20);
 		contentPane.add(txtApellidos);
 		txtApellidos.setColumns(10);
 		
@@ -76,29 +76,29 @@ public class FrmGestionUsuario extends JFrame {
 		lblEmail.setBounds(10, 129, 46, 14);
 		contentPane.add(lblEmail);
 		
-		txtEmail = new JTextField();
+		txtEmail = new JTextField(70);
 		txtEmail.setEnabled(false);
-		txtEmail.setBounds(67, 126, 155, 20);
+		txtEmail.setBounds(77, 126, 155, 20);
 		contentPane.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(10, 160, 46, 14);
+		lblTelefono.setBounds(10, 160, 71, 14);
 		contentPane.add(lblTelefono);
 		
-		txtTelefono = new JTextField();
+		txtTelefono = new JTextField(9);
 		txtTelefono.setEnabled(false);
-		txtTelefono.setBounds(67, 157, 86, 20);
+		txtTelefono.setBounds(77, 157, 86, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direcci\u00F3n");
-		lblDireccion.setBounds(10, 195, 46, 14);
+		lblDireccion.setBounds(10, 195, 71, 14);
 		contentPane.add(lblDireccion);
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setEnabled(false);
-		txtDireccion.setBounds(67, 192, 263, 20);
+		txtDireccion.setBounds(77, 192, 263, 20);
 		contentPane.add(txtDireccion);
 		txtDireccion.setColumns(10);
 		
@@ -108,12 +108,12 @@ public class FrmGestionUsuario extends JFrame {
 		
 		txtUser = new JTextField();
 		txtUser.setEnabled(false);
-		txtUser.setBounds(422, 29, 119, 20);
+		txtUser.setBounds(432, 29, 119, 20);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a");
-		lblPass.setBounds(352, 63, 63, 14);
+		lblPass.setBounds(352, 63, 89, 14);
 		contentPane.add(lblPass);
 		
 		
@@ -131,16 +131,17 @@ public class FrmGestionUsuario extends JFrame {
 		contentPane.add(btnAceptar);
 		
 		txtPass = new JPasswordField();
-		txtPass.setBounds(422, 60, 119, 20);
+		txtPass.setEnabled(false);
+		txtPass.setBounds(432, 60, 119, 20);
 		contentPane.add(txtPass);
 		
 		lblPermiso = new JLabel("Permiso");
-		lblPermiso.setBounds(352, 129, 46, 14);
+		lblPermiso.setBounds(352, 129, 70, 14);
 		contentPane.add(lblPermiso);
 		
 		txtPermiso = new JTextField();
 		txtPermiso.setEnabled(false);
-		txtPermiso.setBounds(422, 126, 119, 20);
+		txtPermiso.setBounds(432, 126, 119, 20);
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		ctrlUser.abrir();

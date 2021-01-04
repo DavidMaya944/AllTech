@@ -21,17 +21,18 @@ public class Logica {
 	public String guardarUsuario(JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono) {
 
-		String sNombre = txtNombre.getText().replaceAll(" ", "20%");
-		String sApellidos = txtApellidos.getText().replaceAll(" ", "20%");
+		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+		String sApellidos = txtApellidos.getText().replaceAll(" ", "%20");
 		String sEmail = txtEmail.getText();
-		String sDireccion = txtDireccion.getText().replaceAll(" ", "20%");
+		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
 		String sPassword = txtContrasenia.getPassword().toString();
 		String sTelefono = txtTelefono.getText();
+		
 
 		String sqlInsert = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
-		sqlInsert += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail.contains("@") + "&DIRECCION=" + sDireccion;
-		sqlInsert += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=" + 0;
+		sqlInsert += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
+		sqlInsert += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
 
 		String respuesta = peticionHttpArray(sqlInsert);
 		System.out.println("Se ha insertado el usuario correctamente");
@@ -52,18 +53,18 @@ public class Logica {
 			iId = -1;
 		}
 		
-		String sNombre = txtNombre.getText().replaceAll(" ", "20%");
-		String sApellidos = txtApellidos.getText().replaceAll(" ", "20%");
+		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+		String sApellidos = txtApellidos.getText().replaceAll(" ", "%20");
 		String sEmail = txtEmail.getText();
-		String sDireccion = txtDireccion.getText().replaceAll(" ", "20%");
+		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
 		String sPassword = txtContrasenia.getPassword().toString();
 		String sTelefono = txtTelefono.getText();
 
 		if(iId != -1) {
 			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
-			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail.contains("@") + "&DIRECCION=" + sDireccion;
-			sqlUpdate += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=" + 1 + "&ID=" + iId;
+			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
+			sqlUpdate += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA&ID=" + iId;
 
 			respuesta = peticionHttpArray(sqlUpdate);
 			System.out.println("Se ha insertado el usuario correctamente");

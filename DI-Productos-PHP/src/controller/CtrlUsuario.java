@@ -23,11 +23,7 @@ public class CtrlUsuario {
 		FrmGestionUsuario.txtUser.setText(u.getsUsuario());
 		FrmGestionUsuario.txtPass.setText(u.getsContrasenia());
 		FrmGestionUsuario.txtTelefono.setText(u.getsTelefono());
-		if(FrmGestionUsuario.txtPermiso.getText() == "0") {
-			FrmGestionUsuario.txtPermiso.setText("EN ESPERA");
-		}else {
-			FrmGestionUsuario.txtPermiso.setText("ACEPTADO");
-		}
+		FrmGestionUsuario.txtPermiso.setText(u.getsPermiso());
 	}
 	
 	public void confirmarUsuario() {
