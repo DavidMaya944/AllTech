@@ -17,7 +17,7 @@ public class LogicaUsuarios {
 	public List<Usuario> lUsuarios = new ArrayList<Usuario>();
 	public int iPos = 0;
 	public String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
-			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono) {
+			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono, JTextField txtPermiso) {
 
 		String respuesta = null;
 		int iId;
@@ -37,12 +37,11 @@ public class LogicaUsuarios {
 		System.out.println(sPassword);
 		String sTelefono = txtTelefono.getText();
 		
-		
 
 		if(iId != -1) {
 			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE=" + sNombre;
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
-			sqlUpdate += "&USUARIO=" + sUsuario + "&CONTRASEÑA=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
+			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
 
 			System.out.println(sqlUpdate);
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
@@ -88,7 +87,7 @@ public class LogicaUsuarios {
 		String sEmail = jObj.getString("EMAIL");
 		String sDireccion = jObj.getString("DIRECCION");
 		String sUsuario = jObj.getString("USUARIO");
-		String sPassword = jObj.getString("CONTRASEÑA");
+		String sPassword = jObj.getString("PASSWORD");
 		String sTelefono = jObj.getString("TELEFONO");
 		String sPermiso = jObj.getString("PERMISO");
 		
@@ -99,7 +98,7 @@ public class LogicaUsuarios {
 	
 	public void confirmarUsuario() {
 		confirmarRegistro(FrmGestionUsuario.txtID, FrmGestionUsuario.txtNombre, FrmGestionUsuario.txtApellidos, FrmGestionUsuario.txtEmail,
-				FrmGestionUsuario.txtDireccion, FrmGestionUsuario.txtUser, FrmGestionUsuario.txtPass, FrmGestionUsuario.txtTelefono);
+				FrmGestionUsuario.txtDireccion, FrmGestionUsuario.txtUser, FrmGestionUsuario.txtPass, FrmGestionUsuario.txtTelefono, FrmGestionUsuario.txtPermiso);
 	}
 	
 	public Usuario inicioLista() {

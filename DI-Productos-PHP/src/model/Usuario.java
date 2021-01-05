@@ -71,13 +71,5 @@ public class Usuario {
 	public void setsPermiso(String sPermiso) {
 		this.sPermiso = sPermiso;
 	}
-	
-	@Override
-	public String toString() {
-		return "Usuario [iId=" + iId + ", sNombre=" + sNombre + ", sApellidos=" + sApellidos + ", sEmail=" + sEmail
-				+ ", sDireccion=" + sDireccion + ", sUsuario=" + sUsuario + ", sContrasenia=" + sContrasenia
-				+ ", sTelefono=" + sTelefono + "]";
-	}
-	
-	
+		
 }

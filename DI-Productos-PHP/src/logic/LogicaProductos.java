@@ -158,24 +158,14 @@ public class LogicaProductos {
 		String sProveedor = jObj.getString("PROVEEDOR");
 		Float fPVP = jObj.getFloat("PVP");
 		
-		bFragil = pasarIntBoolean(iFragil);
-		bObsoleto = pasarIntBoolean(iObsoleto);
+		bFragil = LogicaGeneral.pasarIntBoolean(iFragil);
+		bObsoleto = LogicaGeneral.pasarIntBoolean(iObsoleto);
 		
 		Producto p = new Producto(iCod, sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP );
 		return p;
 	}
 	
-	public boolean pasarIntBoolean(int iNum) {
-		int iFragil = 0;
-		boolean bExito = false;
-		if(iFragil != 0) {
-			bExito = true;
-		}else {
-			bExito = false;
-		}
-		
-		return bExito;
-	}
+	
 
 	public Producto inicioLista() {
 		Producto p = null;

@@ -34,4 +34,15 @@ public class LogicaGeneral {
 
 		return resultado.toString();
 	}
+	
+	public static boolean pasarIntBoolean(int iNum) {
+		boolean bExito = false;
+		if(iNum != 0) {
+			bExito = true;
+		}else {
+			bExito = false;
+		}
+		
+		return bExito;
+	}
 }

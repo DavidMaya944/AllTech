@@ -7,13 +7,13 @@ import view.FrmGestionUsuario;
 public class CtrlUsuario {
 
 	LogicaUsuarios logUser = new LogicaUsuarios();
-	
+
 	public void abrir() {
 		logUser.lUsuarios = logUser.leer();
 		Usuario u = logUser.lUsuarios.get(logUser.iPos);
 		mostrar(u);
 	}
-	
+
 	public void mostrar(Usuario u) {
 		FrmGestionUsuario.txtID.setText("" + u.getiId());
 		FrmGestionUsuario.txtNombre.setText(u.getsNombre());
@@ -24,10 +24,11 @@ public class CtrlUsuario {
 		FrmGestionUsuario.txtPass.setText(u.getsContrasenia());
 		FrmGestionUsuario.txtTelefono.setText(u.getsTelefono());
 		FrmGestionUsuario.txtPermiso.setText(u.getsPermiso());
+
 	}
-	
+
 	public void confirmarUsuario() {
 		logUser.confirmarUsuario();
 	}
-	
+
 }
