@@ -26,14 +26,14 @@ public class Logica {
 		String sEmail = txtEmail.getText();
 		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
-		String sPassword = txtContrasenia.getPassword().toString();
+		String sPassword = new String(txtContrasenia.getPassword());
 		String sTelefono = txtTelefono.getText();
 		
 
 		String sqlInsert = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
 		sqlInsert += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 		sqlInsert += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
-
+		System.out.println(sqlInsert);
 		String respuesta = peticionHttpArray(sqlInsert);
 		System.out.println("Se ha insertado el usuario correctamente");
 

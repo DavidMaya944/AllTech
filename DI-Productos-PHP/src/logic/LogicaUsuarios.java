@@ -59,9 +59,16 @@ public class LogicaUsuarios {
 		return respuesta;
 	}
 	
+	public String getUserPermiso() {
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-Usuario-permiso.php?PERMISO=EN%20ESPERA";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
+		return respuesta;
+	}
+	
 	public List<Usuario> leer() {
 		lUsuarios = new ArrayList<Usuario>();
-		String sRes = obtenerUsuarios();
+		String sRes = getUserPermiso();
 		lUsuarios = jasonToUsuarios(sRes);
 		
 		return lUsuarios;
