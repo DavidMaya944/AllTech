@@ -30,5 +30,25 @@ public class CtrlUsuario {
 	public void confirmarUsuario() {
 		logUser.confirmarUsuario();
 	}
+	
+	public void inicioLista() {
+		logUser.inicioLista();
+	}
+	
+	public void finLista() {
+		logUser.finLista();
+	}
+	
+	public void anterior() {
+		logUser.anterior();
+	}
+	
+	public void siguiente() {
+		logUser.siguiente();
+	}
+	
+	public void rechazarUsuario() {
+		logUser.rechazarUsuario();
+	}
 
 }

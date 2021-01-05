@@ -14,8 +14,8 @@ import view.FrmGestionUsuario;
 
 public class LogicaUsuarios {
 
-	public List<Usuario> lUsuarios = new ArrayList<Usuario>();
-	public int iPos = 0;
+	public static List<Usuario> lUsuarios = new ArrayList<Usuario>();
+	public static int iPos = 0;
 	public String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono, JTextField txtPermiso) {
 
@@ -61,6 +61,14 @@ public class LogicaUsuarios {
 	
 	public String getUserPermiso() {
 		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-Usuario-permiso.php?PERMISO=EN%20ESPERA";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
+		return respuesta;
+	}
+	
+	public String rechazarUsuario() {
+		int iId = Integer.parseInt(FrmGestionUsuario.txtID.getText());
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -129,6 +137,7 @@ public class LogicaUsuarios {
 			iPos++;
 			u = lUsuarios.get(iPos);
 		}
+		
 		return u;
 	}
 

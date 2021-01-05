@@ -1,22 +1,21 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
 
 public class FrmGestionUsuario extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblID;
 	public static JTextField txtID;
@@ -118,6 +117,12 @@ public class FrmGestionUsuario extends JFrame {
 		
 		
 		JButton btnRechazar = new JButton("Rechazar");
+		btnRechazar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.rechazarUsuario();
+				ctrlUser.abrir();
+			}
+		});
 		btnRechazar.setBounds(493, 263, 89, 23);
 		contentPane.add(btnRechazar);
 		
@@ -125,6 +130,7 @@ public class FrmGestionUsuario extends JFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.confirmarUsuario();
+				ctrlUser.abrir();
 			}
 		});
 		btnAceptar.setBounds(394, 263, 89, 23);
@@ -144,6 +150,42 @@ public class FrmGestionUsuario extends JFrame {
 		txtPermiso.setBounds(432, 126, 119, 20);
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
+		
+		JButton btnPrimero = new JButton("|<");
+		btnPrimero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.inicioLista();
+			}
+		});
+		btnPrimero.setBounds(10, 263, 46, 23);
+		contentPane.add(btnPrimero);
+		
+		JButton bntAnterior = new JButton("<<");
+		bntAnterior.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.anterior();
+			}
+		});
+		bntAnterior.setBounds(66, 263, 48, 23);
+		contentPane.add(bntAnterior);
+		
+		JButton btnSiguiente = new JButton(">>");
+		btnSiguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.siguiente();
+			}
+		});
+		btnSiguiente.setBounds(124, 263, 48, 23);
+		contentPane.add(btnSiguiente);
+		
+		JButton btnUltimo = new JButton(">|");
+		btnUltimo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.finLista();
+			}
+		});
+		btnUltimo.setBounds(182, 263, 46, 23);
+		contentPane.add(btnUltimo);
 		ctrlUser.abrir();
 		setVisible(true);
 	}
