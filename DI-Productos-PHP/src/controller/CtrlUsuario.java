@@ -32,19 +32,31 @@ public class CtrlUsuario {
 	}
 	
 	public void inicioLista() {
-		logUser.inicioLista();
+		Usuario u = logUser.inicioLista();
+		if(u != null) {
+			mostrar(u);
+		}
 	}
 	
 	public void finLista() {
-		logUser.finLista();
+		Usuario u = logUser.finLista();
+		if(u != null) {
+			mostrar(u);
+		}
 	}
 	
 	public void anterior() {
-		logUser.anterior();
+		Usuario u = logUser.anterior();
+		if(u != null) {
+			mostrar(u);
+		}
 	}
 	
 	public void siguiente() {
-		logUser.siguiente();
+		Usuario u = logUser.siguiente();
+		if(u != null) {
+			mostrar(u);
+		}
 	}
 	
 	public void rechazarUsuario() {

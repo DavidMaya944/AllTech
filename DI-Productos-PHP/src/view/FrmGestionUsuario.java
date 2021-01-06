@@ -12,6 +12,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
+import logic.LogicaUsuarios;
+import model.Usuario;
+
 import javax.swing.SwingConstants;
 
 public class FrmGestionUsuario extends JFrame {

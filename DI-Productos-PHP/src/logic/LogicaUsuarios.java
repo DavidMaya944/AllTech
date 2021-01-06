@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import controller.CtrlUsuario;
 import model.Usuario;
 import view.FrmGestionUsuario;
 
