@@ -9,13 +9,13 @@ import javax.swing.JTextField;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import controller.CtrlUsuario;
 import model.Usuario;
 import view.FrmGestionUsuario;
 
 public class LogicaUsuarios {
 
 	public static List<Usuario> lUsuarios = new ArrayList<Usuario>();
+	public static List<Usuario> lUsuariosA = new ArrayList<Usuario>();
 	public static int iPos = 0;
 	public String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono, JTextField txtPermiso) {
@@ -75,12 +75,27 @@ public class LogicaUsuarios {
 		return respuesta;
 	}
 	
-	public List<Usuario> leer() {
+	public String getPermisoAcept() {
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-permiso-aceptado.php?PERMISO=ACPETADO";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
+		return respuesta;
+	}
+	
+	public List<Usuario> leerEnEspera() {
 		lUsuarios = new ArrayList<Usuario>();
 		String sRes = getUserPermiso();
 		lUsuarios = jasonToUsuarios(sRes);
 		
 		return lUsuarios;
+	}
+	
+	public List<Usuario> leerAcept() {
+		lUsuariosA = new ArrayList<Usuario>();
+		String sRes = getPermisoAcept();
+		lUsuariosA = jasonToUsuarios(sRes);
+		
+		return lUsuariosA;
 	}
 	
 	public List<Usuario> jasonToUsuarios(String respuesta){
@@ -111,11 +126,15 @@ public class LogicaUsuarios {
 		Usuario u = new Usuario(iId, sNombre, sApellidos, sEmail, sDireccion, sUsuario, sPassword, sTelefono, sPermiso);
 		return u;
 	}
+
+	
 	
 	public void confirmarUsuario() {
 		confirmarRegistro(FrmGestionUsuario.txtID, FrmGestionUsuario.txtNombre, FrmGestionUsuario.txtApellidos, FrmGestionUsuario.txtEmail,
 				FrmGestionUsuario.txtDireccion, FrmGestionUsuario.txtUser, FrmGestionUsuario.txtPass, FrmGestionUsuario.txtTelefono, FrmGestionUsuario.txtPermiso);
 	}
+	
+	
 	
 	public Usuario inicioLista() {
 		Usuario u = null;
@@ -147,6 +166,41 @@ public class LogicaUsuarios {
 		if (iPos != 0) {
 			iPos--;
 			u = lUsuarios.get(iPos);
+		}
+		return u;
+
+	}
+	
+	public Usuario inicioListaA() {
+		Usuario u = null;
+		iPos = 0;
+		u = lUsuariosA.get(iPos);
+		return u;
+	}
+
+	public Usuario finListaA() {
+		iPos = lUsuarios.size() - 1;
+		Usuario u = null;
+		if (iPos >= 1)
+			u = lUsuariosA.get(iPos);
+		return u;
+	}
+
+	public Usuario siguienteA() {
+		Usuario u = null;
+		if (iPos != lUsuariosA.size() - 1) {
+			iPos++;
+			u = lUsuariosA.get(iPos);
+		}
+		
+		return u;
+	}
+
+	public Usuario anteriorA() {
+		Usuario u = null;
+		if (iPos != 0) {
+			iPos--;
+			u = lUsuariosA.get(iPos);
 		}
 		return u;
 

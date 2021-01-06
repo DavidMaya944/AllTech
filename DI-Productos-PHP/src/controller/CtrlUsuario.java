@@ -3,18 +3,25 @@ package controller;
 import logic.LogicaUsuarios;
 import model.Usuario;
 import view.FrmGestionUsuario;
+import view.FrmHistorialUsuarios;
 
 public class CtrlUsuario {
 
 	LogicaUsuarios logUser = new LogicaUsuarios();
 
-	public void abrir() {
-		logUser.lUsuarios = logUser.leer();
+	public void abrirUserEspera() {
+		logUser.lUsuarios = logUser.leerEnEspera();
 		Usuario u = logUser.lUsuarios.get(logUser.iPos);
-		mostrar(u);
+		mostrarEspera(u);
+	}
+	
+	public void abrirUserAcept() {
+		logUser.lUsuariosA = logUser.leerAcept();
+		Usuario u = logUser.lUsuariosA.get(logUser.iPos);
+		mostrarAcept(u);
 	}
 
-	public void mostrar(Usuario u) {
+	public void mostrarEspera(Usuario u) {
 		FrmGestionUsuario.txtID.setText("" + u.getiId());
 		FrmGestionUsuario.txtNombre.setText(u.getsNombre());
 		FrmGestionUsuario.txtApellidos.setText(u.getsApellidos());
@@ -26,41 +33,84 @@ public class CtrlUsuario {
 		FrmGestionUsuario.txtPermiso.setText(u.getsPermiso());
 
 	}
+	
+	public void mostrarAcept(Usuario u) {
+		FrmHistorialUsuarios.txtID.setText("" + u.getiId());
+		FrmHistorialUsuarios.txtNombre.setText(u.getsNombre());
+		FrmHistorialUsuarios.txtApellidos.setText(u.getsApellidos());
+		FrmHistorialUsuarios.txtEmail.setText(u.getsEmail());
+		FrmHistorialUsuarios.txtDireccion.setText(u.getsDireccion());
+		FrmHistorialUsuarios.txtUser.setText(u.getsUsuario());
+		FrmHistorialUsuarios.txtPass.setText(u.getsContrasenia());
+		FrmHistorialUsuarios.txtTelefono.setText(u.getsTelefono());
+		FrmHistorialUsuarios.txtPermiso.setText(u.getsPermiso());
+	}
 
 	public void confirmarUsuario() {
 		logUser.confirmarUsuario();
 	}
 	
-	public void inicioLista() {
+	public void inicioListaAcept() {
+		Usuario u = logUser.inicioListaA();
+		if(u != null) {
+			mostrarAcept(u);
+		}
+	}
+	
+	public void finListaAcept() {
+		Usuario u = logUser.finListaA();
+		if(u != null) {
+			mostrarAcept(u);
+		}
+	}
+
+	
+	public void anteriorAcept() {
+		Usuario u = logUser.anteriorA();
+		if(u != null) {
+			mostrarAcept(u);
+		}
+	}
+	
+	public void siguienteAcept() {
+		Usuario u = logUser.siguienteA();
+		if(u != null) {
+			mostrarAcept(u);
+		}
+	}
+	
+	public void inicioListaEspera() {
 		Usuario u = logUser.inicioLista();
 		if(u != null) {
-			mostrar(u);
+			mostrarEspera(u);
 		}
 	}
 	
-	public void finLista() {
+	public void finListaEspera() {
 		Usuario u = logUser.finLista();
 		if(u != null) {
-			mostrar(u);
+			mostrarEspera(u);
 		}
 	}
 	
-	public void anterior() {
+	public void anteriorEspera() {
 		Usuario u = logUser.anterior();
 		if(u != null) {
-			mostrar(u);
+			mostrarEspera(u);
 		}
 	}
 	
-	public void siguiente() {
+	public void siguienteEspera() {
 		Usuario u = logUser.siguiente();
 		if(u != null) {
-			mostrar(u);
+			mostrarEspera(u);
 		}
 	}
 	
 	public void rechazarUsuario() {
 		logUser.rechazarUsuario();
 	}
+	
+	
 
 }
