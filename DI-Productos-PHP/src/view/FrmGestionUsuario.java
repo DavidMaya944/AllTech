@@ -16,6 +16,9 @@ import logic.LogicaUsuarios;
 import model.Usuario;
 
 import javax.swing.SwingConstants;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class FrmGestionUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -189,6 +192,21 @@ public class FrmGestionUsuario extends JFrame {
 		});
 		btnUltimo.setBounds(182, 263, 46, 23);
 		contentPane.add(btnUltimo);
+		
+		JMenuBar menuUser = new JMenuBar();
+		menuUser.setBounds(0, 0, 582, 22);
+		contentPane.add(menuUser);
+		
+		JMenu mnHistorial = new JMenu("Historial");
+		menuUser.add(mnHistorial);
+		
+		JMenuItem mntmUserAcept = new JMenuItem("Usuarios aceptados");
+		mntmUserAcept.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new FrmHistorialUsuarios();
+			}
+		});
+		mnHistorial.add(mntmUserAcept);
 		ctrlUser.abrirUserEspera();
 		setVisible(true);
 	}

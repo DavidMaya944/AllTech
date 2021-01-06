@@ -1,14 +1,10 @@
 package start;
 
-import view.FrmGestionProductos;
-import view.FrmGestionUsuario;
-import view.FrmHistorialUsuarios;
+import view.FrmMenuPrincipal;
 
 public class Lanzar {
 	public static void main(String[] args) {
-		new FrmGestionProductos();
-		new FrmGestionUsuario();
-		new FrmHistorialUsuarios();
+		new FrmMenuPrincipal();
 	}
 
 }
