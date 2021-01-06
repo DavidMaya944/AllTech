@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class FrmGestionUsuario extends JFrame {
+public class FrmGestionUsuario extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblID;
@@ -40,7 +41,8 @@ public class FrmGestionUsuario extends JFrame {
 
 	public FrmGestionUsuario() {
 		setTitle("Usuarios");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setModal(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 608, 336);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

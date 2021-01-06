@@ -41,6 +41,7 @@ public class FrmMenuPrincipal extends JFrame {
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new FrmGestionProductos();
+				
 			}
 		});
 		btnProductos.setBounds(72, 79, 89, 23);
