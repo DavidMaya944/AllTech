@@ -31,8 +31,9 @@ public class FrmMenuPrincipal extends JDialog {
 		JButton btnUsuarios = new JButton("Usuarios");
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				new FrmGestionUsuario();
-				System.exit(0);
+				
 			}
 		});
 		btnUsuarios.setBounds(72, 45, 89, 23);
@@ -41,8 +42,8 @@ public class FrmMenuPrincipal extends JDialog {
 		JButton btnProductos = new JButton("Productos");
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				new FrmGestionProductos();
-				
 			}
 		});
 		btnProductos.setBounds(72, 79, 89, 23);

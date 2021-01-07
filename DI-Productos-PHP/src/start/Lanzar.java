@@ -1,10 +1,10 @@
 package start;
 
-import view.loginAdmin;
+import view.LoginAdmin;
 
 public class Lanzar {
 	public static void main(String[] args) {
-		new loginAdmin();
+		new LoginAdmin();
 	}
 
 }

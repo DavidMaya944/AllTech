@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Admin;
+import view.LoginAdmin;
 
 public class LogicaLogin {
 
@@ -28,6 +29,7 @@ public class LogicaLogin {
 		
 		return lAdmin;
 	}
+
 	
 	public List<Admin> jasonToAdmins(String respuesta){
 		List<Admin> lAdmin = new ArrayList<Admin>();

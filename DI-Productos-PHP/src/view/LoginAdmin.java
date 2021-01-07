@@ -15,14 +15,15 @@ import javax.swing.border.EmptyBorder;
 
 import controller.CtrlLogin;
 
-public class loginAdmin extends JFrame {
+public class LoginAdmin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	public static JTextField txtUser;
 	public static JPasswordField txtPass;
 	private CtrlLogin ctrlLogin = new CtrlLogin();
+	private LoginAdmin login;
 
-	public loginAdmin() {
+	public LoginAdmin() {
 		setTitle("Login");
 		setBounds(100, 100, 243, 142);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,6 +37,7 @@ public class loginAdmin extends JFrame {
 		contentPanel.add(lblUser);
 
 		txtUser = new JTextField();
+		txtUser.setText("Mayardomo");
 		txtUser.setBounds(95, 8, 122, 20);
 		contentPanel.add(txtUser);
 		txtUser.setColumns(10);
@@ -45,6 +47,7 @@ public class loginAdmin extends JFrame {
 		contentPanel.add(lblPass);
 
 		txtPass = new JPasswordField();
+		txtPass.setText("elPodemitaQueOdiaAurelio");
 		txtPass.setBounds(95, 39, 122, 20);
 		contentPanel.add(txtPass);
 
@@ -53,19 +56,15 @@ public class loginAdmin extends JFrame {
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton okButton = new JButton("iniciar sesion");
-		okButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Entra en el metodo.");
-				if (ctrlLogin.login()) {
-					System.out.println("Entra en el if");
-					new FrmMenuPrincipal();
-					System.out.println("Abre el menu principal");
-					System.exit(0);
-					System.out.println("Cierra la ventana de login");
-				}else {
-					System.out.println("Los datos introducidos no son validos.");
-				}
+		okButton.addActionListener(v -> {
+			if (ctrlLogin.login() == true) {
+				dispose();
+				new FrmMenuPrincipal();
+				
+			} else {
+				System.out.println("Los datos introducidos no son validos.");
 			}
+
 		});
 		okButton.setActionCommand("OK");
 		buttonPane.add(okButton);
