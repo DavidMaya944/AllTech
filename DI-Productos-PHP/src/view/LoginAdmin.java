@@ -21,7 +21,6 @@ public class LoginAdmin extends JFrame {
 	public static JTextField txtUser;
 	public static JPasswordField txtPass;
 	private CtrlLogin ctrlLogin = new CtrlLogin();
-	private LoginAdmin login;
 
 	public LoginAdmin() {
 		setTitle("Login");
@@ -78,7 +77,7 @@ public class LoginAdmin extends JFrame {
 		});
 		cancelButton.setActionCommand("Cancel");
 		buttonPane.add(cancelButton);
-
+		setResizable(false);
 		setVisible(true);
 	}
 }

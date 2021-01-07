@@ -98,7 +98,7 @@ public class FrmGestionProductos extends JDialog {
 		contentPane.add(rdbtnCombinado);
 
 		JLabel lblComen = new JLabel("Comentarios:");
-		lblComen.setBounds(28, 188, 72, 14);
+		lblComen.setBounds(28, 188, 101, 14);
 		contentPane.add(lblComen);
 
 		JScrollPane spComents = new JScrollPane();
@@ -169,7 +169,7 @@ public class FrmGestionProductos extends JDialog {
 		txtPVP.setColumns(10);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 330, 616, 2);
+		separator.setBounds(0, 330, 687, 2);
 		contentPane.add(separator);
 
 		JButton btnNuevo = new JButton("NUEVO");
@@ -219,7 +219,7 @@ public class FrmGestionProductos extends JDialog {
 				ctrl.inicioLista();
 			}
 		});
-		btnPrimero.setBounds(10, 343, 54, 23);
+		btnPrimero.setBounds(10, 343, 44, 23);
 		contentPane.add(btnPrimero);
 
 		JButton btnSiguiente = new JButton(">>");
@@ -228,7 +228,7 @@ public class FrmGestionProductos extends JDialog {
 				ctrl.siguiente();
 			}
 		});
-		btnSiguiente.setBounds(136, 343, 54, 23);
+		btnSiguiente.setBounds(123, 343, 49, 23);
 		contentPane.add(btnSiguiente);
 
 		JButton btnAnterior = new JButton("<<");
@@ -237,7 +237,7 @@ public class FrmGestionProductos extends JDialog {
 				ctrl.anterior();
 			}
 		});
-		btnAnterior.setBounds(74, 343, 54, 23);
+		btnAnterior.setBounds(64, 343, 49, 23);
 		contentPane.add(btnAnterior);
 
 		JButton btnUltimo = new JButton(">|");
@@ -246,10 +246,21 @@ public class FrmGestionProductos extends JDialog {
 				ctrl.finLista();
 			}
 		});
-		btnUltimo.setBounds(200, 343, 54, 23);
+		btnUltimo.setBounds(182, 343, 44, 23);
 		contentPane.add(btnUltimo);
+		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
+		btnVolver.setBounds(278, 343, 86, 23);
+		contentPane.add(btnVolver);
 		ctrl.abrir();
 		setModal(true);
+		setResizable(false);
 		setVisible(true);
 	}
 	

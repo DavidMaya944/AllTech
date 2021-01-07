@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,12 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
-import logic.LogicaUsuarios;
-import model.Usuario;
 
-import javax.swing.SwingConstants;
-
-public class FrmHistorialUsuarios extends JFrame {
+public class FrmHistorialUsuarios extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblID;
@@ -37,7 +34,7 @@ public class FrmHistorialUsuarios extends JFrame {
 
 	public FrmHistorialUsuarios() {
 		setTitle("Historial de usuarios");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 608, 336);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -119,7 +116,7 @@ public class FrmHistorialUsuarios extends JFrame {
 		contentPane.add(lblPass);
 		
 		
-		JButton btnEliminar = new JButton("Eliminar");
+		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.rechazarUsuario();
@@ -179,7 +176,18 @@ public class FrmHistorialUsuarios extends JFrame {
 		});
 		btnUltimo.setBounds(182, 263, 46, 23);
 		contentPane.add(btnUltimo);
+		
+		JButton btnSalir = new JButton("SALIR");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnSalir.setBounds(394, 263, 89, 23);
+		contentPane.add(btnSalir);
 		ctrlUser.abrirUserAcept();
+		setModal(true);
+		setResizable(false);
 		setVisible(true);
 	}
 }

@@ -7,19 +7,15 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
-import logic.LogicaUsuarios;
-import model.Usuario;
-
-import javax.swing.SwingConstants;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 
 public class FrmGestionUsuario extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -124,24 +120,24 @@ public class FrmGestionUsuario extends JDialog {
 		contentPane.add(lblPass);
 		
 		
-		JButton btnRechazar = new JButton("Rechazar");
+		JButton btnRechazar = new JButton("RECHAZAR");
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.rechazarUsuario();
 				ctrlUser.abrirUserEspera();
 			}
 		});
-		btnRechazar.setBounds(493, 263, 89, 23);
+		btnRechazar.setBounds(482, 263, 100, 23);
 		contentPane.add(btnRechazar);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		JButton btnAceptar = new JButton("ACEPTAR");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.confirmarUsuario();
 				ctrlUser.abrirUserEspera();
 			}
 		});
-		btnAceptar.setBounds(394, 263, 89, 23);
+		btnAceptar.setBounds(383, 263, 89, 23);
 		contentPane.add(btnAceptar);
 		
 		txtPass = new JPasswordField();
@@ -209,7 +205,18 @@ public class FrmGestionUsuario extends JDialog {
 			}
 		});
 		mnHistorial.add(mntmUserAcept);
+		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
+		btnVolver.setBounds(284, 263, 89, 23);
+		contentPane.add(btnVolver);
 		ctrlUser.abrirUserEspera();
+		setResizable(false);
 		setVisible(true);
 	}
 }

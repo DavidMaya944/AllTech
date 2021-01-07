@@ -28,7 +28,7 @@ public class FrmMenuPrincipal extends JDialog {
 		lblEncabezado.setBounds(33, 11, 195, 14);
 		contentPane.add(lblEncabezado);
 		
-		JButton btnUsuarios = new JButton("Usuarios");
+		JButton btnUsuarios = new JButton("USUARIOS");
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -36,22 +36,28 @@ public class FrmMenuPrincipal extends JDialog {
 				
 			}
 		});
-		btnUsuarios.setBounds(72, 45, 89, 23);
+		btnUsuarios.setBounds(60, 47, 117, 23);
 		contentPane.add(btnUsuarios);
 		
-		JButton btnProductos = new JButton("Productos");
+		JButton btnProductos = new JButton("PRODUCTOS");
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				new FrmGestionProductos();
 			}
 		});
-		btnProductos.setBounds(72, 79, 89, 23);
+		btnProductos.setBounds(60, 81, 117, 23);
 		contentPane.add(btnProductos);
 		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(72, 113, 89, 23);
+		JButton btnSalir = new JButton("SALIR");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		btnSalir.setBounds(60, 115, 117, 23);
 		contentPane.add(btnSalir);
+		setResizable(false);
 		setModal(true);
 		setVisible(true);
 	}
