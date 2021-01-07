@@ -4,20 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class FrmMenuPrincipal extends JFrame {
+public class FrmMenuPrincipal extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	
-	private FrmMenuPrincipal frame;
 
 	public FrmMenuPrincipal() {
 		setTitle("Menu Principal");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 254, 211);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -32,6 +32,7 @@ public class FrmMenuPrincipal extends JFrame {
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new FrmGestionUsuario();
+				System.exit(0);
 			}
 		});
 		btnUsuarios.setBounds(72, 45, 89, 23);
@@ -50,6 +51,7 @@ public class FrmMenuPrincipal extends JFrame {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(72, 113, 89, 23);
 		contentPane.add(btnSalir);
+		setModal(true);
 		setVisible(true);
 	}
 }

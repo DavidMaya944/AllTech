@@ -1,10 +1,10 @@
 package start;
 
-import view.FrmMenuPrincipal;
+import view.loginAdmin;
 
 public class Lanzar {
 	public static void main(String[] args) {
-		new FrmMenuPrincipal();
+		new loginAdmin();
 	}
 
 }
