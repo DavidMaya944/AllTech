@@ -20,6 +20,7 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
 
 public class FrmHistorialUsuarios extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +43,7 @@ public class FrmHistorialUsuarios extends JDialog {
 	public FrmHistorialUsuarios() {
 		setTitle("Historial de usuarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 608, 336);
+		setBounds(100, 100, 618, 336);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -109,17 +110,17 @@ public class FrmHistorialUsuarios extends JDialog {
 		txtDireccion.setColumns(10);
 		
 		JLabel lblUser = new JLabel("Usuario");
-		lblUser.setBounds(352, 32, 46, 14);
+		lblUser.setBounds(392, 32, 46, 14);
 		contentPane.add(lblUser);
 		
 		txtUser = new JTextField();
 		txtUser.setEnabled(false);
-		txtUser.setBounds(432, 29, 119, 20);
+		txtUser.setBounds(473, 29, 119, 20);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a");
-		lblPass.setBounds(352, 63, 89, 14);
+		lblPass.setBounds(392, 63, 89, 14);
 		contentPane.add(lblPass);
 		
 		
@@ -130,21 +131,21 @@ public class FrmHistorialUsuarios extends JDialog {
 				ctrlUser.abrirUserAcept();
 			}
 		});
-		btnEliminar.setBounds(493, 263, 89, 23);
+		btnEliminar.setBounds(503, 263, 89, 23);
 		contentPane.add(btnEliminar);
 		
 		txtPass = new JPasswordField();
 		txtPass.setEnabled(false);
-		txtPass.setBounds(432, 60, 119, 20);
+		txtPass.setBounds(473, 60, 119, 20);
 		contentPane.add(txtPass);
 		
 		lblPermiso = new JLabel("Permiso");
-		lblPermiso.setBounds(352, 129, 70, 14);
+		lblPermiso.setBounds(392, 129, 70, 14);
 		contentPane.add(lblPermiso);
 		
 		txtPermiso = new JTextField();
 		txtPermiso.setEnabled(false);
-		txtPermiso.setBounds(432, 126, 119, 20);
+		txtPermiso.setBounds(473, 126, 119, 20);
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		
@@ -184,14 +185,14 @@ public class FrmHistorialUsuarios extends JDialog {
 		btnUltimo.setBounds(182, 263, 46, 23);
 		contentPane.add(btnUltimo);
 		
-		JButton btnSalir = new JButton("SALIR");
-		btnSalir.addActionListener(new ActionListener() {
+		JButton btnDesbloquear = new JButton("DESBLOQUEAR");
+		btnDesbloquear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});
-		btnSalir.setBounds(283, 263, 89, 23);
-		contentPane.add(btnSalir);
+		btnDesbloquear.setBounds(253, 263, 129, 23);
+		contentPane.add(btnDesbloquear);
 		
 		JMenuBar mnHistorial = new JMenuBar();
 		mnHistorial.setBounds(0, 0, 602, 22);
@@ -224,8 +225,13 @@ public class FrmHistorialUsuarios extends JDialog {
 				ctrlUser.bloquearUsuario();
 			}
 		});
-		btnBlock.setBounds(382, 263, 101, 23);
+		btnBlock.setBounds(392, 263, 101, 23);
 		contentPane.add(btnBlock);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(241, 263, 2, 23);
+		contentPane.add(separator);
 		ctrlUser.abrirUserAcept();
 		setModal(true);
 		setResizable(false);
