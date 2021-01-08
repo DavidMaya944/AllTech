@@ -11,11 +11,14 @@ import org.json.JSONObject;
 
 import model.Usuario;
 import view.FrmGestionUsuario;
+import view.FrmHistorialUsuarios;
 
 public class LogicaUsuarios {
 
 	public static List<Usuario> lUsuarios = new ArrayList<Usuario>();
 	public static List<Usuario> lUsuariosA = new ArrayList<Usuario>();
+	public static List<Usuario> lUsuariosB = new ArrayList<Usuario>();
+	public static List<Usuario> lUsuariosT = new ArrayList<Usuario>();
 	public static int iPos = 0;
 	public String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono, JTextField txtPermiso) {
@@ -50,6 +53,49 @@ public class LogicaUsuarios {
 		}
 		
 
+		return respuesta;
+	}
+	
+	public String bloquearUser(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
+			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono, JTextField txtPermiso) {
+
+		String respuesta = null;
+		int iId;
+		
+		try {
+			iId = Integer.parseInt(txtID.getText());
+		}catch(Exception e) {
+			iId = -1;
+		}
+		
+		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+		String sApellidos = txtApellidos.getText().replaceAll(" ", "%20");
+		String sEmail = txtEmail.getText();
+		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
+		String sUsuario = txtUsuario.getText();
+		String sPassword = new String(txtContrasenia.getPassword());
+		System.out.println(sPassword);
+		String sTelefono = txtTelefono.getText();
+		
+
+		if(iId != -1) {
+			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE=" + sNombre;
+			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
+			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=BLOQUEADO&ID=" + iId;
+
+			System.out.println(sqlUpdate);
+			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
+			System.out.println("Se le ha concedido el permiso.");
+		}
+		
+
+		return respuesta;
+	}
+	
+	public String getPermisoBlock() {
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-permiso-bloqueado.php";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
 		return respuesta;
 	}
 	
@@ -98,6 +144,15 @@ public class LogicaUsuarios {
 		return lUsuariosA;
 	}
 	
+	public List<Usuario> leerBlock(){
+		lUsuariosB = new ArrayList<Usuario>();
+		String sRes = getPermisoBlock();
+		lUsuariosB = jasonToUsuarios(sRes);
+		
+		return lUsuariosB;
+	}
+
+	
 	public List<Usuario> jasonToUsuarios(String respuesta){
 		List<Usuario> lUsuario = new ArrayList<Usuario>();
 		JSONArray jArray = new JSONArray(respuesta);
@@ -134,7 +189,10 @@ public class LogicaUsuarios {
 				FrmGestionUsuario.txtDireccion, FrmGestionUsuario.txtUser, FrmGestionUsuario.txtPass, FrmGestionUsuario.txtTelefono, FrmGestionUsuario.txtPermiso);
 	}
 	
-	
+	public void blouqearUsuario() {
+		bloquearUser(FrmHistorialUsuarios.txtID, FrmHistorialUsuarios.txtNombre, FrmHistorialUsuarios.txtApellidos, FrmHistorialUsuarios.txtEmail,
+				FrmHistorialUsuarios.txtDireccion, FrmHistorialUsuarios.txtUser, FrmHistorialUsuarios.txtPass, FrmHistorialUsuarios.txtTelefono, FrmHistorialUsuarios.txtPermiso);
+	}
 	
 	public Usuario inicioLista() {
 		Usuario u = null;

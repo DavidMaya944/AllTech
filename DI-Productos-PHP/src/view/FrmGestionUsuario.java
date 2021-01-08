@@ -195,16 +195,25 @@ public class FrmGestionUsuario extends JDialog {
 		menuUser.setBounds(0, 0, 582, 22);
 		contentPane.add(menuUser);
 		
-		JMenu mnHistorial = new JMenu("Historial");
-		menuUser.add(mnHistorial);
+		JMenu mnArchivo = new JMenu("Archivo");
+		menuUser.add(mnArchivo);
 		
-		JMenuItem mntmUserAcept = new JMenuItem("Usuarios aceptados");
-		mntmUserAcept.addActionListener(new ActionListener() {
+		JMenuItem mntmHistorial = new JMenuItem("Historial");
+		mntmHistorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new FrmHistorialUsuarios();
 			}
 		});
-		mnHistorial.add(mntmUserAcept);
+		mnArchivo.add(mntmHistorial);
+		
+		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
+		mnArchivo.add(mntmSalir);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {

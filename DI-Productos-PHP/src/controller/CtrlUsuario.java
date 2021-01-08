@@ -18,7 +18,19 @@ public class CtrlUsuario {
 	public void abrirUserAcept() {
 		logUser.lUsuariosA = logUser.leerAcept();
 		Usuario u = logUser.lUsuariosA.get(logUser.iPos);
-		mostrarAcept(u);
+		mostrar(u);
+	}
+	
+	public void abrirUserBlock() {
+		logUser.lUsuariosB = logUser.leerBlock();
+		Usuario u = logUser.lUsuariosB.get(logUser.iPos);
+		mostrar(u);
+	}
+	
+	public void abrirUsers() {
+		logUser.lUsuariosT = logUser.leerBlock();
+		Usuario u = logUser.lUsuariosT.get(logUser.iPos);
+		mostrar(u);
 	}
 
 	public void mostrarEspera(Usuario u) {
@@ -34,7 +46,7 @@ public class CtrlUsuario {
 
 	}
 	
-	public void mostrarAcept(Usuario u) {
+	public void mostrar(Usuario u) {
 		FrmHistorialUsuarios.txtID.setText("" + u.getiId());
 		FrmHistorialUsuarios.txtNombre.setText(u.getsNombre());
 		FrmHistorialUsuarios.txtApellidos.setText(u.getsApellidos());
@@ -50,17 +62,21 @@ public class CtrlUsuario {
 		logUser.confirmarUsuario();
 	}
 	
+	public void bloquearUsuario() {
+		logUser.blouqearUsuario();
+	}
+	
 	public void inicioListaAcept() {
 		Usuario u = logUser.inicioListaA();
 		if(u != null) {
-			mostrarAcept(u);
+			mostrar(u);
 		}
 	}
 	
 	public void finListaAcept() {
 		Usuario u = logUser.finListaA();
 		if(u != null) {
-			mostrarAcept(u);
+			mostrar(u);
 		}
 	}
 
@@ -68,14 +84,14 @@ public class CtrlUsuario {
 	public void anteriorAcept() {
 		Usuario u = logUser.anteriorA();
 		if(u != null) {
-			mostrarAcept(u);
+			mostrar(u);
 		}
 	}
 	
 	public void siguienteAcept() {
 		Usuario u = logUser.siguienteA();
 		if(u != null) {
-			mostrarAcept(u);
+			mostrar(u);
 		}
 	}
 	

@@ -13,6 +13,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
+import javax.swing.SwingConstants;
 
 public class FrmHistorialUsuarios extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -183,8 +190,42 @@ public class FrmHistorialUsuarios extends JDialog {
 				dispose();
 			}
 		});
-		btnSalir.setBounds(394, 263, 89, 23);
+		btnSalir.setBounds(283, 263, 89, 23);
 		contentPane.add(btnSalir);
+		
+		JMenuBar mnHistorial = new JMenuBar();
+		mnHistorial.setBounds(0, 0, 602, 22);
+		contentPane.add(mnHistorial);
+		
+		JMenu mnUsuarios = new JMenu("Usuarios");
+		mnHistorial.add(mnUsuarios);
+		
+		JMenuItem mntmAceptados = new JMenuItem("Aceptados");
+		mntmAceptados.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+		mntmAceptados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.abrirUserAcept();
+			}
+		});
+		mnUsuarios.add(mntmAceptados);
+		
+		JMenuItem mntmBloqueados = new JMenuItem("Bloqueados");
+		mntmBloqueados.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_MASK));
+		mntmBloqueados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.abrirUserBlock();
+			}
+		});
+		mnUsuarios.add(mntmBloqueados);
+		
+		JButton btnBlock = new JButton("BLOQUEAR");
+		btnBlock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ctrlUser.bloquearUsuario();
+			}
+		});
+		btnBlock.setBounds(382, 263, 101, 23);
+		contentPane.add(btnBlock);
 		ctrlUser.abrirUserAcept();
 		setModal(true);
 		setResizable(false);
