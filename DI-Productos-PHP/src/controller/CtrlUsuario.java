@@ -10,27 +10,79 @@ public class CtrlUsuario {
 	LogicaUsuarios logUser = new LogicaUsuarios();
 
 	public void abrirUserEspera() {
-		logUser.lUsuarios = logUser.leerEnEspera();
-		Usuario u = logUser.lUsuarios.get(logUser.iPos);
-		mostrarEspera(u);
+		try {
+			logUser.lUsuarios = logUser.leerEnEspera();
+			Usuario u = logUser.lUsuarios.get(logUser.iPos);
+			mostrarEspera(u);
+		}catch(Exception e) {
+			FrmGestionUsuario.txtID.setText("");
+			FrmGestionUsuario.txtNombre.setText("");
+			FrmGestionUsuario.txtApellidos.setText("");
+			FrmGestionUsuario.txtEmail.setText("");
+			FrmGestionUsuario.txtDireccion.setText("");
+			FrmGestionUsuario.txtUser.setText("");
+			FrmGestionUsuario.txtPass.setText("");
+			FrmGestionUsuario.txtTelefono.setText("");
+			FrmGestionUsuario.txtPermiso.setText("");
+		}
+		
 	}
 	
 	public void abrirUserAcept() {
-		logUser.lUsuariosA = logUser.leerAcept();
-		Usuario u = logUser.lUsuariosA.get(logUser.iPos);
-		mostrar(u);
+		try {
+			logUser.lUsuariosA = logUser.leerAcept();
+			Usuario u = logUser.lUsuariosA.get(logUser.iPos);
+			mostrar(u);
+		}catch(Exception e) {
+			FrmHistorialUsuarios.txtID.setText("");
+			FrmHistorialUsuarios.txtNombre.setText("");
+			FrmHistorialUsuarios.txtApellidos.setText("");
+			FrmHistorialUsuarios.txtEmail.setText("");
+			FrmHistorialUsuarios.txtDireccion.setText("");
+			FrmHistorialUsuarios.txtUser.setText("");
+			FrmHistorialUsuarios.txtPass.setText("");
+			FrmHistorialUsuarios.txtTelefono.setText("");
+			FrmHistorialUsuarios.txtPermiso.setText("");
+		}
+		
 	}
 	
 	public void abrirUserBlock() {
-		logUser.lUsuariosB = logUser.leerBlock();
-		Usuario u = logUser.lUsuariosB.get(logUser.iPos);
-		mostrar(u);
+		try {
+			logUser.lUsuariosB = logUser.leerBlock();
+			Usuario u = logUser.lUsuariosB.get(logUser.iPos);
+			mostrar(u);
+		}catch(Exception e) {
+			FrmHistorialUsuarios.txtID.setText("");
+			FrmHistorialUsuarios.txtNombre.setText("");
+			FrmHistorialUsuarios.txtApellidos.setText("");
+			FrmHistorialUsuarios.txtEmail.setText("");
+			FrmHistorialUsuarios.txtDireccion.setText("");
+			FrmHistorialUsuarios.txtUser.setText("");
+			FrmHistorialUsuarios.txtPass.setText("");
+			FrmHistorialUsuarios.txtTelefono.setText("");
+			FrmHistorialUsuarios.txtPermiso.setText("");
+		}
+		
 	}
 	
 	public void abrirUsers() {
-		logUser.lUsuariosT = logUser.leerBlock();
-		Usuario u = logUser.lUsuariosT.get(logUser.iPos);
-		mostrar(u);
+		try {
+			logUser.lUsuariosT = logUser.leerBlock();
+			Usuario u = logUser.lUsuariosT.get(logUser.iPos);
+			mostrar(u);
+		}catch(Exception e) {
+			FrmHistorialUsuarios.txtID.setText("");
+			FrmHistorialUsuarios.txtNombre.setText("");
+			FrmHistorialUsuarios.txtApellidos.setText("");
+			FrmHistorialUsuarios.txtEmail.setText("");
+			FrmHistorialUsuarios.txtDireccion.setText("");
+			FrmHistorialUsuarios.txtUser.setText("");
+			FrmHistorialUsuarios.txtPass.setText("");
+			FrmHistorialUsuarios.txtTelefono.setText("");
+			FrmHistorialUsuarios.txtPermiso.setText("");
+		}
+		
 	}
 
 	public void mostrarEspera(Usuario u) {
@@ -64,6 +116,10 @@ public class CtrlUsuario {
 	
 	public void bloquearUsuario() {
 		logUser.blouqearUsuario();
+	}
+	
+	public void desbloquearUsuario() {
+		logUser.desbloquearUsuario();
 	}
 	
 	public void inicioListaAcept() {

@@ -188,8 +188,8 @@ public class FrmHistorialUsuarios extends JDialog {
 		JButton btnDesbloquear = new JButton("DESBLOQUEAR");
 		btnDesbloquear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-			}
+				ctrlUser.desbloquearUsuario();
+			}	
 		});
 		btnDesbloquear.setBounds(253, 263, 129, 23);
 		contentPane.add(btnDesbloquear);
