@@ -40,7 +40,6 @@ public class LogicaUsuarios {
 		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
 		String sPassword = new String(txtContrasenia.getPassword());
-		System.out.println(sPassword);
 		String sTelefono = txtTelefono.getText();
 
 		if (iId != -1) {
@@ -50,9 +49,7 @@ public class LogicaUsuarios {
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono
 					+ "&PERMISO=ACEPTADO&ID=" + iId;
 
-			System.out.println(sqlUpdate);
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
-			System.out.println("Se le ha concedido el permiso.");
 		}
 
 		return respuesta;
@@ -77,7 +74,6 @@ public class LogicaUsuarios {
 		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
 		String sPassword = new String(txtContrasenia.getPassword());
-		System.out.println(sPassword);
 		String sTelefono = txtTelefono.getText();
 
 		if (iId != -1) {
@@ -87,9 +83,7 @@ public class LogicaUsuarios {
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono
 					+ "&PERMISO=BLOQUEADO&ID=" + iId;
 
-			System.out.println(sqlUpdate);
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
-			System.out.println("Se le ha concedido el permiso.");
 		}
 
 		return respuesta;
