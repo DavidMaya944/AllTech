@@ -4,18 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class FrmMenuPrincipal extends JDialog {
+public class FrmMenuPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	
 
 	public FrmMenuPrincipal() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 254, 211);
@@ -58,7 +65,6 @@ public class FrmMenuPrincipal extends JDialog {
 		btnSalir.setBounds(60, 115, 117, 23);
 		contentPane.add(btnSalir);
 		setResizable(false);
-		setModal(true);
 		setVisible(true);
 	}
 }

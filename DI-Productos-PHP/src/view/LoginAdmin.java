@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlLogin;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class LoginAdmin extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,12 @@ public class LoginAdmin extends JFrame {
 	private CtrlLogin ctrlLogin = new CtrlLogin();
 
 	public LoginAdmin() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 		setTitle("Login");
 		setBounds(100, 100, 243, 142);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

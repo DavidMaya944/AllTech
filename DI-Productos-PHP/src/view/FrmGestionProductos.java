@@ -9,7 +9,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,8 +21,10 @@ import javax.swing.border.EmptyBorder;
 
 import controller.CtrlProducto;
 import logic.LogicaProductos;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class FrmGestionProductos extends JDialog {
+public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTextField txtCod;
@@ -48,6 +49,13 @@ public class FrmGestionProductos extends JDialog {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public FrmGestionProductos() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon\\cesta.png"));
 		setTitle("Productos");
@@ -259,7 +267,6 @@ public class FrmGestionProductos extends JDialog {
 		btnVolver.setBounds(278, 343, 86, 23);
 		contentPane.add(btnVolver);
 		ctrl.abrir();
-		setModal(true);
 		setResizable(false);
 		setVisible(true);
 	}
