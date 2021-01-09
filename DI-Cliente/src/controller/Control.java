@@ -1,9 +1,9 @@
 package controller;
 
-import logic.Logica;
+import logic.LogicaUsuario;
 
 public class Control {
-	Logica logic = new Logica();
+	LogicaUsuario logic = new LogicaUsuario();
 	
 	public void guardarUsuario() {
 		logic.guardar();

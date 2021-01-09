@@ -1,11 +1,5 @@
 package logic;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +9,7 @@ import javax.swing.JTextField;
 import model.Usuario;
 import view.FrmRegistro;
 
-public class Logica {
+public class LogicaUsuario {
 	public static List<Usuario> lUsuarios = new ArrayList<Usuario>();
 
 	public String guardarUsuario(JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
@@ -34,7 +28,7 @@ public class Logica {
 		sqlInsert += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 		sqlInsert += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
 		System.out.println(sqlInsert);
-		String respuesta = peticionHttpArray(sqlInsert);
+		String respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
 		System.out.println("Se ha insertado el usuario correctamente");
 
 		return respuesta;
@@ -66,7 +60,7 @@ public class Logica {
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
 
-			respuesta = peticionHttpArray(sqlUpdate);
+			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
 			System.out.println("Se ha insertado el usuario correctamente");
 		}
 		
@@ -74,31 +68,7 @@ public class Logica {
 		return respuesta;
 	}
 
-	public String peticionHttpArray(String parametro) {
-
-		StringBuilder resultado = new StringBuilder();
-
-		try {
-
-			URL url = new URL(parametro);
-			HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-			conexion.setRequestMethod("GET");
-
-			BufferedReader bf = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-			String linea;
-
-			while ((linea = bf.readLine()) != null) {
-				resultado.append(linea + "\n");
-			}
-
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return resultado.toString();
-	}
+	
 
 	public void guardar() {
 		guardarUsuario(FrmRegistro.txtNombre, FrmRegistro.txtApellidos, FrmRegistro.txtEmail, FrmRegistro.txtDireccion,
