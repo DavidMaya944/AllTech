@@ -10,8 +10,6 @@ import model.Usuario;
 
 public class LogicaLogin {
 	
-	public static List<Usuario> lUsuario = new ArrayList<Usuario>();
-	public static int iPos = 0;
 	
 	public String getLoginAdmin() {
 		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php";
@@ -21,11 +19,11 @@ public class LogicaLogin {
 	}
 	
 	public List<Usuario> leerLogin() {
-		lUsuario = new ArrayList<Usuario>();
+		LogicaGeneral.lUsuario = new ArrayList<Usuario>();
 		String sRes = getLoginAdmin();
-		lUsuario = jasonToUsuarios(sRes);
+		LogicaGeneral.lUsuario = jasonToUsuarios(sRes);
 		
-		return lUsuario;
+		return LogicaGeneral.lUsuario;
 	}
 
 	

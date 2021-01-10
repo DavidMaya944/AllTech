@@ -45,6 +45,7 @@ public class LoginUser extends JFrame {
 
 		txtUser = new JTextField();
 		txtUser.setBounds(95, 8, 122, 20);
+		txtUser.setText("Davidmaya33");
 		contentPanel.add(txtUser);
 		txtUser.setColumns(10);
 
@@ -54,6 +55,7 @@ public class LoginUser extends JFrame {
 
 		txtPass = new JPasswordField();
 		txtPass.setBounds(95, 39, 122, 20);
+		txtPass.setText("Admin1234");
 		contentPanel.add(txtPass);
 
 		JPanel buttonPane = new JPanel();

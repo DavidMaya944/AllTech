@@ -1,22 +1,22 @@
 package controller;
 
+import logic.LogicaGeneral;
 import logic.LogicaLogin;
 import view.LoginUser;
 
 public class CtrlLogin {
 	LogicaLogin logLogin = new LogicaLogin();
-
 	public boolean login() {
 		boolean bExito = false;
-		logLogin.lUsuario = logLogin.leerLogin();
+		LogicaGeneral.lUsuario = logLogin.leerLogin();
 		String sUsuario = LoginUser.txtUser.getText();
 		String sPass = new String(LoginUser.txtPass.getPassword());
 		
-		while(logLogin.iPos < logLogin.lUsuario.size() && !bExito) {
-			if(sUsuario.equals(logLogin.lUsuario.get(logLogin.iPos).getsUsuario()) && sPass.equals(logLogin.lUsuario.get(logLogin.iPos).getsContrasenia())) {
+		while(LogicaGeneral.iPos < LogicaGeneral.lUsuario.size() && !bExito) {
+			if(sUsuario.equals(LogicaGeneral.lUsuario.get(LogicaGeneral.iPos).getsUsuario()) && sPass.equals(LogicaGeneral.lUsuario.get(LogicaGeneral.iPos).getsContrasenia())) {
 				bExito = true;
 			}
-			logLogin.iPos++;
+			LogicaGeneral.iPos++;
 		}
 		
 		return bExito;

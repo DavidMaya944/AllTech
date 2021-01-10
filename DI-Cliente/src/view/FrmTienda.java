@@ -1,17 +1,22 @@
 package view;
 
-import java.awt.GridLayout;
-
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
+import controller.CtrlProductos;
+
+import javax.swing.JScrollPane;
 
 public class FrmTienda extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	public static JPanel contentPane;
+	public static JPanel panelList;
+	private CtrlProductos ctrlProd = new CtrlProductos();
 
 	public FrmTienda() {
 		setTitle("(Nombre de tienda)");
@@ -47,7 +52,15 @@ public class FrmTienda extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		contentPane.add(scrollPane);
+		
+		panelList = new JPanel();
+		scrollPane.setViewportView(panelList);
+		panelList.setLayout(new BoxLayout(panelList, BoxLayout.X_AXIS));
+		ctrlProd.llenarLista();
 		setVisible(true);
 	}
 

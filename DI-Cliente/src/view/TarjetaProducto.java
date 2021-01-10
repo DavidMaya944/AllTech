@@ -7,12 +7,10 @@ import java.awt.TextArea;
 import javax.swing.JTextArea;
 
 public class TarjetaProducto extends JPanel {
-	private JTextField txtNombre;
-	private JTextField txtPVP;
-
-	/**
-	 * Create the panel.
-	 */
+	private static final long serialVersionUID = 1L;
+	public static JTextField txtNombre;
+	public static JTextField txtPVP;
+	public static JTextArea textDescrip;
 	public TarjetaProducto() {
 		setLayout(null);
 		
@@ -22,7 +20,7 @@ public class TarjetaProducto extends JPanel {
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		JTextArea textDescrip = new JTextArea();
+		textDescrip = new JTextArea();
 		textDescrip.setEnabled(false);
 		textDescrip.setBounds(138, 72, 143, 38);
 		add(textDescrip);

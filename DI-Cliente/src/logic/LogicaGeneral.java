@@ -6,8 +6,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Usuario;
 
 public class LogicaGeneral {
+	
+	public static List<Usuario> lUsuario = new ArrayList<Usuario>();
+	public static int iPos = 0;
+	
 	public static String peticionHttpArray(String parametro) {
 
 		StringBuilder resultado = new StringBuilder();

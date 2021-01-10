@@ -1,16 +1,11 @@
 package logic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import model.Usuario;
 import view.FrmRegistro;
 
 public class LogicaUsuario {
-	public static List<Usuario> lUsuarios = new ArrayList<Usuario>();
 
 	public String guardarUsuario(JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono) {
