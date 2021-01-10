@@ -78,7 +78,8 @@ public class LoginUser extends JFrame {
 		JButton cancelButton = new JButton("Cancelar");
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				dispose();
+				new FrmMenuPrincipal();
 			}
 		});
 		cancelButton.setActionCommand("Cancel");

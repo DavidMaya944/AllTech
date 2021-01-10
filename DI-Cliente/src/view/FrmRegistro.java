@@ -31,25 +31,6 @@ public class FrmRegistro extends JFrame {
 	private Control ctrl = new Control();
 	public static FrmRegistro frame;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame = new FrmRegistro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public FrmRegistro() {
 		setTitle("Registro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,11 +109,19 @@ public class FrmRegistro extends JFrame {
 		contentPane.add(btnConfrimar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
 		btnCancelar.setBounds(322, 227, 89, 23);
 		contentPane.add(btnCancelar);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(301, 64, 110, 20);
 		contentPane.add(txtPassword);
+		setResizable(false);
+		setVisible(true);
 	}
 }

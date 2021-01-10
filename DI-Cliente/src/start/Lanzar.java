@@ -1,11 +1,11 @@
 package start;
 
-import view.LoginUser;
+import view.FrmMenuPrincipal;
 
 public class Lanzar {
 
 	public static void main(String[] args) {
-		new LoginUser();
+		new FrmMenuPrincipal();
 
 	}
 
