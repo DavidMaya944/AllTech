@@ -62,9 +62,8 @@ public class LogicaProd {
 			tProd.txtPVP.setText(lProductos.get(i).getfPVP() + " €");
 			
 			FrmTienda.panelList.add(tProd);
-			FrmTienda.contentPane.repaint();
 		}
 		
-		
+		FrmTienda.contentPane.repaint();
 	}
 }
