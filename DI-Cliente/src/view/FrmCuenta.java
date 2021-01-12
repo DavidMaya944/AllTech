@@ -121,7 +121,6 @@ public class FrmCuenta extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new FrmTienda();
 			}
 		});
 		btnCancelar.setBounds(207, 465, 89, 23);
