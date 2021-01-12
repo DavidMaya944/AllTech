@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.TextArea;
 import javax.swing.JTextArea;
+import javax.swing.JSeparator;
 
 public class TarjetaProducto extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +35,10 @@ public class TarjetaProducto extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 27, 79, 83);
 		add(panel);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 147, 450, 2);
+		add(separator);
 
 	}
 }

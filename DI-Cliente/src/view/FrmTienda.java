@@ -21,7 +21,7 @@ public class FrmTienda extends JFrame {
 	public FrmTienda() {
 		setTitle("(Nombre de tienda)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 900);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -52,15 +52,16 @@ public class FrmTienda extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
 		
 		panelList = new JPanel();
 		scrollPane.setViewportView(panelList);
-		panelList.setLayout(new BoxLayout(panelList, BoxLayout.X_AXIS));
+		panelList.setLayout(new BoxLayout(panelList, BoxLayout.Y_AXIS));
 		ctrlProd.llenarLista();
+		setResizable(false);
 		setVisible(true);
 	}
 
