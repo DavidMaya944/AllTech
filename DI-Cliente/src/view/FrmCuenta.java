@@ -44,6 +44,7 @@ public class FrmCuenta extends JFrame {
 		JLabel lblPassword = new JLabel("Contrase\u00F1a");
 		lblPassword.setBounds(30, 74, 74, 14);
 		panelCentral.add(lblPassword);
+		setResizable(false);
 		setVisible(true);
 	}
 }
