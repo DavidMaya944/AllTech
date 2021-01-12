@@ -1,8 +1,15 @@
 package logic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import model.Usuario;
 import view.FrmCuenta;
 import view.FrmRegistro;
 
@@ -52,7 +59,7 @@ public class LogicaUsuario {
 		String sTelefono = txtTelefono.getText();
 
 		if(iId != -1) {
-			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
+			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE=" + sNombre;
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
 
@@ -61,6 +68,40 @@ public class LogicaUsuario {
 		}
 		
 
+		return respuesta;
+	}
+	
+	public Usuario leer(JTextField txtUser) {
+		Usuario u = null;
+		String sUser = txtUser.getText();
+		String sRes = getUsuario(sUser);
+		JSONArray jArray = new JSONArray(sRes);
+		for(int i = 0; i < jArray.length(); i++) {
+			JSONObject jObj = jArray.getJSONObject(i);
+			u = JsonToUsuario(jObj);
+		}
+		
+		return u;
+	}
+	
+	private Usuario JsonToUsuario(JSONObject jObj) {
+		int iId = jObj.getInt("ID");
+		String sNombre = jObj.getString("NOMBRE");
+		String sApellidos = jObj.getString("APELLIDOS");
+		String sEmail = jObj.getString("EMAIL");
+		String sDireccion = jObj.getString("DIRECCION");
+		String sUsuario = jObj.getString("USUARIO");
+		String sPassword = jObj.getString("PASSWORD");
+		String sTelefono = jObj.getString("TELEFONO");
+		Usuario u = new Usuario(iId, sNombre, sApellidos, sEmail, sDireccion, sUsuario, sPassword, sTelefono);
+		return u;
+		
+	}
+	
+	public String getUsuario(String sUsuario) {
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-username.php?USUARIO=" + sUsuario;
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
 		return respuesta;
 	}
 

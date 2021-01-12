@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 public class FrmCuenta extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTextField txtUser;
 	public static JTextField txtNombre;
@@ -39,7 +39,6 @@ public class FrmCuenta extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				dispose();
-				new FrmTienda();
 			}
 		});
 		setTitle("Cuenta");
@@ -89,7 +88,7 @@ public class FrmCuenta extends JFrame {
 		txtApellidos.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(31, 289, 46, 14);
+		lblTelefono.setBounds(31, 289, 74, 14);
 		panelCentral.add(lblTelefono);
 		
 		txtTelefono = new JTextField();
@@ -98,7 +97,7 @@ public class FrmCuenta extends JFrame {
 		txtTelefono.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setBounds(31, 346, 46, 14);
+		lblDireccion.setBounds(31, 346, 78, 14);
 		panelCentral.add(lblDireccion);
 		
 		txtDireccion = new JTextField();
@@ -112,9 +111,10 @@ public class FrmCuenta extends JFrame {
 				ctrl.actualizarUsuario();
 				dispose();
 				new UpdateExito();
+				ctrl.abrirUserName();
 			}
 		});
-		btnConfirmar.setBounds(52, 465, 89, 23);
+		btnConfirmar.setBounds(42, 465, 104, 23);
 		panelCentral.add(btnConfirmar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -123,7 +123,7 @@ public class FrmCuenta extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(207, 465, 89, 23);
+		btnCancelar.setBounds(207, 465, 104, 23);
 		panelCentral.add(btnCancelar);
 		
 		JLabel lblEmail = new JLabel("Email");
@@ -132,7 +132,7 @@ public class FrmCuenta extends JFrame {
 		
 		txtEmail = new JTextField();
 		txtEmail.setEnabled(false);
-		txtEmail.setBounds(114, 395, 137, 20);
+		txtEmail.setBounds(114, 395, 209, 20);
 		panelCentral.add(txtEmail);
 		txtEmail.setColumns(10);
 		
@@ -149,6 +149,7 @@ public class FrmCuenta extends JFrame {
 		txtPass = new JPasswordField();
 		txtPass.setBounds(114, 126, 137, 20);
 		panelCentral.add(txtPass);
+		ctrl.abrirUserName();
 		setResizable(false);
 		setVisible(true);
 	}
