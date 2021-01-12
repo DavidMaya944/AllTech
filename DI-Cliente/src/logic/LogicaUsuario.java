@@ -3,6 +3,7 @@ package logic;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import view.FrmCuenta;
 import view.FrmRegistro;
 
 public class LogicaUsuario {
@@ -47,7 +48,7 @@ public class LogicaUsuario {
 		String sEmail = txtEmail.getText();
 		String sDireccion = txtDireccion.getText().replaceAll(" ", "%20");
 		String sUsuario = txtUsuario.getText();
-		String sPassword = txtContrasenia.getPassword().toString();
+		String sPassword = new String(txtContrasenia.getPassword());
 		String sTelefono = txtTelefono.getText();
 
 		if(iId != -1) {
@@ -68,6 +69,11 @@ public class LogicaUsuario {
 	public void guardar() {
 		guardarUsuario(FrmRegistro.txtNombre, FrmRegistro.txtApellidos, FrmRegistro.txtEmail, FrmRegistro.txtDireccion,
 				FrmRegistro.txtUsuario, FrmRegistro.txtPassword, FrmRegistro.txtTelefono);
+	}
+	
+	public void actualizar() {
+		actualizarUsuario(FrmCuenta.txtID, FrmCuenta.txtNombre, FrmCuenta.txtApellidos, FrmCuenta.txtEmail, FrmCuenta.txtDireccion,
+				FrmCuenta.txtUser, FrmCuenta.txtPass, FrmCuenta.txtTelefono);
 	}
 
 }

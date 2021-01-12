@@ -8,4 +8,8 @@ public class Control {
 	public void guardarUsuario() {
 		logic.guardar();
 	}
+	
+	public void actualizarUsuario() {
+		logic.actualizar();
+	}
 }

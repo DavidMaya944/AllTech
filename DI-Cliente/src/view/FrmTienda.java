@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import controller.CtrlProductos;
 
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmTienda extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -30,10 +32,12 @@ public class FrmTienda extends JFrame {
 		menuBar.add(mnAjustes);
 		
 		JMenuItem mntmCuenta = new JMenuItem("Cuenta");
+		mntmCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new FrmCuenta();
+			}
+		});
 		mnAjustes.add(mntmCuenta);
-		
-		JMenuItem mntmLeyPriv = new JMenuItem("Ley de Privacidad");
-		mnAjustes.add(mntmLeyPriv);
 		
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");
 		mnAjustes.add(mntmAcercaDe);
@@ -42,6 +46,12 @@ public class FrmTienda extends JFrame {
 		mnAjustes.add(mntmAyuda);
 		
 		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar sesi\u00F3n");
+		mntmCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
 		mnAjustes.add(mntmCerrarSesion);
 		
 		JMenu mnCompra = new JMenu("Compra");
