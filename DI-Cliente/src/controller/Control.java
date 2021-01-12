@@ -1,12 +1,11 @@
 package controller;
 
-import javax.swing.JTextField;
-
-import logic.LogicaGeneral;
 import logic.LogicaUsuario;
 import model.Usuario;
 import view.FrmCuenta;
 import view.LoginUser;
+import view.UpdateExito;
+import view.UpdateFail;
 
 public class Control {
 	LogicaUsuario logic = new LogicaUsuario();
@@ -16,23 +15,33 @@ public class Control {
 	}
 	
 	public void actualizarUsuario() {
-		logic.actualizar();
+		if(logic.actualizar()) {
+			new UpdateExito();
+			logic.actualizar();
+			FrmCuenta.contentPane.repaint();
+		}else {
+			new UpdateFail();
+		}
+		
+		
 	}
 	
 	public void abrirUserName() {
 		try {
-			Usuario u = logic.leer(LoginUser.txtUser);
+			Usuario u = logic.leer(LoginUser.txtEmail);
 			mostrar(u);
 		}catch(Exception e) {
-			System.err.println("ERROR");
-			FrmCuenta.txtID.setText("");
-			FrmCuenta.txtNombre.setText("");
-			FrmCuenta.txtApellidos.setText("");
-			FrmCuenta.txtEmail.setText("");
-			FrmCuenta.txtDireccion.setText("");
-			FrmCuenta.txtUser.setText("");
-			FrmCuenta.txtPass.setText("");
-			FrmCuenta.txtTelefono.setText("");
+			e.getStackTrace();
+			e.getMessage();
+//			System.err.println("ERROR");
+//			FrmCuenta.txtID.setText("");
+//			FrmCuenta.txtNombre.setText("");
+//			FrmCuenta.txtApellidos.setText("");
+//			FrmCuenta.txtEmail.setText("");
+//			FrmCuenta.txtDireccion.setText("");
+//			FrmCuenta.txtUser.setText("");
+//			FrmCuenta.txtPass.setText("");
+//			FrmCuenta.txtTelefono.setText("");
 		}
 		
 	}

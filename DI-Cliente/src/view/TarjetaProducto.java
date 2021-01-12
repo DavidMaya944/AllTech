@@ -1,11 +1,9 @@
 package view;
 
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.TextArea;
-import javax.swing.JTextArea;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class TarjetaProducto extends JPanel {
 	private static final long serialVersionUID = 1L;

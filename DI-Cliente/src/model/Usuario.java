@@ -16,8 +16,8 @@ public class Usuario {
 		setsTelefono(sTelefono);
 	}
 	
-	public Usuario(String sUsuario, String sContrasenia, String sPermiso) {
-		setsUsuario(sUsuario);
+	public Usuario(String sEmail, String sContrasenia, String sPermiso) {
+		setsEmail(sEmail);
 		setsContrasenia(sContrasenia);
 		setsPermiso(sPermiso);
 	}

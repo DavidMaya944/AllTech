@@ -1,8 +1,5 @@
 package logic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -32,7 +29,6 @@ public class LogicaUsuario {
 		sqlInsert += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
 		System.out.println(sqlInsert);
 		String respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
-		System.out.println("Se ha insertado el usuario correctamente");
 
 		return respuesta;
 	}
@@ -64,17 +60,16 @@ public class LogicaUsuario {
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
 
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
-			System.out.println("Se ha insertado el usuario correctamente");
 		}
 		
 
 		return respuesta;
 	}
 	
-	public Usuario leer(JTextField txtUser) {
+	public Usuario leer(JTextField txtEmail) {
 		Usuario u = null;
-		String sUser = txtUser.getText();
-		String sRes = getUsuario(sUser);
+		String sEmail = txtEmail.getText();
+		String sRes = getUsuario(sEmail);
 		JSONArray jArray = new JSONArray(sRes);
 		for(int i = 0; i < jArray.length(); i++) {
 			JSONObject jObj = jArray.getJSONObject(i);
@@ -98,8 +93,8 @@ public class LogicaUsuario {
 		
 	}
 	
-	public String getUsuario(String sUsuario) {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-username.php?USUARIO=" + sUsuario;
+	public String getUsuario(String sEmail) {
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-email.php?EMAIL=" + sEmail;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -112,9 +107,13 @@ public class LogicaUsuario {
 				FrmRegistro.txtUsuario, FrmRegistro.txtPassword, FrmRegistro.txtTelefono);
 	}
 	
-	public void actualizar() {
-		actualizarUsuario(FrmCuenta.txtID, FrmCuenta.txtNombre, FrmCuenta.txtApellidos, FrmCuenta.txtEmail, FrmCuenta.txtDireccion,
-				FrmCuenta.txtUser, FrmCuenta.txtPass, FrmCuenta.txtTelefono);
+	public boolean actualizar() {
+		boolean bExito = false;
+		if(actualizarUsuario(FrmCuenta.txtID, FrmCuenta.txtNombre, FrmCuenta.txtApellidos, FrmCuenta.txtEmail, FrmCuenta.txtDireccion,
+				FrmCuenta.txtUser, FrmCuenta.txtPass, FrmCuenta.txtTelefono) != null) {
+			
+		}
+		return bExito;
 	}
 
 }

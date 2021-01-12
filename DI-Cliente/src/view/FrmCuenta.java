@@ -1,29 +1,25 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.Control;
 
-import java.awt.FlowLayout;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
-
 public class FrmCuenta extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	public static JPanel contentPane;
 	public static JTextField txtUser;
 	public static JTextField txtNombre;
 	public static JTextField txtApellidos;
@@ -108,10 +104,9 @@ public class FrmCuenta extends JFrame {
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.actualizarUsuario();
 				dispose();
-				new UpdateExito();
-				ctrl.abrirUserName();
+				ctrl.actualizarUsuario();
+				new FrmTienda();
 			}
 		});
 		btnConfirmar.setBounds(42, 465, 104, 23);
@@ -121,6 +116,7 @@ public class FrmCuenta extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				new FrmTienda();
 			}
 		});
 		btnCancelar.setBounds(207, 465, 104, 23);

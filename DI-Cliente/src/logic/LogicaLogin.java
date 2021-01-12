@@ -40,11 +40,11 @@ public class LogicaLogin {
 	}
 	
 	private Usuario JsonToUsuario(JSONObject jObj) {
-		String sNombre = jObj.getString("USUARIO");
+		String sEmail = jObj.getString("EMAIL");
 		String sPass = jObj.getString("PASSWORD");
 		String sPermiso = jObj.getString("PERMISO");
 		
-		Usuario u = new Usuario(sNombre, sPass, sPermiso);
+		Usuario u = new Usuario(sEmail, sPass, sPermiso);
 		return u;
 		
 	}

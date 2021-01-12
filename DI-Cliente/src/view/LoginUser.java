@@ -20,7 +20,7 @@ import controller.CtrlLogin;
 public class LoginUser extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	public static JTextField txtUser;
+	public static JTextField txtEmail;
 	public static JPasswordField txtPass;
 	private CtrlLogin ctrlLogin = new CtrlLogin();
 
@@ -32,28 +32,28 @@ public class LoginUser extends JFrame {
 			}
 		});
 		setTitle("Login");
-		setBounds(100, 100, 243, 142);
+		setBounds(100, 100, 293, 142);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		JLabel lblUser = new JLabel("Usuario");
-		lblUser.setBounds(10, 11, 46, 14);
-		contentPanel.add(lblUser);
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(10, 11, 46, 14);
+		contentPanel.add(lblEmail);
 
-		txtUser = new JTextField();
-		txtUser.setBounds(95, 8, 122, 20);
-		contentPanel.add(txtUser);
-		txtUser.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(95, 8, 182, 20);
+		contentPanel.add(txtEmail);
+		txtEmail.setColumns(10);
 
 		JLabel lblPass = new JLabel("Contrase\u00F1a");
 		lblPass.setBounds(10, 46, 77, 14);
 		contentPanel.add(lblPass);
 
 		txtPass = new JPasswordField();
-		txtPass.setBounds(95, 39, 122, 20);
+		txtPass.setBounds(95, 39, 182, 20);
 		contentPanel.add(txtPass);
 
 		JPanel buttonPane = new JPanel();
@@ -62,14 +62,8 @@ public class LoginUser extends JFrame {
 
 		JButton okButton = new JButton("iniciar sesion");
 		okButton.addActionListener(v -> {
-			if (ctrlLogin.login() == true) {
-				dispose();
-				new FrmTienda();
-				
-			} else {
-				System.out.println("Los datos introducidos no son validos.");
-			}
-
+			dispose();
+			ctrlLogin.login();
 		});
 		okButton.setActionCommand("OK");
 		buttonPane.add(okButton);

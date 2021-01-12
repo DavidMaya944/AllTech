@@ -34,6 +34,7 @@ public class FrmTienda extends JFrame {
 		JMenuItem mntmCuenta = new JMenuItem("Cuenta");
 		mntmCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				new FrmCuenta();
 			}
 		});

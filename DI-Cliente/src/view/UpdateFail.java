@@ -2,45 +2,39 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class UpdateExito extends JDialog {
+public class UpdateFail extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JPanel panelImagen;
-	
-	public UpdateExito() {
+
+	public UpdateFail() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				dispose();
 			}
 		});
-		setBounds(100, 100, 565, 147);
+		setBounds(100, 100, 450, 124);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		{
-			JLabel lblExito = new JLabel("Los cambios se han efectuado con exito.");
-			lblExito.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblExito.setBounds(87, 30, 472, 14);
-			contentPanel.add(lblExito);
-		} 
-	   		
-		panelImagen = new JPanel();
-		panelImagen.setBounds(23, 11, 54, 55);
-		contentPanel.add(panelImagen);
+		
+		JLabel lblFail = new JLabel("ERROR: No se ha podido efectuar la modificaci\u00F3n");
+		lblFail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFail.setBounds(52, 27, 382, 14);
+		contentPanel.add(lblFail);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -48,7 +42,7 @@ public class UpdateExito extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+					public void actionPerformed(ActionEvent arg0) {
 						dispose();
 					}
 				});
@@ -57,11 +51,7 @@ public class UpdateExito extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
-		
-		setResizable(false);
 		setModal(true);
 		setVisible(true);
 	}
-	
-	 
 }
