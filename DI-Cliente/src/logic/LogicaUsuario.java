@@ -34,17 +34,11 @@ public class LogicaUsuario {
 	}
 	
 	// Metodo para la interfaz de ajustes de cuenta donde el usuario podra modificar los datos.
-	public String actualizarUsuario(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
+	public String actualizarUsuario(JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono) {
 
 		String respuesta = null;
-		int iId;
 		
-		try {
-			iId = Integer.parseInt(txtID.getText());
-		}catch(Exception e) {
-			iId = -1;
-		}
 		
 		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
 		String sApellidos = txtApellidos.getText().replaceAll(" ", "%20");
@@ -54,10 +48,10 @@ public class LogicaUsuario {
 		String sPassword = new String(txtContrasenia.getPassword());
 		String sTelefono = txtTelefono.getText();
 
-		if(iId != -1) {
-			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE=" + sNombre;
-			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
-			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&ID=" + iId;
+		if(sEmail != null) {
+			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioEmail.php?NOMBRE=" + sNombre;
+			sqlUpdate += "&APELLIDOS=" + sApellidos + "&DIRECCION=" + sDireccion;
+			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACEPTADO&EMAIL=" + sEmail;
 
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
 		}
@@ -109,9 +103,9 @@ public class LogicaUsuario {
 	
 	public boolean actualizar() {
 		boolean bExito = false;
-		if(actualizarUsuario(FrmCuenta.txtID, FrmCuenta.txtNombre, FrmCuenta.txtApellidos, FrmCuenta.txtEmail, FrmCuenta.txtDireccion,
+		if(actualizarUsuario(FrmCuenta.txtNombre, FrmCuenta.txtApellidos, FrmCuenta.txtEmail, FrmCuenta.txtDireccion,
 				FrmCuenta.txtUser, FrmCuenta.txtPass, FrmCuenta.txtTelefono) != null) {
-			
+			bExito = true;
 		}
 		return bExito;
 	}

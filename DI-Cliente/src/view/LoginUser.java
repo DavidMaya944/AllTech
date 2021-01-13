@@ -32,7 +32,7 @@ public class LoginUser extends JFrame {
 			}
 		});
 		setTitle("Login");
-		setBounds(100, 100, 293, 142);
+		setBounds(100, 100, 316, 142);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

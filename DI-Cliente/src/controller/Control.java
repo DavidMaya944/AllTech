@@ -47,7 +47,6 @@ public class Control {
 	}
 	
 	public void mostrar(Usuario u) {
-		FrmCuenta.txtID.setText("" + u.getiId());
 		FrmCuenta.txtUser.setText(u.getsUsuario());
 		FrmCuenta.txtPass.setText(u.getsContrasenia());
 		FrmCuenta.txtNombre.setText(u.getsNombre());

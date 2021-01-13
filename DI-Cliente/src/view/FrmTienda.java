@@ -59,6 +59,11 @@ public class FrmTienda extends JFrame {
 		menuBar.add(mnCompra);
 		
 		JMenuItem mntmCesta = new JMenuItem("Cesta");
+		mntmCesta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new Cesta();
+			}
+		});
 		mnCompra.add(mntmCesta);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
