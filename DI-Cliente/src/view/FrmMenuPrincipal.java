@@ -24,7 +24,7 @@ public class FrmMenuPrincipal extends JFrame {
 		});
 		setTitle("Inicio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 283, 221);
+		setBounds(100, 100, 272, 221);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,8 +59,8 @@ public class FrmMenuPrincipal extends JFrame {
 		btnSalir.setBounds(91, 119, 89, 23);
 		contentPane.add(btnSalir);
 		
-		JLabel lblHead = new JLabel("\u00A1Bienvenido a nuestra macro tienda!");
-		lblHead.setBounds(41, 22, 193, 14);
+		JLabel lblHead = new JLabel("\u00A1Bienvenido a All Tech!");
+		lblHead.setBounds(71, 27, 139, 14);
 		contentPane.add(lblHead);
 		setResizable(false);
 		setVisible(true);

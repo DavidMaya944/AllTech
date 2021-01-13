@@ -44,6 +44,7 @@ public class LoginUser extends JFrame {
 		contentPanel.add(lblEmail);
 
 		txtEmail = new JTextField();
+		txtEmail.setText("davidmaya944@gmail.com");
 		txtEmail.setBounds(95, 8, 182, 20);
 		contentPanel.add(txtEmail);
 		txtEmail.setColumns(10);
@@ -53,6 +54,7 @@ public class LoginUser extends JFrame {
 		contentPanel.add(lblPass);
 
 		txtPass = new JPasswordField();
+		txtPass.setText("Admin1234");
 		txtPass.setBounds(95, 39, 182, 20);
 		contentPanel.add(txtPass);
 

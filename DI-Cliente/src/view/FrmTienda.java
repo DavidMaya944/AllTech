@@ -12,7 +12,9 @@ import controller.CtrlProductos;
 
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import javax.swing.ScrollPaneConstants;
 
 public class FrmTienda extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -21,9 +23,9 @@ public class FrmTienda extends JFrame {
 	private CtrlProductos ctrlProd = new CtrlProductos();
 
 	public FrmTienda() {
-		setTitle("(Nombre de tienda)");
+		setTitle("All Tech");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 900);
+		setBounds(100, 100, 450, 400);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -70,12 +72,13 @@ public class FrmTienda extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane(panelList);
 		contentPane.add(scrollPane);
-		
 		panelList = new JPanel();
 		scrollPane.setViewportView(panelList);
+		panelList.setPreferredSize(new Dimension(480,600));
 		panelList.setLayout(new BoxLayout(panelList, BoxLayout.Y_AXIS));
+		panelList.setMinimumSize(new Dimension(100,100));
 		ctrlProd.llenarLista();
 		setResizable(false);
 		setVisible(true);

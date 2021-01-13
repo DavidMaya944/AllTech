@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class TarjetaProducto extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -34,9 +35,15 @@ public class TarjetaProducto extends JPanel {
 		panel.setBounds(10, 27, 79, 83);
 		add(panel);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 147, 450, 2);
-		add(separator);
+		JSeparator separatorInf = new JSeparator();
+		separatorInf.setForeground(Color.BLACK);
+		separatorInf.setBounds(0, 147, 450, 2);
+		add(separatorInf);
+		
+		JSeparator separatorSup = new JSeparator();
+		separatorSup.setForeground(Color.BLACK);
+		separatorSup.setBounds(0, 11, 450, 2);
+		add(separatorSup);
 
 	}
 }
