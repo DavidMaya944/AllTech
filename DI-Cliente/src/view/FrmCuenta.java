@@ -38,7 +38,7 @@ public class FrmCuenta extends JFrame {
 		});
 		setTitle("Cuenta");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 368, 485);
+		setBounds(100, 100, 368, 497);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
