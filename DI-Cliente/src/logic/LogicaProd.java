@@ -3,11 +3,13 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTextField;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Producto;
-import view.Cesta;
+import view.FrmDetalleProd;
 import view.FrmTienda;
 import view.TarjetaProducto;
 
@@ -24,11 +26,51 @@ public class LogicaProd {
 		return respuesta;
 	}
 	
-	public String getProductosDetalle() {
-		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-productos-detalle.php";
+	public String getProductoDetalle(String sNombre) {
+		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-producto-detalle.php?NOMBRE=" + sNombre;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
+	}
+	
+	public Producto leer(JTextField txtNombre) {
+		Producto p = null;
+		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+		String sRes = getProductoDetalle(sNombre);
+		JSONArray jArray = new JSONArray(sRes);
+		for(int i = 0; i < jArray.length(); i++) {
+			JSONObject jObj = jArray.getJSONObject(i);
+			p = JsonToProductoDetalle(jObj);
+		}
+		mostrar(p);
+		
+		return p;
+	}
+	
+	public void mostrar(Producto p) {
+		FrmDetalleProd.txtNombre.setText(p.getsNombre());
+		FrmDetalleProd.txtDescrip.setText(p.getsComents());
+		FrmDetalleProd.txtPVP.setText(p.getfPVP() + " €");
+		
+		if(p.getiStockActual() == 0) {
+			FrmDetalleProd.txtStock.setText("AGOTADO");
+		}else if(p.getiStockActual() > 0 && p.getiStockActual() <= 5){
+			FrmDetalleProd.txtStock.setText("QUEDAN POCAS UNIDADES");
+		}else {
+			FrmDetalleProd.txtStock.setText("EN STOCK");
+		}
+		
+	}
+	
+	private Producto JsonToProductoDetalle(JSONObject jObj) {
+		String sNombre = jObj.getString("NOMBRE");
+		String sComents = jObj.getString("COMENTARIOS");
+		float fPVP = jObj.getFloat("PVP");
+		int iStockActual = jObj.getInt("STOCK_ACTUAL");
+		
+		Producto p = new Producto(sNombre, sComents, fPVP, iStockActual);
+		
+		return p;
 	}
 	
 	public List<Producto> leerProductos() {

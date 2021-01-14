@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,9 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controller.CtrlProductos;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import model.Producto;
 
 public class FrmDetalleProd extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -18,9 +19,8 @@ public class FrmDetalleProd extends JFrame {
 	public static JTextField txtPVP;
 	public static JTextField txtStock;
 	public static JTextArea txtDescrip;
-	private CtrlProductos ctrlProd = new CtrlProductos();
 
-	public FrmDetalleProd() {
+	public FrmDetalleProd(Producto p) {
 		setTitle("Producto");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 233);

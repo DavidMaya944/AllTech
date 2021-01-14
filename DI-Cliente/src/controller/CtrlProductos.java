@@ -3,6 +3,7 @@ package controller;
 import logic.LogicaProd;
 import model.Producto;
 import view.FrmDetalleProd;
+import view.TarjetaProducto;
 
 public class CtrlProductos {
 
@@ -10,6 +11,11 @@ public class CtrlProductos {
 	
 	public void llenarLista() {
 		logProd.llenarLista();
+	}
+	
+	public void mostrarDetalle() {
+		Producto p = logProd.leer(TarjetaProducto.txtNombre);
+		mostrar(p);
 	}
 	
 	public void mostrar(Producto p) {

@@ -4,6 +4,10 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import controller.CtrlProductos;
+import logic.LogicaProd;
+
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,11 +17,12 @@ public class TarjetaProducto extends JPanel {
 	public static JTextField txtNombre;
 	public static JTextField txtPVP;
 	public static JTextArea textDescrip;
+	private LogicaProd logProd = new LogicaProd();
 	public TarjetaProducto() {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new FrmDetalleProd();
+				new FrmDetalleProd(logProd.leer(txtNombre));
 				
 			}
 		});

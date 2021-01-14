@@ -1,20 +1,19 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlProductos;
-
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import javax.swing.ScrollPaneConstants;
 
 public class FrmTienda extends JFrame {
 	private static final long serialVersionUID = 1L;
