@@ -31,17 +31,13 @@ public class Control {
 			Usuario u = logic.leer(LoginUser.txtEmail);
 			mostrar(u);
 		}catch(Exception e) {
-			e.getStackTrace();
-			e.getMessage();
-//			System.err.println("ERROR");
-//			FrmCuenta.txtID.setText("");
-//			FrmCuenta.txtNombre.setText("");
-//			FrmCuenta.txtApellidos.setText("");
-//			FrmCuenta.txtEmail.setText("");
-//			FrmCuenta.txtDireccion.setText("");
-//			FrmCuenta.txtUser.setText("");
-//			FrmCuenta.txtPass.setText("");
-//			FrmCuenta.txtTelefono.setText("");
+			FrmCuenta.txtNombre.setText("");
+			FrmCuenta.txtApellidos.setText("");
+			FrmCuenta.txtEmail.setText("");
+			FrmCuenta.txtDireccion.setText("");
+			FrmCuenta.txtUser.setText("");
+			FrmCuenta.txtPass.setText("");
+			FrmCuenta.txtTelefono.setText("");
 		}
 		
 	}

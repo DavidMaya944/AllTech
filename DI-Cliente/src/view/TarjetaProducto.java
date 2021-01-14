@@ -17,6 +17,7 @@ public class TarjetaProducto extends JPanel {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				new FrmDetalleProd();
 				
 			}
 		});

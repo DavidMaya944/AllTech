@@ -24,6 +24,13 @@ public class LogicaProd {
 		return respuesta;
 	}
 	
+	public String getProductosDetalle() {
+		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-productos-detalle.php";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
+		return respuesta;
+	}
+	
 	public List<Producto> leerProductos() {
 		lProductos = new ArrayList<Producto>();
 		String sRes = getProductos();
@@ -31,7 +38,6 @@ public class LogicaProd {
 		
 		return lProductos;
 	}
-
 	
 	public List<Producto> jasonToProductos(String respuesta){
 		List<Producto> lProductos = new ArrayList<Producto>();
@@ -69,9 +75,8 @@ public class LogicaProd {
 		FrmTienda.contentPane.repaint();
 	}
 	
-	public void llenarCesta(List<Producto> lProductos, int i) {
-		i = iPos;
-		Producto p = lProductos.get(i);
+	public void llenarCesta() {
+		Producto p = lProductos.get(iPos);
 		lCesta.add(p);
 	}
 	

@@ -44,6 +44,13 @@ public class Producto implements Serializable {
 		setfPVP(fPVP);
 	}
 	
+	public Producto(String sNombre, String sComents, float fPVP, int iStockActual) {
+		setsNombre(sNombre);
+		setsComents(sComents);
+		setfPVP(fPVP);
+		setiStockActual(iStockActual);
+	}
+	
 	public int getiOpcion() {
 		return iOpcion;
 	}
