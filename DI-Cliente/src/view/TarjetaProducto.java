@@ -5,6 +5,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TarjetaProducto extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -12,6 +14,12 @@ public class TarjetaProducto extends JPanel {
 	public static JTextField txtPVP;
 	public static JTextArea textDescrip;
 	public TarjetaProducto() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		setLayout(null);
 		
 		txtNombre = new JTextField();

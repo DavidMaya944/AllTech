@@ -7,12 +7,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Producto;
+import view.Cesta;
 import view.FrmTienda;
 import view.TarjetaProducto;
 
 public class LogicaProd {
 	
 	public static List<Producto> lProductos = new ArrayList<Producto>();
+	public static List<Producto> lCesta = new ArrayList<Producto>();
 	public static int iPos = 0;
 	
 	public String getProductos() {
@@ -65,5 +67,15 @@ public class LogicaProd {
 		}
 		
 		FrmTienda.contentPane.repaint();
+	}
+	
+	public void llenarCesta(List<Producto> lProductos, int i) {
+		i = iPos;
+		Producto p = lProductos.get(i);
+		lCesta.add(p);
+	}
+	
+	public void borrarCesta() {
+		lCesta.clear();
 	}
 }

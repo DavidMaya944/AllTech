@@ -11,14 +11,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Cesta extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private final JPanel contentPanel = new JPanel();
-	private JTable tbl;
-
+	public static final JPanel contentPanel = new JPanel();
+	public static JPanel panelCentral;
 
 	public Cesta() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+			}
+		});
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -28,8 +35,8 @@ public class Cesta extends JDialog {
 			JScrollPane scrollPane = new JScrollPane();
 			contentPanel.add(scrollPane, BorderLayout.CENTER);
 			{
-				tbl = new JTable();
-				scrollPane.setViewportView(tbl);
+				panelCentral = new JPanel();
+				scrollPane.setViewportView(panelCentral);
 			}
 		}
 		{
