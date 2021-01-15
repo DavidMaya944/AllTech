@@ -79,7 +79,7 @@ public class FrmTienda extends JFrame {
 		panelList.setLayout(new BoxLayout(panelList, BoxLayout.Y_AXIS));
 		panelList.setMinimumSize(new Dimension(100,100));
 		ctrlProd.llenarLista();
-		setResizable(false);
+		setResizable(true);
 		setVisible(true);
 	}
 

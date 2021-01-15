@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import logic.LogicaProd;
 import model.Producto;
 
 public class FrmDetalleProd extends JFrame {
@@ -19,10 +20,11 @@ public class FrmDetalleProd extends JFrame {
 	public static JTextField txtPVP;
 	public static JTextField txtStock;
 	public static JTextArea txtDescrip;
+	private LogicaProd logProd = new LogicaProd();
 
 	public FrmDetalleProd(Producto p) {
 		setTitle("Producto");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 519, 233);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,5 +68,6 @@ public class FrmDetalleProd extends JFrame {
 		btnAniadir.setBounds(292, 160, 86, 23);
 		contentPane.add(btnAniadir);
 		setVisible(true);
+		logProd.mostrar(p);
 	}
 }

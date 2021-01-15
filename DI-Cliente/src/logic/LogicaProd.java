@@ -36,13 +36,13 @@ public class LogicaProd {
 	public Producto leer(JTextField txtNombre) {
 		Producto p = null;
 		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+		System.out.println(sNombre);
 		String sRes = getProductoDetalle(sNombre);
 		JSONArray jArray = new JSONArray(sRes);
 		for(int i = 0; i < jArray.length(); i++) {
 			JSONObject jObj = jArray.getJSONObject(i);
 			p = JsonToProductoDetalle(jObj);
 		}
-		mostrar(p);
 		
 		return p;
 	}
@@ -106,10 +106,9 @@ public class LogicaProd {
 	public void llenarLista() {
 		lProductos = leerProductos();
 		for(int i = 0; i < lProductos.size(); i++) {
-			TarjetaProducto tProd = new TarjetaProducto();
-			tProd.txtNombre.setText(lProductos.get(i).getsNombre());
-			tProd.textDescrip.setText(lProductos.get(i).getsComents());
-			tProd.txtPVP.setText(lProductos.get(i).getfPVP() + " €");
+			TarjetaProducto tProd = new TarjetaProducto(lProductos.get(i));
+			
+			//tProd.setVisible(true);
 			
 			FrmTienda.panelList.add(tProd);
 		}

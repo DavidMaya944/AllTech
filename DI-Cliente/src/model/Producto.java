@@ -125,4 +125,13 @@ public class Producto implements Serializable {
 	public void setbObsoleto(boolean bObsoleto) {
 		this.bObsoleto = bObsoleto;
 	}
+
+	@Override
+	public String toString() {
+		return "Producto [iCod=" + iCod + ", iStockActual=" + iStockActual + ", iStockMin=" + iStockMin + ", iStockMax="
+				+ iStockMax + ", iOpcion=" + iOpcion + ", fPVP=" + fPVP + ", sNombre=" + sNombre + ", sComents="
+				+ sComents + ", sProveedor=" + sProveedor + ", bFragil=" + bFragil + ", bObsoleto=" + bObsoleto + "]";
+	}
+	
+	
 }

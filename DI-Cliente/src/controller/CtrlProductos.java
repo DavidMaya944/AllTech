@@ -32,4 +32,19 @@ public class CtrlProductos {
 		}
 		
 	}
+
+	public void cargarDatos(Producto p) {
+		TarjetaProducto.txtNombre.setText(p.getsNombre());
+		TarjetaProducto.textDescrip.setText(p.getsComents());
+		TarjetaProducto.txtPVP.setText(p.getfPVP() + " €");
+		
+	}
+
+	public void click_ver() {
+		Producto p = logProd.leer(TarjetaProducto.txtNombre);
+		new FrmDetalleProd(p);
+		
+		
+		
+	}
 }

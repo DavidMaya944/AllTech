@@ -7,10 +7,14 @@ import javax.swing.JTextField;
 
 import controller.CtrlProductos;
 import logic.LogicaProd;
+import model.Producto;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TarjetaProducto extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -18,14 +22,9 @@ public class TarjetaProducto extends JPanel {
 	public static JTextField txtPVP;
 	public static JTextArea textDescrip;
 	private LogicaProd logProd = new LogicaProd();
-	public TarjetaProducto() {
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new FrmDetalleProd(logProd.leer(txtNombre));
-				
-			}
-		});
+	private CtrlProductos ctrlProd = new CtrlProductos();
+	public TarjetaProducto(Producto oProd) {
+	
 		setLayout(null);
 		
 		txtNombre = new JTextField();
@@ -58,6 +57,17 @@ public class TarjetaProducto extends JPanel {
 		separatorSup.setForeground(Color.BLACK);
 		separatorSup.setBounds(0, 11, 450, 2);
 		add(separatorSup);
-
+		
+		JButton btnVer = new JButton("Ver");
+		btnVer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrlProd.click_ver();
+			}
+		});
+		btnVer.setBounds(311, 40, 69, 23);
+		add(btnVer);
+		
+		ctrlProd.cargarDatos(oProd);
+		
 	}
 }
