@@ -17,6 +17,7 @@ public class LogicaProd {
 	
 	public static List<Producto> lProductos = new ArrayList<Producto>();
 	public static List<Producto> lCesta = new ArrayList<Producto>();
+	public static List<TarjetaProducto> lTarjeta = new ArrayList<TarjetaProducto>();
 	public static int iPos = 0;
 	
 	public String getProductos() {
@@ -108,9 +109,12 @@ public class LogicaProd {
 		for(int i = 0; i < lProductos.size(); i++) {
 			TarjetaProducto tProd = new TarjetaProducto(lProductos.get(i));
 			
-			//tProd.setVisible(true);
-			
+			tProd.txtNombre.setText(lProductos.get(i).getsNombre());
+			tProd.textDescrip.setText(lProductos.get(i).getsComents());
+			tProd.txtPVP.setText(lProductos.get(i).getfPVP() + " €");
+			tProd.txtNumeracion.setText(i +"");
 			FrmTienda.panelList.add(tProd);
+			lTarjeta.add(tProd);
 		}
 		
 		FrmTienda.contentPane.repaint();

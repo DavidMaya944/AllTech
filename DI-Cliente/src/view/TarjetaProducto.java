@@ -23,7 +23,10 @@ public class TarjetaProducto extends JPanel {
 	public static JTextArea textDescrip;
 	private LogicaProd logProd = new LogicaProd();
 	private CtrlProductos ctrlProd = new CtrlProductos();
+	public static int numeroTarjeta;
+	public static JTextField txtNumeracion;
 	public TarjetaProducto(Producto oProd) {
+	
 	
 		setLayout(null);
 		
@@ -61,11 +64,17 @@ public class TarjetaProducto extends JPanel {
 		JButton btnVer = new JButton("Ver");
 		btnVer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				ctrlProd.click_ver();
 			}
 		});
 		btnVer.setBounds(311, 40, 69, 23);
 		add(btnVer);
+		
+		txtNumeracion = new JTextField();
+		txtNumeracion.setBounds(10, 116, 86, 20);
+		add(txtNumeracion);
+		txtNumeracion.setColumns(10);
 		
 		ctrlProd.cargarDatos(oProd);
 		
