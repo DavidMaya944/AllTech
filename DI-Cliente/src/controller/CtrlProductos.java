@@ -1,7 +1,5 @@
 package controller;
 
-import javax.swing.JTextField;
-
 import logic.LogicaProd;
 import model.Producto;
 import view.FrmDetalleProd;
@@ -42,10 +40,6 @@ public class CtrlProductos {
 		
 	}
 
-//	public void click_ver(JTextField txtNombre) {
-//		Producto p = logProd.leer(txtNombre);
-//		new FrmDetalleProd(p);
-//	}
 	
 	public void click_ver() {
 		int numero = 0;
