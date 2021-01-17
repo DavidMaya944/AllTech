@@ -50,7 +50,7 @@ public class FrmMenuPrincipal extends JFrame {
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new FrmGestionProductos();
+				new FrmDetalleProd();
 			}
 		});
 		btnProductos.setBounds(60, 81, 117, 23);

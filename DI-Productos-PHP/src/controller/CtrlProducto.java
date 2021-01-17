@@ -2,7 +2,7 @@ package controller;
 
 import logic.LogicaProductos;
 import model.Producto;
-import view.FrmGestionProductos;
+import view.FrmDetalleProd;
 
 public class CtrlProducto {
 	
@@ -17,28 +17,28 @@ public class CtrlProducto {
 	
 
 	public void mostrar(Producto p) {
-		FrmGestionProductos.txtCod.setText("" + p.getiCod());
-		FrmGestionProductos.txtNombre.setText(p.getsNombre());
+		FrmDetalleProd.txtCod.setText("" + p.getiCod());
+		FrmDetalleProd.txtNombre.setText(p.getsNombre());
 		if (p.getiOpcion() == 1) {
-			FrmGestionProductos.rdbtnPack.setSelected(true);
+			FrmDetalleProd.rdbtnPack.setSelected(true);
 		} else if (p.getiOpcion() == 2) {
-			FrmGestionProductos.rdbtnUnidad.setSelected(true);
+			FrmDetalleProd.rdbtnUnidad.setSelected(true);
 		} else if (p.getiOpcion() == 3) {
-			FrmGestionProductos.rdbtnCombinado.setSelected(true);
+			FrmDetalleProd.rdbtnCombinado.setSelected(true);
 		} else {
 			System.out.println("Opcion invalida");
 		}
-		FrmGestionProductos.textComents.setText(p.getsComents());
-		FrmGestionProductos.checkFragil.setSelected(p.isbFragil());
-		FrmGestionProductos.checkObsoleto.setSelected(p.isbObsoleto());
-		FrmGestionProductos.txtStockActual.setText("" + p.getiStockActual());
-		FrmGestionProductos.txtStockMin.setText("" + p.getiStockMin());
-		FrmGestionProductos.txtStockMax.setText("" + p.getiStockMax());
-		FrmGestionProductos.cmbProveedor.setSelectedItem(p.getsProveedor());
-		FrmGestionProductos.txtPVP.setText("" + p.getfPVP());
+		FrmDetalleProd.textComents.setText(p.getsComents());
+		FrmDetalleProd.checkFragil.setSelected(p.isbFragil());
+		FrmDetalleProd.checkObsoleto.setSelected(p.isbObsoleto());
+		FrmDetalleProd.txtStockActual.setText("" + p.getiStockActual());
+		FrmDetalleProd.txtStockMin.setText("" + p.getiStockMin());
+		FrmDetalleProd.txtStockMax.setText("" + p.getiStockMax());
+		FrmDetalleProd.cmbProveedor.setSelectedItem(p.getsProveedor());
+		FrmDetalleProd.txtPVP.setText("" + p.getfPVP());
 	}
 	
-	public void confirmarBorrar(FrmGestionProductos frame) {
+	public void confirmarBorrar(FrmDetalleProd frame) {
 		log.confirmarBorrar(frame);
 	}
 	

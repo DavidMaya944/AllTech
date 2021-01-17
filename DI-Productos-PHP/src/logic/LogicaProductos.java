@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Producto;
-import view.FrmGestionProductos;
+import view.FrmDetalleProd;
 
 public class LogicaProductos {
 	public static int iPos = 0;
@@ -81,11 +81,11 @@ public class LogicaProductos {
 
 	public int validarOpcion() {
 		int iOpcion = 0;
-		if (FrmGestionProductos.rdbtnPack.isSelected() == true) {
+		if (FrmDetalleProd.rdbtnPack.isSelected() == true) {
 			iOpcion = 1;
-		} else if (FrmGestionProductos.rdbtnUnidad.isSelected() == true) {
+		} else if (FrmDetalleProd.rdbtnUnidad.isSelected() == true) {
 			iOpcion = 2;
-		} else if (FrmGestionProductos.rdbtnCombinado.isSelected() == true) {
+		} else if (FrmDetalleProd.rdbtnCombinado.isSelected() == true) {
 			iOpcion = 3;
 		} else {
 			System.out.println("Opcion invalida.");
@@ -208,8 +208,8 @@ public class LogicaProductos {
 		return respuesta;
 	}
 
-	public void confirmarBorrar(FrmGestionProductos frame) {
-		int iCod = Integer.parseInt(FrmGestionProductos.txtCod.getText());
+	public void confirmarBorrar(FrmDetalleProd frame) {
+		int iCod = Integer.parseInt(FrmDetalleProd.txtCod.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
 			String sql = "http://davidmaya.atwebpages.com/ProductosPHP/delete-producto.php?CODIGO=" + iCod;
@@ -218,9 +218,9 @@ public class LogicaProductos {
 	}
 
 	public void guardarProducto() {
-		guardarBD(FrmGestionProductos.txtCod, FrmGestionProductos.txtNombre, FrmGestionProductos.btnOption, FrmGestionProductos.textComents, FrmGestionProductos.checkFragil,
-				FrmGestionProductos.checkObsoleto, FrmGestionProductos.txtStockActual, FrmGestionProductos.txtStockMin, FrmGestionProductos.txtStockMax,
-				FrmGestionProductos.cmbProveedor, FrmGestionProductos.txtPVP);
+		guardarBD(FrmDetalleProd.txtCod, FrmDetalleProd.txtNombre, FrmDetalleProd.btnOption, FrmDetalleProd.textComents, FrmDetalleProd.checkFragil,
+				FrmDetalleProd.checkObsoleto, FrmDetalleProd.txtStockActual, FrmDetalleProd.txtStockMin, FrmDetalleProd.txtStockMax,
+				FrmDetalleProd.cmbProveedor, FrmDetalleProd.txtPVP);
 		
 	}
 	
