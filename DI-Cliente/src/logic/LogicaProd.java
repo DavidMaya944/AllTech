@@ -27,18 +27,16 @@ public class LogicaProd {
 		return respuesta;
 	}
 	
-	public String getProductoDetalle(String sNombre) {
-		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-producto-detalle.php?NOMBRE=" + sNombre;
+	public static String getProductoDetalle(int iCod) {
+		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-producto-detalle.php?CODIGO=" + iCod;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
 	}
 	
-	public Producto leer(JTextField txtNombre) {
+	public static Producto leer(int iCod) {
 		Producto p = null;
-		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
-		System.out.println(sNombre);
-		String sRes = getProductoDetalle(sNombre);
+		String sRes = getProductoDetalle(iCod);
 		JSONArray jArray = new JSONArray(sRes);
 		for(int i = 0; i < jArray.length(); i++) {
 			JSONObject jObj = jArray.getJSONObject(i);
@@ -48,28 +46,14 @@ public class LogicaProd {
 		return p;
 	}
 	
-	public void mostrar(Producto p) {
-		FrmDetalleProd.txtNombre.setText(p.getsNombre());
-		FrmDetalleProd.txtDescrip.setText(p.getsComents());
-		FrmDetalleProd.txtPVP.setText(p.getfPVP() + " €");
-		
-		if(p.getiStockActual() == 0) {
-			FrmDetalleProd.txtStock.setText("AGOTADO");
-		}else if(p.getiStockActual() > 0 && p.getiStockActual() <= 5){
-			FrmDetalleProd.txtStock.setText("QUEDAN POCAS UNIDADES");
-		}else {
-			FrmDetalleProd.txtStock.setText("EN STOCK");
-		}
-		
-	}
-	
-	private Producto JsonToProductoDetalle(JSONObject jObj) {
+	private static Producto JsonToProductoDetalle(JSONObject jObj) {
+		int iCod = jObj.getInt("CODIGO");
 		String sNombre = jObj.getString("NOMBRE");
 		String sComents = jObj.getString("COMENTARIOS");
 		float fPVP = jObj.getFloat("PVP");
 		int iStockActual = jObj.getInt("STOCK_ACTUAL");
 		
-		Producto p = new Producto(sNombre, sComents, fPVP, iStockActual);
+		Producto p = new Producto(iCod, sNombre, sComents, fPVP, iStockActual);
 		
 		return p;
 	}
@@ -112,7 +96,7 @@ public class LogicaProd {
 			tProd.txtNombre.setText(lProductos.get(i).getsNombre());
 			tProd.textDescrip.setText(lProductos.get(i).getsComents());
 			tProd.txtPVP.setText(lProductos.get(i).getfPVP() + " €");
-			tProd.txtNumeracion.setText(i +"");
+			tProd.txtCod.setText(lProductos.get(i).getiCod() + "");
 			FrmTienda.panelList.add(tProd);
 			lTarjeta.add(tProd);
 		}

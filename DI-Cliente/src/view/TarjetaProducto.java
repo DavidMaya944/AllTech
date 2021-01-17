@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class TarjetaProducto extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -24,8 +25,22 @@ public class TarjetaProducto extends JPanel {
 	private LogicaProd logProd = new LogicaProd();
 	private CtrlProductos ctrlProd = new CtrlProductos();
 	public static int numeroTarjeta;
-	public static JTextField txtNumeracion;
-	public TarjetaProducto(Producto oProd) {
+	public static JTextField txtCod;
+	
+	
+	public TarjetaProducto(Producto p) {
+		createForm();
+		ctrlProd.cargarDatos(p);
+		setVisible(true);
+	}
+	
+	public void createForm() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new FrmDetalleProd();
+			}
+		});
 	
 	
 		setLayout(null);
@@ -61,22 +76,12 @@ public class TarjetaProducto extends JPanel {
 		separatorSup.setBounds(0, 11, 450, 2);
 		add(separatorSup);
 		
-		JButton btnVer = new JButton("Ver");
-		btnVer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ctrlProd.click_ver();
-			}
-		});
-		btnVer.setBounds(311, 40, 69, 23);
-		add(btnVer);
+		txtCod = new JTextField();
+		txtCod.setBounds(10, 121, 0, 0);
+		add(txtCod);
+		txtCod.setColumns(10);
 		
-		txtNumeracion = new JTextField();
-		txtNumeracion.setBounds(10, 116, 86, 20);
-		add(txtNumeracion);
-		txtNumeracion.setColumns(10);
 		
-		ctrlProd.cargarDatos(oProd);
 		
 	}
 }

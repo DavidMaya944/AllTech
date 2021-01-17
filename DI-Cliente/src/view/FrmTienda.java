@@ -19,10 +19,19 @@ public class FrmTienda extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static JPanel contentPane;
 	public static JPanel panelList;
+	public static JScrollPane scrollPane;
 	private CtrlProductos ctrlProd = new CtrlProductos();
 
 	public FrmTienda() {
+		createForm();
+		ctrlProd.llenarLista();
+		setVisible(true);
+	}
+	
+	
+	public void createForm() {
 		setTitle("All Tech");
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 400);
 		
@@ -71,16 +80,16 @@ public class FrmTienda extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
-		JScrollPane scrollPane = new JScrollPane(panelList);
+		scrollPane = new JScrollPane(panelList);
 		contentPane.add(scrollPane);
 		panelList = new JPanel();
 		scrollPane.setViewportView(panelList);
 		panelList.setPreferredSize(new Dimension(480,600));
 		panelList.setLayout(new BoxLayout(panelList, BoxLayout.Y_AXIS));
 		panelList.setMinimumSize(new Dimension(100,100));
-		ctrlProd.llenarLista();
-		setResizable(true);
-		setVisible(true);
+		
+		
+		
 	}
 
 }

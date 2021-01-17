@@ -22,7 +22,14 @@ public class FrmDetalleProd extends JFrame {
 	public static JTextArea txtDescrip;
 	private LogicaProd logProd = new LogicaProd();
 
-	public FrmDetalleProd(Producto p) {
+	public FrmDetalleProd() {
+		
+		createForm();
+		controller.CtrlProductos.loadDataProd();
+		setVisible(true);
+	}
+	
+	public void createForm() {
 		setTitle("Producto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 519, 233);
@@ -68,6 +75,5 @@ public class FrmDetalleProd extends JFrame {
 		btnAniadir.setBounds(292, 160, 86, 23);
 		contentPane.add(btnAniadir);
 		setVisible(true);
-		logProd.mostrar(p);
 	}
 }
