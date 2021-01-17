@@ -1,51 +1,50 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FrmGestionProductos extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable tableProd;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FrmGestionProductos frame = new FrmGestionProductos();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static JTable tblResult;
+	
+	public FrmGestionProductos() {
+		setTitle("Gesti\u00F3n de Productos");
+		createForm();
+		controller.CtrlProducto.loadData();
+		setVisible(true);
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public FrmGestionProductos() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+	public void createForm() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 950, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane, BorderLayout.CENTER);
+		JScrollPane panelDat = new JScrollPane();
+		contentPane.add(panelDat, BorderLayout.CENTER);
 		
-		tableProd = new JTable();
-		scrollPane.setViewportView(tableProd);
+		tblResult = new JTable();
+		tblResult.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tblResult.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.CtrlProducto.tableRowSelected();
+			}
+		});
+		panelDat.setViewportView(tblResult);
+		
+		setVisible(true);
 	}
 
 }

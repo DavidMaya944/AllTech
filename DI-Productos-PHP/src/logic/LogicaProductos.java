@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -120,7 +121,7 @@ public class LogicaProductos {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Producto> leer() {
+	public static List<Producto> leer() {
 		lProductos = new ArrayList<Producto>();
 		String sRes = getProductos();
 		lProductos = jasonToProductos(sRes);
@@ -128,9 +129,20 @@ public class LogicaProductos {
 		return lProductos;
 	}
 	
+	public static Producto leerProd(int iCod) {
+		Producto p = null;
+		String sRes = getProducto(iCod);
+		JSONArray jArray = new JSONArray(sRes);
+		for(int i = 0; i < jArray.length(); i++) {
+			JSONObject jObj = jArray.getJSONObject(i);
+			p = JsonToProducto(jObj);
+		}
+		return p;
+	}
 	
 	
-	public List<Producto> jasonToProductos(String respuesta){
+	
+	public static List<Producto> jasonToProductos(String respuesta){
 		List<Producto> lProducto = new ArrayList<Producto>();
 		
 		JSONArray jArray = new JSONArray(respuesta);
@@ -143,7 +155,7 @@ public class LogicaProductos {
 		return lProducto;
 	}
 	
-	private Producto JsonToProducto(JSONObject jObj) {
+	private static Producto JsonToProducto(JSONObject jObj) {
 		boolean bFragil = false, bObsoleto = false;
 		
 		Integer iCod = jObj.getInt("CODIGO");
@@ -165,44 +177,15 @@ public class LogicaProductos {
 		return p;
 	}
 	
-	
-
-	public Producto inicioLista() {
-		Producto p = null;
-		iPos = 0;
-		p = lProductos.get(iPos);
-		return p;
-	}
-
-	public Producto finLista() {
-		iPos = lProductos.size() - 1;
-		Producto p = null;
-		if (iPos >= 1)
-			p = lProductos.get(iPos);
-		return p;
-	}
-
-	public Producto siguiente() {
-		Producto p = null;
-		if (iPos != lProductos.size() - 1) {
-			iPos++;
-			p = lProductos.get(iPos);
-		}
-		return p;
-	}
-
-	public Producto anterior() {
-		Producto p = null;
-		if (iPos != 0) {
-			iPos--;
-			p = lProductos.get(iPos);
-		}
-		return p;
-
-	}
-	
-	public String getProductos() {
+	public static String getProductos() {
 		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-productos.php";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
+		return respuesta;
+	}
+	
+	public static String getProducto(int iId) {
+		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-producto.php?CODIGO=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -222,6 +205,29 @@ public class LogicaProductos {
 				FrmDetalleProd.checkObsoleto, FrmDetalleProd.txtStockActual, FrmDetalleProd.txtStockMin, FrmDetalleProd.txtStockMax,
 				FrmDetalleProd.cmbProveedor, FrmDetalleProd.txtPVP);
 		
+	}
+	
+	public static DefaultTableModel generarTablaProducto(List<Producto> resultado) {
+		DefaultTableModel modelo = new DefaultTableModel();
+		// Añadir la cabecera de las columnas
+		modelo.addColumn("CODIGO");
+		modelo.addColumn("NOMBRE");
+		modelo.addColumn("OPCION");
+		modelo.addColumn("DESCRIPCION");
+		modelo.addColumn("FRAGIL");
+		modelo.addColumn("OBSOLETO");
+		modelo.addColumn("STOCK ACTUAL");
+		modelo.addColumn("STOCK MIN");
+		modelo.addColumn("STOCK MAX");
+		modelo.addColumn("PROVEEDOR");
+		modelo.addColumn("PVP");
+		
+		// Añadir cada fila valores
+		for(Producto p : resultado) {
+			modelo.addRow(new Object[] {p.getiCod(), p.getsNombre(), p.getiOpcion(), p.getsComents(), p.isbFragil(),
+					p.isbObsoleto(), p.getiStockActual(), p.getiStockMin(), p.getiStockMax(), p.getsProveedor(), p.getfPVP()});
+		}
+		return modelo;
 	}
 	
 }

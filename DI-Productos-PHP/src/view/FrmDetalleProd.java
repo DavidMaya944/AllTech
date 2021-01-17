@@ -46,19 +46,24 @@ public class FrmDetalleProd extends JFrame {
 	public static FrmDetalleProd frame;
 	public static final ButtonGroup btnOption = new ButtonGroup();
 
+	public FrmDetalleProd() {
+		createForm();
+		controller.CtrlProducto.loadDataProd();
+		setVisible(true);
+	}
+	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public FrmDetalleProd() {
+	public void createForm() {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				dispose();
-				new FrmMenuPrincipal();
 			}
 		});
-		
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon\\cesta.png"));
-		setTitle("Productos");
+		setTitle("Detalle");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 703, 413);
 		contentPane = new JPanel();
@@ -205,7 +210,8 @@ public class FrmDetalleProd extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrl.guardarProducto();
-				ctrl.abrir();
+				controller.CtrlProducto.loadData();
+				dispose();
 				
 			}
 		});
@@ -220,55 +226,18 @@ public class FrmDetalleProd extends JFrame {
 		});
 		btnBorrar.setBounds(374, 343, 97, 23);
 		contentPane.add(btnBorrar);
-
-		JButton btnPrimero = new JButton("|<");
-		btnPrimero.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrl.inicioLista();
-			}
-		});
-		btnPrimero.setBounds(10, 343, 44, 23);
-		contentPane.add(btnPrimero);
-
-		JButton btnSiguiente = new JButton(">>");
-		btnSiguiente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrl.siguiente();
-			}
-		});
-		btnSiguiente.setBounds(123, 343, 49, 23);
-		contentPane.add(btnSiguiente);
-
-		JButton btnAnterior = new JButton("<<");
-		btnAnterior.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrl.anterior();
-			}
-		});
-		btnAnterior.setBounds(64, 343, 49, 23);
-		contentPane.add(btnAnterior);
-
-		JButton btnUltimo = new JButton(">|");
-		btnUltimo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrl.finLista();
-			}
-		});
-		btnUltimo.setBounds(182, 343, 44, 23);
-		contentPane.add(btnUltimo);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new FrmMenuPrincipal();
 			}
 		});
 		btnVolver.setBounds(278, 343, 86, 23);
 		contentPane.add(btnVolver);
-		ctrl.abrir();
-		setResizable(false);
-		setVisible(true);
+		
+		
+		
 	}
 	
 }
