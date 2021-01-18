@@ -39,7 +39,7 @@ public class FrmMenuPrincipal extends JFrame {
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new FrmGestionUsuario();
+				new FrmGestionUsuarios();
 				
 			}
 		});

@@ -5,13 +5,14 @@ import java.util.List;
 
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.Producto;
 import model.Usuario;
-import view.FrmGestionUsuario;
-import view.FrmHistorialUsuarios;
+import view.FrmDetalleUsuario;
 
 public class LogicaUsuarios {
 
@@ -21,7 +22,7 @@ public class LogicaUsuarios {
 	public static List<Usuario> lUsuariosT = new ArrayList<Usuario>();
 	public static int iPos = 0;
 
-	public String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos,
+	public static String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos,
 			JTextField txtEmail, JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia,
 			JTextField txtTelefono, JTextField txtPermiso) {
 
@@ -55,7 +56,7 @@ public class LogicaUsuarios {
 		return respuesta;
 	}
 
-	public String bloquearUser(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
+	public static String bloquearUser(JTextField txtID, JTextField txtNombre, JTextField txtApellidos, JTextField txtEmail,
 			JTextField txtDireccion, JTextField txtUsuario, JPasswordField txtContrasenia, JTextField txtTelefono,
 			JTextField txtPermiso) {
 
@@ -89,67 +90,37 @@ public class LogicaUsuarios {
 		return respuesta;
 	}
 
-	public String getPermisoBlock() {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-permiso-bloqueado.php";
-		String respuesta = LogicaGeneral.peticionHttpArray(sql);
-
-		return respuesta;
-	}
-
-	public String obtenerUsuarios() {
+	public static String obtenerUsuarios() {
 		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/getUsuariosClientes.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 
 		return respuesta;
 	}
-
-	public String getUserPermiso() {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-Usuario-permiso.php?PERMISO=EN%20ESPERA";
+	
+	public static String getUser(int iId) {
+		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-usuarioCliente.php?ID=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
-
+		
 		return respuesta;
 	}
-
-	public String rechazarUsuario() {
-		int iId = Integer.parseInt(FrmGestionUsuario.txtID.getText());
+	
+	public static String rechazarUsuario() {
+		int iId = Integer.parseInt(FrmDetalleUsuario.txtID.getText());
 		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 
 		return respuesta;
 	}
-
-	public String getPermisoAcept() {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-permiso-aceptado.php?PERMISO=ACPETADO";
-		String respuesta = LogicaGeneral.peticionHttpArray(sql);
-
-		return respuesta;
-	}
-
-	public List<Usuario> leerEnEspera() {
-		lUsuarios = new ArrayList<Usuario>();
-		String sRes = getUserPermiso();
-		lUsuarios = jasonToUsuarios(sRes);
-
-		return lUsuarios;
-	}
-
-	public List<Usuario> leerAcept() {
-		lUsuariosA = new ArrayList<Usuario>();
-		String sRes = getPermisoAcept();
-		lUsuariosA = jasonToUsuarios(sRes);
-
-		return lUsuariosA;
-	}
-
-	public List<Usuario> leerBlock() {
+	
+	public static List<Usuario> leer() {
 		lUsuariosB = new ArrayList<Usuario>();
-		String sRes = getPermisoBlock();
+		String sRes = obtenerUsuarios();
 		lUsuariosB = jasonToUsuarios(sRes);
 
 		return lUsuariosB;
 	}
 
-	public List<Usuario> jasonToUsuarios(String respuesta) {
+	public static List<Usuario> jasonToUsuarios(String respuesta) {
 		List<Usuario> lUsuario = new ArrayList<Usuario>();
 		JSONArray jArray = new JSONArray(respuesta);
 		for (int i = 0; i < jArray.length(); i++) {
@@ -161,7 +132,7 @@ public class LogicaUsuarios {
 		return lUsuario;
 	}
 
-	private Usuario JsonToUsuario(JSONObject jObj) {
+	private static Usuario JsonToUsuario(JSONObject jObj) {
 
 		Integer iId = jObj.getInt("ID");
 		String sNombre = jObj.getString("NOMBRE");
@@ -178,90 +149,53 @@ public class LogicaUsuarios {
 	}
 
 	public void confirmarUsuario() {
-		confirmarRegistro(FrmGestionUsuario.txtID, FrmGestionUsuario.txtNombre, FrmGestionUsuario.txtApellidos,
-				FrmGestionUsuario.txtEmail, FrmGestionUsuario.txtDireccion, FrmGestionUsuario.txtUser,
-				FrmGestionUsuario.txtPass, FrmGestionUsuario.txtTelefono, FrmGestionUsuario.txtPermiso);
+		confirmarRegistro(FrmDetalleUsuario.txtID, FrmDetalleUsuario.txtNombre, FrmDetalleUsuario.txtApellidos,
+				FrmDetalleUsuario.txtEmail, FrmDetalleUsuario.txtDireccion, FrmDetalleUsuario.txtUser,
+				FrmDetalleUsuario.txtPass, FrmDetalleUsuario.txtTelefono, FrmDetalleUsuario.txtPermiso);
 	}
 
-	public void blouqearUsuario() {
-		bloquearUser(FrmHistorialUsuarios.txtID, FrmHistorialUsuarios.txtNombre, FrmHistorialUsuarios.txtApellidos,
-				FrmHistorialUsuarios.txtEmail, FrmHistorialUsuarios.txtDireccion, FrmHistorialUsuarios.txtUser,
-				FrmHistorialUsuarios.txtPass, FrmHistorialUsuarios.txtTelefono, FrmHistorialUsuarios.txtPermiso);
+	public static void blouqearUsuario() {
+		bloquearUser(FrmDetalleUsuario.txtID, FrmDetalleUsuario.txtNombre, FrmDetalleUsuario.txtApellidos,
+				FrmDetalleUsuario.txtEmail, FrmDetalleUsuario.txtDireccion, FrmDetalleUsuario.txtUser,
+				FrmDetalleUsuario.txtPass, FrmDetalleUsuario.txtTelefono, FrmDetalleUsuario.txtPermiso);
 	}
 
-	public void desbloquearUsuario() {
-		confirmarRegistro(FrmHistorialUsuarios.txtID, FrmHistorialUsuarios.txtNombre, FrmHistorialUsuarios.txtApellidos,
-				FrmHistorialUsuarios.txtEmail, FrmHistorialUsuarios.txtDireccion, FrmHistorialUsuarios.txtUser,
-				FrmHistorialUsuarios.txtPass, FrmHistorialUsuarios.txtTelefono, FrmHistorialUsuarios.txtPermiso);
+	public static void desbloquearUsuario() {
+		confirmarRegistro(FrmDetalleUsuario.txtID, FrmDetalleUsuario.txtNombre, FrmDetalleUsuario.txtApellidos,
+				FrmDetalleUsuario.txtEmail, FrmDetalleUsuario.txtDireccion, FrmDetalleUsuario.txtUser,
+				FrmDetalleUsuario.txtPass, FrmDetalleUsuario.txtTelefono, FrmDetalleUsuario.txtPermiso);
 	}
 
-	public Usuario inicioLista() {
-		Usuario u = null;
-		iPos = 0;
-		u = lUsuarios.get(iPos);
-		return u;
-	}
 
-	public Usuario finLista() {
-		iPos = lUsuarios.size() - 1;
-		Usuario u = null;
-		if (iPos >= 1)
-			u = lUsuarios.get(iPos);
-		return u;
-	}
-
-	public Usuario siguiente() {
-		Usuario u = null;
-		if (iPos != lUsuarios.size() - 1) {
-			iPos++;
-			u = lUsuarios.get(iPos);
+	public static DefaultTableModel generarTablaUsuario(List<Usuario> resultado) {
+		DefaultTableModel modelo = new DefaultTableModel();
+		// Añadir la cabecera de las columnas
+		modelo.addColumn("ID");
+		modelo.addColumn("NOMBRE");
+		modelo.addColumn("APELLIDOS");
+		modelo.addColumn("EMAIL");
+		modelo.addColumn("DIRECCION");
+		modelo.addColumn("USUARIO");
+		modelo.addColumn("PASSWORD");
+		modelo.addColumn("TELEFONO");
+		modelo.addColumn("PERMISO");
+		
+		// Añadir cada fila valores
+		for(Usuario u : resultado) {
+			modelo.addRow(new Object[] {u.getiId(), u.getsNombre(), u.getsApellidos(), u.getsEmail(), u.getsDireccion(),
+					u.getsUsuario(), u.getsContrasenia(), u.getsTelefono(), u.getsPermiso()});
 		}
-
-		return u;
+		return modelo;
 	}
-
-	public Usuario anterior() {
+	
+	public static Usuario leerUser(int iId) {
 		Usuario u = null;
-		if (iPos != 0) {
-			iPos--;
-			u = lUsuarios.get(iPos);
-		}
-		return u;
-
-	}
-
-	public Usuario inicioListaA() {
-		Usuario u = null;
-		iPos = 0;
-		u = lUsuariosA.get(iPos);
-		return u;
-	}
-
-	public Usuario finListaA() {
-		iPos = lUsuarios.size() - 1;
-		Usuario u = null;
-		if (iPos >= 1)
-			u = lUsuariosA.get(iPos);
-		return u;
-	}
-
-	public Usuario siguienteA() {
-		Usuario u = null;
-		if (iPos != lUsuariosA.size() - 1) {
-			iPos++;
-			u = lUsuariosA.get(iPos);
-		}
-
-		return u;
-	}
-
-	public Usuario anteriorA() {
-		Usuario u = null;
-		if (iPos != 0) {
-			iPos--;
-			u = lUsuariosA.get(iPos);
+		String sRes = getUser(iId);
+		JSONArray jArray = new JSONArray(sRes);
+		for(int i = 0; i < jArray.length(); i++) {
+			JSONObject jObj = jArray.getJSONObject(i);
+			u = JsonToUsuario(jObj);
 		}
 		return u;
-
 	}
 }

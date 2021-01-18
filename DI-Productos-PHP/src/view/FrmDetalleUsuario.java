@@ -2,23 +2,21 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-public class FrmGestionUsuario extends JFrame {
+public class FrmDetalleUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblID;
@@ -33,15 +31,23 @@ public class FrmGestionUsuario extends JFrame {
 	private JLabel lblPermiso;
 	public static JTextField txtPermiso;
 	private CtrlUsuario ctrlUser = new CtrlUsuario();
-	public static FrmGestionUsuario frame;
+	public static FrmDetalleUsuario frame;
+	public static JButton btnBlock;
+	public static JButton btnUnBlock;
 
+	
+	public FrmDetalleUsuario() {
+		createForm();
+		controller.CtrlUsuario.loadDataUser();
+		setVisible(true);
+	}
 
-	public FrmGestionUsuario() {
+	public void createForm() {
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				dispose();
-				new FrmMenuPrincipal();
 			}
 		});
 		setTitle("Usuarios");
@@ -131,7 +137,7 @@ public class FrmGestionUsuario extends JFrame {
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.rechazarUsuario();
-				ctrlUser.abrirUserEspera();
+				controller.CtrlUsuario.loadData();
 			}
 		});
 		btnRechazar.setBounds(482, 263, 100, 23);
@@ -141,7 +147,7 @@ public class FrmGestionUsuario extends JFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.confirmarUsuario();
-				ctrlUser.abrirUserEspera();
+				controller.CtrlUsuario.loadData();
 			}
 		});
 		btnAceptar.setBounds(383, 263, 89, 23);
@@ -162,65 +168,9 @@ public class FrmGestionUsuario extends JFrame {
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		
-		JButton btnPrimero = new JButton("|<");
-		btnPrimero.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrlUser.inicioListaEspera();
-			}
-		});
-		btnPrimero.setBounds(10, 263, 46, 23);
-		contentPane.add(btnPrimero);
-		
-		JButton bntAnterior = new JButton("<<");
-		bntAnterior.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrlUser.anteriorEspera();
-			}
-		});
-		bntAnterior.setBounds(66, 263, 48, 23);
-		contentPane.add(bntAnterior);
-		
-		JButton btnSiguiente = new JButton(">>");
-		btnSiguiente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrlUser.siguienteEspera();
-			}
-		});
-		btnSiguiente.setBounds(124, 263, 48, 23);
-		contentPane.add(btnSiguiente);
-		
-		JButton btnUltimo = new JButton(">|");
-		btnUltimo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ctrlUser.finListaEspera();
-			}
-		});
-		btnUltimo.setBounds(182, 263, 46, 23);
-		contentPane.add(btnUltimo);
-		
 		JMenuBar menuUser = new JMenuBar();
 		menuUser.setBounds(0, 0, 582, 22);
 		contentPane.add(menuUser);
-		
-		JMenu mnArchivo = new JMenu("Archivo");
-		menuUser.add(mnArchivo);
-		
-		JMenuItem mntmHistorial = new JMenuItem("Historial");
-		mntmHistorial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new FrmHistorialUsuarios();
-			}
-		});
-		mnArchivo.add(mntmHistorial);
-		
-		JMenuItem mntmSalir = new JMenuItem("Salir");
-		mntmSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				new FrmMenuPrincipal();
-			}
-		});
-		mnArchivo.add(mntmSalir);
 		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
@@ -231,8 +181,28 @@ public class FrmGestionUsuario extends JFrame {
 		});
 		btnVolver.setBounds(284, 263, 89, 23);
 		contentPane.add(btnVolver);
-		ctrlUser.abrirUserEspera();
-		setResizable(false);
-		setVisible(true);
+		
+		btnBlock = new JButton("BLOQUEAR");
+		btnBlock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.CtrlUsuario.bloquearUsuario();
+				controller.CtrlUsuario.loadData();
+				dispose();
+			}
+		});
+		btnBlock.setBounds(10, 263, 89, 23);
+		contentPane.add(btnBlock);
+		
+		btnUnBlock = new JButton("DESBLOQUEAR");
+		btnUnBlock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.CtrlUsuario.desbloquearUsuario();
+				controller.CtrlUsuario.loadData();
+				dispose();
+			}
+		});
+		btnUnBlock.setBounds(109, 263, 110, 23);
+		contentPane.add(btnUnBlock);
+		
 	}
 }

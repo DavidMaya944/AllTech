@@ -43,8 +43,6 @@ public class FrmGestionProductos extends JFrame {
 			}
 		});
 		panelDat.setViewportView(tblResult);
-		
-		setVisible(true);
 	}
 
 }
