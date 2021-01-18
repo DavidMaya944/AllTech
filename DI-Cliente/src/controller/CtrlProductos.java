@@ -34,7 +34,6 @@ public class CtrlProductos {
 	}
 
 	public void cargarDatos(Producto p) {
-		TarjetaProducto.txtCod.setText(p.getiCod() + "");
 		TarjetaProducto.txtNombre.setText(p.getsNombre());
 		TarjetaProducto.textDescrip.setText(p.getsComents());
 		TarjetaProducto.txtPVP.setText(p.getfPVP() + " €");
@@ -43,6 +42,7 @@ public class CtrlProductos {
 
 	
 	public static void loadDataProd() {
+		iId = Integer.parseInt(TarjetaProducto.txtCod.getText());
 			try {
 			Producto p = LogicaProd.leer(iId);
 			FrmDetalleProd.txtNombre.setText(p.getsNombre());
@@ -58,7 +58,7 @@ public class CtrlProductos {
 			}
 		}catch(Exception e) {
 			System.err.println("Se ha producido un fallo: " + e.getMessage());
-			e.getStackTrace();
+			System.err.println(e.getStackTrace());
 		}
 	}
 }

@@ -22,7 +22,7 @@ public class TarjetaProducto extends JPanel {
 	public static JTextField txtNombre;
 	public static JTextField txtPVP;
 	public static JTextArea textDescrip;
-	private LogicaProd logProd = new LogicaProd();
+	public static JButton btnVer;
 	private CtrlProductos ctrlProd = new CtrlProductos();
 	public static int numeroTarjeta;
 	public static JTextField txtCod;
@@ -35,16 +35,7 @@ public class TarjetaProducto extends JPanel {
 	}
 	
 	public void createForm() {
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new FrmDetalleProd();
-			}
-		});
-	
-	
 		setLayout(null);
-		
 		txtNombre = new JTextField();
 		txtNombre.setEnabled(false);
 		txtNombre.setBounds(99, 41, 131, 20);
@@ -76,8 +67,12 @@ public class TarjetaProducto extends JPanel {
 		separatorSup.setBounds(0, 11, 450, 2);
 		add(separatorSup);
 		
+		btnVer = new JButton("Ver");
+		btnVer.setBounds(310, 40, 69, 23);
+		add(btnVer);
+		
 		txtCod = new JTextField();
-		txtCod.setBounds(10, 121, 0, 0);
+		txtCod.setBounds(10, 116, 0, 0);
 		add(txtCod);
 		txtCod.setColumns(10);
 		
