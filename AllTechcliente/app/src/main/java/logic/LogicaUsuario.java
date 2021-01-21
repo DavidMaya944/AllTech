@@ -70,6 +70,7 @@ public class LogicaUsuario {
 
         @Override
         protected Void doInBackground(String... params) {
+            Log.i("MAYA","Entra en doInBackground");
             try {
                 URL url = new URL(params[0]);
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -89,9 +90,8 @@ public class LogicaUsuario {
 
         @Override
         public void onPostExecute(Void aVoid) {
+            Log.i("MAYA","Entra en onPostExecute");
             super.onPostExecute(aVoid);
-            Type type = new TypeToken<List<Usuario>>() {}.getType();
-            lUsuario = new Gson().fromJson(sResultado, type);
 
         }
     }
@@ -104,11 +104,11 @@ public class LogicaUsuario {
         String sUsuario = RegistroActivity.txtUsuario.getText().toString();
         String sPassword = RegistroActivity.txtPassword.getText().toString();
         String sTelefono = RegistroActivity.txtTelefono.getText().toString();
-
+        Log.i("MAYA","Entra en el insert");
         String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
-
+        Log.i("MAYA","Hace el insert");
         return sql;
     }
 
