@@ -2,6 +2,7 @@ package logic;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.RegistroActivity;
