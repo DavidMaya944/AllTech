@@ -15,12 +15,12 @@
         android:layout_marginTop="@dimen/sep_horizontal"
         android:layout_marginEnd="@dimen/sep_lateral"
         android:layout_marginRight="@dimen/sep_lateral"
-        android:text="¡Bienvenido a AllTech!"
         android:textSize="@dimen/lblBienvenido_Size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/lbl_bienvenido" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -31,7 +31,7 @@
         android:layout_marginTop="@dimen/sep_horizontal"
         android:layout_marginEnd="@dimen/sep_lateral"
         android:layout_marginRight="@dimen/sep_lateral"
-        android:text="Iniciar Sesion"
+        android:text="@string/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBienvenido" />
@@ -45,7 +45,7 @@
         android:layout_marginTop="@dimen/sep_horizontal"
         android:layout_marginEnd="@dimen/sep_lateral"
         android:layout_marginRight="@dimen/sep_lateral"
-        android:text="Registrarse"
+        android:text="@string/btn_registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
@@ -59,7 +59,7 @@
         android:layout_marginTop="@dimen/sep_horizontal"
         android:layout_marginEnd="@dimen/sep_lateral"
         android:layout_marginRight="@dimen/sep_lateral"
-        android:text="Salir"
+        android:text="@string/btn_exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistro" />

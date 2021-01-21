@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AllTech-cliente</string>
+    <string name="btn_registro">Registrarse</string>
+    <string name="btn_login">Iniciar sesion</string>
+    <string name="btn_exit">Salir</string>
+    <string name="lbl_bienvenido">¡Bienvenido a AllTech!</string>
+    <string name="lbl_registro">Registro</string>
+    <string name="txt_nombre">Nombre</string>
+    <string name="txt_apellidos">Apellidos</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_direccion">Direccion</string>
+    <string name="txt_usuario">Usuario</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_telefono">Telefono</string>
 </resources>
