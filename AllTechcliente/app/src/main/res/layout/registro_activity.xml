@@ -6,10 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".RegistroActivity">
 
+    <Button
+        android:id="@+id/btnConfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sep_lateral"
+        android:layout_marginLeft="@dimen/sep_lateral"
+        android:layout_marginBottom="@dimen/sep_horizontal"
+        android:text="@string/btn_confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/sep_lateral"
+        android:layout_marginRight="@dimen/sep_lateral"
+        android:layout_marginBottom="@dimen/sep_horizontal"
+        android:text="@string/btn_cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/lblRegistro"

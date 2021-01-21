@@ -23,8 +23,8 @@ public class Usuario {
         setPERMISO(PERMISO);
     }
 
-    public Usuario(String USUARIO, String PASSWORD, String PERMISO){
-        setUSUARIO(USUARIO);
+    public Usuario(String EMAIL, String PASSWORD, String PERMISO){
+        setEMAIL(EMAIL);
         setPASSWORD(PASSWORD);
         setPERMISO(PERMISO);
     }
