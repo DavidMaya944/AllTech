@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lblBienvenido_Size">30dp</dimen>
+    <dimen name="sep_horizontal">32dp</dimen>
+    <dimen name="sep_lateral">40dp</dimen>
+</resources>
