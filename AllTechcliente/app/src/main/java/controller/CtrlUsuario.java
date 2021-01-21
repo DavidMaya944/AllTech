@@ -13,7 +13,10 @@ public class CtrlUsuario {
     public void login(){
         logUser.getUsuario();
         compararCredenciales();
+    }
 
+    public void registro(){
+        logUser.registroUser();
     }
 
     public boolean compararCredenciales(){
