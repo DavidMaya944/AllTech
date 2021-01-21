@@ -1,7 +1,9 @@
 package logic;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
+import com.example.alltech_cliente.LoginActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -10,19 +12,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import model.Usuario;
 
 public class LogicaUsuario {
-    List<Usuario> lUsuario;
+    public static List<Usuario> lUsuario;
+    public static int iPos;
+
 
     public void getUsuario(){
-        new load_usuarios().execute("http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php");
+        new login_user().execute("http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php");
     }
 
-    private class load_usuarios extends AsyncTask<String, Void, Void> {
+    private class login_user extends AsyncTask<String, Void, Void> {
 
         String sResultado;
 
@@ -51,6 +54,8 @@ public class LogicaUsuario {
             Type type = new TypeToken<List<Usuario>>() {
             }.getType();
             lUsuario = new Gson().fromJson(sResultado, type);
+
         }
     }
+
 }
