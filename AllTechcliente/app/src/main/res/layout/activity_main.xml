@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSalir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/sep_lateral"
@@ -59,7 +59,7 @@
         android:layout_marginTop="@dimen/sep_horizontal"
         android:layout_marginEnd="@dimen/sep_lateral"
         android:layout_marginRight="@dimen/sep_lateral"
-        android:text="Button"
+        android:text="Salir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistro" />
