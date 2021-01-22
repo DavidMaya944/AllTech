@@ -100,4 +100,19 @@ public class Usuario {
     public void setPERMISO(String PERMISO) {
         this.PERMISO = PERMISO;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "ID=" + ID +
+                ", NOMBRE='" + NOMBRE + '\'' +
+                ", APELLIDOS='" + APELLIDOS + '\'' +
+                ", EMAIL='" + EMAIL + '\'' +
+                ", DIRECCION='" + DIRECCION + '\'' +
+                ", USUARIO='" + USUARIO + '\'' +
+                ", PASSWORD='" + PASSWORD + '\'' +
+                ", TELEFONO='" + TELEFONO + '\'' +
+                ", PERMISO='" + PERMISO + '\'' +
+                '}';
+    }
 }
