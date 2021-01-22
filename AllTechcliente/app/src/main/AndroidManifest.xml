@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alltech_cliente">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,11 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AllTechcliente">
+        android:theme="@style/Theme.AllTechcliente"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Prod_detalle_activity"></activity>
+        <activity android:name=".Tienda_activity" />
         <activity
-            android:name="LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
