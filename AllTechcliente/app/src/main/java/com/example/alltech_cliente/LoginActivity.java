@@ -34,8 +34,13 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctrlUser.login();
-
+                if(ctrlUser.compararCredenciales()){
+                    Intent appIn = new Intent(getApplicationContext(), Tienda_activity.class);
+                    startActivity(appIn);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Login incorrecto", Toast.LENGTH_SHORT).show();
+                }
+               
                 }
         });
     }
