@@ -1,7 +1,6 @@
 package com.example.alltech_cliente;
 
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ctrlUser.login();
-               // Intent appIn = new Intent(getApplicationContext(), Tienda.class);
-               // startActivity(appIn);
+                Intent appIn = new Intent(getApplicationContext(), Tienda_activity.class);
+                startActivity(appIn);
             }
         });
     }

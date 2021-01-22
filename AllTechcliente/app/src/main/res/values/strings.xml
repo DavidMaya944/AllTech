@@ -27,4 +27,5 @@
     <string name="lbl_nombre_prod">Nombre</string>
     <string name="lbl_precio">Precio</string>
     <string name="lbl_detalle">Detalle</string>
+    <string name="btn_sign_in">Iniciar sesion</string>
 </resources>

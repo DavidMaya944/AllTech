@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AllTechcliente"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Prod_detalle_activity"></activity>
+        <activity android:name=".Cesta"></activity>
+        <activity android:name=".Prod_detalle_activity" />
         <activity android:name=".Tienda_activity" />
         <activity
             android:name=".LoginActivity"
