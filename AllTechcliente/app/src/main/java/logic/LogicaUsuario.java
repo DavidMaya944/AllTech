@@ -70,7 +70,6 @@ public class LogicaUsuario {
 
         @Override
         protected Void doInBackground(String... params) {
-            Log.i("MAYA","Entra en doInBackground");
             try {
                 URL url = new URL(params[0]);
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -90,7 +89,6 @@ public class LogicaUsuario {
 
         @Override
         public void onPostExecute(Void aVoid) {
-            Log.i("MAYA","Entra en onPostExecute");
             super.onPostExecute(aVoid);
 
         }

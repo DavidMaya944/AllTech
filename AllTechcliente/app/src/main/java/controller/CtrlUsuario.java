@@ -27,10 +27,8 @@ public class CtrlUsuario {
         for(int i = 0; i < LogicaUsuario.lUsuario.size(); i++){
             if(sEmail.equals(LogicaUsuario.lUsuario.get(i).getEMAIL()) && sPassword.equals(LogicaUsuario.lUsuario.get(i).getPASSWORD())){
                 bExito = true;
-                Log.i("MAYA", "El login se ha realizado con exito");
             }else{
                 bExito = false;
-                Log.i("MAYA", "ERROR: Login fallido");
             }
         }
         return bExito;

@@ -40,15 +40,11 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Log.i("MAYA","Entra en el método onClick");
                     ctrlUser.registro();
-                    Log.i("MAYA","Realiza el registro");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                    Log.i("MAYA","Realiza el startActivity");
                 } catch (Exception e){
                     Toast.makeText(getApplicationContext(), "ERROR: Registro fallido.", Toast.LENGTH_SHORT).show();
-                    Log.i("MAYA", "ERROR: No se ha podido hacer");
                 }
 
             }
