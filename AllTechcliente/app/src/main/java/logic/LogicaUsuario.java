@@ -1,10 +1,13 @@
 package logic;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.RegistroActivity;
+import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -20,6 +23,7 @@ import model.Usuario;
 public class LogicaUsuario {
     public static List<Usuario> lUsuario;
     public static int iPos;
+    public static Intent appIn;
 
     public void getUsuario(){
         new login_user().execute("http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php");
@@ -59,7 +63,7 @@ public class LogicaUsuario {
             }.getType();
             lUsuario = new Gson().fromJson(sResultado, type);
             compararCredenciales();
-
+            
         }
     }
 
@@ -99,16 +103,17 @@ public class LogicaUsuario {
         String sPassword = LoginActivity.txtPass.getText().toString();
 
         while(iPos < lUsuario.size() && !bExito){
-            Usuario u = lUsuario.get(iPos);
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
-
+                appIn = new Intent(LoginActivity.context, Tienda_activity.class);
+                LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 bExito = true;
             }else{
-                bExito = false;
+                Toast.makeText(LoginActivity.context, "Login incorrecto.", Toast.LENGTH_SHORT).show();
             }
             iPos++;
         }
+        
     }
 
     public String insert(){
