@@ -105,11 +105,20 @@ public class LogicaUsuario {
         while(iPos < lUsuario.size() && !bExito){
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
+
                 appIn = new Intent(LoginActivity.context, Tienda_activity.class);
                 LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 bExito = true;
+
+            }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
+                    && !"ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
+
+                Toast.makeText(LoginActivity.context, "Sin permiso aún. Inténtelo más tarde", Toast.LENGTH_SHORT).show();
+                bExito = false;
+
             }else{
-                Toast.makeText(LoginActivity.context, "Login incorrecto.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                bExito = false;
             }
             iPos++;
         }
