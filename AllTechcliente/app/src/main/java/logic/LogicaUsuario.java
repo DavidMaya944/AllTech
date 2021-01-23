@@ -98,31 +98,37 @@ public class LogicaUsuario {
     }
 
     public void compararCredenciales(){
-        boolean bExito = false;
+        int iValidacion = 0;
         String sEmail = LoginActivity.txtUserEmail.getText().toString();
         String sPassword = LoginActivity.txtPass.getText().toString();
 
-        while(iPos < lUsuario.size() && !bExito){
+        while(iPos < lUsuario.size() && iValidacion == 0){
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
-
-                appIn = new Intent(LoginActivity.context, Tienda_activity.class);
-                LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                bExito = true;
+                iValidacion = 1;
 
             }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && !"ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
-
-                Toast.makeText(LoginActivity.context, "Sin permiso aún. Inténtelo más tarde", Toast.LENGTH_SHORT).show();
-                bExito = false;
+                iValidacion = 2;
 
             }else{
-                Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-                bExito = false;
+                iValidacion = 3;
             }
             iPos++;
         }
-        
+
+        switch (iValidacion){
+            case 1:
+                appIn = new Intent(LoginActivity.context, Tienda_activity.class);
+                LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                break;
+            case 2:
+                Toast.makeText(LoginActivity.context, "Sin permiso aún. Inténtelo más tarde", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     public String insert(){
