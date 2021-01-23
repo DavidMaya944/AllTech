@@ -96,26 +96,35 @@ public class LogicaUsuario {
 
         }
     }
-
+/*
+pos0 = davidmaya944@gmail.com
+pos1 = JorgeRT94@gmail.com
+pos2 = movivaz@gmail.com
+pos3 = pablo.salva@gmail.com
+ */
     public void compararCredenciales(){
         int iValidacion = 0;
+        boolean bExito = false;
         String sEmail = LoginActivity.txtUserEmail.getText().toString();
         String sPassword = LoginActivity.txtPass.getText().toString();
 
-        while(iPos < lUsuario.size() && iValidacion == 0){
+        while(iPos < lUsuario.size() && !bExito){
+            Log.i("MAYA", "LA VALIDACION ES!!!" + iValidacion);
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
                 iValidacion = 1;
-
+                bExito = true;
             }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && !"ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
                 iValidacion = 2;
-
+                bExito = false;
             }else{
                 iValidacion = 3;
+                bExito = false;
             }
             iPos++;
         }
+        iPos = 0;
 
         switch (iValidacion){
             case 1:
