@@ -109,17 +109,22 @@ pos3 = pablo.salva@gmail.com
         String sPassword = LoginActivity.txtPass.getText().toString();
 
         while(iPos < lUsuario.size() && !bExito){
+            Log.i("MAYA", "PERMISO: " + lUsuario.get(iPos).getPERMISO());
             Log.i("MAYA", "LA VALIDACION ES!!!" + iValidacion);
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
                 iValidacion = 1;
                 bExito = true;
             }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
-                    && !"ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
+                    && "BLOQUEADO".equals(lUsuario.get(iPos).getPERMISO())) {
                 iValidacion = 2;
                 bExito = false;
-            }else{
+            }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
+                    && !"EN%20ESPERA".equals(lUsuario.get(iPos).getPERMISO())){
                 iValidacion = 3;
+                bExito = false;
+            }else{
+                iValidacion = 4;
                 bExito = false;
             }
             iPos++;
@@ -132,9 +137,12 @@ pos3 = pablo.salva@gmail.com
                 LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
             case 2:
-                Toast.makeText(LoginActivity.context, "Sin permiso aún. Inténtelo más tarde", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.context, "La cuenta está BLOQUEADA.", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
+                Toast.makeText(LoginActivity.context, "Esperando verificación", Toast.LENGTH_SHORT).show();
+                break;
+            case 4:
                 Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 break;
         }
