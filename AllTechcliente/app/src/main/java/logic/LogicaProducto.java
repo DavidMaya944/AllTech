@@ -1,7 +1,10 @@
 package logic;
 
 import android.os.AsyncTask;
+import android.view.LayoutInflater;
+import android.view.View;
 
+import com.example.alltech_cliente.R;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -56,6 +59,7 @@ public class LogicaProducto {
                 Adapter.HolderProducto.lblNombre.setText(lProducto.get(i).getNOMBRE());
                 Adapter.HolderProducto.lblPrecio.setText(lProducto.get(i).getPVP() + " €");
                 Adapter.HolderProducto.lblDescripcion.setText(lProducto.get(i).getCOMENTARIOS());
+               
             }
 
         }

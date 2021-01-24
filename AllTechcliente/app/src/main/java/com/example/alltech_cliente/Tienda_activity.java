@@ -26,7 +26,8 @@ public class Tienda_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
         ctrlProd.getProductos();
-        onResume();
+       // onResume();
+
     }
 
     @SuppressLint("RestrictedApi")
@@ -64,7 +65,7 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
-    protected void onResume(){
+   /* protected void onResume(){
         super.onResume();
         ctrlProd.getProductos();
         RecyclerView rView = findViewById(R.id.listaProdPrincipal);
@@ -73,5 +74,5 @@ public class Tienda_activity extends AppCompatActivity {
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
         adapter.refresh();
-    }
+    }*/
 }

@@ -22,7 +22,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static List<Producto> lProducto;
     Context context;
     public static int iPos;
-    private LogicaProducto logProd = new LogicaProducto();
 
     public Adapter(Context context){
         this.context = context;
@@ -45,9 +44,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent EditarProducto = new Intent(context, com.example.alltech_cliente.Prod_detalle_activity.class);
+                Intent pordDetalle = new Intent(context, com.example.alltech_cliente.Prod_detalle_activity.class);
                 iPos = position;
-                context.startActivity(EditarProducto);
+                context.startActivity(pordDetalle);
             }
         });
     }
