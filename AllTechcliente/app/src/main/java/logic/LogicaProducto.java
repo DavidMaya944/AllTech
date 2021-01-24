@@ -1,8 +1,16 @@
 package logic;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alltech_cliente.R;
 import com.example.alltech_cliente.Tienda_activity;
@@ -21,7 +29,6 @@ import model.Producto;
 public class LogicaProducto {
     public static List<Producto> lProducto;
     public static int iPos;
-    Adapter adapter = new Adapter(Tienda_activity.contextTienda);
     public void getProductos(){
        new listar_productos().execute("http://davidmaya.atwebpages.com/ProductosPHP/getProductos.php");
     }
@@ -52,16 +59,17 @@ public class LogicaProducto {
         @Override
         public void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Type type = new TypeToken() {
+            Type type = new TypeToken<List<Producto>>() {
             }.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            for(int i = 0; i < lProducto.size(); i++){
-                Adapter.HolderProducto.lblNombre.setText(lProducto.get(i).getNOMBRE());
-                Adapter.HolderProducto.lblPrecio.setText(lProducto.get(i).getPVP() + " €");
-                Adapter.HolderProducto.lblDescripcion.setText(lProducto.get(i).getCOMENTARIOS());
-               
+            for (Producto p : lProducto){
+                Adapter.HolderProducto.lblNombre.setText(p.getNOMBRE());
+                Adapter.HolderProducto.lblPrecio.setText(p.getPVP() + " €");
+                Adapter.HolderProducto.lblDescripcion.setText(p.getCOMENTARIOS());
             }
 
         }
     }
+
+
 }

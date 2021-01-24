@@ -22,6 +22,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static List<Producto> lProducto;
     Context context;
     public static int iPos;
+    private LogicaProducto logProd = new LogicaProducto();
 
     public Adapter(Context context){
         this.context = context;
@@ -36,10 +37,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
-        holder.lblNombre.setText(lProducto.get(position).getNOMBRE());
-        holder.lblPrecio.setText(""+ lProducto.get(position).getPVP());
-        holder.lblDescripcion.setText(lProducto.get(position).getCOMENTARIOS());
 
+       /* holder.lblNombre.setText(lProducto.get(position).getNOMBRE());
+        holder.lblPrecio.setText(""+ lProducto.get(position).getPVP());
+        holder.lblDescripcion.setText(lProducto.get(position).getCOMENTARIOS());*/
+        logProd.getProductos();
 
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
