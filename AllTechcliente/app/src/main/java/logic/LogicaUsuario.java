@@ -96,12 +96,7 @@ public class LogicaUsuario {
 
         }
     }
-/*
-pos0 = davidmaya944@gmail.com
-pos1 = JorgeRT94@gmail.com
-pos2 = movivaz@gmail.com
-pos3 = pablo.salva@gmail.com
- */
+
     public void compararCredenciales(){
         int iValidacion = 0;
         boolean bExito = false;
@@ -109,8 +104,6 @@ pos3 = pablo.salva@gmail.com
         String sPassword = LoginActivity.txtPass.getText().toString();
 
         while(iPos < lUsuario.size() && !bExito){
-            Log.i("MAYA", "PERMISO: " + lUsuario.get(iPos).getPERMISO());
-            Log.i("MAYA", "LA VALIDACION ES!!!" + iValidacion);
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
                     && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
                 iValidacion = 1;
@@ -156,7 +149,6 @@ pos3 = pablo.salva@gmail.com
         String sUsuario = RegistroActivity.txtUsuario.getText().toString();
         String sPassword = RegistroActivity.txtPassword.getText().toString();
         String sTelefono = RegistroActivity.txtTelefono.getText().toString();
-        Log.i("MAYA","Entra en el insert");
         String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";

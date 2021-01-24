@@ -22,6 +22,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static List<Producto> lProducto;
     Context context;
     public static int iPos;
+    private LogicaProducto logProd = new LogicaProducto();
 
     public Adapter(Context context){
         this.context = context;
@@ -59,11 +60,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         notifyDataSetChanged();
     }
 
-    public class HolderProducto extends RecyclerView.ViewHolder {
-        CardView cTarjeta;
-        TextView lblNombre;
-        TextView lblPrecio;
-        TextView lblDescripcion;
+    public static class HolderProducto extends RecyclerView.ViewHolder {
+        public static CardView cTarjeta;
+        public static TextView lblNombre;
+        public static TextView lblPrecio;
+        public static TextView lblDescripcion;
 
 
         public HolderProducto(@NonNull View itemView) {
@@ -74,5 +75,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblDescripcion = itemView.findViewById(R.id.lblDescripcion);
 
         }
+
+
     }
 }
