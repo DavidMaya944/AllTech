@@ -1,28 +1,33 @@
 package com.example.alltech_cliente;
 
+import android.content.Context;
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import controller.CtrlUsuario;
+import logic.LogicaUsuario;
 
 public class LoginActivity extends AppCompatActivity {
-    public static EditText txtEmail;
-    public static EditText txtPassword;
+    public static EditText txtUserEmail;
+    public static EditText txtPass;
+    public static Context context;
     Button btnSignIn;
     private CtrlUsuario ctrlUser = new CtrlUsuario();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPassword = findViewById(R.id.txtPassword);
+        setContentView(R.layout.login_activity);
+        context = getApplicationContext();
+        txtUserEmail = findViewById(R.id.txtUserEmail);
+        txtPass = findViewById(R.id.txtPass);
         btnSignIn = findViewById(R.id.btnSignIn);
 
 
@@ -30,8 +35,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ctrlUser.login();
-               // Intent appIn = new Intent(getApplicationContext(), Tienda.class);
-               // startActivity(appIn);
             }
         });
     }

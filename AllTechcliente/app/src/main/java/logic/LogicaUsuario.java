@@ -1,11 +1,13 @@
 package logic;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.RegistroActivity;
+import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -21,7 +23,7 @@ import model.Usuario;
 public class LogicaUsuario {
     public static List<Usuario> lUsuario;
     public static int iPos;
-
+    LogicaProducto logProd = new LogicaProducto();
 
     public void getUsuario(){
         new login_user().execute("http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php");
@@ -60,7 +62,8 @@ public class LogicaUsuario {
             Type type = new TypeToken<List<Usuario>>() {
             }.getType();
             lUsuario = new Gson().fromJson(sResultado, type);
-
+            compararCredenciales();
+            
         }
     }
 
@@ -94,6 +97,49 @@ public class LogicaUsuario {
         }
     }
 
+    public void compararCredenciales(){
+        int iValidacion = 0;
+        boolean bExito = false;
+        String sEmail = LoginActivity.txtUserEmail.getText().toString();
+        String sPassword = LoginActivity.txtPass.getText().toString();
+
+        while(iPos < lUsuario.size() && !bExito){
+            if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
+                    && "ACEPTADO".equals(lUsuario.get(iPos).getPERMISO())){
+                iValidacion = 1;
+                bExito = true;
+            }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
+                    && "BLOQUEADO".equals(lUsuario.get(iPos).getPERMISO())) {
+                iValidacion = 2;
+                bExito = false;
+            }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
+                    && !"EN%20ESPERA".equals(lUsuario.get(iPos).getPERMISO())){
+                iValidacion = 3;
+                bExito = false;
+            }else{
+                iValidacion = 4;
+                bExito = false;
+            }
+            iPos++;
+        }
+        iPos = 0;
+
+        switch (iValidacion){
+            case 1:
+                logProd.getProductos();
+                break;
+            case 2:
+                Toast.makeText(LoginActivity.context, "La cuenta está BLOQUEADA.", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(LoginActivity.context, "Esperando verificación", Toast.LENGTH_SHORT).show();
+                break;
+            case 4:
+                Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
     public String insert(){
         String sNombre = RegistroActivity.txtNombre.getText().toString();
         String sApellidos = RegistroActivity.txtApellidos.getText().toString();
@@ -102,7 +148,6 @@ public class LogicaUsuario {
         String sUsuario = RegistroActivity.txtUsuario.getText().toString();
         String sPassword = RegistroActivity.txtPassword.getText().toString();
         String sTelefono = RegistroActivity.txtTelefono.getText().toString();
-        Log.i("MAYA","Entra en el insert");
         String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";

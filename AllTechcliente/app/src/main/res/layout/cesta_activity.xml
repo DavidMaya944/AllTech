@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tienda_activity">
+    tools:context=".Cesta">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listaProdPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="40dp" />
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="66dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

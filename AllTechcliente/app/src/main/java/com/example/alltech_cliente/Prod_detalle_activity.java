@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Button;
 
 public class Prod_detalle_activity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class Prod_detalle_activity extends AppCompatActivity {
     EditText txtDescripcion;
     Button btnAdd;
     Button btnVolver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +38,10 @@ public class Prod_detalle_activity extends AppCompatActivity {
                 
             }
         });
+
+        btnAdd = findViewById(R.id.btnAdd);
+        btnVolver = findViewById(R.id.btnVolver);
+
+
     }
 }

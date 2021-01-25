@@ -22,6 +22,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static List<Producto> lProducto;
     Context context;
     public static int iPos;
+    private LogicaProducto logProd = new LogicaProducto();
 
     public Adapter(Context context){
         this.context = context;
@@ -36,17 +37,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
+
         holder.lblNombre.setText(lProducto.get(position).getNOMBRE());
         holder.lblPrecio.setText(""+ lProducto.get(position).getPVP());
         holder.lblDescripcion.setText(lProducto.get(position).getCOMENTARIOS());
 
-
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent EditarProducto = new Intent(context, com.example.alltech_cliente.Prod_detalle_activity.class);
+                Intent pordDetalle = new Intent(context, com.example.alltech_cliente.Prod_detalle_activity.class);
                 iPos = position;
-                context.startActivity(EditarProducto);
+                context.startActivity(pordDetalle);
             }
         });
     }
@@ -59,11 +60,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         notifyDataSetChanged();
     }
 
-    public class HolderProducto extends RecyclerView.ViewHolder {
-        CardView cTarjeta;
-        TextView lblNombre;
-        TextView lblPrecio;
-        TextView lblDescripcion;
+    public static class HolderProducto extends RecyclerView.ViewHolder {
+        public static CardView cTarjeta;
+        public static TextView lblNombre;
+        public static TextView lblPrecio;
+        public static TextView lblDescripcion;
 
 
         public HolderProducto(@NonNull View itemView) {
@@ -74,5 +75,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblDescripcion = itemView.findViewById(R.id.lblDescripcion);
 
         }
+
+
     }
 }
