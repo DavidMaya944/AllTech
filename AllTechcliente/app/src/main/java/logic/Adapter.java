@@ -38,10 +38,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
 
-       /* holder.lblNombre.setText(lProducto.get(position).getNOMBRE());
+        holder.lblNombre.setText(lProducto.get(position).getNOMBRE());
         holder.lblPrecio.setText(""+ lProducto.get(position).getPVP());
-        holder.lblDescripcion.setText(lProducto.get(position).getCOMENTARIOS());*/
-        logProd.getProductos();
+        holder.lblDescripcion.setText(lProducto.get(position).getCOMENTARIOS());
 
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override

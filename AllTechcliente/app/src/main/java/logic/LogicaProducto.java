@@ -3,6 +3,7 @@ package logic;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.R;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
@@ -30,7 +33,7 @@ public class LogicaProducto {
     public static List<Producto> lProducto;
     public static int iPos;
     public void getProductos(){
-       new listar_productos().execute("http://davidmaya.atwebpages.com/ProductosPHP/getProductos.php");
+       new listar_productos().execute("http://davidmaya.atwebpages.com/ProductosPHP/get-productos.php");
     }
 
     private class listar_productos extends AsyncTask<String, Void, Void> {
@@ -59,14 +62,12 @@ public class LogicaProducto {
         @Override
         public void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Type type = new TypeToken<List<Producto>>() {
-            }.getType();
+            Log.i("MAYA", sResultado);
+            Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            for (Producto p : lProducto){
-                Adapter.HolderProducto.lblNombre.setText(p.getNOMBRE());
-                Adapter.HolderProducto.lblPrecio.setText(p.getPVP() + " €");
-                Adapter.HolderProducto.lblDescripcion.setText(p.getCOMENTARIOS());
-            }
+            Intent appIn = new Intent(LoginActivity.context, Tienda_activity.class);
+            LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
 
         }
     }

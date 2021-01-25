@@ -21,13 +21,18 @@ public class Tienda_activity extends AppCompatActivity {
 
     private CtrlProducto ctrlProd = new CtrlProducto();
     public static Context contextTienda;
+    public static RecyclerView rView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
-        ctrlProd.getProductos();
-       // onResume();
-
+        contextTienda = getApplicationContext();
+        rView = findViewById(R.id.listaProdPrincipal);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rView.setLayoutManager(llm);
+        logic.Adapter adapter = new Adapter(this);
+        rView.setAdapter(adapter);
+        adapter.refresh();
     }
 
     @SuppressLint("RestrictedApi")
@@ -55,7 +60,7 @@ public class Tienda_activity extends AppCompatActivity {
                 sMensaje = "Cerrar Sesion";
                 break;
             case R.id.itemCesta:
-                sMensaje = "Opción tres";
+                sMensaje = "Cesta";
                 break;
 
         }
@@ -65,14 +70,5 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
-   /* protected void onResume(){
-        super.onResume();
-        ctrlProd.getProductos();
-        RecyclerView rView = findViewById(R.id.listaProdPrincipal);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rView.setLayoutManager(llm);
-        logic.Adapter adapter = new Adapter(this);
-        rView.setAdapter(adapter);
-        adapter.refresh();
-    }*/
+
 }

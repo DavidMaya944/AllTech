@@ -23,7 +23,7 @@ import model.Usuario;
 public class LogicaUsuario {
     public static List<Usuario> lUsuario;
     public static int iPos;
-    public static Intent appIn;
+    LogicaProducto logProd = new LogicaProducto();
 
     public void getUsuario(){
         new login_user().execute("http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php");
@@ -126,8 +126,7 @@ public class LogicaUsuario {
 
         switch (iValidacion){
             case 1:
-                appIn = new Intent(LoginActivity.context, Tienda_activity.class);
-                LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                logProd.getProductos();
                 break;
             case 2:
                 Toast.makeText(LoginActivity.context, "La cuenta está BLOQUEADA.", Toast.LENGTH_SHORT).show();
