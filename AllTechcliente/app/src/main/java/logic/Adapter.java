@@ -42,10 +42,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
         holder.lblNombre.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
         holder.lblPrecio.setText(""+ LogicaProducto.lProducto.get(position).getPVP());
-        holder.lblDescripcion.setText(LogicaProducto.lProducto.get(position).getCOMENTARIOS());
         Glide
                 .with(context)
-                .load("http://kompassaviacion.com/campus/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
+                .load("http://davidmaya.atwebpages.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
 
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +78,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             cTarjeta = itemView.findViewById(R.id.crdTarjeta);
             lblNombre = itemView.findViewById(R.id.lblNombre);
             lblPrecio = itemView.findViewById(R.id.lblPrecio);
-            lblDescripcion = itemView.findViewById(R.id.lblDescripcion);
             imgProd = itemView.findViewById(R.id.imgProd);
 
         }
