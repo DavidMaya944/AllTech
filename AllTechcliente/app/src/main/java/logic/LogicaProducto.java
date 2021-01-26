@@ -2,7 +2,10 @@ package logic;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.Tienda_activity;
@@ -47,6 +50,7 @@ public class LogicaProducto {
             return null;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);

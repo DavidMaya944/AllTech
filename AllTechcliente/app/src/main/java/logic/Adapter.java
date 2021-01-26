@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.alltech_cliente.R;
 
 import java.util.List;
@@ -19,7 +22,6 @@ import model.Producto;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
-    public static List<Producto> lProducto;
     Context context;
     public static int iPos;
     private LogicaProducto logProd = new LogicaProducto();
@@ -38,9 +40,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
 
-        holder.lblNombre.setText(lProducto.get(position).getNOMBRE());
-        holder.lblPrecio.setText(""+ lProducto.get(position).getPVP());
-        holder.lblDescripcion.setText(lProducto.get(position).getCOMENTARIOS());
+        holder.lblNombre.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
+        holder.lblPrecio.setText(""+ LogicaProducto.lProducto.get(position).getPVP());
+        holder.lblDescripcion.setText(LogicaProducto.lProducto.get(position).getCOMENTARIOS());
+        Glide
+                .with(context)
+                .load("http://kompassaviacion.com/campus/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
+                .into(holder.imgProd);
 
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +60,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
     @Override
     public int getItemCount() {
-        return lProducto.size();
+        return LogicaProducto.lProducto.size();
     }
     public void refresh(){
         notifyDataSetChanged();
@@ -65,6 +71,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         public static TextView lblNombre;
         public static TextView lblPrecio;
         public static TextView lblDescripcion;
+        public static ImageView imgProd;
 
 
         public HolderProducto(@NonNull View itemView) {
@@ -73,6 +80,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblNombre = itemView.findViewById(R.id.lblNombre);
             lblPrecio = itemView.findViewById(R.id.lblPrecio);
             lblDescripcion = itemView.findViewById(R.id.lblDescripcion);
+            imgProd = itemView.findViewById(R.id.imgProd);
 
         }
 
