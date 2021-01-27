@@ -170,10 +170,6 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		
-		JMenuBar menuUser = new JMenuBar();
-		menuUser.setBounds(0, 0, 582, 22);
-		contentPane.add(menuUser);
-		
 		JButton btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
