@@ -163,13 +163,13 @@ public class FrmDetalleProd extends JFrame {
 		txtStockMax.setColumns(10);
 
 		JLabel lblProveedor = new JLabel("Proveedor: ");
-		lblProveedor.setBounds(446, 182, 78, 14);
+		lblProveedor.setBounds(446, 133, 78, 14);
 		contentPane.add(lblProveedor);
 
 		cmbProveedor = new JComboBox();
 		cmbProveedor.setModel(new DefaultComboBoxModel(new String[] { "Acer", "Apple", "Asus", "EPSON", "Hisense", "HP", "Huawei", "Intel", 
 				"Lenovo", "Nvidia", "Samsung", "Sony", "Xiaomi"}));
-		cmbProveedor.setBounds(568, 178, 86, 22);
+		cmbProveedor.setBounds(568, 129, 86, 22);
 		contentPane.add(cmbProveedor);
 
 		JLabel lblPVP = new JLabel("PVP: ");
@@ -236,8 +236,15 @@ public class FrmDetalleProd extends JFrame {
 		btnVolver.setBounds(278, 343, 86, 23);
 		contentPane.add(btnVolver);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(568, 172, 86, 88);
+		contentPane.add(panel);
+		
+		JLabel lblImagen = new JLabel("Imagen:");
+		lblImagen.setBounds(446, 210, 46, 14);
+		contentPane.add(lblImagen);
+		
 		
 		
 	}
-	
 }
