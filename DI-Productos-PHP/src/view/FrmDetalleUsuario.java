@@ -34,6 +34,8 @@ public class FrmDetalleUsuario extends JFrame {
 	public static FrmDetalleUsuario frame;
 	public static JButton btnBlock;
 	public static JButton btnUnBlock;
+	private JPanel panel;
+	private JLabel lblFoto;
 
 	
 	public FrmDetalleUsuario() {
@@ -114,7 +116,7 @@ public class FrmDetalleUsuario extends JFrame {
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setEnabled(false);
-		txtDireccion.setBounds(77, 192, 263, 20);
+		txtDireccion.setBounds(77, 192, 248, 20);
 		contentPane.add(txtDireccion);
 		txtDireccion.setColumns(10);
 		
@@ -159,12 +161,12 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(txtPass);
 		
 		lblPermiso = new JLabel("Permiso");
-		lblPermiso.setBounds(352, 129, 70, 14);
+		lblPermiso.setBounds(352, 107, 70, 14);
 		contentPane.add(lblPermiso);
 		
 		txtPermiso = new JTextField();
 		txtPermiso.setEnabled(false);
-		txtPermiso.setBounds(432, 126, 119, 20);
+		txtPermiso.setBounds(432, 104, 119, 20);
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		
@@ -203,6 +205,14 @@ public class FrmDetalleUsuario extends JFrame {
 		});
 		btnUnBlock.setBounds(109, 263, 110, 23);
 		contentPane.add(btnUnBlock);
+		
+		panel = new JPanel();
+		panel.setBounds(465, 137, 86, 87);
+		contentPane.add(panel);
+		
+		lblFoto = new JLabel("Foto:");
+		lblFoto.setBounds(352, 173, 46, 14);
+		contentPane.add(lblFoto);
 		
 	}
 }
