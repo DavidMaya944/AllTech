@@ -1,9 +1,20 @@
 package logic;
 
+import java.awt.Image;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -21,6 +32,62 @@ public class LogicaProductos {
 	public static int iPos = 0;
 	public static int iCod = 0;
 	public static List<Producto> lProductos = new ArrayList<Producto>();
+	
+	
+	
+	public static void ins-producto(String filePath, Producto p) throws Exception {
+
+		
+		String path = "http://davidmaya.atwebpages.com/imgProd/insert-producto.php";
+		
+		// Establecer la conexión...
+		URL url = new URL(path);
+		URLConnection conn = url.openConnection();
+		HttpURLConnection http = (HttpURLConnection) conn;
+		http.setRequestMethod("POST");
+		http.setDoOutput(true);
+		
+		// Parametros de envio
+		Map<String, String> params = new HashMap<>();
+		params.put("imgData", encodeFileToBase64(filePath));
+		params.put("NOMBRE", p.getNombre());
+		params.put("CANTIDAD", p.getCantidad());
+		params.put("PRECIO", p.getPrecio());
+		params.put("NOMBRE", p.getNombre());
+		params.put("CANTIDAD", p.getCantidad());
+		params.put("PRECIO", p.getPrecio());
+		params.put("NOMBRE", p.getNombre());
+		params.put("CANTIDAD", p.getCantidad());
+		params.put("PRECIO", p.getPrecio());
+		params.put("NOMBRE", p.getNombre());
+		params.put("CANTIDAD", p.getCantidad());
+		params.put("PRECIO", p.getPrecio());
+		params.put("NOMBRE", p.getNombre());
+		params.put("CANTIDAD", p.getCantidad());
+		params.put("PRECIO", p.getPrecio());
+		params.put("NOMBRE", p.getNombre());
+		params.put("CANTIDAD", p.getCantidad());
+		params.put("PRECIO", p.getPrecio());
+		
+		
+		// Array de Bytes de envio
+		StringJoiner sj = new StringJoiner("&");
+		for(Map.Entry<String, String> entry : params.entrySet()) {
+			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
+		}
+		System.out.println(sj);
+		byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
+		
+		// Enviar el array de bytes hacia el path (URL del Web-Service)
+		http.setFixedLengthStreamingMode(out.length);
+		http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
+		http.connect();
+		http.getOutputStream().write(out);
+		
+	}
+	
+	
+	
 
 	public String guardarBD(JTextField txtCod, JTextField txtNombre, ButtonGroup btnOption, JTextArea textComents,
 			JCheckBox checkFragil, JCheckBox checkObsoleto, JTextField txtStockActual, JTextField txtStockMin,
@@ -75,9 +142,6 @@ public class LogicaProductos {
 
 		return respuesta;
 	}
-	
-	
-
 	
 
 	public int validarOpcion() {
@@ -230,4 +294,16 @@ public class LogicaProductos {
 		return modelo;
 	}
 	
+	public void downloadImgProd(int iId) {
+		String path = "https://alltech1.000webhostapp.com/imgProd/" + iId + ".jpg";
+		try {
+			URL url = new URL(path);
+			Image image = ImageIO.read(url);
+			view.FrmDetalleProd.lblFoto.setIcon(new ImageIcon(image));
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+
 }

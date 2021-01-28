@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +19,15 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import controller.CtrlProducto;
 import logic.LogicaProductos;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FrmDetalleProd extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +44,7 @@ public class FrmDetalleProd extends JFrame {
 	public static JCheckBox checkObsoleto;
 	public static JCheckBox checkFragil;
 	public static JTextArea textComents;
+	public static JLabel lblFoto;
 	@SuppressWarnings("rawtypes")
 	public static JComboBox cmbProveedor;
 	public static CtrlProducto ctrl = new CtrlProducto();
@@ -209,7 +215,7 @@ public class FrmDetalleProd extends JFrame {
 		JButton btnGuardar = new JButton("GUARDAR");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ctrl.guardarProducto();
+				ctrl.insertProd();
 				controller.CtrlProducto.loadData();
 				dispose();
 				
@@ -236,13 +242,20 @@ public class FrmDetalleProd extends JFrame {
 		btnVolver.setBounds(278, 343, 86, 23);
 		contentPane.add(btnVolver);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(568, 172, 86, 88);
-		contentPane.add(panel);
-		
 		JLabel lblImagen = new JLabel("Imagen:");
 		lblImagen.setBounds(446, 210, 46, 14);
 		contentPane.add(lblImagen);
+		
+		lblFoto = new JLabel("nueva imagen");
+		lblFoto.setBorder(new LineBorder(Color.black));
+		lblFoto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CtrlProducto.seleccionarFichero();
+			}
+		});
+		lblFoto.setBounds(553, 162, 101, 105);
+		contentPane.add(lblFoto);
 		
 		
 		
