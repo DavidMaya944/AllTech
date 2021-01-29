@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,8 +10,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;

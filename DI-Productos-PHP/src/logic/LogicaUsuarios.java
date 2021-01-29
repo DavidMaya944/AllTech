@@ -167,6 +167,7 @@ public class LogicaUsuarios {
 		confirmarRegistro(FrmDetalleUsuario.txtID, FrmDetalleUsuario.txtNombre, FrmDetalleUsuario.txtApellidos,
 				FrmDetalleUsuario.txtEmail, FrmDetalleUsuario.txtDireccion, FrmDetalleUsuario.txtUser,
 				FrmDetalleUsuario.txtPass, FrmDetalleUsuario.txtTelefono, FrmDetalleUsuario.txtPermiso);
+		
 	}
 
 

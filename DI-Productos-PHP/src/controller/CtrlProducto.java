@@ -2,17 +2,7 @@ package controller;
 
 import java.awt.Image;
 import java.io.File;
-import java.io.FileInputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -119,8 +109,7 @@ public class CtrlProducto {
 				fPVP = Float.parseFloat(view.FrmDetalleProd.txtPVP.getText());
 			}
 			Producto p = new Producto(sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP);
-			
-			
+
 			logic.LogicaProductos.insertProducto(filePath, p);
 			
 			JOptionPane.showMessageDialog(null, "El producto ha sido registrado con exito", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);

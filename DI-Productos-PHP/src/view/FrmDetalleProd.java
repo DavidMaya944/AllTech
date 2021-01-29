@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -23,11 +27,6 @@ import javax.swing.border.LineBorder;
 
 import controller.CtrlProducto;
 import logic.LogicaProductos;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.SwingConstants;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class FrmDetalleProd extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -215,7 +214,7 @@ public class FrmDetalleProd extends JFrame {
 		JButton btnGuardar = new JButton("GUARDAR");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ctrl.insertProd();
+				CtrlProducto.insertProd();
 				controller.CtrlProducto.loadData();
 				dispose();
 				

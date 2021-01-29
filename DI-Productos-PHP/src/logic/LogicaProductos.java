@@ -54,8 +54,9 @@ public class LogicaProductos {
 	
 	public static void insertProducto(String filePath, Producto p) throws Exception {
 
-		
-		String path = "http://davidmaya.atwebpages.com/imgProd/insert-producto.php?";
+		System.out.println("HOLA");
+
+		String path = "https://alltech1.000webhostapp.com/Productos/insert-producto.php";
 		
 		// Establecer la conexión...
 		URL url = new URL(path);
@@ -63,15 +64,14 @@ public class LogicaProductos {
 		HttpURLConnection http = (HttpURLConnection) conn;
 		http.setRequestMethod("POST");
 		http.setDoOutput(true);
-		
 		// Parametros de envio
 		Map<String, String> params = new HashMap<>();
 		params.put("imgData", encodeFileToBase64(filePath));
 		params.put("NOMBRE", p.getsNombre());
 		params.put("OPCION", ""+p.getiOpcion());
 		params.put("COMENTARIOS", p.getsComents());
-		params.put("FRAGIL", ""+p.isbFragil());
-		params.put("OBSOLETO", ""+p.isbObsoleto());
+		params.put("FRAGIL", ""+(p.isbFragil()?1:0));
+		params.put("OBSOLETO", ""+(p.isbObsoleto()?1:0));
 		params.put("STOCK_ACTUAL", ""+p.getiStockActual());
 		params.put("STOCK_MIN", "" + p.getiStockMin());
 		params.put("STOCK_MAX", ""+p.getiStockMax());
@@ -83,7 +83,9 @@ public class LogicaProductos {
 		for(Map.Entry<String, String> entry : params.entrySet()) {
 			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
 		}
+		
 		System.out.println(sj);
+		
 		byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
 		
 		// Enviar el array de bytes hacia el path (URL del Web-Service)
@@ -92,8 +94,7 @@ public class LogicaProductos {
 		http.connect();
 		http.getOutputStream().write(out);
 		
-		
-		
+
 	}
 	
 	
@@ -123,7 +124,6 @@ public class LogicaProductos {
 			iStockMin = Integer.parseInt(txtStockMin.getText());
 			iStockMax = Integer.parseInt(txtStockMax.getText());
 		}
-
 		String sProveedor = (String) cmbProveedor.getSelectedItem();
 		float fPVP = 0;
 		if (validarPrecio(txtPVP) == true) {
@@ -194,7 +194,6 @@ public class LogicaProductos {
 		return bExito;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static List<Producto> leer() {
 		lProductos = new ArrayList<Producto>();
 		String sRes = getProductos();
@@ -312,6 +311,7 @@ public class LogicaProductos {
 			view.FrmDetalleProd.lblFoto.setIcon(new ImageIcon(image));
 		}catch(Exception e) {
 			System.err.println(e.getMessage());
+			System.err.println("Se produció un fallo");
 		}
 	}
 	

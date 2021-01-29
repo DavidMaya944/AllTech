@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import logic.LogicaUsuarios;
@@ -49,6 +50,7 @@ public class CtrlUsuario {
 
 	public void confirmarUsuario() {
 		logUser.confirmarUsuario();
+		JOptionPane.showMessageDialog(null, "El producto ha sido registrado con exito", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public static void bloquearUsuario() {
