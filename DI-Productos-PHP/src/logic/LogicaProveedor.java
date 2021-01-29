@@ -34,10 +34,7 @@ public class LogicaProveedor {
 	}
 	
 	private static Proveedor JsonToProveedor(JSONObject jObj) {
-		
 		String sNombre = jObj.getString("NOMBRE");
-		
-		
 		Proveedor p = new Proveedor(sNombre);
 		return p;
 	}

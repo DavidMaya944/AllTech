@@ -24,8 +24,7 @@ public class CtrlUsuario {
 			DefaultTableModel modelo = LogicaUsuarios.generarTablaUsuario(resultado);
 			view.FrmGestionUsuarios.tableUsers.setModel(modelo);
 		} catch (Exception e) {
-			System.err.println("Fallo: " + e.getMessage());
-			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -43,8 +42,7 @@ public class CtrlUsuario {
 			FrmDetalleUsuario.txtTelefono.setText(u.getsTelefono());
 			FrmDetalleUsuario.txtPermiso.setText(u.getsPermiso());
 		}catch(Exception e) {
-			System.err.println("Se ha producido un fallo: " + e.getMessage());
-			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -62,7 +60,7 @@ public class CtrlUsuario {
 	}
 
 	public void rechazarUsuario(FrmDetalleUsuario frame) {
-		logUser.rechazarUsuario(frame);
+		LogicaUsuarios.rechazarUsuario(frame);
 	}
 	
 	

@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Admin;
-import view.LoginAdmin;
 
 public class LogicaLogin {
 

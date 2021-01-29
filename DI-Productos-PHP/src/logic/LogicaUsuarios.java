@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import model.Producto;
 import model.Usuario;
 import view.FrmDetalleUsuario;
 
@@ -109,8 +108,7 @@ public class LogicaUsuarios {
 		int iId = Integer.parseInt(FrmDetalleUsuario.txtID.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iId,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId;
-			String respuesta = LogicaGeneral.peticionHttpArray(sql);
+			LogicaGeneral.peticionHttpArray("http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId);
 		}
 		
 	}

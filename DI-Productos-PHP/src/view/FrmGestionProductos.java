@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -12,13 +13,11 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -66,7 +65,7 @@ public class FrmGestionProductos extends JFrame {
 		panelDat.setViewportView(tblResult);
 		
 		btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(25, 25, 112));
+		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();

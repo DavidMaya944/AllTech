@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,8 +32,7 @@ public class CtrlProducto {
 			DefaultTableModel modelo = LogicaProductos.generarTablaProducto(resultado);
 			view.FrmGestionProductos.tblResult.setModel(modelo);
 		} catch (Exception e) {
-			System.err.println("Fallo: " + e.getMessage());
-			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -51,7 +49,7 @@ public class CtrlProducto {
 			} else if (p.getiOpcion() == 3) {
 				FrmDetalleProd.rdbtnCombinado.setSelected(true);
 			} else {
-				System.out.println("Opcion invalida");
+				JOptionPane.showMessageDialog(null, "Opcion inválida", "Opcion", JOptionPane.ERROR_MESSAGE);
 			}
 			FrmDetalleProd.textComents.setText(p.getsComents());
 			FrmDetalleProd.checkFragil.setSelected(p.isbFragil());
@@ -63,8 +61,7 @@ public class CtrlProducto {
 			FrmDetalleProd.txtPVP.setText("" + p.getfPVP());
 			log.downloadImgProd(p.getiCod());
 		}catch(Exception e) {
-			System.err.println("Se ha producido un fallo: " + e.getMessage());
-			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -77,7 +74,7 @@ public class CtrlProducto {
 			Image image = ImageIO.read(archivo);
 			view.FrmDetalleProd.lblFoto.setIcon(new ImageIcon(image));
 		}catch(Exception e) {
-			System.err.println(e.getMessage());
+			JOptionPane.showMessageDialog(null, "No se ha seleccionado ningún fichero", "Seleccion de fichero", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -128,7 +125,7 @@ public class CtrlProducto {
 		} else if (p.getiOpcion() == 3) {
 			FrmDetalleProd.rdbtnCombinado.setSelected(true);
 		} else {
-			System.out.println("Opcion invalida");
+			JOptionPane.showMessageDialog(null, "Opcion inválida", "Opcion", JOptionPane.ERROR_MESSAGE);
 		}
 		FrmDetalleProd.textComents.setText(p.getsComents());
 		FrmDetalleProd.checkFragil.setSelected(p.isbFragil());

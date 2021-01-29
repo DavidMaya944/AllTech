@@ -9,15 +9,15 @@ public class CtrlLogin {
 
 	public boolean login() {
 		boolean bExito = false;
-		logLogin.lAdmin = logLogin.leerLogin();
+		LogicaLogin.lAdmin = logLogin.leerLogin();
 		String sNombre = LoginAdmin.txtUser.getText();
 		String sPass = new String(LoginAdmin.txtPass.getPassword());
 		
-		while(logLogin.iPos < logLogin.lAdmin.size() && !bExito) {
-			if(sNombre.equals(logLogin.lAdmin.get(logLogin.iPos).getsNombre()) && sPass.equals(logLogin.lAdmin.get(logLogin.iPos).getsPass())) {
+		while(LogicaLogin.iPos < LogicaLogin.lAdmin.size() && !bExito) {
+			if(sNombre.equals(LogicaLogin.lAdmin.get(LogicaLogin.iPos).getsNombre()) && sPass.equals(LogicaLogin.lAdmin.get(LogicaLogin.iPos).getsPass())) {
 				bExito = true;
 			}
-			logLogin.iPos++;
+			LogicaLogin.iPos++;
 		}
 		
 		return bExito;

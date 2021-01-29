@@ -46,7 +46,7 @@ public class FrmMenuPrincipal extends JFrame {
 		contentPane.add(lblEncabezado);
 		
 		JButton btnUsuarios = new JButton("USUARIOS");
-		btnUsuarios.setBackground(new Color(25, 25, 112));
+		btnUsuarios.setBackground(new Color(46, 139, 87));
 		btnUsuarios.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -59,7 +59,7 @@ public class FrmMenuPrincipal extends JFrame {
 		contentPane.add(btnUsuarios);
 		
 		JButton btnProductos = new JButton("PRODUCTOS");
-		btnProductos.setBackground(new Color(25, 25, 112));
+		btnProductos.setBackground(new Color(46, 139, 87));
 		btnProductos.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -71,7 +71,7 @@ public class FrmMenuPrincipal extends JFrame {
 		contentPane.add(btnProductos);
 		
 		JButton btnLogOut = new JButton("CERRAR SESION");
-		btnLogOut.setBackground(new Color(25, 25, 112));
+		btnLogOut.setBackground(new Color(46, 139, 87));
 		btnLogOut.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

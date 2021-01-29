@@ -213,7 +213,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(separator);
 
 		JButton btnNuevo = new JButton("NUEVO");
-		btnNuevo.setBackground(new Color(25, 25, 112));
+		btnNuevo.setBackground(new Color(46, 139, 87));
 		btnNuevo.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -236,7 +236,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnNuevo);
 
 		JButton btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setBackground(new Color(25, 25, 112));
+		btnGuardar.setBackground(new Color(46, 139, 87));
 		btnGuardar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -250,7 +250,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnGuardar);
 
 		JButton btnBorrar = new JButton("BORRAR");
-		btnBorrar.setBackground(new Color(25, 25, 112));
+		btnBorrar.setBackground(new Color(46, 139, 87));
 		btnBorrar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -261,7 +261,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnBorrar);
 		
 		JButton btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(25, 25, 112));
+		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

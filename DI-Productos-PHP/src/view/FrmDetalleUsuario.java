@@ -149,7 +149,7 @@ public class FrmDetalleUsuario extends JFrame {
 		
 		
 		JButton btnRechazar = new JButton("RECHAZAR");
-		btnRechazar.setBackground(new Color(25, 25, 112));
+		btnRechazar.setBackground(new Color(46, 139, 87));
 		btnRechazar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -161,7 +161,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(btnRechazar);
 		
 		JButton btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.setBackground(new Color(25, 25, 112));
+		btnAceptar.setBackground(new Color(46, 139, 87));
 		btnAceptar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -189,7 +189,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtPermiso.setColumns(10);
 		
 		JButton btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(25, 25, 112));
+		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -201,7 +201,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(btnVolver);
 		
 		btnBlock = new JButton("BLOQUEAR");
-		btnBlock.setBackground(new Color(25, 25, 112));
+		btnBlock.setBackground(new Color(46, 139, 87));
 		btnBlock.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -214,7 +214,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(btnBlock);
 		
 		btnUnBlock = new JButton("DESBLOQUEAR");
-		btnUnBlock.setBackground(new Color(25, 25, 112));
+		btnUnBlock.setBackground(new Color(46, 139, 87));
 		btnUnBlock.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnUnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

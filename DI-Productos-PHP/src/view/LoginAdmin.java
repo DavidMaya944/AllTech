@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -73,7 +74,7 @@ public class LoginAdmin extends JFrame {
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton okButton = new JButton("iniciar sesion");
-		okButton.setBackground(new Color(25, 25, 112));
+		okButton.setBackground(new Color(102, 205, 170));
 		okButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		okButton.addActionListener(v -> {
 			if (ctrlLogin.login() == true) {
@@ -81,7 +82,7 @@ public class LoginAdmin extends JFrame {
 				new FrmMenuPrincipal();
 				
 			} else {
-				System.out.println("Los datos introducidos no son validos.");
+				JOptionPane.showMessageDialog(null, "Credenciales incorrectas", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
 			}
 
 		});
@@ -90,11 +91,11 @@ public class LoginAdmin extends JFrame {
 		getRootPane().setDefaultButton(okButton);
 
 		JButton cancelButton = new JButton("Cancelar");
-		cancelButton.setBackground(new Color(25, 25, 112));
+		cancelButton.setBackground(new Color(102, 205, 170));
 		cancelButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				controller.CtrlGeneral.confirmarExit(frame);
 			}
 		});
 		cancelButton.setActionCommand("Cancel");

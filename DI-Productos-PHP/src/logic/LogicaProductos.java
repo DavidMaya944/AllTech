@@ -18,7 +18,6 @@ import java.util.StringJoiner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +27,6 @@ import org.json.JSONObject;
 
 import model.Producto;
 import view.FrmDetalleProd;
-import view.LoginAdmin;
 
 public class LogicaProductos {
 	public static int iPos = 0;
@@ -144,7 +142,7 @@ public class LogicaProductos {
 		} else if (FrmDetalleProd.rdbtnCombinado.isSelected() == true) {
 			iOpcion = 3;
 		} else {
-			System.out.println("Opcion invalida.");
+			JOptionPane.showMessageDialog(null, "Validacion invalida", "Validacion opciones", JOptionPane.ERROR_MESSAGE);
 		}
 
 		return iOpcion;
@@ -281,8 +279,7 @@ public class LogicaProductos {
 			Image image = ImageIO.read(url);
 			view.FrmDetalleProd.lblFoto.setIcon(new ImageIcon(image));
 		}catch(Exception e) {
-			System.err.println(e.getMessage());
-			System.err.println("Se produció un fallo");
+			JOptionPane.showMessageDialog(null, "No se ha podido descargar la imagen", "Descargar", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	

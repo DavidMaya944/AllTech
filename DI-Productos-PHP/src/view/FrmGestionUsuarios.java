@@ -65,7 +65,7 @@ public class FrmGestionUsuarios extends JFrame {
 		scList.setViewportView(tableUsers);
 		
 		btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(25, 25, 112));
+		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
