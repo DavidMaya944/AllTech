@@ -172,8 +172,7 @@ public class FrmDetalleProd extends JFrame {
 		contentPane.add(lblProveedor);
 
 		cmbProveedor = new JComboBox();
-		cmbProveedor.setModel(new DefaultComboBoxModel(new String[] { "Acer", "Apple", "Asus", "EPSON", "Hisense", "HP", "Huawei", "Intel", 
-				"Lenovo", "Nvidia", "Samsung", "Sony", "Xiaomi"}));
+		controller.CtrlProveedor.llenarLista();
 		cmbProveedor.setBounds(568, 129, 86, 22);
 		contentPane.add(cmbProveedor);
 
@@ -196,7 +195,7 @@ public class FrmDetalleProd extends JFrame {
 				
 				txtCod.setText("");
 				txtCod.setEnabled(false);
-				
+				lblFoto.setIcon(null);
 				txtNombre.setText("");
 				textComents.setText("");
 				checkFragil.setSelected(false);

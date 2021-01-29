@@ -145,9 +145,9 @@ public class CtrlProducto {
 		log.confirmarBorrar(frame);
 	}
 	
-	public void guardarProducto() {
-		log.guardarProducto();
-	}
+//	public void guardarProducto() {
+//		log.guardarProducto();
+//	}
 
 
 

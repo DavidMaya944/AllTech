@@ -99,59 +99,59 @@ public class LogicaProductos {
 	
 	
 	
-
-	public String guardarBD(JTextField txtCod, JTextField txtNombre, ButtonGroup btnOption, JTextArea textComents,
-			JCheckBox checkFragil, JCheckBox checkObsoleto, JTextField txtStockActual, JTextField txtStockMin,
-			JTextField txtStockMax, JComboBox cmbProveedor, JTextField txtPVP) {
-
-		String respuesta = null;
-		int iCod;
-
-		try {
-			 iCod = Integer.parseInt(txtCod.getText());
-		} catch (Exception ex) {
-			iCod = -1;
-		}
-		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
-		int iOpcion = validarOpcion();
-		String sComents = textComents.getText().replaceAll(" ", "%20");
-		boolean bFragil = checkFragil.isSelected();
-		boolean bObsoleto = checkObsoleto.isSelected();
-		int iStockActual = 0, iStockMin = 0, iStockMax = 0;
-
-		if (validarStock(txtStockActual, txtStockMin, txtStockMax) == true) {
-			iStockActual = Integer.parseInt(txtStockActual.getText());
-			iStockMin = Integer.parseInt(txtStockMin.getText());
-			iStockMax = Integer.parseInt(txtStockMax.getText());
-		}
-		String sProveedor = (String) cmbProveedor.getSelectedItem();
-		float fPVP = 0;
-		if (validarPrecio(txtPVP) == true) {
-			fPVP = Float.parseFloat(txtPVP.getText());
-		}		
-	
-		if (iCod != -1) {
-			String sqlUpdate = "http://davidmaya.atwebpages.com/ProductosPHP/update-producto.php";
-			sqlUpdate += "?NOMBRE=" + sNombre + "&OPCION=" + iOpcion + "&COMENTARIOS=" + sComents;
-			sqlUpdate += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
-					+ "&STOCK_MIN=" + iStockMin;
-			sqlUpdate += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP + "&CODIGO="
-					+ iCod;
-			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
-			System.out.println("Ha actualizado correctamente.");
-		} else {
-			String sqlInsert = "http://davidmaya.atwebpages.com/ProductosPHP/insert-producto.php";
-			sqlInsert += "?NOMBRE=" + sNombre + "&OPCION=" + iOpcion + "&COMENTARIOS=" + sComents;
-			sqlInsert += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
-					+ "&STOCK_MIN=" + iStockMin;
-			sqlInsert += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP;
-			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
-			System.out.println("Ha insertado correctamente.");
-
-		}
-
-		return respuesta;
-	}
+//
+//	public String guardarBD(JTextField txtCod, JTextField txtNombre, ButtonGroup btnOption, JTextArea textComents,
+//			JCheckBox checkFragil, JCheckBox checkObsoleto, JTextField txtStockActual, JTextField txtStockMin,
+//			JTextField txtStockMax, JComboBox cmbProveedor, JTextField txtPVP) {
+//
+//		String respuesta = null;
+//		int iCod;
+//
+//		try {
+//			 iCod = Integer.parseInt(txtCod.getText());
+//		} catch (Exception ex) {
+//			iCod = -1;
+//		}
+//		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+//		int iOpcion = validarOpcion();
+//		String sComents = textComents.getText().replaceAll(" ", "%20");
+//		boolean bFragil = checkFragil.isSelected();
+//		boolean bObsoleto = checkObsoleto.isSelected();
+//		int iStockActual = 0, iStockMin = 0, iStockMax = 0;
+//
+//		if (validarStock(txtStockActual, txtStockMin, txtStockMax) == true) {
+//			iStockActual = Integer.parseInt(txtStockActual.getText());
+//			iStockMin = Integer.parseInt(txtStockMin.getText());
+//			iStockMax = Integer.parseInt(txtStockMax.getText());
+//		}
+//		String sProveedor = (String) cmbProveedor.getSelectedItem();
+//		float fPVP = 0;
+//		if (validarPrecio(txtPVP) == true) {
+//			fPVP = Float.parseFloat(txtPVP.getText());
+//		}		
+//	
+//		if (iCod != -1) {
+//			String sqlUpdate = "http://davidmaya.atwebpages.com/ProductosPHP/update-producto.php";
+//			sqlUpdate += "?NOMBRE=" + sNombre + "&OPCION=" + iOpcion + "&COMENTARIOS=" + sComents;
+//			sqlUpdate += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
+//					+ "&STOCK_MIN=" + iStockMin;
+//			sqlUpdate += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP + "&CODIGO="
+//					+ iCod;
+//			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
+//			System.out.println("Ha actualizado correctamente.");
+//		} else {
+//			String sqlInsert = "http://davidmaya.atwebpages.com/ProductosPHP/insert-producto.php";
+//			sqlInsert += "?NOMBRE=" + sNombre + "&OPCION=" + iOpcion + "&COMENTARIOS=" + sComents;
+//			sqlInsert += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
+//					+ "&STOCK_MIN=" + iStockMin;
+//			sqlInsert += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP;
+//			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
+//			System.out.println("Ha insertado correctamente.");
+//
+//		}
+//
+//		return respuesta;
+//	}
 	
 
 	public static int validarOpcion() {
@@ -250,6 +250,8 @@ public class LogicaProductos {
 		return p;
 	}
 	
+
+	
 	public static String getProductos() {
 		String sql = "https://alltech1.000webhostapp.com/Productos/get-productos.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
@@ -273,12 +275,12 @@ public class LogicaProductos {
 		}
 	}
 
-	public void guardarProducto() {
-		guardarBD(FrmDetalleProd.txtCod, FrmDetalleProd.txtNombre, FrmDetalleProd.btnOption, FrmDetalleProd.textComents, FrmDetalleProd.checkFragil,
-				FrmDetalleProd.checkObsoleto, FrmDetalleProd.txtStockActual, FrmDetalleProd.txtStockMin, FrmDetalleProd.txtStockMax,
-				FrmDetalleProd.cmbProveedor, FrmDetalleProd.txtPVP);
-		
-	}
+//	public void guardarProducto() {
+//		guardarBD(FrmDetalleProd.txtCod, FrmDetalleProd.txtNombre, FrmDetalleProd.btnOption, FrmDetalleProd.textComents, FrmDetalleProd.checkFragil,
+//				FrmDetalleProd.checkObsoleto, FrmDetalleProd.txtStockActual, FrmDetalleProd.txtStockMin, FrmDetalleProd.txtStockMax,
+//				FrmDetalleProd.cmbProveedor, FrmDetalleProd.txtPVP);
+//		
+//	}
 	
 	public static DefaultTableModel generarTablaProducto(List<Producto> resultado) {
 		DefaultTableModel modelo = new DefaultTableModel();
