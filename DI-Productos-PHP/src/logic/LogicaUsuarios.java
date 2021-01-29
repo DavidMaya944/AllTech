@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -104,12 +105,14 @@ public class LogicaUsuarios {
 		return respuesta;
 	}
 	
-	public static String rechazarUsuario() {
+	public static void rechazarUsuario(FrmDetalleUsuario frame) {
 		int iId = Integer.parseInt(FrmDetalleUsuario.txtID.getText());
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId;
-		String respuesta = LogicaGeneral.peticionHttpArray(sql);
-
-		return respuesta;
+		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iId,
+				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
+			String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId;
+			String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		}
+		
 	}
 	
 	public static List<Usuario> leer() {

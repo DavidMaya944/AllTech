@@ -55,7 +55,7 @@ public class LogicaProductos {
 	public static void insertProducto(String filePath, Producto p) throws Exception {
 
 		
-		String path = "http://davidmaya.atwebpages.com/imgProd/insert-producto.php";
+		String path = "http://davidmaya.atwebpages.com/imgProd/insert-producto.php?";
 		
 		// Establecer la conexión...
 		URL url = new URL(path);
@@ -91,6 +91,8 @@ public class LogicaProductos {
 		http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
 		http.connect();
 		http.getOutputStream().write(out);
+		
+		
 		
 	}
 	

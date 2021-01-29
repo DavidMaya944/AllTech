@@ -138,7 +138,7 @@ public class FrmDetalleUsuario extends JFrame {
 		JButton btnRechazar = new JButton("RECHAZAR");
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ctrlUser.rechazarUsuario();
+				ctrlUser.rechazarUsuario(frame);
 				controller.CtrlUsuario.loadData();
 			}
 		});

@@ -59,8 +59,8 @@ public class CtrlUsuario {
 		LogicaUsuarios.desbloquearUsuario();
 	}
 
-	public void rechazarUsuario() {
-		logUser.rechazarUsuario();
+	public void rechazarUsuario(FrmDetalleUsuario frame) {
+		logUser.rechazarUsuario(frame);
 	}
 	
 	
