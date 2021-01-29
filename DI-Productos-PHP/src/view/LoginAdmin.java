@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Toolkit;
 import java.awt.Font;
+import java.awt.Color;
 
 public class LoginAdmin extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -40,6 +41,7 @@ public class LoginAdmin extends JFrame {
 		setBounds(100, 100, 243, 142);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(0, 255, 255));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -66,10 +68,12 @@ public class LoginAdmin extends JFrame {
 		contentPanel.add(txtPass);
 
 		JPanel buttonPane = new JPanel();
+		buttonPane.setBackground(new Color(0, 255, 255));
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton okButton = new JButton("iniciar sesion");
+		okButton.setBackground(new Color(25, 25, 112));
 		okButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		okButton.addActionListener(v -> {
 			if (ctrlLogin.login() == true) {
@@ -86,6 +90,7 @@ public class LoginAdmin extends JFrame {
 		getRootPane().setDefaultButton(okButton);
 
 		JButton cancelButton = new JButton("Cancelar");
+		cancelButton.setBackground(new Color(25, 25, 112));
 		cancelButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import controller.CtrlUsuario;
 import java.awt.Toolkit;
 import java.awt.Font;
+import java.awt.Color;
 
 public class FrmDetalleUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -57,8 +58,9 @@ public class FrmDetalleUsuario extends JFrame {
 		});
 		setTitle("Usuarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 608, 336);
+		setBounds(100, 100, 635, 352);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -131,22 +133,23 @@ public class FrmDetalleUsuario extends JFrame {
 		
 		JLabel lblUser = new JLabel("Usuario");
 		lblUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblUser.setBounds(352, 32, 46, 14);
+		lblUser.setBounds(394, 32, 46, 14);
 		contentPane.add(lblUser);
 		
 		txtUser = new JTextField();
 		txtUser.setEnabled(false);
-		txtUser.setBounds(432, 29, 119, 20);
+		txtUser.setBounds(479, 32, 119, 20);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a");
 		lblPass.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPass.setBounds(352, 63, 89, 14);
+		lblPass.setBounds(394, 63, 89, 14);
 		contentPane.add(lblPass);
 		
 		
 		JButton btnRechazar = new JButton("RECHAZAR");
+		btnRechazar.setBackground(new Color(25, 25, 112));
 		btnRechazar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -154,10 +157,11 @@ public class FrmDetalleUsuario extends JFrame {
 				controller.CtrlUsuario.loadData();
 			}
 		});
-		btnRechazar.setBounds(482, 263, 100, 23);
+		btnRechazar.setBounds(498, 263, 100, 23);
 		contentPane.add(btnRechazar);
 		
 		JButton btnAceptar = new JButton("ACEPTAR");
+		btnAceptar.setBackground(new Color(25, 25, 112));
 		btnAceptar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -165,26 +169,27 @@ public class FrmDetalleUsuario extends JFrame {
 				controller.CtrlUsuario.loadData();
 			}
 		});
-		btnAceptar.setBounds(383, 263, 89, 23);
+		btnAceptar.setBounds(399, 263, 89, 23);
 		contentPane.add(btnAceptar);
 		
 		txtPass = new JPasswordField();
 		txtPass.setEnabled(false);
-		txtPass.setBounds(432, 60, 119, 20);
+		txtPass.setBounds(479, 63, 119, 20);
 		contentPane.add(txtPass);
 		
 		lblPermiso = new JLabel("Permiso");
 		lblPermiso.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPermiso.setBounds(352, 107, 70, 14);
+		lblPermiso.setBounds(394, 107, 70, 14);
 		contentPane.add(lblPermiso);
 		
 		txtPermiso = new JTextField();
 		txtPermiso.setEnabled(false);
-		txtPermiso.setBounds(432, 104, 119, 20);
+		txtPermiso.setBounds(479, 107, 119, 20);
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		
 		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBackground(new Color(25, 25, 112));
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -192,10 +197,11 @@ public class FrmDetalleUsuario extends JFrame {
 				new FrmMenuPrincipal();
 			}
 		});
-		btnVolver.setBounds(284, 263, 89, 23);
+		btnVolver.setBounds(300, 263, 89, 23);
 		contentPane.add(btnVolver);
 		
 		btnBlock = new JButton("BLOQUEAR");
+		btnBlock.setBackground(new Color(25, 25, 112));
 		btnBlock.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -204,10 +210,11 @@ public class FrmDetalleUsuario extends JFrame {
 				dispose();
 			}
 		});
-		btnBlock.setBounds(10, 263, 89, 23);
+		btnBlock.setBounds(10, 263, 100, 23);
 		contentPane.add(btnBlock);
 		
 		btnUnBlock = new JButton("DESBLOQUEAR");
+		btnUnBlock.setBackground(new Color(25, 25, 112));
 		btnUnBlock.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnUnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -216,16 +223,16 @@ public class FrmDetalleUsuario extends JFrame {
 				dispose();
 			}
 		});
-		btnUnBlock.setBounds(109, 263, 110, 23);
+		btnUnBlock.setBounds(120, 263, 134, 23);
 		contentPane.add(btnUnBlock);
 		
 		panel = new JPanel();
-		panel.setBounds(465, 137, 86, 87);
+		panel.setBounds(512, 140, 86, 87);
 		contentPane.add(panel);
 		
 		lblFoto = new JLabel("Foto:");
 		lblFoto.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblFoto.setBounds(352, 173, 46, 14);
+		lblFoto.setBounds(394, 173, 46, 14);
 		contentPane.add(lblFoto);
 		
 	}

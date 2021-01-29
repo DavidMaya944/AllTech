@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Color;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -46,6 +47,7 @@ public class FrmGestionProductos extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 950, 500);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -64,6 +66,7 @@ public class FrmGestionProductos extends JFrame {
 		panelDat.setViewportView(tblResult);
 		
 		btnVolver = new JButton("VOLVER");
+		btnVolver.setBackground(new Color(25, 25, 112));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();

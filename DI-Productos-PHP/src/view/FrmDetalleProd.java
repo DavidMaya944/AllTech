@@ -74,6 +74,7 @@ public class FrmDetalleProd extends JDialog {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 703, 413);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -105,6 +106,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(lblGrupo);
 
 		rdbtnPack = new JRadioButton("Pack");
+		rdbtnPack.setBackground(new Color(0, 255, 255));
 		rdbtnPack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnOption.add(rdbtnPack);
 		rdbtnPack.setSelected(true);
@@ -112,12 +114,14 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(rdbtnPack);
 
 		rdbtnUnidad = new JRadioButton("Unidad");
+		rdbtnUnidad.setBackground(new Color(0, 255, 255));
 		rdbtnUnidad.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnOption.add(rdbtnUnidad);
 		rdbtnUnidad.setBounds(138, 120, 109, 23);
 		contentPane.add(rdbtnUnidad);
 
 		rdbtnCombinado = new JRadioButton("Combinado");
+		rdbtnCombinado.setBackground(new Color(0, 255, 255));
 		rdbtnCombinado.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnOption.add(rdbtnCombinado);
 		rdbtnCombinado.setBounds(138, 146, 109, 23);
@@ -143,11 +147,13 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(lblOtro);
 
 		checkFragil = new JCheckBox("es fr\u00E1gil");
+		checkFragil.setBackground(new Color(0, 255, 255));
 		checkFragil.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		checkFragil.setBounds(137, 277, 97, 23);
 		contentPane.add(checkFragil);
 
 		checkObsoleto = new JCheckBox("Obsoleto");
+		checkObsoleto.setBackground(new Color(0, 255, 255));
 		checkObsoleto.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		checkObsoleto.setBounds(236, 277, 97, 23);
 		contentPane.add(checkObsoleto);
@@ -207,6 +213,8 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(separator);
 
 		JButton btnNuevo = new JButton("NUEVO");
+		btnNuevo.setBackground(new Color(25, 25, 112));
+		btnNuevo.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -228,6 +236,8 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnNuevo);
 
 		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setBackground(new Color(25, 25, 112));
+		btnGuardar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CtrlProducto.insertProd();
@@ -240,6 +250,8 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnGuardar);
 
 		JButton btnBorrar = new JButton("BORRAR");
+		btnBorrar.setBackground(new Color(25, 25, 112));
+		btnBorrar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrl.confirmarBorrar(frame);
@@ -249,6 +261,8 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnBorrar);
 		
 		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setBackground(new Color(25, 25, 112));
+		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -263,6 +277,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(lblImagen);
 		
 		lblFoto = new JLabel("nueva imagen");
+		lblFoto.setBackground(new Color(255, 255, 255));
 		lblFoto.setBorder(new LineBorder(Color.black));
 		lblFoto.addMouseListener(new MouseAdapter() {
 			@Override
