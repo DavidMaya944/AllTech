@@ -47,8 +47,6 @@ public class CtrlProducto {
 		}
 	}
 	
-	
-	
 	public static void loadDataProd() {
 		iId = Integer.parseInt(view.FrmGestionProductos.tblResult.getValueAt(view.FrmGestionProductos.tblResult.getSelectedRow(), 0).toString());
 		try {
@@ -79,21 +77,6 @@ public class CtrlProducto {
 		}
 	}
 	
-	private static String encodeFileToBase64(String filePath) {
-		String base64Image = "";
-		File file = new File(filePath);
-		try(FileInputStream imageInFile = new FileInputStream(file)) {
-			byte[] imageData = new byte[(int) file.length()];
-			imageInFile.read(imageData);
-			base64Image = Base64.getEncoder().encodeToString(imageData);
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "UPLOAD", JOptionPane.ERROR_MESSAGE);
-		}
-		
-		return base64Image;
-	}
-	
-	
 	public static void seleccionarFichero() {
 		JFileChooser selectorArchivo = new JFileChooser();
 		selectorArchivo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -117,18 +100,32 @@ public class CtrlProducto {
 		
 		try {
 			String filePath = archivo.getAbsolutePath();
-			String sNombre = view.FrmGestionProductos.txtNombre.getText().toStrinig();
-			Integer iCantidad = view.FrmGestionProductos.txtCantidad.getText().toStrinig();
-			Integer iPrecio = view.FrmGestionProductos.txtPrecio.getText().toStrinig();
-			Producto p = new Producto(sNombre, iCantidad,iPrecio);
+			String sNombre = view.FrmDetalleProd.txtNombre.getText().replaceAll(" ", "%20");
+			int iOpcion = LogicaProductos.validarOpcion();
+			String sComents = view.FrmDetalleProd.textComents.getText().replaceAll(" ", "%20");
+			boolean bFragil = view.FrmDetalleProd.checkFragil.isSelected();
+			boolean bObsoleto = view.FrmDetalleProd.checkObsoleto.isSelected();
+			int iStockActual = 0, iStockMin = 0, iStockMax = 0;
+
+			if (LogicaProductos.validarStock(view.FrmDetalleProd.txtStockActual, view.FrmDetalleProd.txtStockMin, view.FrmDetalleProd.txtStockMax) == true) {
+				iStockActual = Integer.parseInt(view.FrmDetalleProd.txtStockActual.getText());
+				iStockMin = Integer.parseInt(view.FrmDetalleProd.txtStockMin.getText());
+				iStockMax = Integer.parseInt(view.FrmDetalleProd.txtStockMax.getText());
+			}
 			
-			logic.LogicaProductos.ins-producto(filePath, p);
+			String sProveedor = (String) view.FrmDetalleProd.cmbProveedor.getSelectedItem();
+			float fPVP = 0;
+			if(LogicaProductos.validarPrecio(view.FrmDetalleProd.txtPVP) == true) {
+				fPVP = Float.parseFloat(view.FrmDetalleProd.txtPVP.getText());
+			}
+			Producto p = new Producto(sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP);
 			
-			JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane..INFORMATION_MESSAGE);
+			
+			logic.LogicaProductos.insertProducto(filePath, p);
+			
+			JOptionPane.showMessageDialog(null, "El producto ha sido registrado con exito", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 		}catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No ha podido insertar la imagen", "UPLOAD", JOptionPane.ERROR_MESSAGE);
-			
-			//JOptionPane.showMessageDialog(null, e.getMessage(), "UPLOAD", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No ha podido insertar el producto", "UPLOAD", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

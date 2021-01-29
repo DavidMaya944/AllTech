@@ -1,12 +1,15 @@
 package logic;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +37,22 @@ public class LogicaProductos {
 	public static List<Producto> lProductos = new ArrayList<Producto>();
 	
 	
+	private static String encodeFileToBase64(String filePath) {
+		String base64Image = "";
+		File file = new File(filePath);
+		try(FileInputStream imageInFile = new FileInputStream(file)) {
+			byte[] imageData = new byte[(int) file.length()];
+			imageInFile.read(imageData);
+			base64Image = Base64.getEncoder().encodeToString(imageData);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "UPLOAD", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return base64Image;
+	}
 	
-	public static void ins-producto(String filePath, Producto p) throws Exception {
+	
+	public static void insertProducto(String filePath, Producto p) throws Exception {
 
 		
 		String path = "http://davidmaya.atwebpages.com/imgProd/insert-producto.php";
@@ -50,25 +67,16 @@ public class LogicaProductos {
 		// Parametros de envio
 		Map<String, String> params = new HashMap<>();
 		params.put("imgData", encodeFileToBase64(filePath));
-		params.put("NOMBRE", p.getNombre());
-		params.put("CANTIDAD", p.getCantidad());
-		params.put("PRECIO", p.getPrecio());
-		params.put("NOMBRE", p.getNombre());
-		params.put("CANTIDAD", p.getCantidad());
-		params.put("PRECIO", p.getPrecio());
-		params.put("NOMBRE", p.getNombre());
-		params.put("CANTIDAD", p.getCantidad());
-		params.put("PRECIO", p.getPrecio());
-		params.put("NOMBRE", p.getNombre());
-		params.put("CANTIDAD", p.getCantidad());
-		params.put("PRECIO", p.getPrecio());
-		params.put("NOMBRE", p.getNombre());
-		params.put("CANTIDAD", p.getCantidad());
-		params.put("PRECIO", p.getPrecio());
-		params.put("NOMBRE", p.getNombre());
-		params.put("CANTIDAD", p.getCantidad());
-		params.put("PRECIO", p.getPrecio());
-		
+		params.put("NOMBRE", p.getsNombre());
+		params.put("OPCION", ""+p.getiOpcion());
+		params.put("COMENTARIOS", p.getsComents());
+		params.put("FRAGIL", ""+p.isbFragil());
+		params.put("OBSOLETO", ""+p.isbObsoleto());
+		params.put("STOCK_ACTUAL", ""+p.getiStockActual());
+		params.put("STOCK_MIN", "" + p.getiStockMin());
+		params.put("STOCK_MAX", ""+p.getiStockMax());
+		params.put("PROVEEDOR", p.getsProveedor());
+		params.put("PVP", ""+p.getfPVP());
 		
 		// Array de Bytes de envio
 		StringJoiner sj = new StringJoiner("&");
@@ -144,7 +152,7 @@ public class LogicaProductos {
 	}
 	
 
-	public int validarOpcion() {
+	public static int validarOpcion() {
 		int iOpcion = 0;
 		if (FrmDetalleProd.rdbtnPack.isSelected() == true) {
 			iOpcion = 1;
@@ -159,7 +167,7 @@ public class LogicaProductos {
 		return iOpcion;
 	}
 
-	public boolean validarStock(JTextField txtStockActual, JTextField txtStockMin, JTextField txtStockMax) {
+	public static boolean validarStock(JTextField txtStockActual, JTextField txtStockMin, JTextField txtStockMax) {
 		boolean bExito = false;
 		if (Integer.parseInt(txtStockMin.getText()) >= 0
 				&& Integer.parseInt(txtStockMin.getText()) < Integer.parseInt(txtStockMax.getText())) {
@@ -176,7 +184,7 @@ public class LogicaProductos {
 		return bExito;
 	}
 
-	public boolean validarPrecio(JTextField txtPrecio) {
+	public static boolean validarPrecio(JTextField txtPrecio) {
 		boolean bExito = false;
 		if (Float.parseFloat(txtPrecio.getText()) >= 0) {
 			bExito = true;
