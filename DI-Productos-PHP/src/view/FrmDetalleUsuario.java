@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
 import java.awt.Toolkit;
+import java.awt.Font;
 
 public class FrmDetalleUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +40,7 @@ public class FrmDetalleUsuario extends JFrame {
 
 	
 	public FrmDetalleUsuario() {
+		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/users-gest.png"));
 		createForm();
 		controller.CtrlUsuario.loadDataUser();
@@ -62,6 +64,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.setLayout(null);
 		
 		lblID = new JLabel("ID");
+		lblID.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblID.setBounds(10, 32, 46, 14);
 		contentPane.add(lblID);
 		
@@ -72,6 +75,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtID.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblNombre.setBounds(10, 63, 71, 14);
 		contentPane.add(lblNombre);
 		
@@ -82,6 +86,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtNombre.setColumns(10);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
+		lblApellidos.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblApellidos.setBounds(10, 94, 71, 14);
 		contentPane.add(lblApellidos);
 		
@@ -92,6 +97,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtApellidos.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblEmail.setBounds(10, 129, 46, 14);
 		contentPane.add(lblEmail);
 		
@@ -102,6 +108,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtEmail.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono");
+		lblTelefono.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblTelefono.setBounds(10, 160, 71, 14);
 		contentPane.add(lblTelefono);
 		
@@ -112,6 +119,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtTelefono.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direcci\u00F3n");
+		lblDireccion.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblDireccion.setBounds(10, 195, 71, 14);
 		contentPane.add(lblDireccion);
 		
@@ -122,6 +130,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtDireccion.setColumns(10);
 		
 		JLabel lblUser = new JLabel("Usuario");
+		lblUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblUser.setBounds(352, 32, 46, 14);
 		contentPane.add(lblUser);
 		
@@ -132,11 +141,13 @@ public class FrmDetalleUsuario extends JFrame {
 		txtUser.setColumns(10);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a");
+		lblPass.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblPass.setBounds(352, 63, 89, 14);
 		contentPane.add(lblPass);
 		
 		
 		JButton btnRechazar = new JButton("RECHAZAR");
+		btnRechazar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.rechazarUsuario(frame);
@@ -147,6 +158,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(btnRechazar);
 		
 		JButton btnAceptar = new JButton("ACEPTAR");
+		btnAceptar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrlUser.confirmarUsuario();
@@ -162,6 +174,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(txtPass);
 		
 		lblPermiso = new JLabel("Permiso");
+		lblPermiso.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblPermiso.setBounds(352, 107, 70, 14);
 		contentPane.add(lblPermiso);
 		
@@ -172,6 +185,7 @@ public class FrmDetalleUsuario extends JFrame {
 		txtPermiso.setColumns(10);
 		
 		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -182,6 +196,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(btnVolver);
 		
 		btnBlock = new JButton("BLOQUEAR");
+		btnBlock.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.CtrlUsuario.bloquearUsuario();
@@ -193,6 +208,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(btnBlock);
 		
 		btnUnBlock = new JButton("DESBLOQUEAR");
+		btnUnBlock.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnUnBlock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.CtrlUsuario.desbloquearUsuario();
@@ -208,6 +224,7 @@ public class FrmDetalleUsuario extends JFrame {
 		contentPane.add(panel);
 		
 		lblFoto = new JLabel("Foto:");
+		lblFoto.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblFoto.setBounds(352, 173, 46, 14);
 		contentPane.add(lblFoto);
 		

@@ -27,6 +27,7 @@ import javax.swing.border.LineBorder;
 
 import controller.CtrlProducto;
 import logic.LogicaProductos;
+import java.awt.Font;
 
 public class FrmDetalleProd extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -77,6 +78,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.setLayout(null);
 
 		JLabel lblCodigo = new JLabel("C\u00F3digo:");
+		lblCodigo.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblCodigo.setBounds(28, 34, 54, 14);
 		contentPane.add(lblCodigo);
 
@@ -87,6 +89,7 @@ public class FrmDetalleProd extends JDialog {
 		txtCod.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre: ");
+		lblNombre.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblNombre.setBounds(28, 65, 54, 14);
 		contentPane.add(lblNombre);
 
@@ -96,26 +99,31 @@ public class FrmDetalleProd extends JDialog {
 		txtNombre.setColumns(10);
 
 		JLabel lblGrupo = new JLabel("Grupo:");
+		lblGrupo.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblGrupo.setBounds(28, 101, 46, 14);
 		contentPane.add(lblGrupo);
 
 		rdbtnPack = new JRadioButton("Pack");
+		rdbtnPack.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnOption.add(rdbtnPack);
 		rdbtnPack.setSelected(true);
 		rdbtnPack.setBounds(138, 99, 72, 18);
 		contentPane.add(rdbtnPack);
 
 		rdbtnUnidad = new JRadioButton("Unidad");
+		rdbtnUnidad.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnOption.add(rdbtnUnidad);
 		rdbtnUnidad.setBounds(138, 120, 109, 23);
 		contentPane.add(rdbtnUnidad);
 
 		rdbtnCombinado = new JRadioButton("Combinado");
+		rdbtnCombinado.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnOption.add(rdbtnCombinado);
 		rdbtnCombinado.setBounds(138, 146, 109, 23);
 		contentPane.add(rdbtnCombinado);
 
 		JLabel lblComen = new JLabel("Comentarios:");
+		lblComen.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblComen.setBounds(28, 188, 101, 14);
 		contentPane.add(lblComen);
 
@@ -129,18 +137,22 @@ public class FrmDetalleProd extends JDialog {
 		spComents.setViewportView(textComents);
 
 		JLabel lblOtro = new JLabel("Otro: ");
+		lblOtro.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblOtro.setBounds(28, 281, 46, 14);
 		contentPane.add(lblOtro);
 
 		checkFragil = new JCheckBox("es fr\u00E1gil");
+		checkFragil.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		checkFragil.setBounds(137, 277, 97, 23);
 		contentPane.add(checkFragil);
 
 		checkObsoleto = new JCheckBox("Obsoleto");
+		checkObsoleto.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		checkObsoleto.setBounds(236, 277, 97, 23);
 		contentPane.add(checkObsoleto);
 
 		JLabel lblStockActual = new JLabel("Stock Actual: ");
+		lblStockActual.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblStockActual.setBounds(446, 34, 78, 14);
 		contentPane.add(lblStockActual);
 
@@ -150,6 +162,7 @@ public class FrmDetalleProd extends JDialog {
 		txtStockActual.setColumns(10);
 
 		JLabel lblStockMin = new JLabel("Stock minimo: ");
+		lblStockMin.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblStockMin.setBounds(446, 65, 97, 14);
 		contentPane.add(lblStockMin);
 
@@ -159,6 +172,7 @@ public class FrmDetalleProd extends JDialog {
 		txtStockMin.setColumns(10);
 
 		JLabel lblStockMax = new JLabel("Stock maximo: ");
+		lblStockMax.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblStockMax.setBounds(446, 101, 97, 14);
 		contentPane.add(lblStockMax);
 
@@ -168,6 +182,7 @@ public class FrmDetalleProd extends JDialog {
 		txtStockMax.setColumns(10);
 
 		JLabel lblProveedor = new JLabel("Proveedor: ");
+		lblProveedor.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblProveedor.setBounds(446, 133, 78, 14);
 		contentPane.add(lblProveedor);
 
@@ -177,6 +192,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(cmbProveedor);
 
 		JLabel lblPVP = new JLabel("PVP: ");
+		lblPVP.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblPVP.setBounds(446, 281, 46, 14);
 		contentPane.add(lblPVP);
 
@@ -241,6 +257,7 @@ public class FrmDetalleProd extends JDialog {
 		contentPane.add(btnVolver);
 		
 		JLabel lblImagen = new JLabel("Imagen:");
+		lblImagen.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblImagen.setBounds(446, 210, 46, 14);
 		contentPane.add(lblImagen);
 		
