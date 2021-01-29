@@ -144,11 +144,5 @@ public class CtrlProducto {
 		log.confirmarBorrar(frame);
 	}
 
-	public static void confirmarLogOut(JFrame frame) {
-		LogicaProductos.confirmarLogOut(frame);
-	}
-
-	public static void confirmarExit(JFrame frame) {
-		LogicaProductos.confirmarExit(frame);
-	}
+	
 }

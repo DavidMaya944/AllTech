@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 public class FrmMenuPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	public static FrmMenuPrincipal frame;
 	
 
 	public FrmMenuPrincipal() {
@@ -25,7 +26,7 @@ public class FrmMenuPrincipal extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				controller.CtrlGeneral.confirmarLogOut(frame);
 			}
 		});
 		setTitle("Menu Principal");
@@ -65,15 +66,16 @@ public class FrmMenuPrincipal extends JFrame {
 		btnProductos.setBounds(60, 81, 117, 23);
 		contentPane.add(btnProductos);
 		
-		JButton btnSalir = new JButton("SALIR");
-		btnSalir.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		btnSalir.addActionListener(new ActionListener() {
+		JButton btnLogOut = new JButton("CERRAR SESION");
+		btnLogOut.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				controller.CtrlGeneral.confirmarLogOut(frame);
+				dispose();
 			}
 		});
-		btnSalir.setBounds(60, 115, 117, 23);
-		contentPane.add(btnSalir);
+		btnLogOut.setBounds(60, 115, 117, 23);
+		contentPane.add(btnLogOut);
 		setResizable(false);
 		setVisible(true);
 	}

@@ -17,6 +17,7 @@ import controller.CtrlLogin;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Toolkit;
+import java.awt.Font;
 
 public class LoginAdmin extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -24,13 +25,15 @@ public class LoginAdmin extends JFrame {
 	public static JTextField txtUser;
 	public static JPasswordField txtPass;
 	private CtrlLogin ctrlLogin = new CtrlLogin();
+	public static LoginAdmin frame;
 
 	public LoginAdmin() {
+		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/usuario.png"));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				controller.CtrlGeneral.confirmarExit(frame);
 			}
 		});
 		setTitle("Login");
@@ -42,6 +45,7 @@ public class LoginAdmin extends JFrame {
 		contentPanel.setLayout(null);
 
 		JLabel lblUser = new JLabel("Usuario");
+		lblUser.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblUser.setBounds(10, 11, 46, 14);
 		contentPanel.add(lblUser);
 
@@ -52,6 +56,7 @@ public class LoginAdmin extends JFrame {
 		txtUser.setColumns(10);
 
 		JLabel lblPass = new JLabel("Contrase\u00F1a");
+		lblPass.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		lblPass.setBounds(10, 46, 77, 14);
 		contentPanel.add(lblPass);
 
@@ -65,6 +70,7 @@ public class LoginAdmin extends JFrame {
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton okButton = new JButton("iniciar sesion");
+		okButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		okButton.addActionListener(v -> {
 			if (ctrlLogin.login() == true) {
 				dispose();
@@ -80,6 +86,7 @@ public class LoginAdmin extends JFrame {
 		getRootPane().setDefaultButton(okButton);
 
 		JButton cancelButton = new JButton("Cancelar");
+		cancelButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);

@@ -251,12 +251,6 @@ public class LogicaProductos {
 		}
 	}
 	
-	public static void confirmarLogOut(JFrame frame) {
-		if(JOptionPane.showConfirmDialog(frame, "¿Desea cerrar sesión?", "Cerrar sesión", 2) == JOptionPane.YES_OPTION) {
-			new LoginAdmin();
-		}
-	}
-	
 	public static DefaultTableModel generarTablaProducto(List<Producto> resultado) {
 		DefaultTableModel modelo = new DefaultTableModel();
 		// Añadir la cabecera de las columnas
@@ -292,9 +286,5 @@ public class LogicaProductos {
 		}
 	}
 	
-	public static void confirmarExit(JFrame frame) {
-		if(JOptionPane.showConfirmDialog(frame, "¿Desea salir de la aplicación?", "Salir", 2) == JOptionPane.YES_OPTION) {
-			System.exit(0);
-		}
-	}
+	
 }

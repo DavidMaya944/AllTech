@@ -11,13 +11,28 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class FrmGestionUsuarios extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTable tableUsers;
+	private JButton btnVolver;
 	
 	public FrmGestionUsuarios() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
+		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/users-gest.png"));
 		setTitle("Gestion de Usuarios");
 		createForm();
@@ -46,6 +61,16 @@ public class FrmGestionUsuarios extends JFrame {
 			}
 		});
 		scList.setViewportView(tableUsers);
+		
+		btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new FrmMenuPrincipal();
+			}
+		});
+		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		contentPane.add(btnVolver, BorderLayout.SOUTH);
 	}
 
 }

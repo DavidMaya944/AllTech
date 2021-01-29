@@ -1,29 +1,30 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.Toolkit;
-import java.awt.Font;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTable tblResult;
-	private JMenuItem mnLogOut;
 	public static FrmGestionProductos frame;
+	private JButton btnVolver;
 	
 	public FrmGestionProductos() {
 		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
@@ -31,7 +32,8 @@ public class FrmGestionProductos extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				controller.CtrlProducto.confirmarExit(frame);
+				dispose();
+				new FrmMenuPrincipal();
 			}
 		});
 		setTitle("Gesti\u00F3n de Productos");
@@ -61,15 +63,17 @@ public class FrmGestionProductos extends JFrame {
 		});
 		panelDat.setViewportView(tblResult);
 		
-		mnLogOut = new JMenuItem("Cerrar Sesion");
-		mnLogOut.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		mnLogOut.addActionListener(new ActionListener() {
+		btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controller.CtrlProducto.confirmarLogOut(frame);
 				dispose();
+				new FrmMenuPrincipal();
 			}
 		});
-		contentPane.add(mnLogOut, BorderLayout.NORTH);
+		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		contentPane.add(btnVolver, BorderLayout.SOUTH);
+		
+		
 	}
 
 }
