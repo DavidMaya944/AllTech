@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import controller.CtrlLogin;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
 
 public class LoginAdmin extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +26,7 @@ public class LoginAdmin extends JFrame {
 	private CtrlLogin ctrlLogin = new CtrlLogin();
 
 	public LoginAdmin() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/usuario.png"));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +22,6 @@ public class CtrlProducto {
 	
 	private static File archivo;
 
-	
 	public static void tableRowSelected() {
 		new view.FrmDetalleProd();
 
@@ -80,7 +81,6 @@ public class CtrlProducto {
 		}
 	}
 	
-	
 	public static void insertProd() {
 		
 		if(view.FrmDetalleProd.lblFoto.getIcon() == null) {
@@ -118,7 +118,6 @@ public class CtrlProducto {
 		}
 	}
 
-
 	public void mostrar(Producto p) {
 		FrmDetalleProd.txtCod.setText("" + p.getiCod());
 		FrmDetalleProd.txtNombre.setText(p.getsNombre());
@@ -141,14 +140,15 @@ public class CtrlProducto {
 		FrmDetalleProd.txtPVP.setText("" + p.getfPVP());
 	}
 	
-	public void confirmarBorrar(FrmDetalleProd frame) {
+	public void confirmarBorrar(JDialog frame) {
 		log.confirmarBorrar(frame);
 	}
-	
-//	public void guardarProducto() {
-//		log.guardarProducto();
-//	}
 
+	public static void confirmarLogOut(JFrame frame) {
+		LogicaProductos.confirmarLogOut(frame);
+	}
 
-
+	public static void confirmarExit(JFrame frame) {
+		LogicaProductos.confirmarExit(frame);
+	}
 }

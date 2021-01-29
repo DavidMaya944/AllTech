@@ -10,13 +10,28 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTable tblResult;
+	private JMenuItem mnLogOut;
+	public static FrmGestionProductos frame;
 	
 	public FrmGestionProductos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/cesta.png"));
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				controller.CtrlProducto.confirmarExit(frame);
+			}
+		});
 		setTitle("Gesti\u00F3n de Productos");
 		createForm();
 		controller.CtrlProducto.loadData();
@@ -43,6 +58,15 @@ public class FrmGestionProductos extends JFrame {
 			}
 		});
 		panelDat.setViewportView(tblResult);
+		
+		mnLogOut = new JMenuItem("Cerrar Sesion");
+		mnLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.CtrlProducto.confirmarLogOut(frame);
+				dispose();
+			}
+		});
+		contentPane.add(mnLogOut, BorderLayout.NORTH);
 	}
 
 }

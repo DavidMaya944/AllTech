@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Toolkit;
 
 public class FrmGestionUsuarios extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +18,7 @@ public class FrmGestionUsuarios extends JFrame {
 	public static JTable tableUsers;
 	
 	public FrmGestionUsuarios() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/users-gest.png"));
 		setTitle("Gestion de Usuarios");
 		createForm();
 		controller.CtrlUsuario.loadData();

@@ -8,13 +8,13 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlUsuario;
+import java.awt.Toolkit;
 
 public class FrmDetalleUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +39,7 @@ public class FrmDetalleUsuario extends JFrame {
 
 	
 	public FrmDetalleUsuario() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/users-gest.png"));
 		createForm();
 		controller.CtrlUsuario.loadDataUser();
 		setVisible(true);

@@ -17,6 +17,8 @@ import java.util.StringJoiner;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -26,12 +28,12 @@ import org.json.JSONObject;
 
 import model.Producto;
 import view.FrmDetalleProd;
+import view.LoginAdmin;
 
 public class LogicaProductos {
 	public static int iPos = 0;
 	public static int iCod = 0;
 	public static List<Producto> lProductos = new ArrayList<Producto>();
-	
 	
 	private static String encodeFileToBase64(String filePath) {
 		String base64Image = "";
@@ -46,6 +48,7 @@ public class LogicaProductos {
 		
 		return base64Image;
 	}
+	
 	public static void updateProducto(String filePath, Producto p) throws Exception {
 		
 		String path = "https://alltech1.000webhostapp.com/Productos/update-producto.php";
@@ -191,8 +194,6 @@ public class LogicaProductos {
 		return p;
 	}
 	
-	
-	
 	public static List<Producto> jasonToProductos(String respuesta){
 		List<Producto> lProducto = new ArrayList<Producto>();
 		
@@ -227,9 +228,7 @@ public class LogicaProductos {
 		Producto p = new Producto(iCod, sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP );
 		return p;
 	}
-	
 
-	
 	public static String getProductos() {
 		String sql = "https://alltech1.000webhostapp.com/Productos/get-productos.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
@@ -244,20 +243,19 @@ public class LogicaProductos {
 		return respuesta;
 	}
 
-	public void confirmarBorrar(FrmDetalleProd frame) {
+	public void confirmarBorrar(JDialog frame) {
 		int iCod = Integer.parseInt(FrmDetalleProd.txtCod.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
 			LogicaGeneral.peticionHttpArray("https://alltech1.000webhostapp.com/Productos/delete-producto.php?CODIGO=" + iCod);
 		}
 	}
-
-//	public void guardarProducto() {
-//		guardarBD(FrmDetalleProd.txtCod, FrmDetalleProd.txtNombre, FrmDetalleProd.btnOption, FrmDetalleProd.textComents, FrmDetalleProd.checkFragil,
-//				FrmDetalleProd.checkObsoleto, FrmDetalleProd.txtStockActual, FrmDetalleProd.txtStockMin, FrmDetalleProd.txtStockMax,
-//				FrmDetalleProd.cmbProveedor, FrmDetalleProd.txtPVP);
-//		
-//	}
+	
+	public static void confirmarLogOut(JFrame frame) {
+		if(JOptionPane.showConfirmDialog(frame, "¿Desea cerrar sesión?", "Cerrar sesión", 2) == JOptionPane.YES_OPTION) {
+			new LoginAdmin();
+		}
+	}
 	
 	public static DefaultTableModel generarTablaProducto(List<Producto> resultado) {
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -294,5 +292,9 @@ public class LogicaProductos {
 		}
 	}
 	
-
+	public static void confirmarExit(JFrame frame) {
+		if(JOptionPane.showConfirmDialog(frame, "¿Desea salir de la aplicación?", "Salir", 2) == JOptionPane.YES_OPTION) {
+			System.exit(0);
+		}
+	}
 }
