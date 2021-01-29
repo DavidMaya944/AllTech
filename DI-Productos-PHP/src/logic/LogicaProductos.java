@@ -251,14 +251,14 @@ public class LogicaProductos {
 	}
 	
 	public static String getProductos() {
-		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-productos.php";
+		String sql = "https://alltech1.000webhostapp.com/Productos/get-productos.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
 	}
 	
 	public static String getProducto(int iId) {
-		String sql = "http://davidmaya.atwebpages.com/ProductosPHP/get-producto.php?CODIGO=" + iId;
+		String sql = "https://alltech1.000webhostapp.com/Productos/get-producto.php?CODIGO=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -268,7 +268,7 @@ public class LogicaProductos {
 		int iCod = Integer.parseInt(FrmDetalleProd.txtCod.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			String sql = "http://davidmaya.atwebpages.com/ProductosPHP/delete-producto.php?CODIGO=" + iCod;
+			String sql = "https://alltech1.000webhostapp.com/Productos/delete-producto.php?CODIGO=" + iCod;
 			String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		}
 	}
