@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Toolkit;
+import java.awt.Font;
 
 public class FrmGestionProductos extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +26,7 @@ public class FrmGestionProductos extends JFrame {
 	public static FrmGestionProductos frame;
 	
 	public FrmGestionProductos() {
+		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/cesta.png"));
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -60,6 +62,7 @@ public class FrmGestionProductos extends JFrame {
 		panelDat.setViewportView(tblResult);
 		
 		mnLogOut = new JMenuItem("Cerrar Sesion");
+		mnLogOut.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		mnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.CtrlProducto.confirmarLogOut(frame);

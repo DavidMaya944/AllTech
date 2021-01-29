@@ -53,6 +53,7 @@ public class FrmDetalleProd extends JDialog {
 	public static final ButtonGroup btnOption = new ButtonGroup();
 
 	public FrmDetalleProd() {
+		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		createForm();
 		controller.CtrlProducto.loadDataProd();
 		setVisible(true);

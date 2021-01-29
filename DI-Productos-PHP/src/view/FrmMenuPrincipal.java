@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Toolkit;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class FrmMenuPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -18,6 +20,7 @@ public class FrmMenuPrincipal extends JFrame {
 	
 
 	public FrmMenuPrincipal() {
+		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/main.png"));
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -34,10 +37,13 @@ public class FrmMenuPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblEncabezado = new JLabel("Bienvenido. \u00BFQu\u00E9 desea gestionar?");
-		lblEncabezado.setBounds(33, 11, 195, 14);
+		lblEncabezado.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEncabezado.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		lblEncabezado.setBounds(0, 11, 248, 14);
 		contentPane.add(lblEncabezado);
 		
 		JButton btnUsuarios = new JButton("USUARIOS");
+		btnUsuarios.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -49,6 +55,7 @@ public class FrmMenuPrincipal extends JFrame {
 		contentPane.add(btnUsuarios);
 		
 		JButton btnProductos = new JButton("PRODUCTOS");
+		btnProductos.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -59,6 +66,7 @@ public class FrmMenuPrincipal extends JFrame {
 		contentPane.add(btnProductos);
 		
 		JButton btnSalir = new JButton("SALIR");
+		btnSalir.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
