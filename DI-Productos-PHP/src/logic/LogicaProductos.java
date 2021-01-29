@@ -16,12 +16,8 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 import javax.imageio.ImageIO;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,13 +46,9 @@ public class LogicaProductos {
 		
 		return base64Image;
 	}
-	
-	
-	public static void insertProducto(String filePath, Producto p) throws Exception {
-
-		System.out.println("HOLA");
-
-		String path = "https://alltech1.000webhostapp.com/Productos/insert-producto.php";
+	public static void updateProducto(String filePath, Producto p) throws Exception {
+		
+		String path = "https://alltech1.000webhostapp.com/Productos/update-producto.php";
 		
 		// Establecer la conexión...
 		URL url = new URL(path);
@@ -97,62 +89,48 @@ public class LogicaProductos {
 
 	}
 	
-	
-	
-//
-//	public String guardarBD(JTextField txtCod, JTextField txtNombre, ButtonGroup btnOption, JTextArea textComents,
-//			JCheckBox checkFragil, JCheckBox checkObsoleto, JTextField txtStockActual, JTextField txtStockMin,
-//			JTextField txtStockMax, JComboBox cmbProveedor, JTextField txtPVP) {
-//
-//		String respuesta = null;
-//		int iCod;
-//
-//		try {
-//			 iCod = Integer.parseInt(txtCod.getText());
-//		} catch (Exception ex) {
-//			iCod = -1;
-//		}
-//		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
-//		int iOpcion = validarOpcion();
-//		String sComents = textComents.getText().replaceAll(" ", "%20");
-//		boolean bFragil = checkFragil.isSelected();
-//		boolean bObsoleto = checkObsoleto.isSelected();
-//		int iStockActual = 0, iStockMin = 0, iStockMax = 0;
-//
-//		if (validarStock(txtStockActual, txtStockMin, txtStockMax) == true) {
-//			iStockActual = Integer.parseInt(txtStockActual.getText());
-//			iStockMin = Integer.parseInt(txtStockMin.getText());
-//			iStockMax = Integer.parseInt(txtStockMax.getText());
-//		}
-//		String sProveedor = (String) cmbProveedor.getSelectedItem();
-//		float fPVP = 0;
-//		if (validarPrecio(txtPVP) == true) {
-//			fPVP = Float.parseFloat(txtPVP.getText());
-//		}		
-//	
-//		if (iCod != -1) {
-//			String sqlUpdate = "http://davidmaya.atwebpages.com/ProductosPHP/update-producto.php";
-//			sqlUpdate += "?NOMBRE=" + sNombre + "&OPCION=" + iOpcion + "&COMENTARIOS=" + sComents;
-//			sqlUpdate += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
-//					+ "&STOCK_MIN=" + iStockMin;
-//			sqlUpdate += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP + "&CODIGO="
-//					+ iCod;
-//			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
-//			System.out.println("Ha actualizado correctamente.");
-//		} else {
-//			String sqlInsert = "http://davidmaya.atwebpages.com/ProductosPHP/insert-producto.php";
-//			sqlInsert += "?NOMBRE=" + sNombre + "&OPCION=" + iOpcion + "&COMENTARIOS=" + sComents;
-//			sqlInsert += "&FRAGIL=" + bFragil + "&OBSOLETO=" + bObsoleto + "&STOCK_ACTUAL=" + iStockActual
-//					+ "&STOCK_MIN=" + iStockMin;
-//			sqlInsert += "&STOCK_MAX=" + iStockMax + "&PROVEEDOR=" + sProveedor + "&PVP=" + fPVP;
-//			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
-//			System.out.println("Ha insertado correctamente.");
-//
-//		}
-//
-//		return respuesta;
-//	}
-	
+	public static void insertProducto(String filePath, Producto p) throws Exception {
+
+		String path = "https://alltech1.000webhostapp.com/Productos/insert-producto.php";
+		
+		// Establecer la conexión...
+		URL url = new URL(path);
+		URLConnection conn = url.openConnection();
+		HttpURLConnection http = (HttpURLConnection) conn;
+		http.setRequestMethod("POST");
+		http.setDoOutput(true);
+		// Parametros de envio
+		Map<String, String> params = new HashMap<>();
+		params.put("imgData", encodeFileToBase64(filePath));
+		params.put("NOMBRE", p.getsNombre());
+		params.put("OPCION", ""+p.getiOpcion());
+		params.put("COMENTARIOS", p.getsComents());
+		params.put("FRAGIL", ""+(p.isbFragil()?1:0));
+		params.put("OBSOLETO", ""+(p.isbObsoleto()?1:0));
+		params.put("STOCK_ACTUAL", ""+p.getiStockActual());
+		params.put("STOCK_MIN", "" + p.getiStockMin());
+		params.put("STOCK_MAX", ""+p.getiStockMax());
+		params.put("PROVEEDOR", p.getsProveedor());
+		params.put("PVP", ""+p.getfPVP());
+		
+		// Array de Bytes de envio
+		StringJoiner sj = new StringJoiner("&");
+		for(Map.Entry<String, String> entry : params.entrySet()) {
+			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
+		}
+		
+		System.out.println(sj);
+		
+		byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
+		
+		// Enviar el array de bytes hacia el path (URL del Web-Service)
+		http.setFixedLengthStreamingMode(out.length);
+		http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
+		http.connect();
+		http.getOutputStream().write(out);
+		
+
+	}	
 
 	public static int validarOpcion() {
 		int iOpcion = 0;
@@ -270,8 +248,7 @@ public class LogicaProductos {
 		int iCod = Integer.parseInt(FrmDetalleProd.txtCod.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			String sql = "https://alltech1.000webhostapp.com/Productos/delete-producto.php?CODIGO=" + iCod;
-			String respuesta = LogicaGeneral.peticionHttpArray(sql);
+			LogicaGeneral.peticionHttpArray("https://alltech1.000webhostapp.com/Productos/delete-producto.php?CODIGO=" + iCod);
 		}
 	}
 
