@@ -77,14 +77,7 @@ public class LoginAdmin extends JFrame {
 		okButton.setBackground(new Color(102, 205, 170));
 		okButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		okButton.addActionListener(v -> {
-			if (ctrlLogin.login() == true) {
-				dispose();
-				new FrmMenuPrincipal();
-				
-			} else {
-				JOptionPane.showMessageDialog(null, "Credenciales incorrectas", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
-			}
-
+			ctrlLogin.login();
 		});
 		okButton.setActionCommand("OK");
 		buttonPane.add(okButton);

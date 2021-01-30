@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -24,6 +25,8 @@ public class FrmGestionProductos extends JFrame {
 	private JPanel contentPane;
 	public static JTable tblResult;
 	public static FrmGestionProductos frame;
+	private JPanel panel;
+	private JButton btnGraficProd;
 	private JButton btnVolver;
 	
 	public FrmGestionProductos() {
@@ -65,16 +68,31 @@ public class FrmGestionProductos extends JFrame {
 		});
 		panelDat.setViewportView(tblResult);
 		
+		panel = new JPanel();
+		panel.setBackground(new Color(0, 255, 255));
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.TRAILING);
+		contentPane.add(panel, BorderLayout.SOUTH);
+		
 		btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new FrmMenuPrincipal();
 			}
 		});
+		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		contentPane.add(btnVolver, BorderLayout.SOUTH);
+		panel.add(btnVolver);
+		
+		btnGraficProd = new JButton("GRAFICA");
+		btnGraficProd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new GraphicProd();
+			}
+		});
+		btnGraficProd.setBackground(new Color(46, 139, 87));
+		btnGraficProd.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		panel.add(btnGraficProd);
 		
 		
 	}

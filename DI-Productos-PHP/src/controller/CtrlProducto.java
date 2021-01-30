@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.BorderLayout;
 import java.awt.Image;
 import java.io.File;
 import java.util.List;
@@ -11,19 +12,39 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 import logic.LogicaProductos;
 import model.Producto;
 import view.FrmDetalleProd;
 
 public class CtrlProducto {
 	private static int iId;
-	public static LogicaProductos log = new LogicaProductos();
 	
 	private static File archivo;
 
 	public static void tableRowSelected() {
 		new view.FrmDetalleProd();
 
+	}
+	
+	public static void generarGraficBarra() {
+		view.GraphicProd.dataBar = new DefaultCategoryDataset();
+		for(Producto p : LogicaProductos.lProductos) {
+			view.GraphicProd.dataBar.setValue(p.getiStockActual(), p.getsNombre(), "STOCK ACTUAL");
+		}
+		
+		view.GraphicProd.chart = ChartFactory.createBarChart("STOCK", "PRODUCTOS", "CANTIDAD", view.GraphicProd.dataBar, PlotOrientation.VERTICAL, true, false, false);
+		view.GraphicProd.contentPanel.setLayout(new BorderLayout(0, 0));
+		
+		view.GraphicProd.panelChart = new ChartPanel(view.GraphicProd.chart);
+		
+		view.GraphicProd.panelChart.setBounds(300, 100, 100, 200);
+		
+		view.GraphicProd.contentPanel.add(view.GraphicProd.panelChart);
 	}
 
 	public static void loadData() {
@@ -59,7 +80,7 @@ public class CtrlProducto {
 			FrmDetalleProd.txtStockMax.setText("" + p.getiStockMax());
 			FrmDetalleProd.cmbProveedor.setSelectedItem(p.getsProveedor());
 			FrmDetalleProd.txtPVP.setText("" + p.getfPVP());
-			log.downloadImgProd(p.getiCod());
+			LogicaProductos.downloadImgProd(p.getiCod());
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
@@ -138,7 +159,7 @@ public class CtrlProducto {
 	}
 	
 	public void confirmarBorrar(JDialog frame) {
-		log.confirmarBorrar(frame);
+		LogicaProductos.confirmarBorrar(frame);
 	}
 
 	

@@ -241,7 +241,7 @@ public class LogicaProductos {
 		return respuesta;
 	}
 
-	public void confirmarBorrar(JDialog frame) {
+	public static void confirmarBorrar(JDialog frame) {
 		int iCod = Integer.parseInt(FrmDetalleProd.txtCod.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
@@ -272,7 +272,7 @@ public class LogicaProductos {
 		return modelo;
 	}
 	
-	public void downloadImgProd(int iId) {
+	public static void downloadImgProd(int iId) {
 		String path = "https://alltech1.000webhostapp.com/imgProd/" + iId + ".jpg";
 		try {
 			URL url = new URL(path);

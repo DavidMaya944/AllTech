@@ -1,13 +1,16 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
 import logic.LogicaLogin;
+import view.FrmMenuPrincipal;
 import view.LoginAdmin;
 
 public class CtrlLogin {
 
 	LogicaLogin logLogin = new LogicaLogin();
 
-	public boolean login() {
+	public void login() {
 		boolean bExito = false;
 		LogicaLogin.lAdmin = logLogin.leerLogin();
 		String sNombre = LoginAdmin.txtUser.getText();
@@ -20,7 +23,12 @@ public class CtrlLogin {
 			LogicaLogin.iPos++;
 		}
 		
-		return bExito;
+		if(bExito) {
+			new FrmMenuPrincipal();
+		}else {
+			JOptionPane.showMessageDialog(null, "Credenciales incorrectas", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
+		}
+		
 	}
 
 }

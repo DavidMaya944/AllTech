@@ -3,6 +3,8 @@ package controller;
 import javax.swing.JFrame;
 
 import logic.LogicaGeneral;
+import view.FrmMenuPrincipal;
+import view.LoginAdmin;
 
 public class CtrlGeneral {
 	

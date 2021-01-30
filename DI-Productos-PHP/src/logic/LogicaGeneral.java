@@ -8,6 +8,7 @@ import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import view.FrmMenuPrincipal;
 import view.LoginAdmin;
 
 public class LogicaGeneral {
@@ -51,6 +52,7 @@ public class LogicaGeneral {
 		if(JOptionPane.showConfirmDialog(frame, "¿Desea cerrar sesión?", "Cerrar sesión", 2) == JOptionPane.YES_OPTION) {
 			new LoginAdmin();
 		}
+		
 	}
 	
 	public static void confirmarExit(JFrame frame) {
