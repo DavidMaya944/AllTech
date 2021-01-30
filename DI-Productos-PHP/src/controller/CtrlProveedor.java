@@ -2,18 +2,22 @@ package controller;
 
 import java.util.List;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import logic.LogicaProductos;
 import logic.LogicaProveedor;
-import model.Producto;
 import model.Proveedor;
 import view.FrmDetalleProd;
 import view.FrmDetalleProveedor;
 
 public class CtrlProveedor {
 	public static int iId;
+	
+	public static void guardarProveedor() {
+		LogicaProveedor.guardarProveedor();
+	}
+	
 	public static void tableRowSelected() {
 		new view.FrmDetalleProveedor();
 
@@ -45,9 +49,11 @@ public class CtrlProveedor {
 			FrmDetalleProveedor.txtNombre.setText(p.getsNombre());
 			
 		}catch(Exception e) {
-			System.err.println(e.getMessage());
-			System.err.println(e.getStackTrace());
-			//JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	
+	public void confirmarBorrar(JDialog frame) {
+		LogicaProveedor.borrarProveedor(frame);
 	}
 }

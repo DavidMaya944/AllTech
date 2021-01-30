@@ -3,6 +3,8 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +16,7 @@ import model.Proveedor;
 public class LogicaProveedor {
 	public static List<Proveedor> lProveedores;
 	
-	public static String insertarProveedor(JTextField txtID, JTextField txtNombre) {
+	public static String guardarProveedor(JTextField txtID, JTextField txtNombre) {
 
 		String respuesta = null;
 		int iId;
@@ -40,6 +42,10 @@ public class LogicaProveedor {
 		}
 
 		return respuesta;
+	}
+	
+	public static void guardarProveedor() {
+		guardarProveedor(view.FrmDetalleProveedor.txtIdProv, view.FrmDetalleProveedor.txtNombre);
 	}
 	
 	public static List<Proveedor> leerProveedor() {
@@ -107,5 +113,14 @@ public class LogicaProveedor {
 			modelo.addRow(new Object[] {p.getiId(), p.getsNombre()});
 		}
 		return modelo;
+	}
+	
+	public static void borrarProveedor(JDialog frame) {
+		int iId = Integer.parseInt(view.FrmDetalleProveedor.txtIdProv.getText());
+		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del proveedor " + iId,
+				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
+			LogicaGeneral.peticionHttpArray("https://alltech1.000webhostapp.com/Proveedores/delete-proveedor.php?ID_PROVEEDOR=" + iId);
+		}
+		
 	}
 }

@@ -67,12 +67,24 @@ public class FrmDetalleProveedor extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnVolver = new JButton("VOLVER");
+				btnVolver.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+					}
+				});
 				btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 				btnVolver.setBackground(new Color(46, 139, 87));
 				buttonPane.add(btnVolver);
 			}
 			{
 				JButton btnGuardar = new JButton("GUARDAR");
+				btnGuardar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						controller.CtrlProveedor.guardarProveedor();
+						controller.CtrlProveedor.loadData();
+						dispose();
+					}
+				});
 				btnGuardar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 				btnGuardar.setBackground(new Color(46, 139, 87));
 				btnGuardar.setActionCommand("OK");
@@ -81,6 +93,13 @@ public class FrmDetalleProveedor extends JDialog {
 			}
 			{
 				JButton btnEliminar = new JButton("ELIMINAR");
+				btnEliminar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						controller.CtrlProveedor.guardarProveedor();
+						controller.CtrlProveedor.loadData();
+						dispose();
+					}
+				});
 				btnEliminar.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 				btnEliminar.setBackground(new Color(46, 139, 87));
 				btnEliminar.setActionCommand("Cancel");

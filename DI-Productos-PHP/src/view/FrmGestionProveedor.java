@@ -14,6 +14,8 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmGestionProveedor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +41,12 @@ public class FrmGestionProveedor extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new FrmMenuPrincipal();
+				dispose();
+			}
+		});
 		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		contentPane.add(btnVolver, BorderLayout.SOUTH);
