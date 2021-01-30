@@ -23,6 +23,9 @@ public class FrmGestionUsuarios extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTable tableUsers;
+	private JButton button;
+	private JPanel panel;
+	private JButton btnGraphics;
 	private JButton btnVolver;
 	
 	public FrmGestionUsuarios() {
@@ -64,16 +67,26 @@ public class FrmGestionUsuarios extends JFrame {
 		});
 		scList.setViewportView(tableUsers);
 		
+		button = new JButton("New button");
+		scList.setColumnHeaderView(button);
+		
+		panel = new JPanel();
+		contentPane.add(panel, BorderLayout.SOUTH);
+		
 		btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new FrmMenuPrincipal();
 			}
 		});
+		btnVolver.setBackground(new Color(46, 139, 87));
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		contentPane.add(btnVolver, BorderLayout.SOUTH);
+		panel.add(btnVolver);
+		
+		btnGraphics = new JButton("GRAFICA");
+		btnGraphics.setBackground(new Color(46, 139, 87));
+		btnGraphics.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		panel.add(btnGraphics);
 	}
 
 }
