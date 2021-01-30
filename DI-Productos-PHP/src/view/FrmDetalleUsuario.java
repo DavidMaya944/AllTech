@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +19,7 @@ import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.Color;
 
-public class FrmDetalleUsuario extends JFrame {
+public class FrmDetalleUsuario extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblID;
@@ -45,11 +46,12 @@ public class FrmDetalleUsuario extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/users-gest.png"));
 		createForm();
 		controller.CtrlUsuario.loadDataUser();
+		setResizable(false);
+		setModal(true);
 		setVisible(true);
 	}
 
 	public void createForm() {
-		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FrmGestionProveedor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -45,6 +47,12 @@ public class FrmGestionProveedor extends JFrame {
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		tableProv = new JTable();
+		tableProv.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controller.CtrlProveedor.tableRowSelected();
+			}
+		});
 		tableProv.setBackground(new Color(0, 255, 255));
 		tableProv.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		

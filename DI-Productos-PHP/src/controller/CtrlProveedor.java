@@ -10,11 +10,12 @@ import logic.LogicaProveedor;
 import model.Producto;
 import model.Proveedor;
 import view.FrmDetalleProd;
+import view.FrmDetalleProveedor;
 
 public class CtrlProveedor {
 	public static int iId;
 	public static void tableRowSelected() {
-		new view.FrmDetalleProd();
+		new view.FrmDetalleProveedor();
 
 	}
 	
@@ -36,15 +37,17 @@ public class CtrlProveedor {
 		}
 	}
 	
-	public static void loadDataProd() {
+	public static void loadDataProv() {
 		iId = Integer.parseInt(view.FrmGestionProveedor.tableProv.getValueAt(view.FrmGestionProveedor.tableProv.getSelectedRow(), 0).toString());
 		try {
 			Proveedor p = LogicaProveedor.leerProv(iId);
-			FrmDetalleProd.txtCod.setText("" + p.getiId());
-			FrmDetalleProd.txtNombre.setText(p.getsNombre());
+			FrmDetalleProveedor.txtIdProv.setText("" + p.getiId());
+			FrmDetalleProveedor.txtNombre.setText(p.getsNombre());
 			
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+			//JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

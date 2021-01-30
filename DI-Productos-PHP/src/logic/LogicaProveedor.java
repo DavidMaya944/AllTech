@@ -3,16 +3,44 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import model.Producto;
 import model.Proveedor;
 
 public class LogicaProveedor {
 	public static List<Proveedor> lProveedores;
+	
+	public static String insertarProveedor(JTextField txtID, JTextField txtNombre) {
+
+		String respuesta = null;
+		int iId;
+
+		try {
+			iId = Integer.parseInt(txtID.getText());
+		} catch (Exception e) {
+			iId = -1;
+		}
+
+		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
+
+		if (iId != -1) {
+			String sqlUpdate = "https://alltech1.000webhostapp.com/Proveedores/insert-proveedor.php?NOMBRE="
+					+ sNombre + "&ID=" + iId;
+
+			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
+		}else {
+			String sqlInsert = "https://alltech1.000webhostapp.com/Proveedores/insert-proveedor.php?NOMBRE="
+					+ sNombre;
+			
+			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
+		}
+
+		return respuesta;
+	}
 	
 	public static List<Proveedor> leerProveedor() {
 		lProveedores = new ArrayList<Proveedor>();
@@ -37,8 +65,9 @@ public class LogicaProveedor {
 	}
 	
 	private static Proveedor JsonToProveedor(JSONObject jObj) {
+		int iId = jObj.getInt("ID_PROVEEDOR");
 		String sNombre = jObj.getString("NOMBRE");
-		Proveedor p = new Proveedor(sNombre);
+		Proveedor p = new Proveedor(iId, sNombre);
 		return p;
 	}
 	

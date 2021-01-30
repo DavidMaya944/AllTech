@@ -56,6 +56,8 @@ public class FrmDetalleProd extends JDialog {
 		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		createForm();
 		controller.CtrlProducto.loadDataProd();
+		setResizable(false);
+		setModal(true);
 		setVisible(true);
 	}
 	
@@ -68,7 +70,7 @@ public class FrmDetalleProd extends JDialog {
 				dispose();
 			}
 		});
-		setResizable(false);
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon\\cesta.png"));
 		setTitle("Detalle");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
