@@ -55,6 +55,7 @@ public class FrmGestionProductos extends JFrame {
 		contentPane.add(panelDat, BorderLayout.CENTER);
 		
 		tblResult = new JTable();
+		tblResult.setBackground(new Color(0, 255, 255));
 		tblResult.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblResult.addMouseListener(new MouseAdapter() {
 			@Override

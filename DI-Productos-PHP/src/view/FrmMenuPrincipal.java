@@ -32,7 +32,7 @@ public class FrmMenuPrincipal extends JFrame {
 		});
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 293, 240);
+		setBounds(100, 100, 344, 278);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -42,7 +42,7 @@ public class FrmMenuPrincipal extends JFrame {
 		JLabel lblEncabezado = new JLabel("Bienvenido. \u00BFQu\u00E9 desea gestionar?");
 		lblEncabezado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEncabezado.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblEncabezado.setBounds(29, 27, 248, 14);
+		lblEncabezado.setBounds(46, 27, 248, 14);
 		contentPane.add(lblEncabezado);
 		
 		JButton btnUsuarios = new JButton("USUARIOS");
@@ -55,7 +55,7 @@ public class FrmMenuPrincipal extends JFrame {
 				
 			}
 		});
-		btnUsuarios.setBounds(89, 63, 117, 23);
+		btnUsuarios.setBounds(100, 63, 141, 23);
 		contentPane.add(btnUsuarios);
 		
 		JButton btnProductos = new JButton("PRODUCTOS");
@@ -67,7 +67,7 @@ public class FrmMenuPrincipal extends JFrame {
 				new FrmGestionProductos();
 			}
 		});
-		btnProductos.setBounds(89, 97, 117, 23);
+		btnProductos.setBounds(100, 97, 141, 23);
 		contentPane.add(btnProductos);
 		
 		JButton btnLogOut = new JButton("CERRAR SESION");
@@ -79,8 +79,20 @@ public class FrmMenuPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnLogOut.setBounds(89, 131, 117, 23);
+		btnLogOut.setBounds(100, 165, 141, 23);
 		contentPane.add(btnLogOut);
+		
+		JButton btnProveedor = new JButton("PROVEEDORES");
+		btnProveedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new FrmGestionProveedor();
+			}
+		});
+		btnProveedor.setBackground(new Color(46, 139, 87));
+		btnProveedor.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		btnProveedor.setBounds(100, 131, 141, 23);
+		contentPane.add(btnProveedor);
 		setResizable(false);
 		setVisible(true);
 	}
