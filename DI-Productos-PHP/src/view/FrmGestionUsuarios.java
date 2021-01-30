@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
 
 public class FrmGestionUsuarios extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -71,6 +73,9 @@ public class FrmGestionUsuarios extends JFrame {
 		scList.setColumnHeaderView(button);
 		
 		panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.TRAILING);
+		panel.setBackground(new Color(0, 255, 255));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
 		btnVolver = new JButton("VOLVER");
@@ -84,6 +89,11 @@ public class FrmGestionUsuarios extends JFrame {
 		panel.add(btnVolver);
 		
 		btnGraphics = new JButton("GRAFICA");
+		btnGraphics.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new GraficUser();
+			}
+		});
 		btnGraphics.setBackground(new Color(46, 139, 87));
 		btnGraphics.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		panel.add(btnGraphics);

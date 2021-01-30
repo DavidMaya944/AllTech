@@ -44,7 +44,7 @@ public class LogicaUsuarios {
 		String sTelefono = txtTelefono.getText();
 
 		if (iId != -1) {
-			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE="
+			String sqlUpdate = "https://alltech1.000webhostapp.com/Usuarios/update-usuarioCliente.php?NOMBRE="
 					+ sNombre;
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono
@@ -78,7 +78,7 @@ public class LogicaUsuarios {
 		String sTelefono = txtTelefono.getText();
 
 		if (iId != -1) {
-			String sqlUpdate = "http://davidmaya.atwebpages.com/UsuarioCliente/update-usuarioCliente.php?NOMBRE="
+			String sqlUpdate = "https://alltech1.000webhostapp.com/Usuarios/update-usuarioCliente.php?NOMBRE="
 					+ sNombre;
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono
@@ -91,14 +91,14 @@ public class LogicaUsuarios {
 	}
 
 	public static String obtenerUsuarios() {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/getUsuariosClientes.php";
+		String sql = "https://alltech1.000webhostapp.com/Usuarios/getUsuariosClientes.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 
 		return respuesta;
 	}
 	
 	public static String getUser(int iId) {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-usuarioCliente.php?ID=" + iId;
+		String sql = "https://alltech1.000webhostapp.com/Usuarios/get-usuarioCliente.php?ID=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -108,7 +108,7 @@ public class LogicaUsuarios {
 		int iId = Integer.parseInt(FrmDetalleUsuario.txtID.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iId,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			LogicaGeneral.peticionHttpArray("http://davidmaya.atwebpages.com/UsuarioCliente/delete-usuarioCliente.php?ID=" + iId);
+			LogicaGeneral.peticionHttpArray("https://alltech1.000webhostapp.com/Usuarios/delete-usuarioCliente.php?ID=" + iId);
 		}
 		
 	}

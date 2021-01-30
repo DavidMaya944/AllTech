@@ -8,16 +8,29 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 public class GraficUser extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private final JPanel contentPanel = new JPanel();
+	public static final JPanel contentPanel = new JPanel();
+	public static DefaultPieDataset data;
+	public static JFreeChart chart;
+	public static ChartPanel panelChart;
 	
 	public GraficUser() {
+		createForm();
+		controller.CtrlUsuario.loadData();
+		setVisible(true);
+	}
+	
+	public void createForm() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -34,6 +47,9 @@ public class GraficUser extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		controller.CtrlUsuario.generarGrafic();
 	}
+
+	
 
 }
