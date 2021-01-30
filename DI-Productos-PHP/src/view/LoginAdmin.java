@@ -90,7 +90,7 @@ public class LoginAdmin extends JFrame {
 		buttonPane.add(okButton);
 		getRootPane().setDefaultButton(okButton);
 
-		JButton cancelButton = new JButton("Cancelar");
+		JButton cancelButton = new JButton("Salir");
 		cancelButton.setBackground(new Color(102, 205, 170));
 		cancelButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		cancelButton.addActionListener(new ActionListener() {
