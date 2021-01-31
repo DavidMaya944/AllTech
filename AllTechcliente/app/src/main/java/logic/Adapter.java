@@ -15,9 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.alltech_cliente.R;
 
-import java.util.List;
-
-import model.Producto;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
@@ -68,7 +65,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         public static CardView cTarjeta;
         public static TextView lblNombre;
         public static TextView lblPrecio;
-        public static TextView lblDescripcion;
         public static ImageView imgProd;
 
 

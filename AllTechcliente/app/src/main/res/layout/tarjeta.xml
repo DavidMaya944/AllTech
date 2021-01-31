@@ -10,11 +10,11 @@
         android:id="@+id/crdTarjeta"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/layout_margin"
         android:background="@color/design_default_color_error"
         app:cardBackgroundColor="@color/design_default_color_error"
-        app:cardCornerRadius="10dp"
-        app:contentPadding="10dp">
+        app:cardCornerRadius="@dimen/corner_card"
+        app:contentPadding="@dimen/content_padding_card">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout
-                android:layout_width="150dp"
+                android:layout_width="@dimen/layout_widht"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -46,7 +46,7 @@
                     android:id="@+id/lblPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/layout_margin"
                     android:background="@android:color/background_light"
                     android:hint="@string/lbl_precio" />
 
@@ -56,10 +56,8 @@
                 android:id="@+id/floatInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/ic_dialog_info" />
 
@@ -67,10 +65,9 @@
                 android:id="@+id/floatAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_margin="@dimen/layout_margin"
+                android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/ic_input_add" />
 
