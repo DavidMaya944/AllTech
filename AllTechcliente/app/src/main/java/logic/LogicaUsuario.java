@@ -152,7 +152,6 @@ public class LogicaUsuario {
         String sql = "https://alltech1.000webhostapp.com/Usuarios/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
-        Log.i("MAYA","Hace el insert");
         return sql;
     }
 
