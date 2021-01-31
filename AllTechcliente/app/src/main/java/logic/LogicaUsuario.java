@@ -26,7 +26,8 @@ public class LogicaUsuario {
     LogicaProducto logProd = new LogicaProducto();
 
     public void getUsuario(){
-        new login_user().execute("http://davidmaya.atwebpages.com/UsuarioCliente/get-login-user.php");
+        new login_user().execute("https://alltech1.000webhostapp.com/Usuarios/get-login-user.php");
+
     }
 
     public void registroUser(){
@@ -148,7 +149,7 @@ public class LogicaUsuario {
         String sUsuario = RegistroActivity.txtUsuario.getText().toString();
         String sPassword = RegistroActivity.txtPassword.getText().toString();
         String sTelefono = RegistroActivity.txtTelefono.getText().toString();
-        String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/insert-usuarioCliente.php?NOMBRE=" + sNombre;
+        String sql = "https://alltech1.000webhostapp.com/Usuarios/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
         Log.i("MAYA","Hace el insert");

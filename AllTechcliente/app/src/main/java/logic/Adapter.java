@@ -13,7 +13,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.alltech_cliente.R;
 
 import java.util.List;
@@ -44,7 +43,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.lblPrecio.setText(""+ LogicaProducto.lProducto.get(position).getPVP());
         Glide
                 .with(context)
-                .load("http://davidmaya.atwebpages.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
+                .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
 
         holder.cTarjeta.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,6 @@ package logic;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -24,7 +23,8 @@ public class LogicaProducto {
     public static List<Producto> lProducto;
     public static int iPos;
     public void getProductos(){
-       new listar_productos().execute("http://davidmaya.atwebpages.com/ProductosPHP/get-productos.php");
+       new listar_productos().execute("https://alltech1.000webhostapp.com/Productos/get-productos.php");
+
     }
 
     private class listar_productos extends AsyncTask<String, Void, Void> {
