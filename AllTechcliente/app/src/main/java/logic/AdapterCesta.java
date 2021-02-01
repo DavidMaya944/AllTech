@@ -62,7 +62,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return LogicaProducto.lCesta.size();
