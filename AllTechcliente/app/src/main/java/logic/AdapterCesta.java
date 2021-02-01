@@ -17,15 +17,13 @@ import com.example.alltech_cliente.Prod_detalle_activity;
 import com.example.alltech_cliente.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import model.Producto;
 
-
-public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
+public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProducto>{
     public static Context context;
     public static int iPos;
     private LogicaProducto logProd = new LogicaProducto();
 
-    public Adapter(Context context){
+    public AdapterCesta(Context context){
         this.context = context;
     }
 
@@ -39,11 +37,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
 
-        holder.lblNombre.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
-        holder.lblPrecio.setText(LogicaProducto.lProducto.get(position).getPVP() + " €");
+        holder.lblNombre.setText(LogicaProducto.lCesta.get(position).getNOMBRE());
+        holder.lblPrecio.setText(LogicaProducto.lCesta.get(position).getPVP() + " €");
         Glide
                 .with(context)
-                .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
+                .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lCesta.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
         iPos = position;
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             }
         });
 
-        holder.floatAdd.setOnClickListener(new View.OnClickListener() {
+        holder.floatRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LogicaProducto.addCesta();
@@ -64,7 +62,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
     @Override
     public int getItemCount() {
-        return LogicaProducto.lProducto.size();
+        return LogicaProducto.lCesta.size();
     }
     public void refresh(){
         notifyDataSetChanged();
@@ -76,7 +74,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         public static TextView lblPrecio;
         public static ImageView imgProd;
         public static FloatingActionButton floatInfo;
-        public static FloatingActionButton floatAdd;
+        public static FloatingActionButton floatRemove;
 
         public HolderProducto(@NonNull View itemView) {
             super(itemView);
@@ -85,7 +83,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblPrecio = itemView.findViewById(R.id.lblPrecio);
             imgProd = itemView.findViewById(R.id.imgProd);
             floatInfo = itemView.findViewById(R.id.floatInfo);
-            floatAdd = itemView.findViewById(R.id.floatAdd);
+            floatRemove = itemView.findViewById(R.id.floatRemove);
         }
     }
 }

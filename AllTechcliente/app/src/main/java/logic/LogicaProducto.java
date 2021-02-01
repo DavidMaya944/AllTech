@@ -18,11 +18,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import  model.Producto;
 
 public class LogicaProducto {
     public static List<Producto> lProducto;
+    public static List<Producto> lCesta;
     public static int iPos;
 
     public void getProductos(){
@@ -99,9 +101,12 @@ public class LogicaProducto {
             lProducto = new Gson().fromJson(sResultado, type);
             Log.i("MAYA","ANTES DEL FOR");
             Adapter.HolderProducto.floatInfo.callOnClick();
+        }
+    }
 
-
-
+    public static void addCesta(){
+        for(Producto p : lProducto){
+            lCesta.add(p);
         }
     }
 

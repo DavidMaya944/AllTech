@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -60,6 +61,8 @@ public class Tienda_activity extends AppCompatActivity {
                 sMensaje = "Cerrar Sesion";
                 break;
             case R.id.itemCesta:
+                Intent i = new Intent(getApplicationContext(), Cesta.class);
+                startActivity(i);
                 sMensaje = "Cesta";
                 break;
 

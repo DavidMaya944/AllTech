@@ -22,6 +22,7 @@ public class Prod_detalle_activity extends AppCompatActivity {
         txtPrecioDetalle = findViewById(R.id.txtPrecioDetalle);
         txtDescrip = findViewById(R.id.txtDescripcionDetalle);
 
+        // Coge la última posición
         for(Producto p : LogicaProducto.lProducto){
             txtNombreDetalle.setText(p.getNOMBRE());
             txtPrecioDetalle.setText(p.getPVP() + " €");
