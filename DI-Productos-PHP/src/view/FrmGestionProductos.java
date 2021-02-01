@@ -77,6 +77,7 @@ public class FrmGestionProductos extends JFrame {
 		btnVolver = new JButton("VOLVER");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				new FrmMenuPrincipal();
 				dispose();
 			}
 		});

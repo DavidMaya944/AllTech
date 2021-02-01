@@ -127,14 +127,20 @@ public class CtrlProducto {
 				fPVP = Float.parseFloat(view.FrmDetalleProd.txtPVP.getText());
 			}
 			Producto p = new Producto(sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP);
-
-			logic.LogicaProductos.insertProducto(filePath, p);
+			if(Integer.parseInt(view.FrmDetalleProd.txtCod.getText()) != -1 ) {
+				logic.LogicaProductos.updateProducto(filePath, p);
+			}else {
+				logic.LogicaProductos.insertProducto(filePath, p);
+			}
+			
 			
 			JOptionPane.showMessageDialog(null, "El producto ha sido registrado con exito", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No ha podido insertar el producto", "UPLOAD", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	
 
 	public void mostrar(Producto p) {
 		FrmDetalleProd.txtCod.setText("" + p.getiCod());

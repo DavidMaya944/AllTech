@@ -257,6 +257,8 @@ public class FrmDetalleProd extends JDialog {
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ctrl.confirmarBorrar(frame);
+				controller.CtrlProducto.loadData();
+				dispose();
 			}
 		});
 		btnBorrar.setBounds(374, 343, 97, 23);
@@ -267,8 +269,8 @@ public class FrmDetalleProd extends JDialog {
 		btnVolver.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
 				new FrmMenuPrincipal();
+				dispose();
 			}
 		});
 		btnVolver.setBounds(278, 343, 86, 23);
