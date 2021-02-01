@@ -8,4 +8,8 @@ public class CtrlProducto {
     public void getProductos(){
         logProd.getProductos();
     }
+
+    public void getProductoDetalle(int iCod){
+        logProd.getProductoDetalle(iCod);
+    }
 }

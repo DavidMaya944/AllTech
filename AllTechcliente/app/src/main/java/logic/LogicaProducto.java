@@ -97,8 +97,11 @@ public class LogicaProducto {
             super.onPostExecute(aVoid);
             Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            Intent pordDetalle = new Intent(Tienda_activity.contextTienda, com.example.alltech_cliente.Prod_detalle_activity.class);
-            Tienda_activity.contextTienda.startActivity(pordDetalle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            Log.i("MAYA","ANTES DEL FOR");
+            Adapter.HolderProducto.floatInfo.callOnClick();
+
+
+
         }
     }
 

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.alltech_cliente.Prod_detalle_activity;
 import com.example.alltech_cliente.R;
+import com.example.alltech_cliente.Tienda_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import model.Producto;
@@ -51,18 +52,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logProd.getProductoDetalle(LogicaProducto.lProducto.get(iPos).getCODIGO());
-           /*     Prod_detalle_activity.txtNombreDetalle.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
-                Prod_detalle_activity.txtPrecioDetalle.setText(LogicaProducto.lProducto.get(position).getPVP() + " €");
-                Prod_detalle_activity.txtDescrip.setText(LogicaProducto.lProducto.get(position).getCOMENTARIOS());*/
-
-
-
-
-
-               /* Intent pordDetalle = new Intent(context, com.example.alltech_cliente.Prod_detalle_activity.class);
-
-                context.startActivity(pordDetalle);*/
+               Intent prodDetalle = new Intent(Adapter.context, Prod_detalle_activity.class);
+               Adapter.context.startActivity(prodDetalle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }
@@ -82,8 +73,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         public static ImageView imgProd;
         public static FloatingActionButton floatInfo;
 
-
-
         public HolderProducto(@NonNull View itemView) {
             super(itemView);
             cTarjeta = itemView.findViewById(R.id.crdTarjeta);
@@ -91,10 +80,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblPrecio = itemView.findViewById(R.id.lblPrecio);
             imgProd = itemView.findViewById(R.id.imgProd);
             floatInfo = itemView.findViewById(R.id.floatInfo);
-
-
         }
-
-
     }
 }
