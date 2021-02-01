@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +29,7 @@ public class Tienda_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         contextTienda = getApplicationContext();
         rView = findViewById(R.id.listaProdPrincipal);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -45,7 +48,7 @@ public class Tienda_activity extends AppCompatActivity {
         MenuBuilder mb = (MenuBuilder) menu;
         mb.setGroupDividerEnabled(true);
         mb.setOptionalIconsVisible(true);
-        mb.findItem(R.id.itemAjustes).setVisible(false);
+        mb.findItem(R.id.itemAjustes).setVisible(true);
         return true;
     }
 
@@ -55,6 +58,9 @@ public class Tienda_activity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.itemAjustes:
+
+                Intent pref = new Intent(this, ActivityPreferencias.class);
+                startActivity(pref);
                 sMensaje = "Ajustes";
                 break;
             case R.id.itemCerrarSesion:
