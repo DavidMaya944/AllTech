@@ -26,4 +26,5 @@
     <string name="login_failed">Inicio de sesión fallido</string>
     <string name="action_sign_in" translatable="false">Iniciar sesión o registro</string>
     <string name="action_sign_in_short" translatable="false">Iniciar sesión</string>
+    <string name="prompt_password" translatable="false">Contraseña</string>
 </resources>

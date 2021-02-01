@@ -26,4 +26,5 @@
     <string name="login_failed" translatable="false">Login failed</string>
     <string name="action_sign_in" translatable="false">Sign in or register</string>
     <string name="action_sign_in_short" translatable="false">Sign in</string>
+    <string name="prompt_password" translatable="false">Password</string>
 </resources>
