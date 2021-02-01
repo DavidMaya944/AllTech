@@ -21,10 +21,6 @@
     <string name="lbl_precio">Precio</string>
     <string name="lbl_detalle">Detalle</string>
     <string name="btn_sign_in">Iniciar sesion</string>
-    <string name="invalid_username" translatable="false">Usuario invalido</string>
-    <string name="invalid_password" translatable="false">La contraseña debe tener más de 5 carácteres</string>
-    <string name="login_failed">Inicio de sesión fallido</string>
-    <string name="action_sign_in" translatable="false">Iniciar sesión o registro</string>
-    <string name="action_sign_in_short" translatable="false">Iniciar sesión</string>
-    <string name="prompt_password" translatable="false">Contraseña</string>
+    <string name="title_pass_pref">Contraseña</string>
+    <string name="title_mute_pref">Efectos de sonido</string>
 </resources>

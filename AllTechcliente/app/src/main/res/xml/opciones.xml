@@ -3,16 +3,22 @@
     <PreferenceCategory app:title="@string/title_prefer_credenciales">
 
         <EditTextPreference
-            app:key="firma"
-            app:title="Su firma"
+            app:key="@string/key_email_pref"
+            app:title="@string/title_email_pref"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="@string/key_pass_pref"
+            app:title="@string/title_pass_pref"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Volumen">
         <SwitchPreference
-            app:key="mutear"
-            app:title="Sonido OFF/ON" />
+            app:key="@string/key_mute"
+            app:title="@string/title_mute_pref"
+            app:defaultValue="true" />
 
     </PreferenceCategory>
 
