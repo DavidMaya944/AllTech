@@ -268,6 +268,7 @@ public class FrmDetalleProd extends JDialog {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+				new FrmMenuPrincipal();
 			}
 		});
 		btnVolver.setBounds(278, 343, 86, 23);

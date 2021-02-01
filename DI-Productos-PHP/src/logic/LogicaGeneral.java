@@ -8,7 +8,6 @@ import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import view.FrmMenuPrincipal;
 import view.LoginAdmin;
 
 public class LogicaGeneral {
@@ -48,16 +47,7 @@ public class LogicaGeneral {
 		return bExito;
 	}
 	
-	public static void confirmarLogOut(JFrame frame) {
-		if(JOptionPane.showConfirmDialog(frame, "¿Desea cerrar sesión?", "Cerrar sesión", 2) == JOptionPane.YES_OPTION) {
-			new LoginAdmin();
-		}
-		
-	}
 	
-	public static void confirmarExit(JFrame frame) {
-		if(JOptionPane.showConfirmDialog(frame, "¿Desea salir de la aplicación?", "Salir", 2) == JOptionPane.YES_OPTION) {
-			System.exit(0);
-		}
-	}
+	
+	
 }

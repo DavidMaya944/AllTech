@@ -21,30 +21,34 @@ import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.Color;
 
-public class LoginAdmin extends JFrame {
-	private static final long serialVersionUID = 1L;
+public class LoginAdmin {
 	private final JPanel contentPanel = new JPanel();
 	public static JTextField txtUser;
 	public static JPasswordField txtPass;
 	private CtrlLogin ctrlLogin = new CtrlLogin();
-	public static LoginAdmin frame;
+	public static JFrame frame;
 
 	public LoginAdmin() {
-		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/usuario.png"));
-		addWindowListener(new WindowAdapter() {
+		frame = new JFrame();
+		crearVista();
+	}
+	
+	public void crearVista() {
+		frame.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("icon/usuario.png"));
+		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				controller.CtrlGeneral.confirmarExit(frame);
 			}
 		});
-		setTitle("Login");
-		setBounds(100, 100, 243, 142);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new BorderLayout());
+		frame.setTitle("Login");
+		frame.setBounds(100, 100, 243, 142);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(0, 255, 255));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		frame.getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
 		JLabel lblUser = new JLabel("Usuario");
@@ -71,17 +75,18 @@ public class LoginAdmin extends JFrame {
 		JPanel buttonPane = new JPanel();
 		buttonPane.setBackground(new Color(0, 255, 255));
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		getContentPane().add(buttonPane, BorderLayout.SOUTH);
+		frame.getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton okButton = new JButton("iniciar sesion");
 		okButton.setBackground(new Color(102, 205, 170));
 		okButton.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		okButton.addActionListener(v -> {
 			ctrlLogin.login();
+			frame.dispose();
 		});
 		okButton.setActionCommand("OK");
 		buttonPane.add(okButton);
-		getRootPane().setDefaultButton(okButton);
+		frame.getRootPane().setDefaultButton(okButton);
 
 		JButton cancelButton = new JButton("Salir");
 		cancelButton.setBackground(new Color(102, 205, 170));
@@ -93,7 +98,7 @@ public class LoginAdmin extends JFrame {
 		});
 		cancelButton.setActionCommand("Cancel");
 		buttonPane.add(cancelButton);
-		setResizable(false);
-		setVisible(true);
+		frame.setResizable(false);
+		frame.setVisible(true);
 	}
 }

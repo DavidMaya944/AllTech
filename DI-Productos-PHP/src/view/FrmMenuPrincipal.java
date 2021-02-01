@@ -15,28 +15,31 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 
-public class FrmMenuPrincipal extends JFrame {
-	private static final long serialVersionUID = 1L;
+public class FrmMenuPrincipal {
 	private JPanel contentPane;
-	public static FrmMenuPrincipal frame;
+	public static JFrame frame;
 	
-
 	public FrmMenuPrincipal() {
-		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		setIconImage(Toolkit.getDefaultToolkit().getImage("icon/main.png"));
-		addWindowListener(new WindowAdapter() {
+		frame = new JFrame();
+		crearVista();
+	}
+	
+	public void crearVista() {
+		frame.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("icon/main.png"));
+		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				controller.CtrlGeneral.confirmarLogOut(frame);
 			}
 		});
-		setTitle("Menu Principal");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 344, 278);
+		frame.setTitle("Menu Principal");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 344, 278);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblEncabezado = new JLabel("Bienvenido. \u00BFQu\u00E9 desea gestionar?");
@@ -50,8 +53,8 @@ public class FrmMenuPrincipal extends JFrame {
 		btnUsuarios.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
 				new FrmGestionUsuarios();
+				frame.dispose();
 				
 			}
 		});
@@ -63,8 +66,8 @@ public class FrmMenuPrincipal extends JFrame {
 		btnProductos.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
 				new FrmGestionProductos();
+				frame.dispose();
 			}
 		});
 		btnProductos.setBounds(100, 97, 141, 23);
@@ -76,7 +79,6 @@ public class FrmMenuPrincipal extends JFrame {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.CtrlGeneral.confirmarLogOut(frame);
-				dispose();
 			}
 		});
 		btnLogOut.setBounds(100, 165, 141, 23);
@@ -85,15 +87,15 @@ public class FrmMenuPrincipal extends JFrame {
 		JButton btnProveedor = new JButton("PROVEEDORES");
 		btnProveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
 				new FrmGestionProveedor();
+				frame.dispose();
 			}
 		});
 		btnProveedor.setBackground(new Color(46, 139, 87));
 		btnProveedor.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		btnProveedor.setBounds(100, 131, 141, 23);
 		contentPane.add(btnProveedor);
-		setResizable(false);
-		setVisible(true);
+		frame.setResizable(false);
+		frame.setVisible(true);
 	}
 }

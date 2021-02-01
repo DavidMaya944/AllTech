@@ -24,7 +24,7 @@ import view.FrmDetalleProd;
 public class CtrlProducto {
 	private static int iId;
 	
-	private static File archivo;
+	public static File archivo;
 
 	public static void tableRowSelected() {
 		new view.FrmDetalleProd();
@@ -162,5 +162,7 @@ public class CtrlProducto {
 		LogicaProductos.confirmarBorrar(frame);
 	}
 
-	
+//	public static void subirImagen() {
+//		LogicaProductos.uploadImage();
+//	}
 }

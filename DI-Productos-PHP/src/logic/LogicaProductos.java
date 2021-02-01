@@ -92,43 +92,47 @@ public class LogicaProductos {
 	
 	public static void insertProducto(String filePath, Producto p) throws Exception {
 
-		String path = "https://alltech1.000webhostapp.com/Productos/insert-producto.php";
-		
+		String path = "https://alltech1.000webhostapp.com/Productos/insert-producto.php?NOMBRE=" + p.getsNombre()
+		+ "&OPCION=" + p.getiOpcion() + "&COMENTARIOS=" + p.getsComents() + "&FRAGIL=" + (p.isbFragil()?1:0)
+		+ "&OBSOLETO=" + (p.isbObsoleto()?1:0) + "&STOCK_ACTUAL=" + p.getiStockActual() + "&STOCK_MIN=" + p.getiStockMin()
+		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP();
+		String respuesta = LogicaGeneral.peticionHttpArray(path);
 		// Establecer la conexión...
-		URL url = new URL(path);
-		URLConnection conn = url.openConnection();
-		HttpURLConnection http = (HttpURLConnection) conn;
-		http.setRequestMethod("POST");
-		http.setDoOutput(true);
+//		URL url = new URL(path);
+//		URLConnection conn = url.openConnection();
+//		HttpURLConnection http = (HttpURLConnection) conn;
+//		http.setRequestMethod("POST");
+//		http.setDoOutput(true);
 		// Parametros de envio
-		Map<String, String> params = new HashMap<>();
-		params.put("imgData", encodeFileToBase64(filePath));
-		params.put("NOMBRE", p.getsNombre());
-		params.put("OPCION", ""+p.getiOpcion());
-		params.put("COMENTARIOS", p.getsComents());
-		params.put("FRAGIL", ""+(p.isbFragil()?1:0));
-		params.put("OBSOLETO", ""+(p.isbObsoleto()?1:0));
-		params.put("STOCK_ACTUAL", ""+p.getiStockActual());
-		params.put("STOCK_MIN", "" + p.getiStockMin());
-		params.put("STOCK_MAX", ""+p.getiStockMax());
-		params.put("PROVEEDOR", p.getsProveedor());
-		params.put("PVP", ""+p.getfPVP());
+	//	Map<String, String> params = new HashMap<>();
+		//params.put("imgData", encodeFileToBase64(filePath));
+//		params.put("NOMBRE", p.getsNombre());
+//		params.put("OPCION", ""+p.getiOpcion());
+//		params.put("COMENTARIOS", p.getsComents());
+//		params.put("FRAGIL", ""+(p.isbFragil()?1:0));
+//		params.put("OBSOLETO", ""+(p.isbObsoleto()?1:0));
+//		params.put("STOCK_ACTUAL", ""+p.getiStockActual());
+//		params.put("STOCK_MIN", "" + p.getiStockMin());
+//		params.put("STOCK_MAX", ""+p.getiStockMax());
+//		params.put("PROVEEDOR", p.getsProveedor());
+//		params.put("PVP", ""+p.getfPVP());
+//		
+//		// Array de Bytes de envio
+//		StringJoiner sj = new StringJoiner("&");
+//		for(Map.Entry<String, String> entry : params.entrySet()) {
+//			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
+//		}
 		
-		// Array de Bytes de envio
-		StringJoiner sj = new StringJoiner("&");
-		for(Map.Entry<String, String> entry : params.entrySet()) {
-			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
-		}
+		uploadImage(filePath);
 		
-		System.out.println(sj);
 		
-		byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
+	//	byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
 		
 		// Enviar el array de bytes hacia el path (URL del Web-Service)
-		http.setFixedLengthStreamingMode(out.length);
-		http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
-		http.connect();
-		http.getOutputStream().write(out);
+//		http.setFixedLengthStreamingMode(out.length);
+//		http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
+//		http.connect();
+//		http.getOutputStream().write(out);
 		
 
 	}	
@@ -283,5 +287,42 @@ public class LogicaProductos {
 		}
 	}
 	
+	public static void uploadImage(String filePath) {
+		
+		try {
+			String path = "https://alltech1.000webhostapp.com/imgProd/upload-image2.php?imgData="+filePath;
+			String respuesta = LogicaGeneral.peticionHttpArray(path);
+//			// Establecer la conexión...
+//			URL url = new URL(path);
+//			URLConnection conn = url.openConnection();
+//			HttpURLConnection http = (HttpURLConnection) conn;
+//			http.setRequestMethod("POST");
+//			http.setDoOutput(true);
+//			
+//			// Parametros de envio
+//			Map<String, String> params = new HashMap<>();
+//			params.put("imgData", encodeFileToBase64(filePath));
+//			
+//			// Array de Bytes de envio
+//			StringJoiner sj = new StringJoiner("&");
+//			for(Map.Entry<String, String> entry : params.entrySet()) {
+//				sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
+//			}
+//			System.out.println(sj);
+//			byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
+//			
+//			// Enviar el array de bytes hacia el path (URL del Web-Service)
+//			http.setFixedLengthStreamingMode(out.length);
+//			http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
+//			http.connect();
+//			http.getOutputStream().write(out);
+			JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
+			
+		}catch (Exception e) {
+			//JOptionPane.showMessageDialog(null, e.getMessage(), "UPLOAD", JOptionPane.ERROR_MESSAGE);
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
+	}
 	
 }
