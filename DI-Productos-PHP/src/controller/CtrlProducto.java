@@ -105,6 +105,12 @@ public class CtrlProducto {
 			JOptionPane.showMessageDialog(null, "Debes indicar un nombre de imagen", "FALLO", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+		int iCod; 
+		try {
+			iCod = Integer.parseInt(view.FrmDetalleProd.txtCod.getText());
+		}catch (Exception e) {
+			iCod = -1;
+		}
 		
 		try {
 			String filePath = archivo.getAbsolutePath();
@@ -127,7 +133,7 @@ public class CtrlProducto {
 				fPVP = Float.parseFloat(view.FrmDetalleProd.txtPVP.getText());
 			}
 			Producto p = new Producto(sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP);
-			if(Integer.parseInt(view.FrmDetalleProd.txtCod.getText()) != -1 ) {
+			if(iCod != -1 ) {
 				logic.LogicaProductos.updateProducto(filePath, p);
 			}else {
 				logic.LogicaProductos.insertProducto(filePath, p);
