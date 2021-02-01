@@ -2,6 +2,7 @@ package logic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static Context context;
     public static int iPos;
     private LogicaProducto logProd = new LogicaProducto();
-
+    final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
     public Adapter(Context context){
         this.context = context;
     }
@@ -49,6 +50,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sonido.start();
                 // ENTRA A VER EL PRIMER PRODUCTO QUE MARQUES, PERO AL MARCAR OTRO PRODUCTO, DA ERROR
                 logProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
             }
@@ -57,6 +59,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.floatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sonido.start();
                 LogicaProducto.lCesta.add(LogicaProducto.lProducto.get(position));
             }
         });

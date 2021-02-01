@@ -2,6 +2,7 @@ package logic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
     public static Context context;
     public static int iPos;
     private LogicaProducto logProd = new LogicaProducto();
+    final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
 
     public AdapterCesta(Context context){
         this.context = context;
@@ -47,6 +49,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sonido.start();
                Intent prodDetalle = new Intent(AdapterCesta.context, Prod_detalle_activity.class);
                AdapterCesta.context.startActivity(prodDetalle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
@@ -55,6 +58,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
         holder.floatRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sonido.start();
             }
         });
     }

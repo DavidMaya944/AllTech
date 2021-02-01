@@ -1,6 +1,7 @@
 package com.example.alltech_cliente;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,11 +26,12 @@ public class LoginActivity extends AppCompatActivity {
         txtUserEmail = findViewById(R.id.txtUserEmail);
         txtPass = findViewById(R.id.txtPass);
         btnSignIn = findViewById(R.id.btnSignIn);
-
+        final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sonido.start();
                 ctrlUser.login();
             }
         });
