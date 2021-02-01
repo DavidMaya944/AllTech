@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/sep_lateral"
         android:layout_marginLeft="@dimen/sep_lateral"
-        android:layout_marginTop="@dimen/sep_horizontal"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="@dimen/sep_lateral"
         android:layout_marginRight="@dimen/sep_lateral"
         android:text="@string/btn_login"
