@@ -99,14 +99,8 @@ public class LogicaProducto {
             super.onPostExecute(aVoid);
             Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            Log.i("MAYA","ANTES DEL FOR");
-            Adapter.HolderProducto.floatInfo.callOnClick();
-        }
-    }
-
-    public static void addCesta(){
-        for(Producto p : lProducto){
-            lCesta.add(p);
+            Intent prodDetalle = new Intent(Adapter.context, Prod_detalle_activity.class);
+            Adapter.context.startActivity(prodDetalle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 

@@ -2,6 +2,7 @@ package logic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,19 +46,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 .with(context)
                 .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
-        iPos = position;
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent prodDetalle = new Intent(AdapterCesta.context, Prod_detalle_activity.class);
-               AdapterCesta.context.startActivity(prodDetalle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                // ENTRA A VER EL PRIMER PRODUCTO QUE MARQUES, PERO AL MARCAR OTRO PRODUCTO, DA ERROR
+                logProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
             }
         });
 
         holder.floatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogicaProducto.addCesta();
+                LogicaProducto.lCesta.add(LogicaProducto.lProducto.get(position));
             }
         });
     }

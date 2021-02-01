@@ -55,7 +55,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
         holder.floatRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogicaProducto.addCesta();
             }
         });
     }
