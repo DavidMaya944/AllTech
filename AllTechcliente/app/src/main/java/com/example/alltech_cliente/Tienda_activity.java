@@ -54,28 +54,21 @@ public class Tienda_activity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String sMensaje = "";
 
         switch (item.getItemId()){
             case R.id.itemAjustes:
-
                 Intent pref = new Intent(this, ActivityPreferencias.class);
                 startActivity(pref);
-                sMensaje = "Ajustes";
                 break;
             case R.id.itemCerrarSesion:
-                sMensaje = "Cerrar Sesion";
+                Intent logOut = new Intent(this, LoginActivity.class);
+                startActivity(logOut);
                 break;
             case R.id.itemCesta:
                 Intent i = new Intent(getApplicationContext(), Cesta.class);
                 startActivity(i);
-                sMensaje = "Cesta";
                 break;
-
         }
-
-        Toast.makeText(this, sMensaje, Toast.LENGTH_SHORT).show();
-
         return true;
     }
 
