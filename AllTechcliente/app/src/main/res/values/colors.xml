@@ -8,13 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
+    <!-- Colores personalizados aqui. Version claro -->
     <color name="color_principal_light">#42BEF6</color>
-    <color name="color_principal_dark">#2D3B87</color>
     <color name="botones_light">#8DDF2D</color>
-    <color name="botones_dark">#1A857B</color>
     <color name="tarjeta_light">#EAAF58</color>
-    <color name="tarjeta_dark">#AF4D2E</color>
     <color name="boton_float_light">#42BEF6</color>
+    <color name="fondo_app_light">#79B9C1</color>
+
+    <!-- Colores personalizados aqui. Version oscuro -->
+    <color name="color_principal_dark">#2D3B87</color>
+    <color name="botones_dark">#1A857B</color>
+    <color name="tarjeta_dark">#AF4D2E</color>
     <color name="boton_float_dark">#2D3B87</color>
+    <color name="fondo_app_dark">#2C3E40</color>
 </resources>
