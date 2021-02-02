@@ -1,8 +1,10 @@
 package com.example.alltech_cliente;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,12 +28,31 @@ public class LoginActivity extends AppCompatActivity {
         txtUserEmail = findViewById(R.id.txtUserEmail);
         txtPass = findViewById(R.id.txtPass);
         btnSignIn = findViewById(R.id.btnSignIn);
+        // Acceso a las preferencias
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+        // Escribir en las preferencias
+
+
+
+        // Leer de las preferencias
+        String email = preferences.getString("@string/key_email_pref", "@string/value_email_pref");
+        String pass = preferences.getString("@string/key_pass_pref", "@string/value_pass_pref");
+        LoginActivity.txtUserEmail.setText(email);
+        LoginActivity.txtPass.setText(pass);
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sonido.start();
+
+                SharedPreferences.Editor editorPreferences = preferences.edit();
+                editorPreferences.putString("@string/key_email_pref", txtUserEmail.getText().toString());
+                editorPreferences.putString("@string/key_pass_pref", txtPass.getText().toString());
+                editorPreferences.apply();
                 ctrlUser.login();
             }
         });

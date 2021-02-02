@@ -23,4 +23,6 @@
     <string name="btn_sign_in">Iniciar sesion</string>
     <string name="title_pass_pref">Contraseña</string>
     <string name="title_mute_pref">Efectos de sonido</string>
+    <string name="value_pass_pref">ejemplo</string>
+    <string name="value_email_pref">ejemplo@email.com</string>
 </resources>

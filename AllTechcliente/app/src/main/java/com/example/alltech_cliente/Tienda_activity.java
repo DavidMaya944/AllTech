@@ -29,7 +29,6 @@ public class Tienda_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         contextTienda = getApplicationContext();
         rView = findViewById(R.id.listaProdPrincipal);
         LinearLayoutManager llm = new LinearLayoutManager(this);

@@ -5,12 +5,14 @@
         <EditTextPreference
             app:key="@string/key_email_pref"
             app:title="@string/title_email_pref"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="@string/value_email_pref"/>
 
         <EditTextPreference
             app:key="@string/key_pass_pref"
             app:title="@string/title_pass_pref"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="@string/value_pass_pref"/>
 
     </PreferenceCategory>
 
