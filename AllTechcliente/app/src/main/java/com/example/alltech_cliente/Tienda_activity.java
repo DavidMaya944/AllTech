@@ -65,7 +65,7 @@ public class Tienda_activity extends AppCompatActivity {
                 startActivity(logOut);
                 break;
             case R.id.itemCesta:
-                Intent i = new Intent(getApplicationContext(), Cesta.class);
+                Intent i = new Intent(this, Cesta.class);
                 startActivity(i);
                 break;
         }
@@ -76,6 +76,7 @@ public class Tienda_activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         rView = findViewById(R.id.listaProdPrincipal);
+        rView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rView.setLayoutManager(llm);
         logic.Adapter adapter = new Adapter(this);
