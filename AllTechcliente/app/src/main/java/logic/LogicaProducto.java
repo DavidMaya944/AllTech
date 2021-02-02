@@ -28,11 +28,11 @@ public class LogicaProducto {
     public static int iPos;
 
     public void getProductos(){
-       new listar_productos().execute("https://alltech1.000webhostapp.com/Productos/get-productos.php");
+       new listar_productos().execute(Adapter.DOMINIO + "/Productos/get-productos.php");
     }
 
     public void getProductoDetalle(int iCod){
-        new carga_producto_detalle().execute("https://alltech1.000webhostapp.com/Productos/get-producto-detalle.php?CODIGO=" + iCod);
+        new carga_producto_detalle().execute(Adapter.DOMINIO + "/Productos/get-producto-detalle.php?CODIGO=" + iCod);
     }
 
     private class listar_productos extends AsyncTask<String, Void, Void> {

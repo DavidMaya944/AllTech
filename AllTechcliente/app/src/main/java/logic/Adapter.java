@@ -26,6 +26,7 @@ import model.Producto;
 public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static Context context;
     public static int iPos;
+    public static final String DOMINIO = "https://alltech1.000webhostapp.com";
     private LogicaProducto logProd = new LogicaProducto();
     public Adapter(Context context){
         this.context = context;

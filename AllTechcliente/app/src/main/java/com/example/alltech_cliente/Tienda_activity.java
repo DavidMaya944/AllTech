@@ -16,9 +16,10 @@ import android.view.MenuItem;
 
 import controller.CtrlProducto;
 import logic.Adapter;
+import logic.LogicaUsuario;
 
 public class Tienda_activity extends AppCompatActivity {
-
+    LogicaUsuario logUser = new LogicaUsuario();
     private CtrlProducto ctrlProd = new CtrlProducto();
     public static Context contextTienda;
     public static RecyclerView rView;
@@ -58,6 +59,7 @@ public class Tienda_activity extends AppCompatActivity {
                 startActivity(pref);
                 break;
             case R.id.itemAjustes:
+                logUser.getUsuarioEmail();
               /*  Intent i = new Intent(this, Cesta.class);
                 startActivity(i);*/
                 break;
