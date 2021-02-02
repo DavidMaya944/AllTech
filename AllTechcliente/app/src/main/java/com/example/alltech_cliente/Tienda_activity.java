@@ -36,6 +36,7 @@ public class Tienda_activity extends AppCompatActivity {
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
         adapter.refresh();
+        onResume();
     }
 
     @SuppressLint("RestrictedApi")
@@ -71,5 +72,14 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        rView = findViewById(R.id.listaProdPrincipal);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rView.setLayoutManager(llm);
+        logic.Adapter adapter = new Adapter(this);
+        rView.setAdapter(adapter);
+        adapter.refresh();
+    }
 }

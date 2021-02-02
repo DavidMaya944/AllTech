@@ -29,13 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         txtPass = findViewById(R.id.txtPass);
         btnSignIn = findViewById(R.id.btnSignIn);
         // Acceso a las preferencias
-
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
-        // Escribir en las preferencias
-
-
 
         // Leer de las preferencias
         String email = preferences.getString("@string/key_email_pref", "@string/value_email_pref");

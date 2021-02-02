@@ -5,12 +5,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import view.LoginAdmin;
-
 public class LogicaGeneral {
+	public static final String DOMINIO = "https://alltech1.000webhostapp.com";
 
 	public static String peticionHttpArray(String parametro) {
 

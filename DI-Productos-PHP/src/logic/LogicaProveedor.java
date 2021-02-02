@@ -30,12 +30,12 @@ public class LogicaProveedor {
 		String sNombre = txtNombre.getText().replaceAll(" ", "%20");
 
 		if (iId != -1) {
-			String sqlUpdate = "https://alltech1.000webhostapp.com/Proveedores/insert-proveedor.php?NOMBRE="
+			String sqlUpdate = LogicaGeneral.DOMINIO + "/Proveedores/insert-proveedor.php?NOMBRE="
 					+ sNombre + "&ID=" + iId;
 
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
 		}else {
-			String sqlInsert = "https://alltech1.000webhostapp.com/Proveedores/insert-proveedor.php?NOMBRE="
+			String sqlInsert = LogicaGeneral.DOMINIO + "/Proveedores/insert-proveedor.php?NOMBRE="
 					+ sNombre;
 			
 			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
@@ -89,14 +89,14 @@ public class LogicaProveedor {
 	}
 	
 	public static String getProveedorDetalle(int iId) {
-		String sql = "https://alltech1.000webhostapp.com/Proveedores/get-proveedor-detalle.php?ID_PROVEEDOR=" + iId;
+		String sql = LogicaGeneral.DOMINIO + "/Proveedores/get-proveedor-detalle.php?ID_PROVEEDOR=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
 	}
 	
 	public static String getProveedores() {
-		String sql = "https://alltech1.000webhostapp.com/Proveedores/get-proveedores.php";
+		String sql = LogicaGeneral.DOMINIO + "/Proveedores/get-proveedores.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -119,7 +119,7 @@ public class LogicaProveedor {
 		int iId = Integer.parseInt(view.FrmDetalleProveedor.txtIdProv.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del proveedor " + iId,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			LogicaGeneral.peticionHttpArray("https://alltech1.000webhostapp.com/Proveedores/delete-proveedor.php?ID_PROVEEDOR=" + iId);
+			LogicaGeneral.peticionHttpArray(LogicaGeneral.DOMINIO + "/Proveedores/delete-proveedor.php?ID_PROVEEDOR=" + iId);
 		}
 		
 	}

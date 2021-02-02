@@ -91,50 +91,13 @@ public class LogicaProductos {
 	}
 	
 	public static void insertProducto(String filePath, Producto p) throws Exception {
-
-		String path = "https://alltech1.000webhostapp.com/Productos/insert-producto.php?NOMBRE=" + p.getsNombre()
+		uploadImage(filePath);
+		
+		String path = LogicaGeneral.DOMINIO + "/Productos/insert-producto.php?NOMBRE=" + p.getsNombre()
 		+ "&OPCION=" + p.getiOpcion() + "&COMENTARIOS=" + p.getsComents() + "&FRAGIL=" + (p.isbFragil()?1:0)
 		+ "&OBSOLETO=" + (p.isbObsoleto()?1:0) + "&STOCK_ACTUAL=" + p.getiStockActual() + "&STOCK_MIN=" + p.getiStockMin()
 		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP();
 		LogicaGeneral.peticionHttpArray(path);
-		// Establecer la conexión...
-//		URL url = new URL(path);
-//		URLConnection conn = url.openConnection();
-//		HttpURLConnection http = (HttpURLConnection) conn;
-//		http.setRequestMethod("POST");
-//		http.setDoOutput(true);
-		// Parametros de envio
-	//	Map<String, String> params = new HashMap<>();
-		//params.put("imgData", encodeFileToBase64(filePath));
-//		params.put("NOMBRE", p.getsNombre());
-//		params.put("OPCION", ""+p.getiOpcion());
-//		params.put("COMENTARIOS", p.getsComents());
-//		params.put("FRAGIL", ""+(p.isbFragil()?1:0));
-//		params.put("OBSOLETO", ""+(p.isbObsoleto()?1:0));
-//		params.put("STOCK_ACTUAL", ""+p.getiStockActual());
-//		params.put("STOCK_MIN", "" + p.getiStockMin());
-//		params.put("STOCK_MAX", ""+p.getiStockMax());
-//		params.put("PROVEEDOR", p.getsProveedor());
-//		params.put("PVP", ""+p.getfPVP());
-//		
-//		// Array de Bytes de envio
-//		StringJoiner sj = new StringJoiner("&");
-//		for(Map.Entry<String, String> entry : params.entrySet()) {
-//			sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
-//		}
-		
-		uploadImage(filePath);
-		
-		
-	//	byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
-		
-		// Enviar el array de bytes hacia el path (URL del Web-Service)
-//		http.setFixedLengthStreamingMode(out.length);
-//		http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
-//		http.connect();
-//		http.getOutputStream().write(out);
-		
-
 	}	
 
 	public static int validarOpcion() {
@@ -232,14 +195,14 @@ public class LogicaProductos {
 	}
 
 	public static String getProductos() {
-		String sql = "https://alltech1.000webhostapp.com/Productos/get-productos.php";
+		String sql = LogicaGeneral.DOMINIO + "/Productos/get-productos.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
 	}
 	
 	public static String getProducto(int iId) {
-		String sql = "https://alltech1.000webhostapp.com/Productos/get-producto.php?CODIGO=" + iId;
+		String sql = LogicaGeneral.DOMINIO + "/Productos/get-producto.php?CODIGO=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -249,7 +212,7 @@ public class LogicaProductos {
 		int iCod = Integer.parseInt(FrmDetalleProd.txtCod.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iCod,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			LogicaGeneral.peticionHttpArray("https://alltech1.000webhostapp.com/Productos/delete-producto.php?CODIGO=" + iCod);
+			LogicaGeneral.peticionHttpArray(LogicaGeneral.DOMINIO + "/Productos/delete-producto.php?CODIGO=" + iCod);
 		}
 	}
 	
@@ -277,7 +240,7 @@ public class LogicaProductos {
 	}
 	
 	public static void downloadImgProd(int iId) {
-		String path = "https://alltech1.000webhostapp.com/imgProd/" + iId + ".jpg";
+		String path = LogicaGeneral.DOMINIO + "/imgProd/" + iId + ".jpg";
 		try {
 			URL url = new URL(path);
 			Image image = ImageIO.read(url);
@@ -290,7 +253,8 @@ public class LogicaProductos {
 	public static void uploadImage(String filePath) {
 		
 		try {
-			String path = "https://alltech1.000webhostapp.com/Productos/upload-image.php";
+			String path = LogicaGeneral.DOMINIO + "/Productos/upload-image.php";
+		
 			// Establecer la conexión...
 			URL url = new URL(path);
 			URLConnection conn = url.openConnection();
@@ -315,10 +279,13 @@ public class LogicaProductos {
 			http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
 			http.connect();
 			http.getOutputStream().write(out);
+			http.getOutputStream().flush();
+
 			JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 			
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "UPLOAD", JOptionPane.ERROR_MESSAGE);
+			
 		}
 	}
 	
