@@ -2,6 +2,8 @@ package com.example.alltech_cliente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import model.Usuario;
 
 public class ActivityAjustes extends AppCompatActivity {
     LogicaUsuario logUser = new LogicaUsuario();
+    public static Context contextAjuste;
     EditText txtAjNombre;
     EditText txtAjApellidos;
     public static EditText txtAjEmail;
@@ -20,8 +23,7 @@ public class ActivityAjustes extends AppCompatActivity {
     EditText txtAjDireccion;
     EditText txtAjUsuario;
     EditText txtAjPhone;
-    Button btnActualizar;
-    Button btnCancelarAj;
+    Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,13 @@ public class ActivityAjustes extends AppCompatActivity {
 
         }
 
-        btnActualizar.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logUser.updateUser();
+
             }
         });
+
+
     }
 }

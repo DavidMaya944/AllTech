@@ -8,26 +8,14 @@
     tools:context=".ActivityAjustes">
 
     <Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sep_lateral"
-        android:layout_marginLeft="@dimen/sep_lateral"
         android:layout_marginBottom="@dimen/sep_horizontal"
-        android:text="@string/btn_actualizar"
+        android:text="@string/btn_borar_cuenta"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCancelarAj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/sep_lateral"
-        android:layout_marginRight="@dimen/sep_lateral"
-        android:layout_marginBottom="@dimen/sep_horizontal"
-        android:text="@string/btn_cancelar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"

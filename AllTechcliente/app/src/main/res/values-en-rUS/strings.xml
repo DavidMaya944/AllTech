@@ -28,5 +28,5 @@
     <string name="mn_ajuste">Settings</string>
     <string name="mn_preferencias">Preferences</string>
     <string name="mn_logOut">Log Out</string>
-    <string name="btn_actualizar">Update</string>
+    <string name="btn_borar_cuenta">Delete acount</string>
 </resources>

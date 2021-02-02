@@ -1,5 +1,7 @@
 package logic;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -31,12 +33,13 @@ public class LogicaUsuario {
     }
 
     public void updateUser(){
-        new update_user().equals(update());
+        new delete_user().equals(Adapter.DOMINIO + "/Usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
     }
 
-    public void getUsuarioEmail(){
-        new get_user_email().execute(Adapter.DOMINIO + "/Usuarios/get-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
+    public void getUserEmail(){
+        new get_user_email().execute(Adapter.DOMINIO + "/Usuarios/get-user-email.php?EMAIL=" + LoginActivity.txtUserEmail.getText());
     }
+
 
     public void registroUser(){
         new registro_user().execute(insert());
@@ -103,6 +106,7 @@ public class LogicaUsuario {
         public void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
+
         }
     }
 
@@ -118,15 +122,11 @@ public class LogicaUsuario {
                 iValidacion = 1;
                 bExito = true;
             }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
-                    && "BLOQUEADO".equals(lUsuario.get(iPos).getPERMISO())) {
+                    && !"EN%20ESPERA".equals(lUsuario.get(iPos).getPERMISO())){
                 iValidacion = 2;
                 bExito = false;
-            }else if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
-                    && !"EN%20ESPERA".equals(lUsuario.get(iPos).getPERMISO())){
-                iValidacion = 3;
-                bExito = false;
             }else{
-                iValidacion = 4;
+                iValidacion = 3;
                 bExito = false;
             }
             iPos++;
@@ -138,18 +138,15 @@ public class LogicaUsuario {
                 logProd.getProductos();
                 break;
             case 2:
-                Toast.makeText(LoginActivity.context, "La cuenta está BLOQUEADA.", Toast.LENGTH_SHORT).show();
-                break;
-            case 3:
                 Toast.makeText(LoginActivity.context, "Esperando verificación", Toast.LENGTH_SHORT).show();
                 break;
-            case 4:
+            case 3:
                 Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
-    private class update_user extends AsyncTask<String, Void, Void> {
+    private class delete_user extends AsyncTask<String, Void, Void> {
 
         String sResultado;
 
@@ -175,9 +172,11 @@ public class LogicaUsuario {
         @Override
         public void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
         }
+
+
     }
+
 
     private class get_user_email extends AsyncTask<String, Void, Void> {
 
@@ -190,13 +189,13 @@ public class LogicaUsuario {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
                 String stringBuffer;
                 String str = "";
-                while ((stringBuffer = bufferedReader.readLine()) != null){
+                while ((stringBuffer = bufferedReader.readLine()) != null) {
                     str = String.format("%s%s", str, stringBuffer);
                 }
 
                 sResultado = str;
                 bufferedReader.close();
-            }catch (IOException e){
+            } catch (IOException e) {
                 sResultado = e.getMessage();
             }
             return null;
@@ -208,12 +207,15 @@ public class LogicaUsuario {
             Type type = new TypeToken<List<Usuario>>() {
             }.getType();
             lUsuario = new Gson().fromJson(sResultado, type);
-            Intent userDetalle = new Intent(Tienda_activity.contextTienda, ActivityAjustes.class);
-            Tienda_activity.contextTienda.startActivity(userDetalle);
-        }
-    }
 
-    public String insert(){
+        }
+
+
+
+
+
+    }
+    public String insert() {
         String sNombre = RegistroActivity.txtNombre.getText().toString();
         String sApellidos = RegistroActivity.txtApellidos.getText().toString();
         String sEmail = RegistroActivity.txtEmail.getText().toString();
@@ -226,19 +228,4 @@ public class LogicaUsuario {
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
         return sql;
     }
-
-    public String update(){
-        String sNombre = RegistroActivity.txtNombre.getText().toString();
-        String sApellidos = RegistroActivity.txtApellidos.getText().toString();
-        String sEmail = RegistroActivity.txtEmail.getText().toString();
-        String sDireccion = RegistroActivity.txtDireccion.getText().toString();
-        String sUsuario = RegistroActivity.txtUsuario.getText().toString();
-        String sPassword = RegistroActivity.txtPassword.getText().toString();
-        String sTelefono = RegistroActivity.txtTelefono.getText().toString();
-        String sql = Adapter.DOMINIO + "/Usuarios/update-usuarioEmail.php?NOMBRE=" + sNombre;
-        sql += "&APELLIDOS=" + sApellidos + "&DIRECCION=" + sDireccion;
-        sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=ACPETADO&EMAIL=" + sEmail;
-        return sql;
-    }
-
 }

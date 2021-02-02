@@ -2,6 +2,8 @@ package com.example.alltech_cliente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,14 +42,15 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    ctrlUser.registro();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                } catch (Exception e){
+                ctrlUser.registro();
+                } catch(Exception e) {
                     Toast.makeText(getApplicationContext(), "ERROR: Registro fallido.", Toast.LENGTH_SHORT).show();
                 }
 
             }
-        });
+    });
+
+
+
     }
 }

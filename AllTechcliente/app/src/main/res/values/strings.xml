@@ -40,5 +40,5 @@
     <string name="mn_ajuste">Ajustes</string>
     <string name="mn_preferencias">Preferencias</string>
     <string name="mn_logOut">Cerrar sesion</string>
-    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_borar_cuenta">Borrar cuenta</string>
 </resources>
