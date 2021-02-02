@@ -5,19 +5,11 @@
         <item
             android:id="@+id/itemAjustes"
             android:title="Ajustes" />
+        <item
+            android:id="@+id/itemPreferencias"
+            android:title="@string/mn_preferencias"/>
          <item
             android:id="@+id/itemCerrarSesion"
             android:title="Cerrar sesion" />
-    </group>
-
-    <group android:id="@+id/groupCesta">
-        <item
-            android:id="@+id/itemCesta"
-            android:icon="@drawable/ic_baseline_shopping_basket_24"
-            app:showAsAction="always"
-            android:title="Cesta" />
-
-
-
     </group>
 </menu>

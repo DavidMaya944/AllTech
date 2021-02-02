@@ -37,4 +37,7 @@
     <string name="title_mute_pref">Efectos de sonido</string>
     <string name="value_pass_pref">ejemplo</string>
     <string name="value_email_pref">ejemplo@email.com</string>
+    <string name="mn_ajuste">Ajustes</string>
+    <string name="mn_preferencias">Preferencias</string>
+    <string name="mn_logOut">Cerrar sesion</string>
 </resources>

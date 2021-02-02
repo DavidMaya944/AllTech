@@ -9,13 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import controller.CtrlProducto;
 import logic.Adapter;
@@ -30,12 +27,12 @@ public class Tienda_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
         contextTienda = getApplicationContext();
-        rView = findViewById(R.id.listaProdPrincipal);
+       /* rView = findViewById(R.id.listaProdPrincipal);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rView.setLayoutManager(llm);
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
-        adapter.refresh();
+        adapter.refresh();*/
         onResume();
     }
 
@@ -56,24 +53,25 @@ public class Tienda_activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.itemAjustes:
+            case R.id.itemPreferencias:
                 Intent pref = new Intent(this, ActivityPreferencias.class);
                 startActivity(pref);
+                break;
+            case R.id.itemAjustes:
+                Intent i = new Intent(this, Cesta.class);
+                startActivity(i);
                 break;
             case R.id.itemCerrarSesion:
                 Intent logOut = new Intent(this, LoginActivity.class);
                 startActivity(logOut);
                 break;
-            case R.id.itemCesta:
-                Intent i = new Intent(this, Cesta.class);
-                startActivity(i);
-                break;
+
         }
         return true;
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         rView = findViewById(R.id.listaProdPrincipal);
         rView.setHasFixedSize(true);

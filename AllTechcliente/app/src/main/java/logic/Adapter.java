@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.alltech_cliente.Prod_detalle_activity;
 import com.example.alltech_cliente.R;
+import com.example.alltech_cliente.Tienda_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import model.Producto;
@@ -51,6 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             public void onClick(View v) {
                 // ENTRA A VER EL PRIMER PRODUCTO QUE MARQUES, PERO AL MARCAR OTRO PRODUCTO, DA ERROR
                 logProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
+
             }
         });
 
