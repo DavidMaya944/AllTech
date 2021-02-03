@@ -181,6 +181,7 @@ public class LogicaUsuarios {
 		modelo.addColumn("PASSWORD");
 		modelo.addColumn("TELEFONO");
 		modelo.addColumn("PERMISO");
+	
 		
 		// Añadir cada fila valores
 		for(Usuario u : resultado) {

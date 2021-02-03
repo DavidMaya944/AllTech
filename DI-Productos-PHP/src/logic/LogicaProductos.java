@@ -233,11 +233,13 @@ public class LogicaProductos {
 		
 		// Añadir cada fila valores
 		for(Producto p : resultado) {
-			modelo.addRow(new Object[] {p.getiCod(), p.getsNombre(), p.getiOpcion(), p.getsComents(), p.isbFragil(),
+			modelo.addRow(new Object[] {p.getiCod(), p.getsNombre(), p.getOptionStr(), p.getsComents(), p.isbFragil(),
 					p.isbObsoleto(), p.getiStockActual(), p.getiStockMin(), p.getiStockMax(), p.getsProveedor(), p.getfPVP()});
 		}
 		return modelo;
 	}
+	
+	
 	
 	public static void downloadImgProd(int iId) {
 		String path = LogicaGeneral.DOMINIO + "/imgProd/" + iId + ".jpg";
