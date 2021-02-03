@@ -60,8 +60,6 @@ public class Tienda_activity extends AppCompatActivity {
                 break;
             case R.id.itemAjustes:
                 logUser.getUserEmail();
-                Intent ajuste = new Intent(getApplicationContext(), ActivityAjustes.class);
-                startActivity(ajuste);
                 break;
             case R.id.itemCerrarSesion:
                 Intent logOut = new Intent(this, LoginActivity.class);

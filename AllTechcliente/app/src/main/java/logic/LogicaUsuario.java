@@ -37,7 +37,7 @@ public class LogicaUsuario {
     }
 
     public void getUserEmail(){
-        new get_user_email().execute(Adapter.DOMINIO + "/Usuarios/get-user-email.php?EMAIL=" + LoginActivity.txtUserEmail.getText());
+        new get_user_email().execute(Adapter.DOMINIO + "/Usuarios/get-email.php?EMAIL=" + LoginActivity.txtUserEmail.getText());
     }
 
 
@@ -207,13 +207,10 @@ public class LogicaUsuario {
             Type type = new TypeToken<List<Usuario>>() {
             }.getType();
             lUsuario = new Gson().fromJson(sResultado, type);
+            Intent ajustes = new Intent(Tienda_activity.contextTienda, ActivityAjustes.class);
+            Tienda_activity.contextTienda.startActivity(ajustes.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
-
-
-
-
-
     }
     public String insert() {
         String sNombre = RegistroActivity.txtNombre.getText().toString();
