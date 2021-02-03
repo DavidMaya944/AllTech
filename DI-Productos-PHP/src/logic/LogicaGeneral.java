@@ -8,7 +8,8 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 public class LogicaGeneral {
-	public static final String DOMINIO = "https://alltech1.000webhostapp.com";
+	//public static final String DOMINIO = "https://alltech1.000webhostapp.com";
+	public static final String DOMINIO = "http://192.168.20.47/maya";
 
 	public static String peticionHttpArray(String parametro) {
 
