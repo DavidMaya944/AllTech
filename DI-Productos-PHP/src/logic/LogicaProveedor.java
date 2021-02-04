@@ -32,12 +32,10 @@ public class LogicaProveedor {
 		if (iId != -1) {
 			String sqlUpdate = LogicaGeneral.DOMINIO + "/Proveedores/insert-proveedor.php?NOMBRE="
 					+ sNombre + "&ID=" + iId;
-
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
 		}else {
 			String sqlInsert = LogicaGeneral.DOMINIO + "/Proveedores/insert-proveedor.php?NOMBRE="
 					+ sNombre;
-			
 			respuesta = LogicaGeneral.peticionHttpArray(sqlInsert);
 		}
 
@@ -104,11 +102,9 @@ public class LogicaProveedor {
 	
 	public static DefaultTableModel generarTablaProveedor(List<Proveedor> resultado) {
 		DefaultTableModel modelo = new DefaultTableModel();
-		// Añadir la cabecera de las columnas
 		modelo.addColumn("ID_PROVEEDOR");
 		modelo.addColumn("NOMBRE");
 		
-		// Añadir cada fila valores
 		for(Proveedor p : resultado) {
 			modelo.addRow(new Object[] {p.getiId(), p.getsNombre()});
 		}

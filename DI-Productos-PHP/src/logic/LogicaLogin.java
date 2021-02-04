@@ -15,7 +15,7 @@ public class LogicaLogin {
 	
 	
 	public String getLoginAdmin() {
-		String sql = "http://davidmaya.atwebpages.com/UsuarioCliente/get-login-admin.php";
+		String sql = LogicaGeneral.DOMINIO + "/usuarios/get-login-admin.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;

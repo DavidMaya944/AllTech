@@ -180,9 +180,4 @@ public class CtrlProducto {
 		LogicaProductos.confirmarBorrar(frame);
 	}
 
-	
-
-//	public static void subirImagen() {
-//		LogicaProductos.uploadImage();
-//	}
 }
