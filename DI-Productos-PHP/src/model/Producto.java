@@ -131,4 +131,13 @@ public class Producto implements Serializable {
 	public String getOptionStr() {
 		return (getiOpcion() == 1) ? "PACK" : (getiOpcion() == 2 ? "UNIDAD" : "COMBINADO");
 	}
+
+	@Override
+	public String toString() {
+		return "Producto [iCod=" + iCod + ", iStockActual=" + iStockActual + ", iStockMin=" + iStockMin + ", iStockMax="
+				+ iStockMax + ", iOpcion=" + iOpcion + ", fPVP=" + fPVP + ", sNombre=" + sNombre + ", sComents="
+				+ sComents + ", sProveedor=" + sProveedor + ", bFragil=" + bFragil + ", bObsoleto=" + bObsoleto + "]";
+	}
+	
+	
 }

@@ -5,6 +5,8 @@ public class Usuario {
 	private int iId, iRol;
 	private String sNombre, sApellidos, sEmail, sDireccion, sUsuario, sContrasenia, sTelefono, sPermiso;
 
+	public Usuario() {}
+	
 	public Usuario(String sUsuario, String sContrasenia, String sPermiso, int iRol) {
 		setsUsuario(sUsuario);
 		setsContrasenia(sContrasenia);
@@ -94,9 +96,9 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [iId=" + iId + ", sNombre=" + sNombre + ", sApellidos=" + sApellidos + ", sEmail=" + sEmail
-				+ ", sDireccion=" + sDireccion + ", sUsuario=" + sUsuario + ", sContrasenia=" + sContrasenia
-				+ ", sTelefono=" + sTelefono + ", sPermiso=" + sPermiso + "]";
+		return "Usuario [iId=" + iId + ", iRol=" + iRol + ", sNombre=" + sNombre + ", sApellidos=" + sApellidos
+				+ ", sEmail=" + sEmail + ", sDireccion=" + sDireccion + ", sUsuario=" + sUsuario + ", sContrasenia="
+				+ sContrasenia + ", sTelefono=" + sTelefono + ", sPermiso=" + sPermiso + "]";
 	}
 	
 	

@@ -4,6 +4,8 @@ public class Proveedor {
 	int iId;
 	String sNombre;
 	
+	public Proveedor() {}
+	
 	public Proveedor(int iId, String sNombre) {
 		setiId(iId);
 		setsNombre(sNombre);
