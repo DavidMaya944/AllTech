@@ -52,6 +52,10 @@ public class CtrlProducto {
 			List<Producto> resultado = LogicaProductos.leer();
 			DefaultTableModel modelo = LogicaProductos.generarTablaProducto(resultado);
 			view.FrmGestionProductos.tblResult.setModel(modelo);
+			view.FrmGestionProductos.tblResult.getColumnModel().getColumn(0).setMinWidth(0);
+			view.FrmGestionProductos.tblResult.getColumnModel().getColumn(0).setMaxWidth(0);
+			view.FrmGestionProductos.tblResult.getColumnModel().getColumn(0).setWidth(0);
+			
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}

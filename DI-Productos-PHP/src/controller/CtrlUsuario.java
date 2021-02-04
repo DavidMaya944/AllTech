@@ -62,6 +62,9 @@ public class CtrlUsuario {
 			List<Usuario> resultado = LogicaUsuarios.leer();
 			DefaultTableModel modelo = LogicaUsuarios.generarTablaUsuario(resultado);
 			view.FrmGestionUsuarios.tableUsers.setModel(modelo);
+			view.FrmGestionUsuarios.tableUsers.getColumnModel().getColumn(0).setMinWidth(0);
+			view.FrmGestionUsuarios.tableUsers.getColumnModel().getColumn(0).setMaxWidth(0);
+			view.FrmGestionUsuarios.tableUsers.getColumnModel().getColumn(0).setWidth(0);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}

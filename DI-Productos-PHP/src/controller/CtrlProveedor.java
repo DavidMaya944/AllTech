@@ -36,6 +36,9 @@ public class CtrlProveedor {
 			List<Proveedor> resultado = LogicaProveedor.leerProveedor();
 			DefaultTableModel modelo = LogicaProveedor.generarTablaProveedor(resultado);
 			view.FrmGestionProveedor.tableProv.setModel(modelo);
+			view.FrmGestionProveedor.tableProv.getColumnModel().getColumn(0).setMinWidth(0);
+			view.FrmGestionProveedor.tableProv.getColumnModel().getColumn(0).setMaxWidth(0);
+			view.FrmGestionProveedor.tableProv.getColumnModel().getColumn(0).setWidth(0);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}

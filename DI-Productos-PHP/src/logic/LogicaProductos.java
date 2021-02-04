@@ -232,6 +232,7 @@ public class LogicaProductos {
 		modelo.addColumn("PROVEEDOR");
 		modelo.addColumn("PVP");
 		
+		
 		// Añadir cada fila valores
 		for(Producto p : resultado) {
 			modelo.addRow(new Object[] {p.getiCod(), p.getsNombre(), p.getOptionStr(), p.getsComents(), p.isbFragil(),
