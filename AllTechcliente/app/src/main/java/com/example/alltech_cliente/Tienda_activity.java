@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import controller.CtrlProducto;
 import logic.Adapter;
+import logic.LogicaProducto;
 import logic.LogicaUsuario;
 
 public class Tienda_activity extends AppCompatActivity {
@@ -28,12 +29,12 @@ public class Tienda_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
         contextTienda = getApplicationContext();
-        rView = findViewById(R.id.listaProdPrincipal);
+       /* rView = findViewById(R.id.listaProdPrincipal);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rView.setLayoutManager(llm);
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
-        adapter.refresh();
+        adapter.refresh();*/
         onResume();
     }
 
@@ -73,12 +74,12 @@ public class Tienda_activity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-       /* rView = findViewById(R.id.listaProdPrincipal);
+        rView = findViewById(R.id.listaProdPrincipal);
         rView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rView.setLayoutManager(llm);
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
-        adapter.refresh();*/
+        adapter.refresh();
     }
 }

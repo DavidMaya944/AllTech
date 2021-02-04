@@ -48,11 +48,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 .with(context)
                 .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
+        iPos = position;
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // ENTRA A VER EL PRIMER PRODUCTO QUE MARQUES, PERO AL MARCAR OTRO PRODUCTO, DA ERROR
-                logProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
+                logProd.getProductoDetalle(LogicaProducto.lProducto.get(iPos).getCODIGO());
 
             }
         });
