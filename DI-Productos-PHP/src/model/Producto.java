@@ -8,6 +8,8 @@ public class Producto implements Serializable {
 	private float fPVP;
 	private String sNombre, sComents, sProveedor;
 	private boolean bFragil, bObsoleto;
+	
+	public Producto() {}
 
 	public Producto(int iCod, String sNombre, int iOpcion, String sComents, boolean bFragil, boolean bObsoleto,
 			int iStockActual, int iStockMin, int iStockMax, String sProveedor, float fPVP) {

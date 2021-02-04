@@ -98,6 +98,7 @@ public class LogicaProductos {
 		+ "&OBSOLETO=" + (p.isbObsoleto()?1:0) + "&STOCK_ACTUAL=" + p.getiStockActual() + "&STOCK_MIN=" + p.getiStockMin()
 		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP();
 		LogicaGeneral.peticionHttpArray(path);
+		
 	}	
 
 	public static int validarOpcion() {
@@ -251,12 +252,15 @@ public class LogicaProductos {
 			JOptionPane.showMessageDialog(null, "No se ha podido descargar la imagen", "Descargar", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
+	
 	
 	public static void uploadImage(String filePath) {
 		
 		try {
-			String path = LogicaGeneral.DOMINIO + "/Productos/upload-image.php";
-		
+			
+			String path = LogicaGeneral.DOMINIO + "/productos/upload-image.php";
+			
 			// Establecer la conexión...
 			URL url = new URL(path);
 			URLConnection conn = url.openConnection();
@@ -266,23 +270,21 @@ public class LogicaProductos {
 			
 			// Parametros de envio
 			Map<String, String> params = new HashMap<>();
-			params.put("imgData", encodeFileToBase64(filePath));
+			params.put("fileData", encodeFileToBase64(filePath));
 			
 			// Array de Bytes de envio
 			StringJoiner sj = new StringJoiner("&");
 			for(Map.Entry<String, String> entry : params.entrySet()) {
 				sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
 			}
-			System.out.println(sj);
 			byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
 			
 			// Enviar el array de bytes hacia el path (URL del Web-Service)
 			http.setFixedLengthStreamingMode(out.length);
-			http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
+			http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset-UTF-8");
 			http.connect();
 			http.getOutputStream().write(out);
-			//http.getOutputStream().flush();
-
+			
 			JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 			
 		}catch (Exception e) {
@@ -291,4 +293,20 @@ public class LogicaProductos {
 		}
 	}
 	
+
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

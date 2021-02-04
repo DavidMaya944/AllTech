@@ -101,6 +101,8 @@ public class CtrlProducto {
 	
 	public static void insertProd() {
 		
+
+		
 		if(view.FrmDetalleProd.lblFoto.getIcon() == null) {
 			JOptionPane.showMessageDialog(null, "Debes indicar un nombre de imagen", "FALLO", JOptionPane.ERROR_MESSAGE);
 			return;
@@ -144,10 +146,10 @@ public class CtrlProducto {
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No ha podido insertar el producto", "UPLOAD", JOptionPane.ERROR_MESSAGE);
 		}
+		
+		
 	}
 	
-	
-
 	public void mostrar(Producto p) {
 		FrmDetalleProd.txtCod.setText("" + p.getiCod());
 		FrmDetalleProd.txtNombre.setText(p.getsNombre());
@@ -173,6 +175,8 @@ public class CtrlProducto {
 	public void confirmarBorrar(JDialog frame) {
 		LogicaProductos.confirmarBorrar(frame);
 	}
+
+	
 
 //	public static void subirImagen() {
 //		LogicaProductos.uploadImage();
