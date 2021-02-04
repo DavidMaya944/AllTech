@@ -112,7 +112,7 @@ public class LogicaUsuarios {
 		int iId = Integer.parseInt(FrmDetalleUsuario.txtID.getText());
 		if (JOptionPane.showConfirmDialog(frame, "Confirmar el borrado del producto " + iId,
 				"Confirmar borrado", 2) == JOptionPane.YES_OPTION) {
-			LogicaGeneral.peticionHttpArray(LogicaGeneral.DOMINIO + "/Usuarios/delete-usuarioCliente.php?ID=" + iId);
+			LogicaGeneral.peticionHttpArray(LogicaGeneral.DOMINIO + "/usuarios/delete-usuarioCliente.php?ID=" + iId);
 		}
 		
 	}
@@ -190,7 +190,7 @@ public class LogicaUsuarios {
 		
 		for(Usuario u : resultado) {
 			modelo.addRow(new Object[] {u.getiId(), u.getsNombre(), u.getsApellidos(), u.getsEmail(), u.getsDireccion(),
-					u.getsUsuario(), u.getsContrasenia(), u.getsTelefono(), u.getsPermiso()});
+					u.getsUsuario(), u.getsContrasenia(), u.getsTelefono(), u.getsPermiso(), u.getRolStr()});
 		}
 		return modelo;
 	}

@@ -87,6 +87,10 @@ public class Usuario {
 	public void setiRol(int iRol) {
 		this.iRol = iRol;
 	}
+	
+	public String getRolStr() {
+		return (getiRol() == 1) ? "ADMIN" : "USUARIO";
+	}
 
 	@Override
 	public String toString() {
