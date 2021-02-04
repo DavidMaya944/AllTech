@@ -9,12 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import controller.CtrlUsuario;
 import logic.LogicaProducto;
 import logic.LogicaUsuario;
 import model.Usuario;
 
 public class ActivityAjustes extends AppCompatActivity {
-    LogicaUsuario logUser = new LogicaUsuario();
+    CtrlUsuario ctrlUser = new CtrlUsuario();
     public static Context contextAjuste;
     EditText txtAjNombre;
     EditText txtAjApellidos;
@@ -48,6 +49,13 @@ public class ActivityAjustes extends AppCompatActivity {
             txtAjPhone.setText(u.getTELEFONO());
 
         }
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ctrlUser.delete_user();
+            }
+        });
 
 
 

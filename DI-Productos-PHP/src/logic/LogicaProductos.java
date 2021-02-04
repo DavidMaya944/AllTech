@@ -281,7 +281,7 @@ public class LogicaProductos {
 			http.setRequestProperty("Content-Type", "application/x-www.form-urlencoded; charset-UTF-8");
 			http.connect();
 			http.getOutputStream().write(out);
-			http.getOutputStream().flush();
+			//http.getOutputStream().flush();
 
 			JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 			

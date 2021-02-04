@@ -20,5 +20,9 @@ public class CtrlUsuario {
         logUser.registroUser();
     }
 
+    public void delete_user(){
+        logUser.deleteUser();
+    }
+
 
 }

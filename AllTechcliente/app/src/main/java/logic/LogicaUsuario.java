@@ -32,8 +32,12 @@ public class LogicaUsuario {
         new login_user().execute(Adapter.DOMINIO + "/Usuarios/get-login-user.php");
     }
 
+    public void deleteUser(){
+        new delete_user().execute(Adapter.DOMINIO + "Usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
+    }
+
     public void updateUser(){
-        new delete_user().equals(Adapter.DOMINIO + "/Usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
+        new delete_user().equals(Adapter.DOMINIO + "/Usuarios/update-userEmail.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
     }
 
     public void getUserEmail(){
@@ -76,6 +80,36 @@ public class LogicaUsuario {
             lUsuario = new Gson().fromJson(sResultado, type);
             compararCredenciales();
             
+        }
+    }
+
+    private class delete_user extends AsyncTask<String, Void, Void> {
+
+        String sResultado;
+
+        @Override
+        protected Void doInBackground(String... params) {
+            try {
+                URL url = new URL(params[0]);
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+                String stringBuffer;
+                String str = "";
+                while ((stringBuffer = bufferedReader.readLine()) != null){
+                    str = String.format("%s%s", str, stringBuffer);
+                }
+
+                sResultado = str;
+                bufferedReader.close();
+            }catch (IOException e){
+                sResultado = e.getMessage();
+            }
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
         }
     }
 
@@ -146,7 +180,7 @@ public class LogicaUsuario {
         }
     }
 
-    private class delete_user extends AsyncTask<String, Void, Void> {
+    private class update_user extends AsyncTask<String, Void, Void> {
 
         String sResultado;
 
