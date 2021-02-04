@@ -56,7 +56,7 @@ public class LoginAdmin {
 		contentPanel.add(lblUser);
 
 		txtUser = new JTextField();
-		txtUser.setText("Mayardomo");
+		txtUser.setText("Davidmaya33");
 		txtUser.setBounds(95, 8, 122, 20);
 		contentPanel.add(txtUser);
 		txtUser.setColumns(10);
@@ -67,7 +67,7 @@ public class LoginAdmin {
 		contentPanel.add(lblPass);
 
 		txtPass = new JPasswordField();
-		txtPass.setText("elPodemitaQueOdiaAurelio");
+		txtPass.setText("Admin1234");
 		txtPass.setBounds(95, 39, 122, 20);
 		contentPanel.add(txtPass);
 

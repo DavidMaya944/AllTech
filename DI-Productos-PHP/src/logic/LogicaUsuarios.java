@@ -16,10 +16,7 @@ import view.FrmDetalleUsuario;
 
 public class LogicaUsuarios {
 
-	public static List<Usuario> lUsuarios = new ArrayList<Usuario>();
-	public static List<Usuario> lUsuariosA = new ArrayList<Usuario>();
 	public static List<Usuario> lUsuariosB = new ArrayList<Usuario>();
-	public static List<Usuario> lUsuariosT = new ArrayList<Usuario>();
 	public static int iPos = 0;
 
 	public static String confirmarRegistro(JTextField txtID, JTextField txtNombre, JTextField txtApellidos,
@@ -53,6 +50,13 @@ public class LogicaUsuarios {
 			respuesta = LogicaGeneral.peticionHttpArray(sqlUpdate);
 		}
 
+		return respuesta;
+	}
+	
+	public String getLoginAdmin() {
+		String sql = LogicaGeneral.DOMINIO + "/usuarios/get-login-admin.php";
+		String respuesta = LogicaGeneral.peticionHttpArray(sql);
+		
 		return respuesta;
 	}
 
@@ -91,14 +95,14 @@ public class LogicaUsuarios {
 	}
 
 	public static String obtenerUsuarios() {
-		String sql = LogicaGeneral.DOMINIO + "/Usuarios/getUsuariosClientes.php";
+		String sql = LogicaGeneral.DOMINIO + "/usuarios/getUsuariosClientes.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 
 		return respuesta;
 	}
 	
 	public static String getUser(int iId) {
-		String sql = LogicaGeneral.DOMINIO + "/Usuarios/get-usuarioCliente.php?ID=" + iId;
+		String sql = LogicaGeneral.DOMINIO + "/usuarios/get-usuarioCliente.php?ID=" + iId;
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
@@ -144,8 +148,9 @@ public class LogicaUsuarios {
 		String sPassword = jObj.getString("PASSWORD");
 		String sTelefono = jObj.getString("TELEFONO");
 		String sPermiso = jObj.getString("PERMISO");
+		Integer iRol = jObj.getInt("ROL");
 
-		Usuario u = new Usuario(iId, sNombre, sApellidos, sEmail, sDireccion, sUsuario, sPassword, sTelefono, sPermiso);
+		Usuario u = new Usuario(iId, sNombre, sApellidos, sEmail, sDireccion, sUsuario, sPassword, sTelefono, sPermiso, iRol);
 		return u;
 	}
 
@@ -171,7 +176,7 @@ public class LogicaUsuarios {
 
 	public static DefaultTableModel generarTablaUsuario(List<Usuario> resultado) {
 		DefaultTableModel modelo = new DefaultTableModel();
-		// Añadir la cabecera de las columnas
+		
 		modelo.addColumn("ID");
 		modelo.addColumn("NOMBRE");
 		modelo.addColumn("APELLIDOS");
@@ -181,9 +186,8 @@ public class LogicaUsuarios {
 		modelo.addColumn("PASSWORD");
 		modelo.addColumn("TELEFONO");
 		modelo.addColumn("PERMISO");
-	
+		modelo.addColumn("ROL");
 		
-		// Añadir cada fila valores
 		for(Usuario u : resultado) {
 			modelo.addRow(new Object[] {u.getiId(), u.getsNombre(), u.getsApellidos(), u.getsEmail(), u.getsDireccion(),
 					u.getsUsuario(), u.getsContrasenia(), u.getsTelefono(), u.getsPermiso()});

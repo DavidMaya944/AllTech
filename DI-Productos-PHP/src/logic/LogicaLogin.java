@@ -7,47 +7,48 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.Admin;
+import model.Usuario;
 
 public class LogicaLogin {
 
-	public static List<Admin> lAdmin = new ArrayList<Admin>();
-	public static int iPos = 0;
 	
 	
-	public String getLoginAdmin() {
+	public static String getLoginAdmin() {
 		String sql = LogicaGeneral.DOMINIO + "/usuarios/get-login-admin.php";
 		String respuesta = LogicaGeneral.peticionHttpArray(sql);
 		
 		return respuesta;
 	}
 	
-	public List<Admin> leerLogin() {
-		lAdmin = new ArrayList<Admin>();
+	public static List<Usuario> leerLogin() {
+		LogicaUsuarios.lUsuariosB = new ArrayList<Usuario>();
 		String sRes = getLoginAdmin();
-		lAdmin = jasonToAdmins(sRes);
+		LogicaUsuarios.lUsuariosB = jasonToLogins(sRes);
 		
-		return lAdmin;
+		return LogicaUsuarios.lUsuariosB;
 	}
 
 	
-	public List<Admin> jasonToAdmins(String respuesta){
-		List<Admin> lAdmin = new ArrayList<Admin>();
+	public static List<Usuario> jasonToLogins(String respuesta){
+		List<Usuario> lAdmin = new ArrayList<Usuario>();
 		JSONArray jArray = new JSONArray(respuesta);
 		for(int i = 0; i < jArray.length(); i++) {
 			JSONObject jObj = jArray.getJSONObject(i);
-			Admin a = JsonToAdmin(jObj);
+			Usuario a = JsonToLogin(jObj);
 			lAdmin.add(a);
 			
 		}
 		return lAdmin;
 	}
 	
-	private Admin JsonToAdmin(JSONObject jObj) {
-		String sNombre = jObj.getString("nombre");
-		String sPass = jObj.getString("pass");
+	private static Usuario JsonToLogin(JSONObject jObj) {
+		String sUsuario = jObj.getString("USUARIO");
+		String sPass = jObj.getString("PASSWORD");
+		String sPermiso = jObj.getString("PERMISO");
+		Integer iRol = jObj.getInt("ROL");
 		
-		Admin a = new Admin(sNombre, sPass);
-		return a;
+		Usuario u = new Usuario(sUsuario, sPass, sPermiso, iRol);
+		return u;
 		
 	}
 }

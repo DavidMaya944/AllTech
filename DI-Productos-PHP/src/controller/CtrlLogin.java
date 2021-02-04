@@ -3,6 +3,7 @@ package controller;
 import javax.swing.JOptionPane;
 
 import logic.LogicaLogin;
+import logic.LogicaUsuarios;
 import view.FrmMenuPrincipal;
 import view.LoginAdmin;
 
@@ -12,15 +13,16 @@ public class CtrlLogin {
 
 	public void login() {
 		boolean bExito = false;
-		LogicaLogin.lAdmin = logLogin.leerLogin();
+		LogicaUsuarios.lUsuariosB = LogicaLogin.leerLogin();
 		String sNombre = LoginAdmin.txtUser.getText();
 		String sPass = new String(LoginAdmin.txtPass.getPassword());
 		
-		while(LogicaLogin.iPos < LogicaLogin.lAdmin.size() && !bExito) {
-			if(sNombre.equals(LogicaLogin.lAdmin.get(LogicaLogin.iPos).getsNombre()) && sPass.equals(LogicaLogin.lAdmin.get(LogicaLogin.iPos).getsPass())) {
+		while(LogicaUsuarios.iPos < LogicaUsuarios.lUsuariosB.size() && !bExito) {
+			if(sNombre.equals(LogicaUsuarios.lUsuariosB.get(LogicaUsuarios.iPos).getsUsuario()) && sPass.equals(LogicaUsuarios.lUsuariosB.get(LogicaUsuarios.iPos).getsContrasenia())
+					&& "ACEPTADO".equals(LogicaUsuarios.lUsuariosB.get(LogicaUsuarios.iPos).getsPermiso()) && 1 == LogicaUsuarios.lUsuariosB.get(LogicaUsuarios.iPos).getiRol()) {
 				bExito = true;
 			}
-			LogicaLogin.iPos++;
+			LogicaUsuarios.iPos++;
 		}
 		
 		if(bExito) {
