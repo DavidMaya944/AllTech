@@ -103,9 +103,7 @@ public class CtrlProducto {
 		}
 	}
 	
-	public static void insertProd() {
-		
-
+	public static void insertProd() {		
 		
 		if(view.FrmDetalleProd.lblFoto.getIcon() == null) {
 			JOptionPane.showMessageDialog(null, "Debes indicar un nombre de imagen", "FALLO", JOptionPane.ERROR_MESSAGE);
@@ -140,8 +138,10 @@ public class CtrlProducto {
 			}
 			Producto p = new Producto(sNombre, iOpcion, sComents, bFragil, bObsoleto, iStockActual, iStockMin, iStockMax, sProveedor, fPVP);
 			if(iCod != -1 ) {
+				System.out.println("ENTRA EN EL UPDATE: logic.LogicaProductos.updateProducto");
 				logic.LogicaProductos.updateProducto(filePath, p);
 			}else {
+				System.out.println("ENTRA EN EL INSERT");
 				logic.LogicaProductos.insertProducto(filePath, p);
 			}
 			

@@ -51,10 +51,10 @@ public class LogicaProductos {
 		
 		uploadImage(filePath);
 		
-		String path = LogicaGeneral.DOMINIO + "/Productos/insert-producto.php?NOMBRE=" + p.getsNombre()
+		String path = LogicaGeneral.DOMINIO + "/productos/update-producto.php?NOMBRE=" + p.getsNombre()
 		+ "&OPCION=" + p.getiOpcion() + "&COMENTARIOS=" + p.getsComents() + "&FRAGIL=" + (p.isbFragil()?1:0)
 		+ "&OBSOLETO=" + (p.isbObsoleto()?1:0) + "&STOCK_ACTUAL=" + p.getiStockActual() + "&STOCK_MIN=" + p.getiStockMin()
-		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP();
+		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP() + "&CODIGO=" + p.getiCod();
 		LogicaGeneral.peticionHttpArray(path);
 		
 
@@ -63,10 +63,10 @@ public class LogicaProductos {
 	public static void insertProducto(String filePath, Producto p) throws Exception {
 		uploadImage(filePath);
 		
-		String path = LogicaGeneral.DOMINIO + "/productos/update-producto.php?NOMBRE=" + p.getsNombre()
+		String path = LogicaGeneral.DOMINIO + "/productos/insert-producto.php?NOMBRE=" + p.getsNombre()
 		+ "&OPCION=" + p.getiOpcion() + "&COMENTARIOS=" + p.getsComents() + "&FRAGIL=" + (p.isbFragil()?1:0)
 		+ "&OBSOLETO=" + (p.isbObsoleto()?1:0) + "&STOCK_ACTUAL=" + p.getiStockActual() + "&STOCK_MIN=" + p.getiStockMin()
-		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP() + "&CODIGO=" + p.getiCod();
+		+ "&STOCK_MAX=" + p.getiStockMax() + "&PROVEEDOR=" + p.getsProveedor() + "&PVP=" + p.getfPVP();
 		LogicaGeneral.peticionHttpArray(path);
 		
 	}	
@@ -230,32 +230,32 @@ public class LogicaProductos {
 		
 		try {
 			
-			String path = LogicaGeneral.DOMINIO + "/productos/upload-image.php";
+			String path = LogicaGeneral.DOMINIO +"/productos/upload-image.php";
 			
-			// Establecer la conexión...
 			URL url = new URL(path);
-			URLConnection conn = url.openConnection();
-			HttpURLConnection http = (HttpURLConnection) conn;
+			URLConnection con = url.openConnection();
+			HttpURLConnection http = (HttpURLConnection) con;
 			http.setRequestMethod("POST");
 			http.setDoOutput(true);
-			
-			// Parametros de envio
+
+			// Parámetros de envío
 			Map<String, String> params = new HashMap<>();
 			params.put("fileData", encodeFileToBase64(filePath));
-			
-			// Array de Bytes de envio
+
+			// Array de Bytes de envío
 			StringJoiner sj = new StringJoiner("&");
-			for(Map.Entry<String, String> entry : params.entrySet()) {
+			for (Map.Entry<String, String> entry : params.entrySet()) {
 				sj.add(URLEncoder.encode(entry.getKey(), "UTF-8") + "=" + URLEncoder.encode(entry.getValue(), "UTF-8"));
 			}
 			byte[] out = sj.toString().getBytes(StandardCharsets.UTF_8);
-			
+
+			// Enviar el array de bytes hacia el path (URL del Web-Service)
 			http.setFixedLengthStreamingMode(out.length);
-			http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset-UTF-8");
+			http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 			http.connect();
 			http.getOutputStream().write(out);
 			
-			JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "La imagen ha sido subida correctamente", "UPLOAD", JOptionPane.INFORMATION_MESSAGE);
 			
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "UPLOAD", JOptionPane.ERROR_MESSAGE);
