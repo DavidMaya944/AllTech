@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AllTech</string>
+    <string name="app_name">All Tech</string>
     <string name="btn_registro">Registrarse</string>
     <string name="btn_login">Iniciar sesion</string>
     <string name="btn_exit">Salir</string>
