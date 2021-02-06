@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ public class ActivityAjustes extends AppCompatActivity {
         txtAjDireccion = findViewById(R.id.txtAjDireccion);
         txtAjUsuario = findViewById(R.id.txtAjUsuario);
         txtAjPhone = findViewById(R.id.txtAjPhone);
+        btnDelete = findViewById(R.id.btnDelete);
 
         for(Usuario u : LogicaUsuario.lUsuario){
             txtAjEmail.setText(u.getEMAIL());
@@ -48,17 +50,15 @@ public class ActivityAjustes extends AppCompatActivity {
             txtAjUsuario.setText(u.getUSUARIO());
             txtAjPhone.setText(u.getTELEFONO());
 
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ctrlUser.delete_user();
+                }
+            });
         }
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ctrlUser.delete_user();
-            }
-        });
-
-
-
-
     }
+
+
+
 }

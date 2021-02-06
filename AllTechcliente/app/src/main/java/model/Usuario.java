@@ -10,8 +10,11 @@ public class Usuario {
     private String PASSWORD;
     private String TELEFONO;
     private String PERMISO;
+    private int ROL;
 
-    public Usuario(int ID, String NOMBRE, String APELLIDOS, String EMAIL, String DIRECCION, String USUARIO, String PASSWORD, String TELEFONO, String PERMISO){
+    public Usuario(){}
+
+    public Usuario(int ID, String NOMBRE, String APELLIDOS, String EMAIL, String DIRECCION, String USUARIO, String PASSWORD, String TELEFONO, String PERMISO, int ROL){
         setID(ID);
         setNOMBRE(NOMBRE);
         setAPELLIDOS(APELLIDOS);
@@ -21,6 +24,7 @@ public class Usuario {
         setPASSWORD(PASSWORD);
         setTELEFONO(TELEFONO);
         setPERMISO(PERMISO);
+        setROL(ROL);
     }
 
     public Usuario(String EMAIL, String PASSWORD, String PERMISO){
@@ -99,6 +103,14 @@ public class Usuario {
 
     public void setPERMISO(String PERMISO) {
         this.PERMISO = PERMISO;
+    }
+
+    public int getROL() {
+        return ROL;
+    }
+
+    public void setROL(int ROL) {
+        this.ROL = ROL;
     }
 
     @Override

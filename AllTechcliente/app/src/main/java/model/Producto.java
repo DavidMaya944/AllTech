@@ -13,6 +13,8 @@ public class Producto {
     private String PROVEEDOR;
     private float PVP;
 
+    public Producto(){}
+
     public Producto(int CODIGO, String NOMBRE, int OPCION, String COMENTARIOS, int FRAGIL, int OBSOLETO, int STOCK_ACTUAL,
                     int STOCK_MIN, int STOCK_MAX, String PROVEEDOR, float PVP){
         setCODIGO(CODIGO);

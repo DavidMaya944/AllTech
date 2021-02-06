@@ -20,6 +20,7 @@ import com.example.alltech_cliente.R;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import controller.CtrlProducto;
 import model.Producto;
 
 
@@ -28,6 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static int iPos;
     public static final String DOMINIO = "https://alltech1.000webhostapp.com";
     private LogicaProducto logProd = new LogicaProducto();
+    private CtrlProducto ctrlProd = new CtrlProducto();
     public Adapter(Context context){
         this.context = context;
     }
@@ -48,12 +50,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 .with(context)
                 .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
-        iPos = position;
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // ENTRA A VER EL PRIMER PRODUCTO QUE MARQUES, PERO AL MARCAR OTRO PRODUCTO, DA ERROR
-                logProd.getProductoDetalle(LogicaProducto.lProducto.get(iPos).getCODIGO());
+                // EL ERROR ESTÁ EN QUE COGE SIEMPRE LA MISMA POSICIÓN UNA VEZ HA ELEGIDO UN PRODUCTO
+                ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
+
 
             }
         });

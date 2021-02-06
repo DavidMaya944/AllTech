@@ -29,19 +29,19 @@ public class LogicaUsuario {
     LogicaProducto logProd = new LogicaProducto();
 
     public void getUsuario(){
-        new login_user().execute(Adapter.DOMINIO + "/Usuarios/get-login-user.php");
+        new login_user().execute(Adapter.DOMINIO + "/usuarios/get-login-user.php");
     }
 
     public void deleteUser(){
-        new delete_user().execute(Adapter.DOMINIO + "Usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
+        new delete_user().execute(Adapter.DOMINIO + "usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
     }
 
     public void updateUser(){
-        new delete_user().equals(Adapter.DOMINIO + "/Usuarios/update-userEmail.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
+        new delete_user().equals(Adapter.DOMINIO + "/usuarios/update-userEmail.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
     }
 
     public void getUserEmail(){
-        new get_user_email().execute(Adapter.DOMINIO + "/Usuarios/get-email.php?EMAIL=" + LoginActivity.txtUserEmail.getText());
+        new get_user_email().execute(Adapter.DOMINIO + "/usuarios/get-email.php?EMAIL=" + LoginActivity.txtUserEmail.getText());
     }
 
 
@@ -243,7 +243,6 @@ public class LogicaUsuario {
             lUsuario = new Gson().fromJson(sResultado, type);
             Intent ajustes = new Intent(Tienda_activity.contextTienda, ActivityAjustes.class);
             Tienda_activity.contextTienda.startActivity(ajustes.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-
         }
     }
     public String insert() {
@@ -254,9 +253,9 @@ public class LogicaUsuario {
         String sUsuario = RegistroActivity.txtUsuario.getText().toString();
         String sPassword = RegistroActivity.txtPassword.getText().toString();
         String sTelefono = RegistroActivity.txtTelefono.getText().toString();
-        String sql = Adapter.DOMINIO + "/Usuarios/insert-usuarioCliente.php?NOMBRE=" + sNombre;
+        String sql = Adapter.DOMINIO + "/usuarios/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
-        sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA";
+        sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA&ROL=0";
         return sql;
     }
 }

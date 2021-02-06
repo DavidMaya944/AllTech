@@ -21,7 +21,6 @@ import logic.LogicaUsuario;
 
 public class Tienda_activity extends AppCompatActivity {
     LogicaUsuario logUser = new LogicaUsuario();
-    private CtrlProducto ctrlProd = new CtrlProducto();
     public static Context contextTienda;
     public static RecyclerView rView;
     @Override
@@ -29,13 +28,12 @@ public class Tienda_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
         contextTienda = getApplicationContext();
-       /* rView = findViewById(R.id.listaProdPrincipal);
+        rView = findViewById(R.id.listaProdPrincipal);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rView.setLayoutManager(llm);
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
-        adapter.refresh();*/
-        onResume();
+        adapter.refresh();
     }
 
     @SuppressLint("RestrictedApi")
@@ -71,15 +69,5 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        rView = findViewById(R.id.listaProdPrincipal);
-        rView.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rView.setLayoutManager(llm);
-        logic.Adapter adapter = new Adapter(this);
-        rView.setAdapter(adapter);
-        adapter.refresh();
-    }
+
 }
