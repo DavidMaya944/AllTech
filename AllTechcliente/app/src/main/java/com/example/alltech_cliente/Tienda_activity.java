@@ -69,5 +69,9 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        
+    }
 }

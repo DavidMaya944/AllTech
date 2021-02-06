@@ -36,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         // Leer de las preferencias
-        String email = preferences.getString("@string/key_email_pref", "@string/value_email_pref");
-        String pass = preferences.getString("@string/key_pass_pref", "@string/value_pass_pref");
+        String email = preferences.getString("email", "");
+        String pass = preferences.getString("pass", "");
         txtUserEmail.setText(email);
         txtPass.setText(pass);
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
             sonido.start();
 
             SharedPreferences.Editor editorPreferences = preferences.edit();
-            editorPreferences.putString("@string/key_email_pref", txtUserEmail.getText().toString());
-            editorPreferences.putString("@string/key_pass_pref", txtPass.getText().toString());
+            editorPreferences.putString("email", txtUserEmail.getText().toString());
+            editorPreferences.putString("pass", txtPass.getText().toString());
             editorPreferences.apply();
             ctrlUser.login();
         });

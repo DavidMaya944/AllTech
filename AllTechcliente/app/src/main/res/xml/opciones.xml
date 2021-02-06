@@ -3,20 +3,20 @@
     <PreferenceCategory app:title="@string/title_prefer_credenciales">
 
         <EditTextPreference
-            app:key="@string/key_email_pref"
+            app:key="email"
             app:title="@string/title_email_pref"
-            app:defaultValue="@string/value_email_pref"/>
+            app:defaultValue="example@correo.es"/>
 
         <EditTextPreference
-            app:key="@string/key_pass_pref"
+            app:key="pass"
             app:title="@string/title_pass_pref"
-            app:defaultValue="@string/value_pass_pref"/>
+            app:defaultValue="example1234"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/title_volumen">
         <SwitchPreference
-            app:key="@string/key_mute"
+            app:key="vol"
             app:title="@string/title_mute_pref"
             app:defaultValue="true" />
 

@@ -29,14 +29,9 @@
     <string name="lbl_detalle">Detalle</string>
     <string name="btn_sign_in">Iniciar sesion</string>
     <string name="title_prefer_credenciales" translatable="false">credenciales</string>
-    <string name="key_email_pref" translatable="false">email</string>
-    <string name="key_pass_pref" translatable="false">pass</string>
     <string name="title_email_pref" translatable="false">Email</string>
     <string name="title_pass_pref">Contraseña</string>
-    <string name="key_mute" translatable="false">mute</string>
     <string name="title_mute_pref">Efectos de sonido</string>
-    <string name="value_pass_pref">ejemplo</string>
-    <string name="value_email_pref">ejemplo@email.com</string>
     <string name="mn_ajuste">Ajustes</string>
     <string name="mn_preferencias">Preferencias</string>
     <string name="mn_logOut">Cerrar sesion</string>
