@@ -53,12 +53,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // EL ERROR ESTÁ EN QUE COGE SIEMPRE LA MISMA POSICIÓN UNA VEZ HA ELEGIDO UN PRODUCTO
+                // NO CARGA LA LISTA AL COMPLETO AL VOLVER
                 Log.i("MAYA", "la posicion ANTES es: " + position);
                 ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
                 Log.i("MAYA", "la posicion DESPUES es: " + position);
-
-
             }
         });
 

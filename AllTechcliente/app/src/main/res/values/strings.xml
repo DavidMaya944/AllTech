@@ -37,4 +37,5 @@
     <string name="mn_logOut">Cerrar sesion</string>
     <string name="btn_borar_cuenta">Borrar cuenta</string>
     <string name="title_volumen">Volumen</string>
+    <string name="main_title" translatable="false">All Tech</string>
 </resources>

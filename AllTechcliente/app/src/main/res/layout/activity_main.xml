@@ -46,5 +46,29 @@
         android:text="@string/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lblNameCompany" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="221dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="@dimen/sep_horizontal"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoalltech" />
+
+    <TextView
+        android:id="@+id/lblNameCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sep_horizontal"
+        android:text="@string/main_title"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
