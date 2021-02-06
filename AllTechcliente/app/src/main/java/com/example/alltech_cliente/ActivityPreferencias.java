@@ -15,6 +15,7 @@ public class ActivityPreferencias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferencias);
         getSupportFragmentManager().beginTransaction().replace(R.id.frmPreferencias, new PreferenciasFragment()).commit();
+
     }
 
     public static class PreferenciasFragment extends PreferenceFragmentCompat {
