@@ -74,5 +74,14 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onPause();
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 }
