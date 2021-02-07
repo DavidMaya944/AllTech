@@ -13,4 +13,5 @@
     <dimen name="corner_card">10dp</dimen>
     <dimen name="content_padding_card">10dp</dimen>
     <dimen name="descrip_height">180dp</dimen>
+    <dimen name="layout_widht_land">400dp</dimen>
 </resources>

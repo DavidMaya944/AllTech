@@ -1,11 +1,9 @@
 package logic;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +15,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.alltech_cliente.Prod_detalle_activity;
 import com.example.alltech_cliente.R;
-import com.example.alltech_cliente.Tienda_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import controller.CtrlProducto;
-import model.Producto;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static Context context;
-    public static int iPos;
     public static final String DOMINIO = "https://alltech1.000webhostapp.com";
     private CtrlProducto ctrlProd = new CtrlProducto();
     public Adapter(Context context){
@@ -62,10 +56,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 }else{
                     sonido.stop();
                 }
-                // NO CARGA LA LISTA AL COMPLETO AL VOLVER
-                Log.i("MAYA", "la posicion ANTES es: " + position);
                 ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
-                Log.i("MAYA", "la posicion DESPUES es: " + position);
+
             }
         });
 
