@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,6 +39,15 @@ public class Tienda_activity extends AppCompatActivity {
         rView.setAdapter(adapter);
         adapter.refresh();
         onResume();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
+
+        if(preferences.getBoolean("vol",true)){
+            sonido.start();
+        }else{
+            sonido.stop();
+        }
     }
 
     @SuppressLint("RestrictedApi")

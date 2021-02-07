@@ -2,7 +2,9 @@ package logic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +45,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
+        final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         holder.lblNombre.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
         holder.lblPrecio.setText(LogicaProducto.lProducto.get(position).getPVP() + " €");
@@ -53,6 +58,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(preferences.getBoolean("vol",true)){
+                    sonido.start();
+                }else{
+                    sonido.stop();
+                }
                 // NO CARGA LA LISTA AL COMPLETO AL VOLVER
                 Log.i("MAYA", "la posicion ANTES es: " + position);
                 ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
@@ -63,6 +73,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.floatAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(preferences.getBoolean("vol",true)){
+                    sonido.start();
+                }else{
+                    sonido.stop();
+                }
                 LogicaProducto.lCesta.add(LogicaProducto.lProducto.get(position));
             }
         });

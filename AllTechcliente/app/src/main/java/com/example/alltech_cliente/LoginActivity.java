@@ -43,15 +43,12 @@ public class LoginActivity extends AppCompatActivity {
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
 
-
         btnSignIn.setOnClickListener(v -> {
             if(preferences.getBoolean("vol",true)){
                 sonido.start();
             }else{
                 sonido.stop();
             }
-
-
             SharedPreferences.Editor editorPreferences = preferences.edit();
             editorPreferences.putString("email", txtUserEmail.getText().toString());
             editorPreferences.putString("pass", txtPass.getText().toString());

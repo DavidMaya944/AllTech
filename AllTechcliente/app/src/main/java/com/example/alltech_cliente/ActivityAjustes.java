@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +44,9 @@ public class ActivityAjustes extends AppCompatActivity {
         txtAjPhone = findViewById(R.id.txtAjPhone);
         btnDelete = findViewById(R.id.btnDelete);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
+
         for(Usuario u : LogicaUsuario.lUsuario){
             txtAjEmail.setText(u.getEMAIL());
             txtAjPassword.setText(u.getPASSWORD());
@@ -49,14 +55,19 @@ public class ActivityAjustes extends AppCompatActivity {
             txtAjDireccion.setText(u.getDIRECCION());
             txtAjUsuario.setText(u.getUSUARIO());
             txtAjPhone.setText(u.getTELEFONO());
-
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ctrlUser.delete_user();
-                }
-            });
         }
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(preferences.getBoolean("vol",true)){
+                    sonido.start();
+                }else{
+                    sonido.stop();
+                }
+                ctrlUser.delete_user();
+            }
+        });
     }
 
 
