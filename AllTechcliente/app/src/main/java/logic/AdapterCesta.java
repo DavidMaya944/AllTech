@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,6 @@ import controller.CtrlProducto;
 
 public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProducto>{
     public static Context context;
-    private LogicaProducto logProd = new LogicaProducto();
     private CtrlProducto ctrlProd = new CtrlProducto();
     public AdapterCesta(Context context){
         this.context = context;
@@ -32,23 +32,23 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
     @NonNull
     @Override
     public HolderProducto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.tarjeta, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.tarjeta_cesta, parent, false);
         return new HolderProducto(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
         final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
-
+        Log.i("MAYA", "POSICION EN ADAPTER CESTA: " + position);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        holder.lblNombre.setText(LogicaProducto.lCesta.get(position).getNOMBRE());
-        holder.lblPrecio.setText(LogicaProducto.lCesta.get(position).getPVP() + " €");
+        holder.lblNombreCesta.setText(Adapter.lCesta.get(position).getNOMBRE());
+        holder.lblPrecioCesta.setText(Adapter.lCesta.get(position).getPVP() + " €");
         Glide
                 .with(context)
-                .load(Adapter.DOMINIO + "/imgProd/" + LogicaProducto.lCesta.get(position).getCODIGO() + ".jpg")
-                .into(holder.imgProd);
-        holder.floatInfo.setOnClickListener(new View.OnClickListener() {
+                .load(Adapter.DOMINIO + "/imgProd/" + Adapter.lCesta.get(position).getCODIGO() + ".jpg")
+                .into(holder.imgProdCesta);
+        holder.floatInfoCesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(preferences.getBoolean("vol",true)){
@@ -56,7 +56,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
                 }else{
                     sonido.stop();
                 }
-                ctrlProd.getProductoDetalle(LogicaProducto.lCesta.get(position).getCODIGO());
+                ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
 
             }
         });
@@ -69,7 +69,8 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
                 }else{
                     sonido.stop();
                 }
-                logProd.borrarCesta();
+                Adapter.lCesta.remove(Adapter.lCesta.get(position));
+
             }
         });
     }
@@ -83,20 +84,20 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
     }
 
     public static class HolderProducto extends RecyclerView.ViewHolder {
-        public static CardView cTarjeta;
-        public static TextView lblNombre;
-        public static TextView lblPrecio;
-        public static ImageView imgProd;
-        public static FloatingActionButton floatInfo;
+        public static CardView cTarjetaCesta;
+        public static TextView lblNombreCesta;
+        public static TextView lblPrecioCesta;
+        public static ImageView imgProdCesta;
+        public static FloatingActionButton floatInfoCesta;
         public static FloatingActionButton floatRemove;
 
         public HolderProducto(@NonNull View itemView) {
             super(itemView);
-            cTarjeta = itemView.findViewById(R.id.crdTarjeta);
-            lblNombre = itemView.findViewById(R.id.lblNombre);
-            lblPrecio = itemView.findViewById(R.id.lblPrecio);
-            imgProd = itemView.findViewById(R.id.imgProd);
-            floatInfo = itemView.findViewById(R.id.floatInfo);
+            cTarjetaCesta = itemView.findViewById(R.id.crdTarjetaCesta);
+            lblNombreCesta = itemView.findViewById(R.id.lblNombreCesta);
+            lblPrecioCesta = itemView.findViewById(R.id.lblPrecioCesta);
+            imgProdCesta = itemView.findViewById(R.id.imgProdCesta);
+            floatInfoCesta = itemView.findViewById(R.id.floatInfoCesta);
             floatRemove = itemView.findViewById(R.id.floatRemove);
         }
     }

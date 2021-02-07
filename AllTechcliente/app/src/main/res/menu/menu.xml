@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+
     <group android:id="@+id/groupOptions">
         <item
             android:id="@+id/itemAjustes"
-            android:title="Ajustes" />
+            android:title="@string/mn_ajuste" />
         <item
             android:id="@+id/itemPreferencias"
             android:title="@string/mn_preferencias"/>
          <item
             android:id="@+id/itemCerrarSesion"
-            android:title="Cerrar sesion" />
+            android:title="@string/mn_logOut" />
+        <item
+            android:id="@+id/itemCesta"
+            android:icon="@drawable/ic_baseline_shopping_basket_24"
+            app:showAsAction="always" />
     </group>
 </menu>

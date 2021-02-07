@@ -19,19 +19,25 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import java.util.List;
+
 import logic.Adapter;
+import logic.LogicaProducto;
 import logic.LogicaUsuario;
+import model.Producto;
 
 public class Tienda_activity extends AppCompatActivity {
     LogicaUsuario logUser = new LogicaUsuario();
     public static Context contextTienda;
     public static RecyclerView rView;
+    private List<Producto> lCesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tienda_activity);
         contextTienda = getApplicationContext();
+        lCesta = Adapter.lCesta;
         rView = findViewById(R.id.listaProdPrincipal);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rView.setLayoutManager(llm);
@@ -58,6 +64,10 @@ public class Tienda_activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+            case R.id.itemCesta:
+                Intent cesta = new Intent(this, ActivityCesta.class);
+                startActivity(cesta);
+                break;
             case R.id.itemPreferencias:
                 Intent pref = new Intent(this, ActivityPreferencias.class);
                 startActivity(pref);

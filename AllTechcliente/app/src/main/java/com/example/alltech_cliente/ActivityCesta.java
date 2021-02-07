@@ -5,21 +5,28 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
+import java.util.List;
+
+import logic.Adapter;
 import logic.AdapterCesta;
+import model.Producto;
 
 public class ActivityCesta extends AppCompatActivity {
-
-    public static RecyclerView rView;
+    public static RecyclerView rViewCesta;
+    List<Producto> lCesta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cesta);
-        rView = findViewById(R.id.listaProdPrincipal);
+        lCesta = Adapter.lCesta;
+        Log.i("MAYA", "ACTIVITY CESTA, LA CESTA TIENE " + lCesta.size());
+        rViewCesta = findViewById(R.id.rvCesta);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        rView.setLayoutManager(llm);
+        rViewCesta.setLayoutManager(llm);
         logic.AdapterCesta adapterCesta = new AdapterCesta(this);
-        rView.setAdapter(adapterCesta);
+        rViewCesta.setAdapter(adapterCesta);
         adapterCesta.refresh();
     }
 

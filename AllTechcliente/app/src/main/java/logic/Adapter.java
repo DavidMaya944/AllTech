@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,16 @@ import com.bumptech.glide.Glide;
 import com.example.alltech_cliente.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controller.CtrlProducto;
+import model.Producto;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static Context context;
+    public static List<Producto> lCesta = new ArrayList<Producto>();
     public static final String DOMINIO = "https://alltech1.000webhostapp.com";
     private LogicaProducto logProd = new LogicaProducto();
     private CtrlProducto ctrlProd = new CtrlProducto();
@@ -70,7 +76,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 }else{
                     sonido.stop();
                 }
-                logProd.llenarCesta();
+                Log.i("MAYA", "ANTES de la cesta hay: " + lCesta.size());
+                lCesta.add(LogicaProducto.lProducto.get(position));
+                Log.i("MAYA","Productos añadidos: " + position);
+                Log.i("MAYA", "DENTRO de la cesta hay: " + lCesta.size());
             }
         });
     }

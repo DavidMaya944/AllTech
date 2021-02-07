@@ -24,7 +24,6 @@ import  model.Producto;
 
 public class LogicaProducto {
     public static List<Producto> lProducto;
-    public static List<Producto> lCesta;
 
     public void getProductos(){
        new listar_productos().execute(Adapter.DOMINIO + "/productos/get-productos.php");
@@ -140,15 +139,4 @@ public class LogicaProducto {
         }
     }
 
-    public void llenarCesta(){
-        for (Producto p : lProducto){
-            lCesta.add(p);
-        }
-    }
-
-    public void borrarCesta(){
-        for(Producto p : lCesta){
-            lCesta.remove(p);
-        }
-    }
 }
