@@ -80,6 +80,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 lCesta.add(LogicaProducto.lProducto.get(position));
                 Log.i("MAYA","Productos añadidos: " + position);
                 Log.i("MAYA", "DENTRO de la cesta hay: " + lCesta.size());
+
             }
         });
     }

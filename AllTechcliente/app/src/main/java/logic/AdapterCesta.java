@@ -38,41 +38,43 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
 
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
-        final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
-        Log.i("MAYA", "POSICION EN ADAPTER CESTA: " + position);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if(position < Adapter.lCesta.size()) {
+            final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
+            Log.i("MAYA", "POSICION EN ADAPTER CESTA: " + position);
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        holder.lblNombreCesta.setText(Adapter.lCesta.get(position).getNOMBRE());
-        holder.lblPrecioCesta.setText(Adapter.lCesta.get(position).getPVP() + " €");
-        Glide
-                .with(context)
-                .load(Adapter.DOMINIO + "/imgProd/" + Adapter.lCesta.get(position).getCODIGO() + ".jpg")
-                .into(holder.imgProdCesta);
-        holder.floatInfoCesta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(preferences.getBoolean("vol",true)){
-                    sonido.start();
-                }else{
-                    sonido.stop();
+            holder.lblNombreCesta.setText(Adapter.lCesta.get(position).getNOMBRE());
+            holder.lblPrecioCesta.setText(Adapter.lCesta.get(position).getPVP() + " €");
+            Glide
+                    .with(context)
+                    .load(Adapter.DOMINIO + "/imgProd/" + Adapter.lCesta.get(position).getCODIGO() + ".jpg")
+                    .into(holder.imgProdCesta);
+            holder.floatInfoCesta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (preferences.getBoolean("vol", true)) {
+                        sonido.start();
+                    } else {
+                        sonido.stop();
+                    }
+                    ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
+
                 }
-                ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
+            });
 
-            }
-        });
+            holder.floatRemove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (preferences.getBoolean("vol", true)) {
+                        sonido.start();
+                    } else {
+                        sonido.stop();
+                    }
+                    Adapter.lCesta.remove(Adapter.lCesta.get(position));
 
-        holder.floatRemove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(preferences.getBoolean("vol",true)){
-                    sonido.start();
-                }else{
-                    sonido.stop();
                 }
-                Adapter.lCesta.remove(Adapter.lCesta.get(position));
-
-            }
-        });
+            });
+        }
     }
 
     @Override
