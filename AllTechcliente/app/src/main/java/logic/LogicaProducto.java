@@ -140,4 +140,15 @@ public class LogicaProducto {
         }
     }
 
+    public void llenarCesta(){
+        for (Producto p : lProducto){
+            lCesta.add(p);
+        }
+    }
+
+    public void borrarCesta(){
+        for(Producto p : lCesta){
+            lCesta.remove(p);
+        }
+    }
 }

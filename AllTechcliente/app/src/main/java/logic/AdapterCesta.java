@@ -21,12 +21,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import controller.CtrlProducto;
 
 
-public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
+public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProducto>{
     public static Context context;
-    public static final String DOMINIO = "https://alltech1.000webhostapp.com";
     private LogicaProducto logProd = new LogicaProducto();
     private CtrlProducto ctrlProd = new CtrlProducto();
-    public Adapter(Context context){
+    public AdapterCesta(Context context){
         this.context = context;
     }
 
@@ -43,11 +42,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        holder.lblNombre.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
-        holder.lblPrecio.setText(LogicaProducto.lProducto.get(position).getPVP() + " €");
+        holder.lblNombre.setText(LogicaProducto.lCesta.get(position).getNOMBRE());
+        holder.lblPrecio.setText(LogicaProducto.lCesta.get(position).getPVP() + " €");
         Glide
                 .with(context)
-                .load(DOMINIO + "/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
+                .load(Adapter.DOMINIO + "/imgProd/" + LogicaProducto.lCesta.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +56,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 }else{
                     sonido.stop();
                 }
-                ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
+                ctrlProd.getProductoDetalle(LogicaProducto.lCesta.get(position).getCODIGO());
 
             }
         });
 
-        holder.floatAdd.setOnClickListener(new View.OnClickListener() {
+        holder.floatRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(preferences.getBoolean("vol",true)){
@@ -70,7 +69,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 }else{
                     sonido.stop();
                 }
-                logProd.llenarCesta();
+                logProd.borrarCesta();
             }
         });
     }
@@ -89,7 +88,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         public static TextView lblPrecio;
         public static ImageView imgProd;
         public static FloatingActionButton floatInfo;
-        public static FloatingActionButton floatAdd;
+        public static FloatingActionButton floatRemove;
 
         public HolderProducto(@NonNull View itemView) {
             super(itemView);
@@ -98,7 +97,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblPrecio = itemView.findViewById(R.id.lblPrecio);
             imgProd = itemView.findViewById(R.id.imgProd);
             floatInfo = itemView.findViewById(R.id.floatInfo);
-            floatAdd = itemView.findViewById(R.id.floatAdd);
+            floatRemove = itemView.findViewById(R.id.floatRemove);
         }
     }
 
