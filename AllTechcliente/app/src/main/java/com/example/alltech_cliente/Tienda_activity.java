@@ -38,16 +38,7 @@ public class Tienda_activity extends AppCompatActivity {
         logic.Adapter adapter = new Adapter(this);
         rView.setAdapter(adapter);
         adapter.refresh();
-        onResume();
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
-
-        if(preferences.getBoolean("vol",true)){
-            sonido.start();
-        }else{
-            sonido.stop();
-        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -83,14 +74,5 @@ public class Tienda_activity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        rView = findViewById(R.id.listaProdPrincipal);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rView.setLayoutManager(llm);
-        logic.Adapter adapter = new Adapter(this);
-        rView.setAdapter(adapter);
-        adapter.refresh();
-    }
+
 }

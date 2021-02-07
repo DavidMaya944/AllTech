@@ -10,6 +10,7 @@ import logic.LogicaProducto;
 import model.Producto;
 
 public class Prod_detalle_activity extends AppCompatActivity {
+    private LogicaProducto logProd = new LogicaProducto();
     public static EditText txtNombreDetalle;
     public static EditText txtPrecioDetalle;
     public static TextView txtDescrip;
@@ -28,5 +29,13 @@ public class Prod_detalle_activity extends AppCompatActivity {
             txtPrecioDetalle.setText(p.getPVP() + " €");
             txtDescrip.setText(p.getCOMENTARIOS());
         }
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        logProd.getProductosBack();
     }
 }

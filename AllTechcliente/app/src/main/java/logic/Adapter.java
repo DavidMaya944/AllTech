@@ -30,7 +30,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public static Context context;
     public static int iPos;
     public static final String DOMINIO = "https://alltech1.000webhostapp.com";
-    private LogicaProducto logProd = new LogicaProducto();
     private CtrlProducto ctrlProd = new CtrlProducto();
     public Adapter(Context context){
         this.context = context;
@@ -53,7 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         holder.lblPrecio.setText(LogicaProducto.lProducto.get(position).getPVP() + " €");
         Glide
                 .with(context)
-                .load("https://alltech1.000webhostapp.com/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
+                .load(DOMINIO + "/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
         holder.floatInfo.setOnClickListener(new View.OnClickListener() {
             @Override
