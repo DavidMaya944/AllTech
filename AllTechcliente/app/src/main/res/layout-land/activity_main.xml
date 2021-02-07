@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/lblNameCompany2"
+        android:id="@+id/lblNameCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sep_horizontal"
@@ -29,7 +29,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/btn_login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblNameCompany2" />
+        app:layout_constraintTop_toBottomOf="@+id/lblNameCompany" />
 
     <Button
         android:id="@+id/btnRegistro"
@@ -40,7 +40,7 @@
         android:layout_marginRight="96dp"
         android:text="@string/btn_registro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblNameCompany2" />
+        app:layout_constraintTop_toBottomOf="@+id/lblNameCompany" />
 
     <ImageView
         android:id="@+id/imgLogo"
