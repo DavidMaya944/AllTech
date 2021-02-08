@@ -36,7 +36,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
 
     @Override
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
-        if(position < Adapter.lCesta.size()) {
+
             final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
 
             holder.lblNombreCesta.setText(Adapter.lCesta.get(position).getNOMBRE());
@@ -45,7 +45,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
                     .with(context)
                     .load(Adapter.DOMINIO + "/imgProd/" + Adapter.lCesta.get(position).getCODIGO() + ".jpg")
                     .into(holder.imgProdCesta);
-            holder.floatInfoCesta.setOnClickListener(new View.OnClickListener() {
+            holder.imgProdCesta.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     MainActivity.mutearSonido(sonido);
@@ -62,7 +62,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
 
                 }
             });
-        }
+
     }
 
     @Override
@@ -78,7 +78,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
         public static TextView lblNombreCesta;
         public static TextView lblPrecioCesta;
         public static ImageView imgProdCesta;
-        public static FloatingActionButton floatInfoCesta;
         public static FloatingActionButton floatRemove;
 
         public HolderProducto(@NonNull View itemView) {
@@ -87,7 +86,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
             lblNombreCesta = itemView.findViewById(R.id.lblNombreCesta);
             lblPrecioCesta = itemView.findViewById(R.id.lblPrecioCesta);
             imgProdCesta = itemView.findViewById(R.id.imgProdCesta);
-            floatInfoCesta = itemView.findViewById(R.id.floatInfoCesta);
             floatRemove = itemView.findViewById(R.id.floatRemove);
         }
     }

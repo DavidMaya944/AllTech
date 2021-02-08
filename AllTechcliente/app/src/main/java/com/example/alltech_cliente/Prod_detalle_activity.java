@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import logic.Adapter;
 import logic.LogicaProducto;
+import logic.LogicaUsuario;
 import model.Producto;
 
 public class Prod_detalle_activity extends AppCompatActivity {
@@ -14,6 +19,7 @@ public class Prod_detalle_activity extends AppCompatActivity {
     public static EditText txtNombreDetalle;
     public static EditText txtPrecioDetalle;
     public static TextView txtDescrip;
+    public static ImageView imgProdDet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +28,14 @@ public class Prod_detalle_activity extends AppCompatActivity {
         txtNombreDetalle = findViewById(R.id.txtNombreDetalle);
         txtPrecioDetalle = findViewById(R.id.txtPrecioDetalle);
         txtDescrip = findViewById(R.id.txtDescripcionDetalle);
+        imgProdDet = findViewById(R.id.imgProdDet);
 
 
         for(Producto p : LogicaProducto.lProducto){
+            Glide
+                    .with(getApplicationContext())
+                    .load(Adapter.DOMINIO + "/imgProd/" + p.getCODIGO() + ".jpg")
+                    .into(imgProdDet);
             txtNombreDetalle.setText(p.getNOMBRE());
             txtPrecioDetalle.setText(p.getPVP() + " €");
             txtDescrip.setText(p.getCOMENTARIOS());
