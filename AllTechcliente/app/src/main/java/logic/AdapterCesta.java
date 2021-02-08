@@ -79,7 +79,7 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
 
     @Override
     public int getItemCount() {
-        return LogicaProducto.lProducto.size();
+        return Adapter.lCesta.size();
     }
     public void refresh(){
         notifyDataSetChanged();

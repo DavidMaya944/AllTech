@@ -35,8 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     sonido.stop();
                 }
-                Intent login = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(login);
+               /* if(existen_credenciales_enpreferes){
+                    logica producto
+                } else {*/
+                    Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(login);
+             //   }
+
             }
         });
 

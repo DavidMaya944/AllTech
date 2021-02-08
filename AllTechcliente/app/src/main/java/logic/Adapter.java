@@ -55,7 +55,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 .with(context)
                 .load(DOMINIO + "/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
-        holder.floatInfo.setOnClickListener(new View.OnClickListener() {
+        holder.imgProd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(preferences.getBoolean("vol",true)){
@@ -98,7 +98,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
         public static TextView lblNombre;
         public static TextView lblPrecio;
         public static ImageView imgProd;
-        public static FloatingActionButton floatInfo;
         public static FloatingActionButton floatAdd;
 
         public HolderProducto(@NonNull View itemView) {
@@ -107,7 +106,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             lblNombre = itemView.findViewById(R.id.lblNombre);
             lblPrecio = itemView.findViewById(R.id.lblPrecio);
             imgProd = itemView.findViewById(R.id.imgProd);
-            floatInfo = itemView.findViewById(R.id.floatInfo);
             floatAdd = itemView.findViewById(R.id.floatAdd);
         }
     }
