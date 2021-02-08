@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.alltech_cliente.ActivityAjustes;
 import com.example.alltech_cliente.LoginActivity;
+import com.example.alltech_cliente.MainActivity;
 import com.example.alltech_cliente.RegistroActivity;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
@@ -38,7 +39,7 @@ public class LogicaUsuario {
     }
 
     public void getUserEmail(){
-        new get_user_email().execute(Adapter.DOMINIO + "/usuarios/get-email.php?EMAIL=" + LoginActivity.preferences.getString("email", ""));
+        new get_user_email().execute(Adapter.DOMINIO + "/usuarios/get-email.php?EMAIL=" + MainActivity.preferences.getString("email", ""));
     }
 
     public void registroUser(){

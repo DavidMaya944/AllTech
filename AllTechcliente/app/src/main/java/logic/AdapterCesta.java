@@ -16,6 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.alltech_cliente.MainActivity;
 import com.example.alltech_cliente.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -52,11 +53,12 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
             holder.floatInfoCesta.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (preferences.getBoolean("vol", true)) {
+                    MainActivity.mutearSonido(sonido);
+                   /* if (preferences.getBoolean("vol", true)) {
                         sonido.start();
                     } else {
                         sonido.stop();
-                    }
+                    }*/
                     ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
 
                 }
@@ -65,11 +67,12 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
             holder.floatRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (preferences.getBoolean("vol", true)) {
+                    /*if (preferences.getBoolean("vol", true)) {
                         sonido.start();
                     } else {
                         sonido.stop();
-                    }
+                    }*/
+                    MainActivity.mutearSonido(sonido);
                     Adapter.lCesta.remove(Adapter.lCesta.get(position));
 
                 }

@@ -21,7 +21,6 @@ public class LoginActivity extends AppCompatActivity {
     public static Context context;
     Button btnSignIn;
     private CtrlUsuario ctrlUser = new CtrlUsuario();
-    public static SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,27 +33,25 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Acceso a las preferencias
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        MainActivity.preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         // Leer de las preferencias
-        String email = preferences.getString("email", "");
-        String pass = preferences.getString("pass", "");
+        String email = MainActivity.preferences.getString("email", "");
+        String pass = MainActivity.preferences.getString("pass", "");
         txtUserEmail.setText(email);
         txtPass.setText(pass);
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
 
         btnSignIn.setOnClickListener(v -> {
-            if(preferences.getBoolean("vol",true)){
-                sonido.start();
-            }else{
-                sonido.stop();
-            }
-            SharedPreferences.Editor editorPreferences = preferences.edit();
+            MainActivity.mutearSonido(sonido);
+            SharedPreferences.Editor editorPreferences = MainActivity.preferences.edit();
             editorPreferences.putString("email", txtUserEmail.getText().toString());
             editorPreferences.putString("pass", txtPass.getText().toString());
             editorPreferences.apply();
             ctrlUser.login();
         });
     }
+
+
 }

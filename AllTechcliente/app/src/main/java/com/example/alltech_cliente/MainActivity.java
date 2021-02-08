@@ -17,6 +17,7 @@ import logic.LogicaUsuario;
 
 public class MainActivity extends AppCompatActivity {
     public static Context mainContext;
+    public static SharedPreferences preferences;
     Button btnRegistro;
     Button btnLogin;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mainContext = getApplicationContext();
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
         btnRegistro = findViewById(R.id.btnRegistro);
@@ -56,15 +57,22 @@ public class MainActivity extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(preferences.getBoolean("vol",true)){
+                MainActivity.mutearSonido(sonido);
+                /*if(preferences.getBoolean("vol",true)){
                     sonido.start();
                 }else{
                     sonido.stop();
-                }
+                }*/
                 Intent registro = new Intent(getApplicationContext(), RegistroActivity.class);
                 startActivity(registro);
             }
         });
-
+    }
+    public static void mutearSonido(MediaPlayer sonido) {
+        if(MainActivity.preferences.getBoolean("vol",true)){
+            sonido.start();
+        }else{
+            sonido.stop();
+        }
     }
 }
