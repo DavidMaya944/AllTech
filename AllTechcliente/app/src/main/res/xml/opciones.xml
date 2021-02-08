@@ -4,13 +4,11 @@
 
         <EditTextPreference
             app:key="email"
-            app:title="@string/title_email_pref"
-            app:defaultValue="example@correo.es"/>
+            app:title="@string/title_email_pref"/>
 
         <EditTextPreference
             app:key="pass"
-            app:title="@string/title_pass_pref"
-            app:defaultValue="example1234"/>
+            app:title="@string/title_pass_pref"/>
 
     </PreferenceCategory>
 

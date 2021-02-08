@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     public static Context context;
     Button btnSignIn;
     private CtrlUsuario ctrlUser = new CtrlUsuario();
+    public static SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Acceso a las preferencias
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         // Leer de las preferencias
         String email = preferences.getString("email", "");

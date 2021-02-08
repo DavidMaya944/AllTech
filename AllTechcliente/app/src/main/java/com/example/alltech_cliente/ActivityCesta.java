@@ -21,7 +21,6 @@ public class ActivityCesta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cesta);
         lCesta = Adapter.lCesta;
-        Log.i("MAYA", "ACTIVITY CESTA, LA CESTA TIENE " + lCesta.size());
         rViewCesta = findViewById(R.id.rvCesta);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rViewCesta.setLayoutManager(llm);

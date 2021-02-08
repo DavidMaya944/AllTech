@@ -76,10 +76,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 }else{
                     sonido.stop();
                 }
-                Log.i("MAYA", "ANTES de la cesta hay: " + lCesta.size());
                 lCesta.add(LogicaProducto.lProducto.get(position));
-                Log.i("MAYA","Productos añadidos: " + position);
-                Log.i("MAYA", "DENTRO de la cesta hay: " + lCesta.size());
 
             }
         });

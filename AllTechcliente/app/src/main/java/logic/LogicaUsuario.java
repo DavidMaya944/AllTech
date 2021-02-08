@@ -27,6 +27,7 @@ public class LogicaUsuario {
     public static List<Usuario> lUsuario;
     public static int iPos;
     LogicaProducto logProd = new LogicaProducto();
+    public static boolean isLogged;
 
     public void getUsuario(){
         new login_user().execute(Adapter.DOMINIO + "/usuarios/get-login-user.php");
@@ -36,14 +37,9 @@ public class LogicaUsuario {
         new delete_user().execute(Adapter.DOMINIO + "usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
     }
 
-    public void updateUser(){
-        new delete_user().equals(Adapter.DOMINIO + "/usuarios/update-userEmail.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
-    }
-
     public void getUserEmail(){
-        new get_user_email().execute(Adapter.DOMINIO + "/usuarios/get-email.php?EMAIL=" + LoginActivity.txtUserEmail.getText());
+        new get_user_email().execute(Adapter.DOMINIO + "/usuarios/get-email.php?EMAIL=" + LoginActivity.preferences.getString("email", ""));
     }
-
 
     public void registroUser(){
         new registro_user().execute(insert());
@@ -211,7 +207,6 @@ public class LogicaUsuario {
 
     }
 
-
     private class get_user_email extends AsyncTask<String, Void, Void> {
 
         String sResultado;
@@ -245,6 +240,7 @@ public class LogicaUsuario {
             Tienda_activity.contextTienda.startActivity(ajustes.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
+
     public String insert() {
         String sNombre = RegistroActivity.txtNombre.getText().toString();
         String sApellidos = RegistroActivity.txtApellidos.getText().toString();

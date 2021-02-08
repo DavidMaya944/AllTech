@@ -8,6 +8,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.example.alltech_cliente.LoginActivity;
+import com.example.alltech_cliente.MainActivity;
 import com.example.alltech_cliente.Prod_detalle_activity;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
@@ -65,11 +66,18 @@ public class LogicaProducto {
             super.onPostExecute(aVoid);
             Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            Intent appIn = new Intent(LoginActivity.context, Tienda_activity.class);
-            LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            if (LogicaUsuario.isLogged){
+                Intent appIn = new Intent(MainActivity.mainContext, Tienda_activity.class);
+                MainActivity.mainContext.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+            }else{
+                Intent appIn = new Intent(LoginActivity.context, Tienda_activity.class);
+                LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
 
         }
     }
+
 
     private class listar_productos_back extends AsyncTask<String, Void, Void> {
 
