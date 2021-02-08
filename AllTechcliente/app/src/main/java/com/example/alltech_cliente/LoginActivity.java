@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Acceso a las preferencias
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         // Leer de las preferencias
         String email = preferences.getString("email", "");
