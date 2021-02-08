@@ -4,14 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceFragmentCompat;
 
 import controller.CtrlUsuario;
 
@@ -31,11 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         txtPass = findViewById(R.id.txtPass);
         btnSignIn = findViewById(R.id.btnSignIn);
 
-
-        // Acceso a las preferencias
-        MainActivity.preferences = PreferenceManager.getDefaultSharedPreferences(context);
-
-        // Leer de las preferencias
         String email = MainActivity.preferences.getString("email", "");
         String pass = MainActivity.preferences.getString("pass", "");
         txtUserEmail.setText(email);

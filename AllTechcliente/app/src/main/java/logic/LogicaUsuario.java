@@ -1,10 +1,7 @@
 package logic;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.alltech_cliente.ActivityAjustes;

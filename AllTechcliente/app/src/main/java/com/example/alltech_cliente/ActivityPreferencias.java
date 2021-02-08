@@ -3,10 +3,7 @@ package com.example.alltech_cliente;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 public class ActivityPreferencias extends AppCompatActivity {
     @Override

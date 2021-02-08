@@ -3,18 +3,15 @@ package com.example.alltech_cliente;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import controller.CtrlUsuario;
-import logic.LogicaProducto;
 import logic.LogicaUsuario;
 import model.Usuario;
 
@@ -44,7 +41,6 @@ public class ActivityAjustes extends AppCompatActivity {
         txtAjPhone = findViewById(R.id.txtAjPhone);
         btnDelete = findViewById(R.id.btnDelete);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
         for(Usuario u : LogicaUsuario.lUsuario){
@@ -60,11 +56,7 @@ public class ActivityAjustes extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(preferences.getBoolean("vol",true)){
-                    sonido.start();
-                }else{
-                    sonido.stop();
-                }
+                MainActivity.mutearSonido(sonido);
                 ctrlUser.delete_user();
             }
         });

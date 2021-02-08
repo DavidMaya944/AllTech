@@ -58,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.mutearSonido(sonido);
-                /*if(preferences.getBoolean("vol",true)){
-                    sonido.start();
-                }else{
-                    sonido.stop();
-                }*/
                 Intent registro = new Intent(getApplicationContext(), RegistroActivity.class);
                 startActivity(registro);
             }

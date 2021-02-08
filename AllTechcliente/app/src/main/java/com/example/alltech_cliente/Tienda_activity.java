@@ -1,7 +1,6 @@
 package com.example.alltech_cliente;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,11 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,7 +17,6 @@ import android.view.MenuItem;
 import java.util.List;
 
 import logic.Adapter;
-import logic.LogicaProducto;
 import logic.LogicaUsuario;
 import model.Producto;
 

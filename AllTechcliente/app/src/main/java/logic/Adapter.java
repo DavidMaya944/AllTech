@@ -1,10 +1,7 @@
 package logic;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +45,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
         final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-
         holder.lblNombre.setText(LogicaProducto.lProducto.get(position).getNOMBRE());
         holder.lblPrecio.setText(LogicaProducto.lProducto.get(position).getPVP() + " €");
         Glide
@@ -60,11 +55,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             @Override
             public void onClick(View v) {
                 MainActivity.mutearSonido(sonido);
-                /*if(preferences.getBoolean("vol",true)){
-                    sonido.start();
-                }else{
-                    sonido.stop();
-                }*/
                 ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
 
             }
@@ -74,11 +64,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
             @Override
             public void onClick(View v) {
                 MainActivity.mutearSonido(sonido);
-                /*if(preferences.getBoolean("vol",true)){
-                    sonido.start();
-                }else{
-                    sonido.stop();
-                }*/
                 lCesta.add(LogicaProducto.lProducto.get(position));
 
             }

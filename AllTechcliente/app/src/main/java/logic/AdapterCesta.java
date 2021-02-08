@@ -1,10 +1,7 @@
 package logic;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +38,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
     public void onBindViewHolder(@NonNull HolderProducto holder, final int position) {
         if(position < Adapter.lCesta.size()) {
             final MediaPlayer sonido = MediaPlayer.create(context, R.raw.boton);
-            Log.i("MAYA", "POSICION EN ADAPTER CESTA: " + position);
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
             holder.lblNombreCesta.setText(Adapter.lCesta.get(position).getNOMBRE());
             holder.lblPrecioCesta.setText(Adapter.lCesta.get(position).getPVP() + " €");
@@ -54,11 +49,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
                 @Override
                 public void onClick(View v) {
                     MainActivity.mutearSonido(sonido);
-                   /* if (preferences.getBoolean("vol", true)) {
-                        sonido.start();
-                    } else {
-                        sonido.stop();
-                    }*/
                     ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
 
                 }
@@ -67,11 +57,6 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
             holder.floatRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*if (preferences.getBoolean("vol", true)) {
-                        sonido.start();
-                    } else {
-                        sonido.stop();
-                    }*/
                     MainActivity.mutearSonido(sonido);
                     Adapter.lCesta.remove(Adapter.lCesta.get(position));
 
