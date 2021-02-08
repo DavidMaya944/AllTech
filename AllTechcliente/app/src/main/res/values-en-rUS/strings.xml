@@ -31,4 +31,5 @@
     <string name="btn_borar_cuenta">Delete acount</string>
     <string name="title_volumen">Volume</string>
     <string name="btn_update">Update</string>
+    <string name="btn_comprar">Buy</string>
 </resources>

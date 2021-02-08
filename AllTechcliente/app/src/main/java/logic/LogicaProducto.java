@@ -3,12 +3,14 @@ package logic;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.MainActivity;
 import com.example.alltech_cliente.Prod_detalle_activity;
+import com.example.alltech_cliente.RegistroActivity;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,8 +29,13 @@ public class LogicaProducto {
     public void getProductos(){
        new listar_productos().execute(Adapter.DOMINIO + "/productos/get-productos.php");
     }
+
     public void getProductosBack(){
         new listar_productos_back().execute(Adapter.DOMINIO + "/productos/get-productos.php");
+    }
+
+    public void insertCompra(){
+        new insert_comprar().execute(comprar());
     }
 
     public void getProductoDetalle(int iCod){
@@ -106,8 +113,37 @@ public class LogicaProducto {
             super.onPostExecute(aVoid);
             Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            
 
+        }
+    }
+
+    private class insert_comprar extends AsyncTask<String, Void, Void> {
+
+        String sResultado;
+
+        @Override
+        protected Void doInBackground(String... params) {
+            try {
+                URL url = new URL(params[0]);
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+                String stringBuffer;
+                String str = "";
+                while ((stringBuffer = bufferedReader.readLine()) != null){
+                    str = String.format("%s%s", str, stringBuffer);
+                }
+
+                sResultado = str;
+                bufferedReader.close();
+            }catch (IOException e){
+                sResultado = e.getMessage();
+            }
+            return null;
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        public void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
         }
     }
 
@@ -145,4 +181,14 @@ public class LogicaProducto {
         }
     }
 
+
+    public String comprar(){
+        int idProd = Integer.parseInt(Adapter.DOMINIO + "/productos/get-id-prod.php");
+        Log.i("MAYA", idProd + "");
+        int idUser = Integer.parseInt((Adapter.DOMINIO + "/usuarios/get-id-user.php"));
+        Log.i("MAYA", idUser + "");
+        String sql = Adapter.DOMINIO + "/compra/insert-compra.php?ID_PROD=" + idProd;
+        sql += "&ID_USER=" + idUser;
+        return sql;
+    }
 }

@@ -9,4 +9,8 @@ public class CtrlProducto {
     public void getProductoDetalle(int iCod){
         logProd.getProductoDetalle(iCod);
     }
+
+    public void insert_compra(){
+        logProd.insertCompra();
+    }
 }

@@ -41,4 +41,5 @@
     <string name="btn_update">Actualizar</string>
     <string name="value_pass_pref">ejemplo</string>
     <string name="value_email_pref">ejemplo@email.com</string>
+    <string name="btn_comprar">Comprar</string>
 </resources>
