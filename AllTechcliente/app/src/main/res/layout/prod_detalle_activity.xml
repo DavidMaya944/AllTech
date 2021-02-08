@@ -24,6 +24,7 @@
             android:id="@+id/txtNombreDetalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
             android:hint="@string/lbl_nombre_prod"
             android:inputType="textPersonName" />
@@ -32,6 +33,7 @@
             android:id="@+id/txtPrecioDetalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
             android:hint="@string/lbl_precio"
             android:inputType="textPersonName" />
@@ -40,6 +42,7 @@
             android:id="@+id/txtDescripcionDetalle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/descrip_height"
+            android:editable="false"
             android:ems="10"
             android:hint="@string/lbl_descripion"
             android:inputType="textPersonName" />
