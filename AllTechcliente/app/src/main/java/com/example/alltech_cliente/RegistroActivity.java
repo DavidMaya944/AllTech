@@ -21,6 +21,7 @@ public class RegistroActivity extends AppCompatActivity {
     public static EditText txtUsuario;
     public static EditText txtPassword;
     public static EditText txtTelefono;
+    Button btnCancelar;
     Button btnConfirmar;
     CtrlUsuario ctrlUser = new CtrlUsuario();
     @Override
@@ -34,29 +35,28 @@ public class RegistroActivity extends AppCompatActivity {
         txtUsuario = findViewById(R.id.txtUsuario);
         txtPassword = findViewById(R.id.txtPassword);
         txtTelefono = findViewById(R.id.txtTelefono);
-
+        btnCancelar = findViewById(R.id.btnCancelar);
         btnConfirmar = findViewById(R.id.btnConfirmar);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        MainActivity.preferences = PreferenceManager.getDefaultSharedPreferences(this);
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
-        if(preferences.getBoolean("vol",true)){
-            sonido.start();
-        }else{
-            sonido.stop();
-        }
 
-        btnConfirmar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                ctrlUser.registro();
-                } catch(Exception e) {
-                    Toast.makeText(getApplicationContext(), "ERROR: Registro fallido.", Toast.LENGTH_SHORT).show();
-                }
 
+        btnConfirmar.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            try {
+            ctrlUser.registro();
+            } catch(Exception e) {
+                Toast.makeText(getApplicationContext(), "ERROR: Registro fallido.", Toast.LENGTH_SHORT).show();
             }
-    });
+
+        });
+
+        btnCancelar.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            onBackPressed();
+        });
 
 
 

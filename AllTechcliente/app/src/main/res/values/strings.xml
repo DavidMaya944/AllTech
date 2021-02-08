@@ -38,4 +38,7 @@
     <string name="btn_borar_cuenta">Borrar cuenta</string>
     <string name="title_volumen">Volumen</string>
     <string name="main_title" translatable="false">All Tech</string>
+    <string name="btn_update">Actualizar</string>
+    <string name="value_pass_pref">ejemplo</string>
+    <string name="value_email_pref">ejemplo@email.com</string>
 </resources>

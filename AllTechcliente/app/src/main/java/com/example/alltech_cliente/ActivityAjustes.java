@@ -18,14 +18,15 @@ import model.Usuario;
 public class ActivityAjustes extends AppCompatActivity {
     CtrlUsuario ctrlUser = new CtrlUsuario();
     public static Context contextAjuste;
-    EditText txtAjNombre;
-    EditText txtAjApellidos;
+    public static EditText txtAjNombre;
+    public static EditText txtAjApellidos;
     public static EditText txtAjEmail;
-    EditText txtAjPassword;
-    EditText txtAjDireccion;
-    EditText txtAjUsuario;
-    EditText txtAjPhone;
+    public static EditText txtAjPassword;
+    public static EditText txtAjDireccion;
+    public static EditText txtAjUsuario;
+    public static EditText txtAjPhone;
     Button btnDelete;
+    Button btnUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class ActivityAjustes extends AppCompatActivity {
         txtAjUsuario = findViewById(R.id.txtAjUsuario);
         txtAjPhone = findViewById(R.id.txtAjPhone);
         btnDelete = findViewById(R.id.btnDelete);
+        btnUpdate = findViewById(R.id.btnUpdate);
 
         final MediaPlayer sonido = MediaPlayer.create(this, R.raw.boton);
 
@@ -59,6 +61,11 @@ public class ActivityAjustes extends AppCompatActivity {
                 MainActivity.mutearSonido(sonido);
                 ctrlUser.delete_user();
             }
+        });
+
+        btnUpdate.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            ctrlUser.update_user();
         });
     }
 

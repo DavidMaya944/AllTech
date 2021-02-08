@@ -18,5 +18,8 @@ public class CtrlUsuario {
         logUser.deleteUser();
     }
 
+    public void update_user(){
+        logUser.updateUsuario();
+    }
 
 }

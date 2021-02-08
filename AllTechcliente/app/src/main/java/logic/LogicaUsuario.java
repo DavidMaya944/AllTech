@@ -31,6 +31,10 @@ public class LogicaUsuario {
         new login_user().execute(Adapter.DOMINIO + "/usuarios/get-login-user.php");
     }
 
+    public void updateUsuario(){
+        new update_user().execute(update());
+    }
+
     public void deleteUser(){
         new delete_user().execute(Adapter.DOMINIO + "usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
     }
@@ -138,6 +142,37 @@ public class LogicaUsuario {
         }
     }
 
+    private class update_user extends AsyncTask<String, Void, Void> {
+
+        String sResultado;
+
+        @Override
+        protected Void doInBackground(String... params) {
+            try {
+                URL url = new URL(params[0]);
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+                String stringBuffer;
+                String str = "";
+                while ((stringBuffer = bufferedReader.readLine()) != null){
+                    str = String.format("%s%s", str, stringBuffer);
+                }
+
+                sResultado = str;
+                bufferedReader.close();
+            }catch (IOException e){
+                sResultado = e.getMessage();
+            }
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+
+        }
+    }
+
     public void compararCredenciales(){
         int iValidacion = 0;
         boolean bExito = false;
@@ -174,36 +209,7 @@ public class LogicaUsuario {
         }
     }
 
-    private class update_user extends AsyncTask<String, Void, Void> {
 
-        String sResultado;
-
-        @Override
-        protected Void doInBackground(String... params) {
-            try {
-                URL url = new URL(params[0]);
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
-                String stringBuffer;
-                String str = "";
-                while ((stringBuffer = bufferedReader.readLine()) != null){
-                    str = String.format("%s%s", str, stringBuffer);
-                }
-
-                sResultado = str;
-                bufferedReader.close();
-            }catch (IOException e){
-                sResultado = e.getMessage();
-            }
-            return null;
-        }
-
-        @Override
-        public void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-
-
-    }
 
     private class get_user_email extends AsyncTask<String, Void, Void> {
 
@@ -250,6 +256,20 @@ public class LogicaUsuario {
         String sql = Adapter.DOMINIO + "/usuarios/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA&ROL=0";
+        return sql;
+    }
+
+    public String update() {
+        String sNombre = ActivityAjustes.txtAjNombre.getText().toString();
+        String sApellidos = ActivityAjustes.txtAjApellidos.getText().toString();
+        String sEmail = ActivityAjustes.txtAjEmail.getText().toString();
+        String sDireccion = ActivityAjustes.txtAjDireccion.getText().toString();
+        String sUsuario = ActivityAjustes.txtAjUsuario.getText().toString();
+        String sPassword = ActivityAjustes.txtAjPassword.getText().toString();
+        String sTelefono = ActivityAjustes.txtAjPhone.getText().toString();
+        String sql = Adapter.DOMINIO + "/usuarios/update-usuarioEmail.php?NOMBRE=" + sNombre;
+        sql += "&APELLIDOS=" + sApellidos + "&DIRECCION=" + sDireccion;
+        sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA&ROL=0&EMAIL=" + sEmail;
         return sql;
     }
 }

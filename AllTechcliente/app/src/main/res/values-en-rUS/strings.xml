@@ -30,4 +30,5 @@
     <string name="mn_logOut">Log Out</string>
     <string name="btn_borar_cuenta">Delete acount</string>
     <string name="title_volumen">Volume</string>
+    <string name="btn_update">Update</string>
 </resources>
