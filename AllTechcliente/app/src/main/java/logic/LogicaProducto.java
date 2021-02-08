@@ -184,9 +184,7 @@ public class LogicaProducto {
 
     public String comprar(){
         int idProd = Integer.parseInt(Adapter.DOMINIO + "/productos/get-id-prod.php");
-        Log.i("MAYA", idProd + "");
         int idUser = Integer.parseInt((Adapter.DOMINIO + "/usuarios/get-id-user.php"));
-        Log.i("MAYA", idUser + "");
         String sql = Adapter.DOMINIO + "/compra/insert-compra.php?ID_PROD=" + idProd;
         sql += "&ID_USER=" + idUser;
         return sql;
