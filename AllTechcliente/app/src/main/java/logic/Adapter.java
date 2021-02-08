@@ -51,22 +51,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.HolderProducto>{
                 .with(context)
                 .load(DOMINIO + "/imgProd/" + LogicaProducto.lProducto.get(position).getCODIGO() + ".jpg")
                 .into(holder.imgProd);
-        holder.imgProd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity.mutearSonido(sonido);
-                ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
+        holder.imgProd.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            ctrlProd.getProductoDetalle(LogicaProducto.lProducto.get(position).getCODIGO());
 
-            }
         });
 
-        holder.floatAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity.mutearSonido(sonido);
-                lCesta.add(LogicaProducto.lProducto.get(position));
+        holder.floatAdd.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            lCesta.add(LogicaProducto.lProducto.get(position));
 
-            }
         });
     }
 

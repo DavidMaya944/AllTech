@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:editable="false"
             android:ems="10"
+            android:enabled="false"
             android:hint="@string/lbl_nombre_prod"
             android:inputType="textPersonName" />
 
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:editable="false"
             android:ems="10"
+            android:enabled="false"
             android:hint="@string/lbl_precio"
             android:inputType="textPersonName" />
 
@@ -44,6 +46,7 @@
             android:layout_height="@dimen/descrip_height"
             android:editable="false"
             android:ems="10"
+            android:enabled="false"
             android:hint="@string/lbl_descripion"
             android:inputType="textPersonName" />
     </LinearLayout>

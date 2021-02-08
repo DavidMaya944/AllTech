@@ -45,22 +45,16 @@ public class AdapterCesta extends RecyclerView.Adapter<AdapterCesta.HolderProduc
                     .with(context)
                     .load(Adapter.DOMINIO + "/imgProd/" + Adapter.lCesta.get(position).getCODIGO() + ".jpg")
                     .into(holder.imgProdCesta);
-            holder.imgProdCesta.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MainActivity.mutearSonido(sonido);
-                    ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
+            holder.imgProdCesta.setOnClickListener(v -> {
+                MainActivity.mutearSonido(sonido);
+                ctrlProd.getProductoDetalle(Adapter.lCesta.get(position).getCODIGO());
 
-                }
             });
 
-            holder.floatRemove.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MainActivity.mutearSonido(sonido);
-                    Adapter.lCesta.remove(Adapter.lCesta.get(position));
+            holder.floatRemove.setOnClickListener(v -> {
+                MainActivity.mutearSonido(sonido);
+                Adapter.lCesta.remove(Adapter.lCesta.get(position));
 
-                }
             });
 
     }
