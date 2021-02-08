@@ -16,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     public static EditText txtPass;
     public static Context context;
     Button btnSignIn;
+    Button btnCancel;
     private CtrlUsuario ctrlUser = new CtrlUsuario();
 
     @Override
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         txtUserEmail = findViewById(R.id.txtUserEmail);
         txtPass = findViewById(R.id.txtPass);
         btnSignIn = findViewById(R.id.btnSignIn);
+        btnCancel = findViewById(R.id.btnCancel);
 
         String email = MainActivity.preferences.getString("email", "");
         String pass = MainActivity.preferences.getString("pass", "");
@@ -41,6 +43,11 @@ public class LoginActivity extends AppCompatActivity {
             editorPreferences.putString("pass", txtPass.getText().toString());
             editorPreferences.apply();
             ctrlUser.login();
+        });
+
+        btnCancel.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            onBackPressed();
         });
     }
 

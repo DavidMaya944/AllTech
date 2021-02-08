@@ -9,9 +9,9 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="foto_prod">100dp</dimen>
     <dimen name="layout_margin">5dp</dimen>
-    <dimen name="layout_widht">140dp</dimen>
+    <dimen name="layout_widht">200dp</dimen>
     <dimen name="corner_card">10dp</dimen>
     <dimen name="content_padding_card">10dp</dimen>
     <dimen name="descrip_height">180dp</dimen>
-    <dimen name="layout_widht_land">400dp</dimen>
+    <dimen name="layout_widht_land">480dp</dimen>
 </resources>

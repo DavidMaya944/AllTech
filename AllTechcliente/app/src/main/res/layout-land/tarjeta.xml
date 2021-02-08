@@ -53,16 +53,6 @@
             </LinearLayout>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin"
-                android:layout_marginBottom="@dimen/layout_margin"
-                android:clickable="true"
-                app:backgroundTint="@color/boton_float_light"
-                app:srcCompat="@android:drawable/ic_dialog_info" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

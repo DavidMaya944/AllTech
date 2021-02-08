@@ -30,7 +30,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout
-                android:layout_width="@dimen/layout_widht"
+                android:layout_width="@dimen/layout_widht_land"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
