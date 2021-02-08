@@ -55,17 +55,15 @@ public class ActivityAjustes extends AppCompatActivity {
             txtAjPhone.setText(u.getTELEFONO());
         }
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity.mutearSonido(sonido);
-                ctrlUser.delete_user();
-            }
+        btnDelete.setOnClickListener(v -> {
+            MainActivity.mutearSonido(sonido);
+            ctrlUser.delete_user();
         });
 
         btnUpdate.setOnClickListener(v -> {
             MainActivity.mutearSonido(sonido);
             ctrlUser.update_user();
+            onBackPressed();
         });
     }
 
