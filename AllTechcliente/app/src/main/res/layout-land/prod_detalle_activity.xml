@@ -12,11 +12,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lblDetalle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_detalle" />
+        <ImageView
+            android:id="@+id/imgProdDet"
+            android:layout_width="@dimen/foto_prod"
+            android:layout_height="@dimen/foto_prod"
+            android:layout_marginStart="@dimen/layout_align_center_land"
+            android:layout_marginLeft="@dimen/layout_align_center_land"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <EditText
             android:id="@+id/txtNombreDetalle"

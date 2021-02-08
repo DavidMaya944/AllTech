@@ -16,4 +16,5 @@
     <dimen name="descrip_height">180dp</dimen>
     <dimen name="layout_widht_land">480dp</dimen>
     <dimen name="layout_align_center">105dp</dimen>
+    <dimen name="layout_align_center_land">300dp</dimen>
 </resources>
