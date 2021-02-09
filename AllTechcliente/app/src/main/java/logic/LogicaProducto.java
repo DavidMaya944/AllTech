@@ -22,6 +22,7 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.List;
 import  model.Producto;
+import model.Usuario;
 
 public class LogicaProducto {
     public static List<Producto> lProducto;
@@ -183,8 +184,15 @@ public class LogicaProducto {
 
 
     public String comprar(){
-        int idProd = Integer.parseInt(Adapter.DOMINIO + "/productos/get-id-prod.php");
-        int idUser = Integer.parseInt((Adapter.DOMINIO + "/usuarios/get-id-user.php"));
+        int idUser = 0;
+        int idProd = 0;
+        for(Usuario u : LogicaUsuario.lUsuario){
+            idUser = u.getID();
+        }
+
+        for(Producto p : Adapter.lCesta){
+            idProd = p.getCODIGO();
+        }
         String sql = Adapter.DOMINIO + "/compra/insert-compra.php?ID_PROD=" + idProd;
         sql += "&ID_USER=" + idUser;
         return sql;
