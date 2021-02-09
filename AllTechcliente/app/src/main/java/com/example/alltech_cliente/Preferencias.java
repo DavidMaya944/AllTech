@@ -5,7 +5,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import android.os.Bundle;
 
-public class ActivityPreferencias extends AppCompatActivity {
+public class Preferencias extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

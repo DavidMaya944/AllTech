@@ -20,7 +20,7 @@ import logic.Adapter;
 import logic.LogicaUsuario;
 import model.Producto;
 
-public class Tienda_activity extends AppCompatActivity {
+public class Tienda extends AppCompatActivity {
     LogicaUsuario logUser = new LogicaUsuario();
     public static Context contextTienda;
     public static RecyclerView rView;
@@ -59,18 +59,18 @@ public class Tienda_activity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.itemCesta:
-                Intent cesta = new Intent(this, ActivityCesta.class);
+                Intent cesta = new Intent(this, Cesta.class);
                 startActivity(cesta);
                 break;
             case R.id.itemPreferencias:
-                Intent pref = new Intent(this, ActivityPreferencias.class);
+                Intent pref = new Intent(this, Preferencias.class);
                 startActivity(pref);
                 break;
             case R.id.itemAjustes:
                 logUser.getUserEmail();
                 break;
             case R.id.itemCerrarSesion:
-                Intent logOut = new Intent(this, LoginActivity.class);
+                Intent logOut = new Intent(this, Login.class);
                 startActivity(logOut);
                 break;
 

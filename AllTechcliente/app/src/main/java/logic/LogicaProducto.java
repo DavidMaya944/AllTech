@@ -6,10 +6,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.alltech_cliente.LoginActivity;
+import com.example.alltech_cliente.Login;
 import com.example.alltech_cliente.MainActivity;
-import com.example.alltech_cliente.Prod_detalle_activity;
-import com.example.alltech_cliente.Tienda_activity;
+import com.example.alltech_cliente.Detalle;
+import com.example.alltech_cliente.Tienda;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -71,12 +71,12 @@ public class LogicaProducto {
             Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
             if (LogicaUsuario.isLogged){
-                Intent appIn = new Intent(MainActivity.mainContext, Tienda_activity.class);
+                Intent appIn = new Intent(MainActivity.mainContext, Tienda.class);
                 MainActivity.mainContext.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
             }else{
-                Intent appIn = new Intent(LoginActivity.context, Tienda_activity.class);
-                LoginActivity.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                Intent appIn = new Intent(Login.context, Tienda.class);
+                Login.context.startActivity(appIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
 
         }
@@ -175,7 +175,7 @@ public class LogicaProducto {
             super.onPostExecute(aVoid);
             Type type = new TypeToken<List<Producto>>() {}.getType();
             lProducto = new Gson().fromJson(sResultado, type);
-            Intent prodDetalle = new Intent(Adapter.context, Prod_detalle_activity.class);
+            Intent prodDetalle = new Intent(Adapter.context, Detalle.class);
             Adapter.context.startActivity(prodDetalle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }

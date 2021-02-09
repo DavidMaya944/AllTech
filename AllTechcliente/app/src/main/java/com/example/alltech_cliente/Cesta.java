@@ -17,7 +17,7 @@ import logic.Adapter;
 import logic.AdapterCesta;
 import model.Producto;
 
-public class ActivityCesta extends AppCompatActivity {
+public class Cesta extends AppCompatActivity {
     public static RecyclerView rViewCesta;
     List<Producto> lCesta;
     Button btnComprar;

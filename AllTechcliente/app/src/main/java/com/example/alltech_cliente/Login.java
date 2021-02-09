@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import controller.CtrlUsuario;
 
-public class LoginActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     public static EditText txtUserEmail;
     public static EditText txtPass;
     public static Context context;

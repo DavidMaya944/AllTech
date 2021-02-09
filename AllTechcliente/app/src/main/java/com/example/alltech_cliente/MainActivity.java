@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.mutearSonido(sonido);
             if(preferences.getString("email", "").equals("*") && preferences.getString("pass","").equals("*")){
                 LogicaUsuario.isLogged = false;
-                Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent login = new Intent(getApplicationContext(), Login.class);
                 startActivity(login);
             } else {
                 LogicaUsuario.isLogged = true;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRegistro.setOnClickListener(v -> {
             MainActivity.mutearSonido(sonido);
-            Intent registro = new Intent(getApplicationContext(), RegistroActivity.class);
+            Intent registro = new Intent(getApplicationContext(), Registro.class);
             startActivity(registro);
         });
     }

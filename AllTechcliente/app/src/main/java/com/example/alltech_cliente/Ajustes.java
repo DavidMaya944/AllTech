@@ -12,7 +12,7 @@ import controller.CtrlUsuario;
 import logic.LogicaUsuario;
 import model.Usuario;
 
-public class ActivityAjustes extends AppCompatActivity {
+public class Ajustes extends AppCompatActivity {
     CtrlUsuario ctrlUser = new CtrlUsuario();
     public static Context contextAjuste;
     public static EditText txtAjNombre;

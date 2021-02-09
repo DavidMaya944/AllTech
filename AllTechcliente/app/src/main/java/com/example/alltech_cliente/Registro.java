@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import controller.CtrlUsuario;
 
-public class RegistroActivity extends AppCompatActivity {
+public class Registro extends AppCompatActivity {
     public static EditText txtNombre;
     public static EditText txtApellidos;
     public static EditText txtEmail;

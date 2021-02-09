@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.alltech_cliente.ActivityAjustes;
-import com.example.alltech_cliente.LoginActivity;
+import com.example.alltech_cliente.Ajustes;
+import com.example.alltech_cliente.Login;
 import com.example.alltech_cliente.MainActivity;
-import com.example.alltech_cliente.RegistroActivity;
-import com.example.alltech_cliente.Tienda_activity;
+import com.example.alltech_cliente.Registro;
+import com.example.alltech_cliente.Tienda;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -36,7 +36,7 @@ public class LogicaUsuario {
     }
 
     public void deleteUser(){
-        new delete_user().execute(Adapter.DOMINIO + "usuarios/delete-user-email.php?EMAIL=" + ActivityAjustes.txtAjEmail.getText());
+        new delete_user().execute(Adapter.DOMINIO + "usuarios/delete-user-email.php?EMAIL=" + Ajustes.txtAjEmail.getText());
     }
 
     public void getUserEmail(){
@@ -176,8 +176,8 @@ public class LogicaUsuario {
     public void compararCredenciales(){
         int iValidacion = 0;
         boolean bExito = false;
-        String sEmail = LoginActivity.txtUserEmail.getText().toString();
-        String sPassword = LoginActivity.txtPass.getText().toString();
+        String sEmail = Login.txtUserEmail.getText().toString();
+        String sPassword = Login.txtPass.getText().toString();
 
         while(iPos < lUsuario.size() && !bExito){
             if(sEmail.equals(lUsuario.get(iPos).getEMAIL()) && sPassword.equals(lUsuario.get(iPos).getPASSWORD())
@@ -201,10 +201,10 @@ public class LogicaUsuario {
                 logProd.getProductos();
                 break;
             case 2:
-                Toast.makeText(LoginActivity.context, "Esperando verificación", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.context, "Esperando verificación", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
-                Toast.makeText(LoginActivity.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -240,19 +240,19 @@ public class LogicaUsuario {
             Type type = new TypeToken<List<Usuario>>() {
             }.getType();
             lUsuario = new Gson().fromJson(sResultado, type);
-            Intent ajustes = new Intent(Tienda_activity.contextTienda, ActivityAjustes.class);
-            Tienda_activity.contextTienda.startActivity(ajustes.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            Intent ajustes = new Intent(Tienda.contextTienda, Ajustes.class);
+            Tienda.contextTienda.startActivity(ajustes.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 
     public String insert() {
-        String sNombre = RegistroActivity.txtNombre.getText().toString();
-        String sApellidos = RegistroActivity.txtApellidos.getText().toString();
-        String sEmail = RegistroActivity.txtEmail.getText().toString();
-        String sDireccion = RegistroActivity.txtDireccion.getText().toString();
-        String sUsuario = RegistroActivity.txtUsuario.getText().toString();
-        String sPassword = RegistroActivity.txtPassword.getText().toString();
-        String sTelefono = RegistroActivity.txtTelefono.getText().toString();
+        String sNombre = Registro.txtNombre.getText().toString();
+        String sApellidos = Registro.txtApellidos.getText().toString();
+        String sEmail = Registro.txtEmail.getText().toString();
+        String sDireccion = Registro.txtDireccion.getText().toString();
+        String sUsuario = Registro.txtUsuario.getText().toString();
+        String sPassword = Registro.txtPassword.getText().toString();
+        String sTelefono = Registro.txtTelefono.getText().toString();
         String sql = Adapter.DOMINIO + "/usuarios/insert-usuarioCliente.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA&ROL=0";
@@ -260,13 +260,13 @@ public class LogicaUsuario {
     }
 
     public String update() {
-        String sNombre = ActivityAjustes.txtAjNombre.getText().toString();
-        String sApellidos = ActivityAjustes.txtAjApellidos.getText().toString();
-        String sEmail = ActivityAjustes.txtAjEmail.getText().toString();
-        String sDireccion = ActivityAjustes.txtAjDireccion.getText().toString();
-        String sUsuario = ActivityAjustes.txtAjUsuario.getText().toString();
-        String sPassword = ActivityAjustes.txtAjPassword.getText().toString();
-        String sTelefono = ActivityAjustes.txtAjPhone.getText().toString();
+        String sNombre = Ajustes.txtAjNombre.getText().toString();
+        String sApellidos = Ajustes.txtAjApellidos.getText().toString();
+        String sEmail = Ajustes.txtAjEmail.getText().toString();
+        String sDireccion = Ajustes.txtAjDireccion.getText().toString();
+        String sUsuario = Ajustes.txtAjUsuario.getText().toString();
+        String sPassword = Ajustes.txtAjPassword.getText().toString();
+        String sTelefono = Ajustes.txtAjPhone.getText().toString();
         String sql = Adapter.DOMINIO + "/usuarios/update-usuarioEmail.php?NOMBRE=" + sNombre;
         sql += "&APELLIDOS=" + sApellidos + "&DIRECCION=" + sDireccion;
         sql += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono + "&PERMISO=EN%20ESPERA&ROL=0&EMAIL=" + sEmail;

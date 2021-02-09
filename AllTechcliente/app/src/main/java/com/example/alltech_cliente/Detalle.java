@@ -13,7 +13,7 @@ import logic.Adapter;
 import logic.LogicaProducto;
 import model.Producto;
 
-public class Prod_detalle_activity extends AppCompatActivity {
+public class Detalle extends AppCompatActivity {
     private LogicaProducto logProd = new LogicaProducto();
     public static EditText txtNombreDetalle;
     public static EditText txtPrecioDetalle;
