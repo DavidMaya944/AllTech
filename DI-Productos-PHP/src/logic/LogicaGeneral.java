@@ -8,12 +8,10 @@ import java.net.URL;
 import javax.swing.JOptionPane;
 
 public class LogicaGeneral {
-	//public static final String DOMINIO = "https://alltech1.000webhostapp.com";
-	public static final String DOMINIO = "http://192.168.30.144/maya";
-	public static final String LOGINUSERNAME = "Davidmaya33";
-	public static final String LOGINUSERPASS = "Admin1234";
-
-	public static String peticionHttpArray(String parametro) {
+	public static final String DOMINIO = "https://alltech1.000webhostapp.com";
+	//public static final String DOMINIO = "http://192.168.30.144/maya";
+	
+	static String peticionHttpArray(String parametro) {
 
 		StringBuilder resultado = new StringBuilder();
 

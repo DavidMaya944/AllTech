@@ -41,7 +41,7 @@ public class LogicaUsuarios {
 		String sTelefono = txtTelefono.getText();
 
 		if (iId != -1) {
-			String sqlUpdate = LogicaGeneral.DOMINIO + "/Usuarios/update-usuarioCliente.php?NOMBRE="
+			String sqlUpdate = LogicaGeneral.DOMINIO + "/usuarios/update-usuarioCliente.php?NOMBRE="
 					+ sNombre;
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono
@@ -82,7 +82,7 @@ public class LogicaUsuarios {
 		String sTelefono = txtTelefono.getText();
 
 		if (iId != -1) {
-			String sqlUpdate = LogicaGeneral.DOMINIO + "/Usuarios/update-usuarioCliente.php?NOMBRE="
+			String sqlUpdate = LogicaGeneral.DOMINIO + "/usuarios/update-usuarioCliente.php?NOMBRE="
 					+ sNombre;
 			sqlUpdate += "&APELLIDOS=" + sApellidos + "&EMAIL=" + sEmail + "&DIRECCION=" + sDireccion;
 			sqlUpdate += "&USUARIO=" + sUsuario + "&PASSWORD=" + sPassword + "&TELEFONO=" + sTelefono

@@ -12,7 +12,6 @@ import view.FrmDetalleProd;
 import view.FrmDetalleProveedor;
 
 public class CtrlProveedor {
-	public static int iId;
 	
 	public static void guardarProveedor() {
 		LogicaProveedor.guardarProveedor();
@@ -36,19 +35,15 @@ public class CtrlProveedor {
 			List<Proveedor> resultado = LogicaProveedor.leerProveedor();
 			DefaultTableModel modelo = LogicaProveedor.generarTablaProveedor(resultado);
 			view.FrmGestionProveedor.tableProv.setModel(modelo);
-			view.FrmGestionProveedor.tableProv.getColumnModel().getColumn(0).setMinWidth(0);
-			view.FrmGestionProveedor.tableProv.getColumnModel().getColumn(0).setMaxWidth(0);
-			view.FrmGestionProveedor.tableProv.getColumnModel().getColumn(0).setWidth(0);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "No se ha podido cargar los datos", "Cargar datos", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
 	public static void loadDataProv() {
-		iId = Integer.parseInt(view.FrmGestionProveedor.tableProv.getValueAt(view.FrmGestionProveedor.tableProv.getSelectedRow(), 0).toString());
+		String sNombre = view.FrmGestionProveedor.tableProv.getValueAt(view.FrmGestionProveedor.tableProv.getSelectedRow(), 0).toString();
 		try {
-			Proveedor p = LogicaProveedor.leerProv(iId);
-			FrmDetalleProveedor.txtIdProv.setText("" + p.getiId());
+			Proveedor p = LogicaProveedor.leerProv(sNombre);
 			FrmDetalleProveedor.txtNombre.setText(p.getsNombre());
 			
 		}catch(Exception e) {

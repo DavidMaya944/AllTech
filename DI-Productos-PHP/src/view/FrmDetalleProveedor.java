@@ -17,7 +17,6 @@ import java.awt.event.ActionEvent;
 public class FrmDetalleProveedor extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	public static JTextField txtIdProv;
 	public static JTextField txtNombre;
 	
 	public FrmDetalleProveedor() {
@@ -31,34 +30,22 @@ public class FrmDetalleProveedor extends JDialog {
 	
 	
 	public void createForm() {
-		setBounds(100, 100, 450, 148);
+		setBounds(100, 100, 357, 148);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(0, 255, 255));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblIdProv = new JLabel("ID");
-		lblIdProv.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblIdProv.setBounds(29, 28, 46, 14);
-		contentPanel.add(lblIdProv);
-		
-		txtIdProv = new JTextField();
-		txtIdProv.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		txtIdProv.setEnabled(false);
-		txtIdProv.setBounds(70, 26, 86, 20);
-		contentPanel.add(txtIdProv);
-		txtIdProv.setColumns(10);
-		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(314, 25, 86, 20);
+		txtNombre.setBounds(168, 29, 86, 20);
 		contentPanel.add(txtNombre);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblNombre.setBounds(249, 29, 46, 14);
+		lblNombre.setBounds(103, 33, 46, 14);
 		contentPanel.add(lblNombre);
 		{
 			JPanel buttonPane = new JPanel();
@@ -109,7 +96,6 @@ public class FrmDetalleProveedor extends JDialog {
 				JButton btnNuevo = new JButton("NUEVO");
 				btnNuevo.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						txtIdProv.setText("");
 						txtNombre.setText("");
 					}
 				});

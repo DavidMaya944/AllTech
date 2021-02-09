@@ -19,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.CtrlLogin;
-import logic.LogicaGeneral;
 
 public class LoginAdmin {
 	private final JPanel contentPanel = new JPanel();
@@ -57,7 +56,6 @@ public class LoginAdmin {
 		contentPanel.add(lblUser);
 
 		txtUser = new JTextField();
-		txtUser.setText(LogicaGeneral.LOGINUSERNAME);
 		txtUser.setBounds(95, 8, 122, 20);
 		contentPanel.add(txtUser);
 		txtUser.setColumns(10);
@@ -68,7 +66,6 @@ public class LoginAdmin {
 		contentPanel.add(lblPass);
 
 		txtPass = new JPasswordField();
-		txtPass.setText(LogicaGeneral.LOGINUSERPASS);
 		txtPass.setBounds(95, 39, 122, 20);
 		contentPanel.add(txtPass);
 

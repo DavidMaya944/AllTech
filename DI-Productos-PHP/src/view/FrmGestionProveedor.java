@@ -15,6 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class FrmGestionProveedor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,14 @@ public class FrmGestionProveedor extends JFrame {
 
 	
 	public FrmGestionProveedor() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				new FrmMenuPrincipal();
+				dispose();
+				
+			}
+		});
 		setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		setTitle("Gesti\u00F3n de proveedores");
 		createForm();
