@@ -41,8 +41,13 @@ public class ActivityCesta extends AppCompatActivity {
 
         btnComprar.setOnClickListener(v -> {
             MainActivity.mutearSonido(sonido);
-            ctrlProd.insert_compra();
-            Toast.makeText(this, "La compra se ha realizado con exito", Toast.LENGTH_SHORT).show();
+            try {
+                ctrlProd.insert_compra();
+                Toast.makeText(this, "La compra se ha realizado con exito", Toast.LENGTH_SHORT).show();
+            }catch(Exception e){
+                Toast.makeText(this, "Ha habido un error en la compra", Toast.LENGTH_SHORT).show();
+            }
+           
         });
     }
 
