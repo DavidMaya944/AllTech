@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide;
 
 import logic.Adapter;
 import logic.LogicaProducto;
-import logic.LogicaUsuario;
 import model.Producto;
 
 public class Prod_detalle_activity extends AppCompatActivity {

@@ -3,14 +3,12 @@ package logic;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 import com.example.alltech_cliente.LoginActivity;
 import com.example.alltech_cliente.MainActivity;
 import com.example.alltech_cliente.Prod_detalle_activity;
-import com.example.alltech_cliente.RegistroActivity;
 import com.example.alltech_cliente.Tienda_activity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
