@@ -39,6 +39,7 @@ public class FrmDetalleUsuario extends JDialog {
 	public static JButton btnUnBlock;
 	private JPanel panel;
 	private JLabel lblFoto;
+	public static JTextField txtRol;
 
 	
 	public FrmDetalleUsuario() {
@@ -60,7 +61,7 @@ public class FrmDetalleUsuario extends JDialog {
 		});
 		setTitle("Usuarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 635, 352);
+		setBounds(100, 100, 635, 401);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -159,7 +160,7 @@ public class FrmDetalleUsuario extends JDialog {
 				controller.CtrlUsuario.loadData();
 			}
 		});
-		btnRechazar.setBounds(498, 263, 100, 23);
+		btnRechazar.setBounds(498, 323, 100, 23);
 		contentPane.add(btnRechazar);
 		
 		JButton btnAceptar = new JButton("ACEPTAR");
@@ -171,7 +172,7 @@ public class FrmDetalleUsuario extends JDialog {
 				controller.CtrlUsuario.loadData();
 			}
 		});
-		btnAceptar.setBounds(399, 263, 89, 23);
+		btnAceptar.setBounds(399, 323, 89, 23);
 		contentPane.add(btnAceptar);
 		
 		txtPass = new JPasswordField();
@@ -181,12 +182,12 @@ public class FrmDetalleUsuario extends JDialog {
 		
 		lblPermiso = new JLabel("Permiso");
 		lblPermiso.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblPermiso.setBounds(394, 107, 70, 14);
+		lblPermiso.setBounds(394, 94, 70, 14);
 		contentPane.add(lblPermiso);
 		
 		txtPermiso = new JTextField();
 		txtPermiso.setEnabled(false);
-		txtPermiso.setBounds(479, 107, 119, 20);
+		txtPermiso.setBounds(479, 92, 119, 20);
 		contentPane.add(txtPermiso);
 		txtPermiso.setColumns(10);
 		
@@ -199,7 +200,7 @@ public class FrmDetalleUsuario extends JDialog {
 				new FrmMenuPrincipal();
 			}
 		});
-		btnVolver.setBounds(300, 263, 89, 23);
+		btnVolver.setBounds(300, 323, 89, 23);
 		contentPane.add(btnVolver);
 		
 		btnBlock = new JButton("BLOQUEAR");
@@ -212,7 +213,7 @@ public class FrmDetalleUsuario extends JDialog {
 				dispose();
 			}
 		});
-		btnBlock.setBounds(10, 263, 100, 23);
+		btnBlock.setBounds(10, 323, 100, 23);
 		contentPane.add(btnBlock);
 		
 		btnUnBlock = new JButton("DESBLOQUEAR");
@@ -225,17 +226,29 @@ public class FrmDetalleUsuario extends JDialog {
 				dispose();
 			}
 		});
-		btnUnBlock.setBounds(120, 263, 134, 23);
+		btnUnBlock.setBounds(120, 323, 134, 23);
 		contentPane.add(btnUnBlock);
 		
 		panel = new JPanel();
-		panel.setBounds(512, 140, 86, 87);
+		panel.setBounds(512, 182, 86, 87);
 		contentPane.add(panel);
 		
 		lblFoto = new JLabel("Foto:");
 		lblFoto.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
-		lblFoto.setBounds(394, 173, 46, 14);
+		lblFoto.setBounds(394, 216, 46, 14);
 		contentPane.add(lblFoto);
+		
+		JLabel lblRol = new JLabel("ROL");
+		lblRol.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		lblRol.setBounds(394, 129, 46, 14);
+		contentPane.add(lblRol);
+		
+		txtRol = new JTextField();
+		txtRol.setEnabled(false);
+		txtRol.setBounds(479, 123, 119, 20);
+		contentPane.add(txtRol);
+		txtRol.setColumns(10);
+		
 		
 	}
 }
